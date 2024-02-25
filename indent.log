@@ -1,0 +1,34 @@
+INFO:  latexindent version 3.20.3, 2023-02-19, a script to indent .tex files
+       latexindent lives here: /usr/local/texlive/2023/texmf-dist/scripts/latexindent/
+       Sun Feb 25 16:25:29 2024
+       Reading input from STDIN
+INFO:  Processing switches:
+       -l|--localSettings: Read localSettings YAML file
+       -m|--modifylinebreaks: modify line breaks
+INFO:  Directory for backup files and indent.log:
+       .
+INFO:  YAML settings read: defaultSettings.yaml
+       Reading defaultSettings.yaml from /usr/local/texlive/2023/texmf-dist/scripts/latexindent/defaultSettings.yaml
+INFO:  YAML reading settings
+       Home directory is /Users/evawyy
+       latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
+       see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
+INFO:  YAML settings read: -l switch
+WARN:  yaml file not found: ~/.config/nvim/latexindent.yaml not found. Proceeding without it.
+INFO:  Filename: - (1 of 2)
+INFO:  Phase 1: searching for objects
+INFO:  Phase 2: finding surrounding indentation
+INFO:  Phase 3: indenting objects
+INFO:  Phase 4: final indentation check
+INFO:  Output routine:
+       Not outputting to file; see -w and -o switches for more options.
+INFO:  Filename: - (2 of 2)
+INFO:  Phase 1: searching for objects
+INFO:  Phase 2: finding surrounding indentation
+INFO:  Phase 3: indenting objects
+INFO:  Phase 4: final indentation check
+INFO:  Output routine:
+       Not outputting to file; see -w and -o switches for more options.
+       --------------
+INFO:  Please direct all communication/issues to:
+        https://github.com/cmhughes/latexindent.pl

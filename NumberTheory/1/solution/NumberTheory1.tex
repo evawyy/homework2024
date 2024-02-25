@@ -1,0 +1,137 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\usepackage{listings}
+
+\lstdefinestyle{lua}{
+	language=[5.1]Lua,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{magenta},
+	stringstyle=\color{blue},
+	commentstyle=\color{black!50}
+}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+	\input{../../../global/preface}
+\else
+	\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}
+	Prove that \(3|n(n+1)(2n + 1)\), where \(n \in \mathbb{Z}\).
+
+\end{problem}
+\begin{solution}
+	\begin{enumerate}
+		\item If \(n = 3k, k \in \mathbb{Z}\), then \(3 | n(n + 1)(2n + 1)\).
+		\item If \(n = 3k + 1, k \in \mathbb{Z}\), then \(2n + 1 = 2(3k + 1) + 1= 6k + 3= 3(2k + 1)\), then \(3 \mid n(n+1)(2n+1)\).
+		\item If \(n = 3k +2, k \in \mathbb{Z}\), then \(n + 1 = 3k + 3 =3(k + 1)\), then \(3 \mid n(n + 1)(2n + 1)\).
+	\end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:2}
+	If \(a,b \in \mathbb{Z}\), \(b \neq 0\), prove: \(\exists s,t \in \mathbb{Z}\) s.t.
+	\[
+		a = bs + t, |t| \leq \frac{|b|}{2}
+	\]
+	and when \(b\) is odd, \(s,t \) are unique, how about that \(b\) is even?
+\end{problem}
+\begin{solution}
+	First of all, when \(b \geq 0\), by Euclidean division, \(\exists u,v \in \mathbb{Z}\), s.t. \(a = bu + v, 0 \leq v <b\).
+	If \(|v| \leq \frac{|b|}{2}\), then \(s = u, t= v\). If \(\frac{|b|}{2}<v<|b|\), then \(s=u+1, t=v-b\), where \(|t| \leq \frac{|b|}{2}\).
+	So when \(b < 0\), only need to consider \(a, -b >0\), then \(\exists p,q \in \mathbb{Z}\), s.t. \(a=(-b)p +q  = b(-p) + q\), let \(s = -p, t=q\).
+
+	When \(b\) is odd, if \(a = bs_1 + t_1 = bs_2 + t_2\), where \(|t_1|,|t_2| \leq \frac{|b|}{2}\). Then \(|t_1|,|t_2| \leq \frac{|b|-1}{2} < \frac{|b|}{2}\).
+	So \(b(s_1-s_2) = t_2-t_1\), then \(|b| \mid |t_2 - t_1|\). And \(|t_1-t_2| \leq |t_1|+|t_2| < |b|\), then \(|t_1-t_2|=0\).
+	Thus, \(s_1=s_2,t_1=t_2\).
+
+	When \(b\) is even, consider \(a = bx + \frac{b}{2} \exists x \in \mathbb{Z} \), then \(a = b(x+1) -\frac{b}{2}\).
+	For \(a \notin \{bx + \frac{b}{2}: x \in \mathbb{Z}\}\), then \(a = bm + n\), where \(|n| \leq \frac{|b|}{2}\).
+	Then by the same reason in the situation when \(b\) is odd, we can get \(\exists \mid s,t\) s.t. \(a = bs + t\), where \(|t| \leq \frac{|b|}{2}\).
+\end{solution}
+
+\begin{problem}
+	Use Problem \ref{pro:2} to prove \(\forall a,b \in \mathbb{Z}, b \neq 0\), \(\exists \gcd(a,b)\), and show its argorithm.
+	Use the argorithm and Euclidean algorithm to compute \(\gcd(76501,9719)\).
+\end{problem}
+\begin{solution}
+	\begin{enumerate}
+		\item \label{it:1} If \(a =0\), then \(\gcd(a,b) = b\).
+			If \(a \neq 0\), since \(\gcd(a,b) = \gcd(|a|,|b|)\), we only need to consider \(a,b \in \mathbb{N}^+\).
+			Without loss of generality, assume \(a \geq b > 0\), then by
+			Problem \ref{pro:2}, then \(\exists s, t \in \mathbb{Z}\) s.t. \(a = bs + t\), where \(|t| \leq \frac{b}{2}\).
+			If \(t=0\), then \(\gcd(a,b) =b\). If \(|t| >0\), then by \(\gcd(a,b) = \gcd(b,|t|)\) and Problem \ref{pro:2} again, we get \(\exists s_1,t_1 \in \mathbb{Z}, |t_1| \leq \frac{|t|}{2}\) such that
+			\(b = |t|s_1 + t_1\). Repeat the process above, until it appers that the remainder becomes \(0\).
+			That is because \(t_0:=t\) is finite, and the remainder \( t_{k + 1} = \frac{t_k}{2}, k \geq 0\).
+			So we will get these equations:
+			\begin{equation}
+				\begin{aligned}
+					 & a = bs + t_0, 0 < |t_0| < \frac{|b|}{2},                           \\
+					 & b = |t_0|s_1 + t_1, 0 < |t_1| < \frac{|t_0|}{2},                   \\
+					 & |t_0| = |t_1|s_2 + t_2, 0 < |t_2| < \frac{|t_1|}{2},               \\
+					 & \cdots\cdots                                                       \\
+					 & |t_{n-1}| = |t_{n}|s_{n+1}+t_{n+1}, 0< |t_{n+1}| <\frac{|t_n|}{2}, \\
+					 & |t_{n}| = |t_{n+1}|s_{n+2}.
+				\end{aligned}
+			\end{equation}
+			So we can get \(\gcd(a,b)=\gcd(b,|t_0|)=\cdots=\gcd(|t_n|,|t_{n+1}|)=|t_{n+1}|\)
+		\item The argorithm of \ref{it:1}:
+			\begin{lstlisting}[style=lua]
+--This function is to find the remainder of two integers x,y, where y is not 0.
+--Input: x,y : two integers
+--Output: the absoute value of remainder of x,y, whose absoute value is smaller than half of absoute value of y.
+local remainder_half = function(x, y)
+	if x % y == 0 then
+		return 0
+	elseif y % 2 ~= 0 then
+		if math.abs(x % y) <= math.abs(y) / 2 then
+			return math.abs(x % y)
+		else
+			return math.abs(x % y - y)
+		end
+	else
+		if math.abs(x % y) == math.abs(y) / 2 then
+			return math.abs(x % y)
+		else
+			if math.abs(x % y) < math.abs(y / 2) then
+				return math.abs(x % y)
+			else
+				return math.abs(x % y - y)
+			end
+		end
+	end
+end
+--This function is to find the maximum common factor of two integels x,y, where x is not 0 or y is not 0.
+--Input: x,y: two integels
+--Output: gcd(x,y): the maximum common factor of x,y
+local function gcd(x, y)
+	if math.abs(x) > math.abs(y) then
+		local a = x
+		x = y
+		y = a
+	end
+	if x == 0 then
+		return math.abs(y)
+	else
+		return gcd(remainder_half(y, x), x)
+	end
+end
+for _ = 1, 10, 1 do
+	local x = math.random(100)
+	local y = math.random(100)
+	print(string.format("gcd(%d,%d)=%d", x, y, gcd(x, y)))
+end
+        
+      \end{lstlisting}
+
+	\end{enumerate}
+
+\end{solution}
+
+\end{document}
