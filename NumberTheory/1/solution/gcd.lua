@@ -37,8 +37,3 @@ local function gcd(x, y)
 		return gcd(remainder_half(y, x), x)
 	end
 end
-for _ = 1, 10, 1 do
-	local x = math.random(100)
-	local y = math.random(100)
-	print(string.format("gcd(%d,%d)=%d", x, y, gcd(x, y)))
-end
