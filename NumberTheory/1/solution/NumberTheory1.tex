@@ -8,12 +8,14 @@
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
+\date{Beijing Normal University}
 \ifpreface
 	\input{../../../global/preface}
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 	\maketitle
 \fi
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 \begin{problem}
 	Prove that \(3|n(n+1)(2n + 1)\), where \(n \in \mathbb{Z}\).

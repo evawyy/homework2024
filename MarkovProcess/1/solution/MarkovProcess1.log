@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.21)  24 FEB 2024 22:45
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.21)  26 FEB 2024 19:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -922,7 +922,37 @@ LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on
  input line 70.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.
-fd))) (/usr/local/texlive/2023/texmf-dist/tex/latex/background/background.sty
+fd))) (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count372
+\lst@gtempboxa=\box70
+\lst@token=\toks42
+\lst@length=\count373
+\lst@currlwidth=\dimen305
+\lst@column=\count374
+\lst@pos=\count375
+\lst@lostspace=\dimen306
+\lst@width=\dimen307
+\lst@newlines=\count376
+\lst@lineno=\count377
+\lst@maxwidth=\dimen308
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count378
+\lst@skipnumbers=\count379
+\lst@framebox=\box71
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+
+(/usr/local/texlive/2023/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty
+Package: xeCJK-listings 2022/08/05 v3.9.1 xeCJK patch file for listings
+\l__xeCJK_listings_max_char_int=\count380
+\l__xeCJK_listings_flag_int=\count381
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/background/background.sty
 Package: background 2014/03/04 v2.1 background material
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -930,10 +960,10 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks42
-\XKV@tempa@toks=\toks43
+\XKV@toks=\toks43
+\XKV@tempa@toks=\toks44
 )
-\XKV@depth=\count372
+\XKV@depth=\count382
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/everypage/everypage.sty
@@ -956,11 +986,11 @@ Package everypage Warning: You appear to be running a version of LaTeX
 
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/afterpage.sty
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
-\AP@output=\toks44
-\AP@partial=\box70
-\AP@footins=\box71
+\AP@output=\toks45
+\AP@partial=\box72
+\AP@footins=\box73
 ))
-\c@problem=\count373
+\c@problem=\count383
 )
 (../../../global/me) (../../../global/commands) (../../localcommands))
 (./MarkovProcess1.aux)
@@ -1088,6 +1118,7 @@ LaTeX Info: Redefining \partial on input line 8.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+\c@lstlisting=\count384
 (../../../global/preface
 
 Package fontspec Info: Could not resolve font "PingFang SC/I" (it probably
@@ -1235,7 +1266,7 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 167
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 169
 .
  (/usr/local/texlive/2023/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
@@ -1248,11 +1279,11 @@ Package rerunfilecheck Info: File `MarkovProcess1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32118 strings out of 476683
- 682371 string characters out of 5804047
- 1873018 words of memory out of 5000000
- 51757 multiletter control sequences out of 15000+600000
- 520207 words of font info for 107 fonts, out of 8000000 for 9000
+ 33362 strings out of 476683
+ 701963 string characters out of 5804047
+ 1874018 words of memory out of 5000000
+ 52987 multiletter control sequences out of 15000+600000
+ 520199 words of font info for 106 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  110i,13n,110p,3375b,1074s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
