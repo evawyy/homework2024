@@ -1,0 +1,62 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  \maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+
+\begin{problem}\label{pro:1}
+  Prove that if \((X_n:n \geq 0)\) is a simple random walk, then so is \((-X_n:n \geq 0)\).
+\end{problem}
+
+\begin{problem}\label{pro:2}
+  Let \((X_n:n \geq 0)\) be a \(d\)-dimentional random walk, and \(\mathbb{P}(|\xi_1| \geq 1)>0\),
+  prove that \(\mathbb{P}(\sup_{n}|X_n|=\infty)=1\).
+\end{problem}
+\begin{solution}
+  Since \(\mathbb{P}(|\xi_1| \geq 1)>0\), then \(\exists t \in \mathbb{R}^d\), such that \(\mathbb{P}(\xi_1=t) > 0\).
+  Besides,
+  \begin{equation}
+    \begin{aligned}
+        & \mathbb{P}(\sup_{n} |X_n|= \infty)                             \\
+      = & \mathbb{P}(\bigcap_{k \in \mathbb{N}}\{\sup_n |X_n| \geq k\} ) \\
+      = & \lim_{k \to \infty}\mathbb{P}(\sup_n |X_n| \geq k)             \\
+      = & \inf_{k \in \mathbb{N}} \mathbb{P}(\sup_n |X_n| \geq k)        \\
+
+    \end{aligned}
+  \end{equation}
+  Then, to prove \(\mathbb{P}(\sup_n |X_n| = \infty) = 1\) is equal to prove
+  \(\forall k \in \mathbb{N}, \mathbb{P}(\sup_n |X_n| \geq k) =1\).
+  Let \(A_u = \{\omega \in \Omega: \xi_{uv+1}=t,\cdots,\xi_{uv+v}=t\)\},
+  so \(\forall \omega \in A_u, |X_{uv+v}-X_{uv}|=|\sum_{m = uv+1}^{uv+v}\xi_m|=|vt|=v |t| \geq k\).
+
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Let \((X_n:n \geq 0)\) be a symmtry simple random walk with \(X_0=0\), for \(d=2\), prove that
+  \[
+    \mathbb{P}(S_{2n}=0)=\frac{1}{4^{2n}}\left(\frac{(2n)!}{(n!)^2}\right)^2
+  \]
+  For \(d=3\), prove that
+  \[
+    \mathbb{P}(S_{2n}=0)=\frac{1}{2^{2n}}\frac{(2n)!}{(n!)^2}\sum_{i + j + k = n} \left(\frac{1}{3^n}\frac{n!}{i!j!k!}\right)^2
+  \]
+\end{problem}
+
+\begin{problem}\label{pro:4}
+  Assume \((S_n:n \geq 0)\) is a symmtry simple random walk with \(S_0 = i \in \mathbb{Z}\).
+  Prove that \(\forall a \in \mathbb{Z}\), let \(\tau_a:=\min\{n \in \mathbb{N}:S_n=a \}\), then \(\mathbb{P}(\tau_a < \infty) = 1 \).
+\end{problem}
+
+\end{document}
