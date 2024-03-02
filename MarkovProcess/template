@@ -3,7 +3,7 @@
 %!TEX TS-program = xelatex
 \documentclass{ctexart}
 \newif\ifpreface
-\prefacetrue
+%\prefacetrue
 \input{../../../global/all}
 \begin{document}
 \large

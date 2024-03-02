@@ -1,0 +1,156 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:p14.5}
+  Assume \(n \in \mathbb{N}^+\) and \(2^n + 1\) is prime. Prove that \(\exists k \in \mathbb{N},n=2^k\).
+\end{problem}
+\begin{solution}
+  If \(n \neq 2^k\), then \(\exists p>0 \) is prime and such that \(p | n\).
+  Then \(p\) is odd. Let \(k:=\frac{n}{p}\), then
+  \begin{equation}
+    \begin{aligned}
+        & 2^n+1                                      \\
+      = & 2^{kp}+1                                   \\
+      = & 2^{kp} + 1^{kp}                            \\
+      = & (2^{k}+1^{k}-1^{k})^p+1^{kp}               \\
+      = & \sum_{i=0}^p(2^k + 1^k)^i(-1)^{p-i}+1^{kp} \\
+      = & \sum_{i=1}^p(2^k+1^k)^i(-1)^{p-i}
+    \end{aligned}
+  \end{equation}
+  which is contradict with that \(2^n + 1\) is prime.
+\end{solution}
+
+\begin{problem}\label{pro:p16.1}
+  Find the standrad decomposition of \(30!\).
+\end{problem}
+\begin{solution}
+  Since \(2,3,5,7,11,13,17,19,23,29\) are prime which is below \(30\), so
+  \begin{equation}
+    \begin{aligned}
+      \sum_{k=1}^{\infty}[\frac{30}{2^k}]  & = & 15 + 7 + 3 + 1 =  26  \\
+      \sum_{k=1}^{\infty}[\frac{30}{3^k}]  & = & 10 + 3 + 1      =  14 \\
+      \sum_{k=1}^{\infty}[\frac{30}{5^k}]  & = & 6 + 1           =  7  \\
+      \sum_{k=1}^{\infty}[\frac{30}{7^k}]  & = & 4                     \\
+      \sum_{k=1}^{\infty}[\frac{30}{11^k}] & = & 2                     \\
+      \sum_{k=1}^{\infty}[\frac{30}{13^k}] & = & 2                     \\
+      \sum_{k=1}^{\infty}[\frac{30}{17^k}] & = & 1                     \\
+      \sum_{k=1}^{\infty}[\frac{30}{19^k}] & = & 1                     \\
+      \sum_{k=1}^{\infty}[\frac{30}{23^k}] & = & 1                     \\
+      \sum_{k=1}^{\infty}[\frac{30}{29^k}] & = & 1
+    \end{aligned}
+  \end{equation}
+  So \(30! = 2^{26}\times 3^{14} \times 5^{7} \times 7^{4} \times 11^{2} \times 13^{2} \times 17 \times{19} \times 23 \times 29\).
+
+\end{solution}
+
+\begin{problem}\label{pro:p16.2}
+  Assume \(n \in \mathbb{N}^+\) and \(\alpha \in \mathbb{R}\), prove that:
+  \begin{enumerate}
+    \item \(\left[\frac{[n \alpha]}{n}\right]=[\alpha]\).
+    \item \(\sum_{k=0}^{n-1}[\alpha+\frac{k}{n}]=[n \alpha]\).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Only need to prove \([\alpha] \leq \frac{[n \alpha]}{n}, |\alpha-\frac{[n \alpha]}{n}| <1\).
+      Since \(n[\alpha] \leq n \alpha\), then \(n [\alpha] \leq [n \alpha]\), then \([\alpha]\leq \frac{[n \alpha]}{n}\).
+      Besides, \(0 \leq \alpha-\frac{[n \alpha]}{n}=\frac{n \alpha-[n \alpha]}{n} \),
+      then it is equal to prove \(\frac{n \alpha-[n \alpha]}{n} <1\), so this is equal to
+      prove \(n \alpha- [n \alpha] < n\), which is equal to \(n(\alpha-1) < [n \alpha]\).
+      It is obvious that \(n(\alpha-1) < n [\alpha] \leq [n \alpha]\).
+    \item Let \(\frac{i}{n} \leq \{\alpha\} < \frac{i + 1}{n}, 0\leq i < n-1\),
+      so \(\alpha + \frac{k}{n} = [\alpha] + \{\alpha\} + \frac{k}{n}\).
+      Then \(\forall n-1 \geq k \geq n-i\), \(1 \leq \{\alpha\} + \frac{k}{n} <2\), then
+      \begin{equation}
+        \begin{aligned}
+            & \sum_{k=0}^{n-1}[\alpha + \frac{k}{n}]                        \\
+          = & \sum_{k=0}^{n-i-1}[\alpha ] + \sum_{k=n-i}^{n-1} ([\alpha]+1) \\
+          = & n[\alpha]+i                                                   \\
+          = & n[\alpha] + [n\{\alpha\}]                                     \\
+          = & [n [\alpha]]+[n\{\alpha\}]                                    \\
+          = & [n ([\alpha] +\{\alpha \})]                                   \\
+          = & [n \alpha]\end{aligned}
+      \end{equation}
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:p16.4.3}
+  Assume \(r>0,r \in \mathbb{R}\). Let \(T\) be the number of integer point in  \(x^2 + y^2 \leq r^2\).
+  Prove that \(T = 1 + 4[r] + 8 \sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}] -4\left[\frac{r}{\sqrt{2}}\right]^2\).
+\end{problem}
+\begin{solution}
+  Since
+  \begin{equation}
+    \begin{aligned}
+      T & = \{(x,y):x^2 + y^2 \leq r^2\}                                                                            \\
+      = & \{(x,y):x=0,y=0\} \cup \{(x,y):x=0,y \neq 0, x^2 + y^2 \leq r^2\}                                         \\
+        & \cup \{(x,y):x \neq 0, y =0, x^2 + y^2 \leq r^2\} \cup \{(x,y): x \neq 0, y \neq 0, x^2 + y^2 \leq r^2 \}
+    \end{aligned}
+  \end{equation}
+  then by the symmetry \(\#\{(x,y):x=0,y \neq 0, x^2 + y^2 \leq r^2\}= \#\{(x,y):x \neq 0, y =0,x^2 + y^2 \leq r^2 \}=2\#\{(x,y):x = 0, y >0,x^2 + y^2 \leq r^2\}=2[r]\).
+  Besides, \(\#\{(x,y):x \neq 0, y \neq 0, x^2 + y^2 \leq r^2\}=8\#\{(x,y):0<x \leq [\frac{r}{\sqrt{2}}]< y \leq r^2, x^2 + y^2 \leq r^2\}
+  +4\#\{(x,y): 0<x,y\leq [\frac{r}{\sqrt{2}}], x^2 + y^2 \leq r^2\}
+  =8(\#\{(x,y):0<x \leq [\frac{r}{\sqrt{2}}], y < r^2, x^2 + y^2 \leq r^2\}-\#\{(x,y): 0 < x,y \leq [\frac{r}{\sqrt{2}}],x^2 + y^2 \leq r^2 \})
+  +4\#\{(x,y): 0<x,y\leq [\frac{r}{\sqrt{2}}], x^2 + y^2 \leq r^2\}
+  = 8(\#\{(x,y):0<x \leq [\frac{r}{\sqrt{2}}], y < r^2, x^2 + y^2 \leq r^2\}-4\#\{(x,y): 0<x,y\leq [\frac{r}{\sqrt{2}}], x^2 + y^2 \leq r^2\}
+  =8 \sum_{0 < x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}]-4[\frac{r}{\sqrt{2}}]^2\).
+  Therefore, \(T = 1 + 4[r] + 8 \sum_{0<x \leq \frac{r}{\sqrt{2}}}[\sqrt{r^2-x^2}] -4\left[\frac{r}{\sqrt{2}}\right]^2\).
+\end{solution}
+
+\begin{problem}\label{pro:p23.1.b}
+  Find all integer solution of \(306x-360y=630\).
+\end{problem}
+\begin{solution}
+  It is equal to find all integer solution of \(17x-20y=35\).
+  First of all we should find all integer solution of \(17x-20y=1\).
+  Obviously, we can get a special solution that is \(x=-7, y=-6\).
+  So we can get a special solution to \(17x-20y=25\), that is \(x=-245, y=-210\) .
+  Then all the integer solution of \(17x-20y=35\) have the form that \(x=-5 + 20t, y=-6 + 17t, t \in \mathbb{Z}\).
+
+\end{solution}
+
+\begin{problem}\label{pro:p23.3}
+  Assume \(N,a,b \in \mathbb{N},a,b>0,\gcd(a,b)=1\).
+  Prove that the number of positive integer solutions of the equation \(ax+by=N\)
+  is \(\left[\frac{N}{ab}\right]\) or \(\left[\frac{N}{ab}\right]+1\).
+\end{problem}
+\begin{lemma}\label{lem:23.3}
+  \(x,y \in \mathbb{R}\), then \([x + y] -([x]+[y]) =0 \) or \(1\).
+\end{lemma}
+\begin{proof}
+  Since \(x, y \in \mathbb{R}\), then \([x + y] =[[x] + \{x\} + [y] + \{y\}]=[x]+[y]+[\{x\}+\{y\}]\).
+  So \(0 \leq \{x\}+\{y\} < 2\), then \([x + y] -([x]+[y]) = [\{x\} + \{y\}] =0 \) or \(1\).
+\end{proof}
+
+\begin{solution}
+  Since \(\gcd(a,b)=1\),then \(\exists x_0,y_0\) such that \(ax_0 + by_0=1\), then all the solution of
+  \(ax + by =N\) have the form that is \(x=x_0 - bt, y=y_0 + at, t \in \mathbb{Z}\) .
+  So \(\#\{t \in \mathbb{Z}: x_0 -bt >0, y_0 +at >0\}= [\frac{ax_0N}{ab}]-[\frac{ax_0N-N}{ab}]=[\frac{ax_0N-N}{ab}+\frac{N}{ab}]-[\frac{ax_0N-N}{ab}]=[\frac{N}{ab}]\) or \([\frac{N}{ab}]+ 1\).
+\end{solution}
+
+\begin{problem}\label{pro:p24.2}
+  Write \(\frac{17}{60}\) as sum of three reduced fraction whose denominators are coprime to each other.
+\end{problem}
+\begin{solution}
+  Consider \(\frac{17}{60}=\frac{x}{4}+\frac{y}{3}+\frac{z}{5}\), i.e., \(17=15x+20y+12z\).
+  Since \(\gcd(15,20,12)=1\), we know this equation has some solution.
+  Easy to know \(x=-1,y=1,z=1\) is a solution.
+  So \(\frac{17}{60}=-\frac{1}{4}+\frac{1}{3}+\frac{1}{5}\) satisfy the condition.
+\end{solution}
+
+\end{document}
