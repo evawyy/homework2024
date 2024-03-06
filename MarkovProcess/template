@@ -11,7 +11,7 @@
 \ifpreface
     \input{../../../global/preface}
 \else
-\maketitle
+%\maketitle
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type

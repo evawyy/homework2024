@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.21)  2 MAR 2024 22:34
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.21)  5 MAR 2024 15:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1113,30 +1113,7 @@ LaTeX Info: Redefining \partial on input line 8.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-Package fontspec Info: Could not resolve font "PingFang SC/I" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Font family 'PingFangSC(0)' created for font 'PingFang
-(fontspec)             SC' with options [Script={CJK}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"PingFang
-(fontspec)             SC/OT:script=hani;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"PingFang
-(fontspec)             SC/B/OT:script=hani;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"PingFang
-(fontspec)             SC/BI/OT:script=hani;language=dflt;"
-(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
-
-(../../.subject) (../.number)
 LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
-
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1184,18 +1161,15 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 
 
 ] [2] (./MarkovProcess2.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `MarkovProcess2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32866 strings out of 476683
- 691717 string characters out of 5804047
- 1879018 words of memory out of 5000000
- 52540 multiletter control sequences out of 15000+600000
- 519724 words of font info for 93 fonts, out of 8000000 for 9000
+ 32798 strings out of 476683
+ 689970 string characters out of 5804047
+ 1885018 words of memory out of 5000000
+ 52500 multiletter control sequences out of 15000+600000
+ 519620 words of font info for 80 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  110i,13n,110p,3375b,804s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
