@@ -1,0 +1,91 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume \((B_t:t \geq 0)\) is Brownian motion, prove that for \(r>0\), we have \((B_{t + r}-B_r:t \geq 0)\) is Brownian motion, too.
+\end{problem}
+\begin{solution}
+  Suppose \((B_t : t \geq 0)\) satisfies \(B_t-B_s \sim N(0,a(t-r)), \forall t \geq s \geq 0\), then \((B_{t + r} - B_{r})-(B_{s + r}-B_{r})=B_{t + r}- B_{s + r} \sim N(0,a(t-s))\).
+  Besides, \(\forall 0=t_0 < t_1 < t_2 < \cdots < t_n\), \(D_{t}:= B_{t + r}- B_r\), then \(D_{t_k}-D_{t_{k-1}}=B_{t_k + r}-B_{t_{k-1} + r}, \forall k=1,\cdots,n\).
+  So \(D_{t_k}-D_{t_{k-1}}=B_{s_{k}}-B_{s_{k-1}}, \forall k = 1,\cdots,n\), where \(s_k=t_k + r\), are independent to each other.
+  Besides, \(B_{0 + r}-B_{r}=0\), obviously \(D_{t_k}-D_{t_{k-1}}\) is independent to \(B_{0 + r}-B_0\).
+  Last, since the orbit of \((B_t: t \geq 0 )\) is continuous, then \(B_{t + r}-B_{r}\) is continuous for any \(t \geq 0\).
+  Thus, by the definition of Brownian motion, we get \((B_{t + r}-B_r: t \geq 0)\) is Brownian motion.
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  Assume \((B_t:t \geq 0)\) is standard Brownian motion start at \(0\).
+  Prove that \(\forall c>0,(c B_{\frac{t}{c^2}}:t \geq 0)\) is standard Brownian motion start at \(0\), too.
+\end{problem}
+\begin{solution}
+  Since \((B_t:t \geq 0)\) is standard Brownian motion start at 0, then \(\forall \omega \in \Omega\), \(B_t(w)\) is continuous,
+  so \(c B_{\frac{t}{c^2}}(w)\) is continuous, and \(cB_{\frac{0}{c^2}}=cB_0=0\). \(\forall t > s \geq 0\),
+  \(cB_{\frac{t}{c^2}}-cB_{\frac{s}{c^2}}=c(B_{\frac{t}{c^2}}-B_{\frac{s}{c^2}})\), so
+  \(\mathbb{E}(\mathrm{e}^{\mathrm{i}\theta c(B_{\frac{t}{c^2}}-B_{\frac{s}{c^2}})})=\int_{-\infty}^{+\infty}\mathrm{e}^{\mathrm{i} \theta c u}\frac{1}{2\pi \sqrt{t-s}}c^2 \mathrm{e}^{\frac{-u^2}{2(t-s)}}du=\mathrm{e}^{\frac{-(t-s)\theta^2}{2}}\).
+  Besides, \(\forall 0 = t_0 \leq \cdots \leq t_n\), \(B_0,(B_{\frac{t_k}{c^2}}-B_{\frac{t_{k-1}}{c^2}}),k=1,\cdots,n\) are independent.
+  Then \(B_0,(B_{\frac{t_k}{c^2}}-B_{\frac{t_{k-1}}{c^2}}),k=1,\cdots,n\) are independent.
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Assume \((X_t:t \geq 0)\) and \((Y_t:t \geq 0)\) are two independent standard Brownian motion, \(a,b \in \mathbb{R}\) and \(\sqrt{a^2 + b^2} >0\).
+  Prove that \((aX_t + bY_t:t \geq 0)\) is a Brownian motion with parameter \(c=\sqrt{a^2 + b^2}\).
+\end{problem}
+\begin{solution}
+  Since \(aX_t + b Y_t-(a X_{s} + b Y_s) = a (X_t - X_s) + b (Y_t - Y_s), \forall t >s \geq 0\), and \(a(X_t - X_s) \sim N(0,a^2(t-s))\),
+  \(b(Y_t-Y_s) \sim N(0, b^2(t-s))\), \(X_t \perp Y_t, t \geq 0\), then \(a(X_t-X_s)+b(Y_t + Y_s) \sim N(0, a^2 + b^2(t-s))\).
+  Since \((X_t:t \geq 0)\), \((Y_t:t \geq 0)\) are standard Brownian motion, then \(\forall \omega \in \Omega\), \(X_t(\omega), Y_t(\omega)\) are continuous,
+  so \(aX_t(\omega)+bY_t(\omega)\) is continuous.
+  Besides, \(\forall 0 = t_0 \leq \cdots \leq t_n\), \(aX_0,a(X_{t_k}-X_{t_{k-1}}), k=1,\cdots,n\) are independent.
+  And \(bY_0,Y_{t_k}-Y_{t_{k-1}}, k=1,\cdots,n\) are independent, \(X_t,Y_t, t \geq 0\) are independent.
+  Then \(aX_0+bY_0, a(X_{t_k}-X_{t_{k-1}})+b(Y_{t_k}-Y_{t_{k-1}}), k=1,\cdots,n\) are independent with each other.
+  So \(aX_t + bY_t: t \geq 0\) is a Brownian motion with parameter \(a^2 + b^2\).
+\end{solution}
+
+\begin{problem}\label{pro:4}
+  Assume \((B_t:t \geq 0)\) is standard Brownian motion start at \(0\).
+  Let \(X_0=0\) and \(X_t:=t B_{\frac{1}{t}}\).
+  Given
+  \[
+    \limsup_{t \to \infty}\frac{B_{t}}{\sqrt{2t \log \log t}}=1
+  \]
+  Prove that \((X_t:t \geq 0)\) is standard Brownian motion start at \(0\).
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item First, we get the distribution of \(X_t-X_s \forall t > s \geq0\). \(X_t-X_s=t B_{\frac{1}{t}}-s B_{\frac{1}{s}}=s(B_{\frac{1}{t}}-B_{\frac{1}{s}})+(t-s)B_{\frac{1}{t}}\),
+      and \(\frac{1}{s} > \frac{1}{t}\). Since \((B_t:t \geq 0)\) is standard Brownian motion starting at 0, then \(N(0, \frac{1}{t})\sim B_{\frac{1}{t}} \perp B_{\frac{1}{t}} - B_{\frac{1}{s}}\sim N(0,\frac{1}{t }-\frac{1}{s})\).
+      So \(X_t-X_s\) is normal distribution and \(\mathrm{Var}(X_t-X_s)=s^2(\frac{1}{t}-\frac{1}{s}) + (t-s)^2*\frac{1}{t}=t-s\).
+      So \(X_t-X_s \sim N(0, t-s)\).
+    \item We prove \(X_0=0\) a.s. and the orbit of \(X_t\) is continuous.
+      Since \(\forall \omega \in \Omega\), \(X_t(\omega)\) is continuous when \(t \neq 0\), we only need to prove \(X_t=0\) a.s..
+      Since \((-B_t: t \geq 0)\) is standard Brownian motion too, then \(\limsup_{t \to \infty} \frac{|B_t|}{\sqrt{2t \log llig t}}=1\).
+      So \(\limsup_{t \to 0}|tB_{\frac{1}{t}}|= \limsup_{t \to \infty} |\frac{B_t}{t}| \leq \limsup_{t \to \infty} \frac{\sqrt{2t \log \log t}}{t}=0\).
+    \item We prove \(\forall 0=t_0 < t_1 <\cdots<t_n, X_0, X_{t_k}-X_{t_{k-1}}, k=0,\cdots,n\) are independent.
+      We only need to prove \(X_{t_k}-X_{t_{k-1}}, k=0,\cdots,n\) are independent since \(X_0=0\).
+      Since \(X_{t_k}-X_{t_{k-1}} \sim N(0, t_k-t_{k-1}), k=0,\cdots,n\),
+      then we only need to prove \(\mathbb{E}((X_{t_k}-X_{t_{k-1}})(X_{t_j}-X_{t_{j-1}}))=0, \forall 0 \leq k<j \leq n\).
+      Since \(\frac{1}{t_{k-1}} > \frac{1}{t_k} \geq \frac{1}{t_{j-1}}> \frac{1}{t_j}\), so \(X_{t_j}-X_{t_{j-1}} \in \sigma(\{B_{s}:0 \leq s \leq t_{k}\})\).
+      So we only need to prove \(\mathbb{E}((X_{t_k}-X_{t_{k-1}})B_{\frac{1}{r}})=0, r \geq t_{k}\).
+      Since \(\mathbb{E}(t_kB_{\frac{1}{t_k}}B_{\frac{1}{r}})=\mathbb{E}(t_k(B_{\frac{1}{r}}-B_{t_k})B_{t_k} + t_kB_{t_k}^2)=1\)
+      and \(\mathbb{E}(t_{k-1}B_{\frac{1}{t_{k-1}}}B_{\frac{1}{r}})=\mathbb{E}(t_{k-1}(B_{\frac{1}{r}}-B_{t_{k-1}})B_{t_{k-1}} + t_{k-1}B_{t_{k-1}}^2)=1\),
+      so \(\mathbb{E}(X_{t_k}-X_{t_{k-1}})(B_{\frac{1}{r}})=0\).
+
+  \end{enumerate}
+
+\end{solution}
+
+\end{document}

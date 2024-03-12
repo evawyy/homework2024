@@ -7,5 +7,6 @@
 	"fun":"FunctionalAnalysis",
 	"par":"ParallelComputing",
   "mak":"MarkovProcess",
-  "num":"NumberTheory"
+  "num":"NumberTheory",
+  "oth":"OtherItem"
 }
