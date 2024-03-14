@@ -1,0 +1,194 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%\maketitle \fi
+%from_here_to_type
+\begin{problem}\label{pro:p26.3}
+  Prove that solution of equation
+  \begin{equation}\label{equ:26.3}
+    x^2 + y^2 = z^4,\gcd(x,y)=1,x>0,y>0,z>0,2 \mid x
+  \end{equation}
+  is
+  \begin{equation}\label{equ:26}
+    \begin{cases}
+      x=4ab(a^2-b^2)      \\
+      y=|a^4+b^4-6a^2b^2| \\
+      z=a^2 + b^2
+    \end{cases}
+  \end{equation}
+  where \(a>0,b>0,\gcd(a,b)=1,a \not \equiv b \mod 2\).
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Obviously, \((x,y,z)\) satisfying \ref{equ:26} satisfies \ref{equ:26.3}.
+    \item Next, we proof the solution of \ref{equ:26.3} satisfies \ref{equ:26}. Since \((m,n), \gcd(n,m)=1\) satisfies
+      \[\begin{cases}
+          x = & 2nm       \\
+          y=  & m^2-n^2   \\
+          z=  & m^2 + n^2
+        \end{cases}\]
+      Since \(y >0\) and \(\gcd(x,y)=1, 2 \mid x\), then \(m \geq n, 2 \nmid x-y\), then \(2 \nmid n-m\). So we just let \(y=|m^2-n^2|, 2 \nmid m, 2 \mid n\).
+      Since \(m^2 + n^2 =i^2, \exists i >0\), then \((u,v) \in \mathbb{N}^2\), \(\gcd(u,v)=1\), \(2 \nmid u-v\) satisfies
+      \[
+        \begin{cases}
+          m = & u^2-v^2 \\
+          n=  & 2uv
+        \end{cases}
+      \]
+      So \[
+        \begin{cases}
+          x = & 2uv               \\
+          y=  & |6u^2v^2-u^2-v^2| \\
+          z=  & u^2 + v^2
+        \end{cases}
+      \]
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:p38.3}
+  Find a method to judge whether a number can be divided by \(37,101\).
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Since \(37 \equiv 1 \mod 1000 \), then \(\forall \sum_{k=0}^n a_k 10^k=\sum_{s=0}^m (a_{3s} + a_{3s + 1}10 + a_{3s + 2}100)1000^s, m= [\frac{n}{3}] + 1, a_{3m + i}=0\), if \(3m + i >n,i=1,2\).
+      So \(\sum_{k=0 }^n a_k 10^k \equiv \sum_{s=0}^m (a_{3s} + a_{3s + 1} 10+ a_{3s + 2}100)1000^s \mod 37\).
+      Thus \(37 \mid \sum_{k=0}^n a_k 10^k \iff 37 \mid \sum_{s=0}^m a_{3s} + a_{3s + 1} 10+ a_{3s + 2}100\).
+    \item Since \(101 \equiv -1 \mod 100 \), then \(\forall \sum_{k=0}^n a_k 10^k=\sum_{s=0}^m (a_{2s} + a_{s + 1}10 )100^s, m= [\frac{n}{2}] + 1, a_{2m + 1}=0\), if \(2m + 1 >n\).
+      So \(\sum_{k=0 }^n a_k 10^k \equiv \sum_{s=0}^m (a_{2s} + a_{2s + 1} 10)100^s \mod 101\).
+      Thus \(101 \mid \sum_{k=0}^n a_k 10^k \iff 101 \mid \sum_{s=0}^m (a_{2s} + a_{2s + 1} 10)(-1)^s\).
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}\label{pro:p38.5}
+  Assume \(2 \nmid a\), then \(a^{2^n} \equiv 1 \mod 2^{n + 2}\).
+\end{problem}
+\begin{solution}
+  First, we prove \(a^{2^n}-1=(a^2-1)\prod_{k=1}^{n-1}(a^{2^k} + 1)\).
+  Obviously, when \(n=1\), the equation is right. If \(n\) the equation is right,
+  so \(a^{2^{n + 1}}-1=(a^{2^n}-1)(a^{2^n} + 1)=(a^2 - 1)\prod_{k=1}^{n-1}(a^{2^k} + 1)(a^{2^n} + 1)= (a^2 - 1)\prod_{k=1}^{n}(a^{2^k} + 1)\).
+
+  Second, since \(2 \nmid a\), then \(a \) is odd, then \(a= 2b + 1\). So \(8 \mid a^2 - 1= (a-1)(a + 1)=4b(b + 1)\) and
+  \(a^{2^k} + 1=(2b + 1)^{2^k} + 1=\sum_{i=1}^{2^k} (2b)^i + 2=2(\sum_{i=1}^{2^k}2^{i-1}b^i + 1)\),
+  so \(2 \mid a^{2^k} + 1\), then \(8 \times \prod_{k=1}^{n-1} 2=2^{n + 2} \mid (a^2 -1)\prod_{k=1}^{n -1}(a^{2^k} + 1) \).
+\end{solution}
+
+\begin{problem}\label{pro:p40.1}
+  Let \(p\) be a prime and \(s,t\) be integers and \(t \leq s\).
+  Prove that \((u+p^{s-t}v:0 \leq u \leq p^{s-t}-1,0 \leq v \leq p^t-1)\) is a Complete residue system of \(p^s\).
+\end{problem}
+\begin{solution}
+  Since there are \(p^s\) elements in \((u + p^{s-t}v: 0 \geq u \geq p^{s-t} -1, 0 \leq v \leq p^t -1)\), we only need to prove
+  any two of them Congruence modulo to \(p^s\). Besides, \(\forall (u_1 + p^{s- t}v_1), (u_2 + p^{s-t}v_2) \in \{u+p^{s-t}v:0 \leq u \leq p^{s-t}-1,0 \leq v \leq p^t-1\}\),
+  \(|(u_1-u_2)+p^{s-t}(v_1 - v_2)| \leq p^{s-t} - 1 + p^{s-t}(p^t -1)=p^s -1 <p^s \), so \(p^s \mid  (u_1 + p^{s- t}v_1)-(u_2 + p^{s-t}v_2)\),
+  we can get \( (u_1 + p^{s- t}v_1)-(u_2 + p^{s-t}v_2)=0\), that is \(u_{1}- u_2=p^{s-t}(v_2 -v_1)\), so \(p^{s-t} \mid u_{1}-u_2\).
+  Since \(|u_1 -u_2 |< p^{s-t}\), then \(u_1-u_2=0\). Then \(v_2-v_1=0\).
+\end{solution}
+
+\begin{problem}\label{pro:p40.2}
+  Assume \(m_1,\cdots,m_k\) is \(k\) integers coprime to each other.
+  Assume \(A_1,A_2,\cdots,A_k\) is Complete residue of \(m_1,\cdots,m_k\) respectively.
+  Let \(m=\prod_{t=1}^{k}m_t\) and \(M_t:=\frac{m}{m_t},t=1,\cdots,k\).
+  Prove that \(A:=\{\sum_{t=1}^{k}M_t x_t:x_t \in A_t,t=1,\cdots,k\}\) is a Complete residue of \(m\).
+\end{problem}
+\begin{solution}
+  First, we prove there are \(m\) elements in \(A\). \(\forall \sum_{t=1}^{k}M_tx_t, \sum_{k=0}^{k}M_ty_t \in A\),
+  if \(\sum_{t=1}^{k}M_t(x_t-y_t) =0 \), then \(\sum_{1 \leq t \leq k, t \neq i} M_t(x_t-y_t)=M_i(y_i-x_i), \forall 1 \leq i \leq k\).
+  So \(m_i (\sum_{1 \leq t \leq k, t \neq i}\frac{M_t}{m_i}(x_t - y_t)) = M_i(y_i - x_i)\).
+  Since \(m_1,\cdots,m_k\) are coprime to each other,
+  then \(\gcd(m_i,M_i)=1\),
+  then \(m_i \mid (y_i-x_i)\).
+  Since \(y_i,x_i \in A_i\), \(m_i \nmid x_i-y_i\), then \(y_i-x_i=0\).
+  Thus \(\sum_{t=1}^{k} M_tx_t=\sum_{t=1}^{k}M_ty_t\).
+
+  Second, we prove if \(m \mid \sum_{t=1}^{k}M_t(x_t-y_t)\), then \(\sum_{t=1}^{k}M_tx_t=\sum_{t=1}^{k}M_ty_t\).
+  Suppose \(\sum_{t=1}^{k} M_t(x_t -y_t)=am\), \(a \in \mathbb{N}\), then
+  \(\sum_{1 \leq t \leq k, t \neq i} M_t(x_t-y_t)=am-M_i(y_i-x_i)=M_i(am_i-y_i+x_i), \forall 1 \leq i \leq k\),
+  so \(m_i (\sum_{1 \leq t \leq k, t \neq i}\frac{M_t}{m_i}(x_t - y_t)) = M_i(am_i-y_i + x_i)\).
+  Since \(m_1,\cdots,m_k\) are coprime to each other,
+  then \(\gcd(m_i,M_i)=1\),
+  then \(m_i \mid (am_i-y_i+x_i)\),
+  then \(m_i \mid y_i-x_i\).
+  Since \(y_i,x_i \in A_i\), \(m_i \nmid x_i-y_i\), then \(y_i-x_i=0\).
+  Thus \(\sum_{t=1}^{k} M_tx_t=\sum_{t=1}^{k}M_ty_t\).
+\end{solution}
+
+\begin{problem}\label{pro:p40.3}
+  Let \(H=\frac{3^{n+1}-1}{2}\). Let \(I=\{(x_0,\cdots,x_n):x_k \in \{-1,0,1\},k=0,\cdots,n\}\).
+  Let \(f:I \to N:=[-H,H]\cap \mathbb{Z}\), and \(f(x_0,\cdots,x_n)=\sum_{k=0}^{n}x_k 3^k\).
+  Prove that \(f\) is bijection.
+  Thus, we can use \(n+1\) weights and a balance to weigh all integer weights between \(1\) and \(H\).
+\end{problem}
+\begin{solution}
+  Since \(|I|= 3^{n + 1}=|N|=2H + 1\), so we only need to prove \(f\) is injective.
+  If \(\sum_{k=0}^{n}x_k3^k-\sum_{k=0}^{n}y_k3^k=\sum_{k=0}^{n}(x_k-y_k)3^k=0\), then we will prove \(x_k=y_k,k = 0,\cdots,n\).
+  Obviously, \(\sum_{k=1}^{n}(x_k-y_k)3^k= y_0-x_0\), then \(3(\sum_{k=1}^{n}(x_k-y_k)3^{k-1}) = y_0 -x_0\), so
+  \(3 \mid y_0-x_0\). But, \(y_0,x_0 \in \{-1,0,1\}\), then \(|y_0-x_0| <3\).
+  Then \(y_0-x_0=0\), that is \(y_0=x_0\). If \(\forall k \leq m <n\), \(x_k=y_k\).
+  Then, \(\sum_{k=m + 2}^{n}(x_k-y_k)3^k= y_{m + 1}-x_{m + 1}\), then \(3(\sum_{k=m +2}^{n}(x_k-y_k)3^{k-1}) = y_{m + 1} -x_{m + 1}\),
+  then by the same reason, \(y_{m + 1}=x_{m + 1}\).
+  So \(f\) is injection.
+
+  And suppose we have \(n + 1\) weights, and their weight are different, noted \(A\).
+  Let \(A:=\{3^k:k=1,\cdots,n\}\). \(\forall n \in [1,H]\cap \mathbb{Z}\), and put \(n\) on right side
+  of the balance. We have \(n = \sum_{k=0}^{n} x_k 3^k\),
+  we put weights of weight in set \(\{3^k:x_k=1,\cdots,n\}\) on the left side,
+  and we put weights of weight in set \(\{3^k:x_k=-1,\cdots,n\}\) on the right side,
+  and we don't put weights of weight in set \(\{3^k:x_k=0,\cdots,n\}\) on each side.
+  Therefore, we can weight integer \(n\).
+\end{solution}
+
+\begin{problem}\label{pro:p40.4}
+  Assume \(m_1,\cdots,m_k\) is \(k\) integers coprime to each other.
+  Assume \(A_1,A_2,\cdots,A_k\) is Complete residue of \(m_1,\cdots,m_k\) respectively.
+  Let \(m=\prod_{t=1}^{k}m_t\) and \(M_t:=\prod_{i=1}^{t-1}m_i,t=1,\cdots,k\).
+  Prove that \(A:=\{\sum_{t=1}^{k}M_t x_t:x_t \in A_t,t=1,\cdots,k\}\) is a Complete residue of \(m\).
+\end{problem}
+\begin{solution}
+  First, we prove there are \(m\) elements in \(A\). \(\forall \sum_{t=1}^{k}M_tx_t, \sum_{k=0}^{k}M_ty_t \in A\),
+  \(\sum_{1 \leq t \leq k, t \neq i} M_t(x_t-y_t)=M_i(y_i-x_i), \forall 1 \leq i \leq k\),
+  so \(m_1 (\sum_{1 \leq t \leq k, t \neq i}\frac{M_t}{m_1}(x_t - y_t)) = M_1(y_1 - x_1)\).
+  Since \(m_1,\cdots,m_k\) are coprime to each other,
+  then \(\gcd(m_1,M_1)=1\),
+  then \(m_1 \mid (y_1-x_1)\).
+  Since \(y_1,x_1 \in A_1\), \(m_1 \nmid x_1-y_1\), then \(y_1-x_1=0\).
+  If \(\forall i \leq n-1<k\), \(y_i=x_i\),
+  then \(m_{n} (\sum_{n + 1\leq t \leq k}\frac{M_t}{m_{n}}(x_t - y_t)) = M_{n}(y_{n} - x_{n})\).
+  Since \(m_1,\cdots,m_k\) are coprime to each other,
+  then \(\gcd(m_n,M_n)=1\),
+  then \(m_n \mid (y_n-x_n)\).
+  Since \(y_n,x_n \in A_n\), \(m_n \nmid x_n-y_n\), then \(y_n-x_n=0\).
+  Thus \(\sum_{t=1}^{k} M_tx_t=\sum_{t=1}^{k}M_ty_t\).
+
+  Second, we prove if \(m \mid \sum_{t=1}^{k}M_t(x_t-y_t)\), then \(\sum_{t=1}^{k}M_tx_t=\sum_{t=1}^{k}M_ty_t\).
+  Suppose \(\sum_{t=1}^{k} M_t(x_t -y_t)=am\), \(a \in \mathbb{N}\), then
+  \(\sum_{1 \leq t \leq k, t \neq i} M_t(x_t-y_t)=am-M_i(y_i-x_i), \forall 1 \leq i \leq k\),
+  so \(m_1 (\sum_{1 \leq t \leq k, t \neq i}\frac{M_t}{m_1}(x_t - y_t)) = am-(y_1 - x_1)\).
+  Since \(m_1,\cdots,m_k\) are coprime to each other,
+  then \(\gcd(m_1,M_1)=1\),
+  then \(m_1 \mid am- (y_1-x_1)\),
+  then \(m_1 \mid y_1-x_1\).
+  Since \(y_1,x_1 \in A_1\), \(m_1 \nmid x_1-y_1\), then \(y_1-x_1=0\).
+  If \(\forall i \leq n-1<k\), \(y_i=x_i\),
+  then \(m_{n} (\sum_{n + 1\leq t \leq k}\frac{M_t}{m_{n}}(x_t - y_t)) = M_{n}(a \prod_{t=n}^km_t-y_{n} + x_{n})\).
+  Since \(m_1,\cdots,m_k\) are coprime to each other,
+  then \(\gcd(m_n,M_n)=1\),
+  then \(m_n \mid a \prod_{t=n}^{k}m_t- y_n + x_n\).
+  Thus \(m_n \mid y_n-x_n\).
+  Since \(y_n,x_n \in A_n\), \(m_n \nmid x_n-y_n\), then \(y_n-x_n=0\).
+  Thus \(\sum_{t=1}^{k} M_tx_t=\sum_{t=1}^{k}M_ty_t\).
+\end{solution}
+
+\end{document}

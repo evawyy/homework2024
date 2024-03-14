@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.21)  12 MAR 2024 10:50
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.21)  13 MAR 2024 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/evawyy/homework/MarkovProcess/3/solution/MarkovProcess3.tex
-(/Users/evawyy/homework/MarkovProcess/3/solution/MarkovProcess3.tex
+**/Users/evawyy/homework/NumberTheory/3/solution/NumberTheory3.tex
+(/Users/evawyy/homework/NumberTheory/3/solution/NumberTheory3.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
 (/usr/local/texlive/2023/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -955,8 +955,8 @@ Package: xeCJK-listings 2022/08/05 v3.9.1 xeCJK patch file for listings
 \c@problem=\count382
 )
 (../../../global/me) (../../../global/commands) (../../localcommands))
-(./MarkovProcess3.aux)
-\openout1 = `MarkovProcess3.aux'.
+(./NumberTheory3.aux)
+\openout1 = `NumberTheory3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -1035,9 +1035,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 8.
 Package hyperref Info: Link coloring OFF on input line 8.
- (./MarkovProcess3.out) (./MarkovProcess3.out)
+ (./NumberTheory3.out) (./NumberTheory3.out)
 \@outlinefile=\write4
-\openout4 = `MarkovProcess3.out'.
+\openout4 = `NumberTheory3.out'.
 
 
 
@@ -1157,20 +1157,77 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 (fontspec)             <->"STFangsong/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
+
+Overfull \hbox (17.94307pt too wide) in paragraph at lines 65--68
+[]\TU/lmr/m/n/12.045 Since $\OT1/cmr/m/n/12.045 37 \OMS/cmsy/m/n/12.045 ^^Q \OT
+1/cmr/m/n/12.045 1[]  1000$\TU/lmr/m/n/12.045 , then $\OMS/cmsy/m/n/12.045 8 []
+[] \OML/cmm/m/it/12.045 a[]\OT1/cmr/m/n/12.045 10[] = [][](\OML/cmm/m/it/12.045
+ a[] \OT1/cmr/m/n/12.045 + \OML/cmm/m/it/12.045 a[]\OT1/cmr/m/n/12.045 10 + \OM
+L/cmm/m/it/12.045 a[]\OT1/cmr/m/n/12.045 100)1000[]\OML/cmm/m/it/12.045 ; m \OT
+1/cmr/m/n/12.045 =
+ []
+
 [1
 
 
-] [2] (./MarkovProcess3.aux)
-Package rerunfilecheck Info: File `MarkovProcess3.out' has not changed.
+]
+Overfull \hbox (1.24501pt too wide) in paragraph at lines 116--126
+[]\TU/lmr/m/n/12.045 Second, we prove if $\OML/cmm/m/it/12.045 m \OMS/cmsy/m/n/
+12.045 j [][] \OML/cmm/m/it/12.045 M[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045
+ x[] \OMS/cmsy/m/n/12.045 ^^@ \OML/cmm/m/it/12.045 y[]\OT1/cmr/m/n/12.045 )$\TU
+/lmr/m/n/12.045 , then $[][] \OML/cmm/m/it/12.045 M[]x[] \OT1/cmr/m/n/12.045 = 
+[][] \OML/cmm/m/it/12.045 M[]y[]$\TU/lmr/m/n/12.045 . Suppose $[][] \OML/cmm/m/
+it/12.045 M[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x[] \OMS/cmsy/m/n/12.045
+ ^^@
+ []
+
+[2]
+Overfull \hbox (10.59073pt too wide) in paragraph at lines 160--174
+[]\TU/lmr/m/n/12.045 First, we prove there are $\OML/cmm/m/it/12.045 m$ \TU/lmr
+/m/n/12.045 elements in $\OML/cmm/m/it/12.045 A$\TU/lmr/m/n/12.045 . $\OMS/cmsy
+/m/n/12.045 8 [][] \OML/cmm/m/it/12.045 M[]x[]; [][] M[]y[] \OMS/cmsy/m/n/12.04
+5 2 \OML/cmm/m/it/12.045 A$\TU/lmr/m/n/12.045 , $[][] \OML/cmm/m/it/12.045 M[]\
+OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x[] \OMS/cmsy/m/n/12.045 ^^@
+ []
+
+
+Overfull \hbox (1.24501pt too wide) in paragraph at lines 175--192
+[]\TU/lmr/m/n/12.045 Second, we prove if $\OML/cmm/m/it/12.045 m \OMS/cmsy/m/n/
+12.045 j [][] \OML/cmm/m/it/12.045 M[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045
+ x[] \OMS/cmsy/m/n/12.045 ^^@ \OML/cmm/m/it/12.045 y[]\OT1/cmr/m/n/12.045 )$\TU
+/lmr/m/n/12.045 , then $[][] \OML/cmm/m/it/12.045 M[]x[] \OT1/cmr/m/n/12.045 = 
+[][] \OML/cmm/m/it/12.045 M[]y[]$\TU/lmr/m/n/12.045 . Suppose $[][] \OML/cmm/m/
+it/12.045 M[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x[] \OMS/cmsy/m/n/12.045
+ ^^@
+ []
+
+
+Overfull \hbox (9.22798pt too wide) in paragraph at lines 175--192
+\OML/cmm/m/it/12.045 y[]\OT1/cmr/m/n/12.045 ) = \OML/cmm/m/it/12.045 am$\TU/lmr
+/m/n/12.045 , $\OML/cmm/m/it/12.045 a \OMS/cmsy/m/n/12.045 2 \U/msb/m/n/12.045 
+N$\TU/lmr/m/n/12.045 , then $[][] \OML/cmm/m/it/12.045 M[]\OT1/cmr/m/n/12.045 (
+\OML/cmm/m/it/12.045 x[] \OMS/cmsy/m/n/12.045 ^^@ \OML/cmm/m/it/12.045 y[]\OT1/
+cmr/m/n/12.045 ) = \OML/cmm/m/it/12.045 am \OMS/cmsy/m/n/12.045 ^^@ \OML/cmm/m/
+it/12.045 M[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 y[] \OMS/cmsy/m/n/12.045
+ ^^@ \OML/cmm/m/it/12.045 x[]\OT1/cmr/m/n/12.045 )\OML/cmm/m/it/12.045 ; \OMS/c
+msy/m/n/12.045 8\OT1/cmr/m/n/12.045 1 \OMS/cmsy/m/n/12.045 ^^T \OML/cmm/m/it/12
+.045 i \OMS/cmsy/m/n/12.045 ^^T \OML/cmm/m/it/12.045 k$\TU/lmr/m/n/12.045 , so 
+$\OML/cmm/m/it/12.045 m[]\OT1/cmr/m/n/12.045 ([][] [](\OML/cmm/m/it/12.045 x[] 
+\OMS/cmsy/m/n/12.045 ^^@
+ []
+
+[3] (./NumberTheory3.aux)
+Package rerunfilecheck Info: File `NumberTheory3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
- ) 
+ )
+(\end occurred when \iffalse on line 11 was incomplete) 
 Here is how much of TeX's memory you used:
- 32798 strings out of 476683
- 689970 string characters out of 5804047
- 1904018 words of memory out of 5000000
- 52500 multiletter control sequences out of 15000+600000
+ 32808 strings out of 476683
+ 690109 string characters out of 5804047
+ 1886018 words of memory out of 5000000
+ 52510 multiletter control sequences out of 15000+600000
  519620 words of font info for 80 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 110i,6n,110p,3375b,804s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,7n,110p,3373b,804s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MarkovProcess3.pdf (2 pages).
+Output written on NumberTheory3.pdf (3 pages).
