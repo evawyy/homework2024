@@ -1,0 +1,44 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%\maketitle \fi
+%from_here_to_type
+\begin{problem}\label{pro:p42.2}
+  Prove: If \(m \in \mathbb{Z}^{+},a \in \mathbb{Z}, \gcd(a,m)=1\), \(A\) is reduced residue system of \(m\), then
+  \[
+    \sum_{i \in A}\left\{\frac{ai}{m}\right\} = \frac{1}{2} \phi(m)
+  \]
+\end{problem}
+\begin{solution}
+
+\end{solution}
+\begin{problem}\label{pro:42.3}
+  \begin{enumerate}
+    \item Prove: \(\sum_{i=1}^{a}\phi(p^i)=p^a\), where \(p\) is prime.
+    \item Prove: \(\sum_{d \in \mathbb{N}: d \mid a}\phi(d)=a\).
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:45.1}
+  If today is Monday, then what day it is \(10^{10^{10}}\) days after today?
+\end{problem}
+\begin{problem}\label{pro:45.1}
+  Find the remainder of \((12371^{56} + 34)^{28} \mod 111 \).
+\end{problem}
+\begin{problem}\label{pro:45.4}
+  Prove: \(\frac{a}{b} \in \mathbb{Q}, 0 < a<b , \gcd(a,b)=1\) is pure recurring decimal \(\iff\)
+  \(\exists t \in \mathbb{N}^+\) s.t. \(10^t \equiv 1(\mod b)\), and \(\min\{t \in \mathbb{N}^+: 10^t \equiv 1(\mod b)\}\) is the length of cycle section.
+\end{problem}
+
+\end{document}

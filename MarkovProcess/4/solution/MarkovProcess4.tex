@@ -9,11 +9,45 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+  \input{../../../global/preface}
 \else
-%\maketitle
+  %\maketitle
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume \((N_t:t \geq 0)\) is a Possion process with parameter \(\alpha\).
+  Let \(P(t):=\mathbb{P}(2 \nmid N_t),Q(t):=\mathbb{P}(2 \mid N_t)\).
+  Prove that \(P(t)=\mathrm{e}^{-\alpha t}\sinh(\alpha t),Q(t)=\mathrm{e}^{-\alpha t}\cosh(\alpha t)\).
+\end{problem}
+\begin{solution}
+  Since \((N_t: t \geq 0)\), then \(\mathbb{P}(N_t=k)=\frac{(\alpha t)^k}{k!}\mathrm{e}^{-\alpha t}\).
+  Then \(\mathbb{P}(2 \nmid N_t)=\mathbb{P}(\bigcup_{k \in \mathbb{N}}\{N_t=2k + 1\})=\sum_{k \in \mathbb{N}}\mathbb{P}(N_t=2k + 1)=\sum_{k=0}^{\infty}\frac{(\alpha t)^{2k + 1}}{(2k + 1)!}\mathrm{e}^{-\alpha t}=\mathrm{e}^{-\alpha t}\sinh(\alpha t)\).
+  Then \(\mathbb{P}(2 \mid N_t)=\mathbb{P}(\bigcup_{k \in \mathbb{N}}\{N_t=2k\})=\sum_{k \in \mathbb{N}}\mathbb{P}(N_t=2k)=\sum_{k=0}^{\infty}\frac{(\alpha t)^{2k}}{(2k)!}\mathrm{e}^{-\alpha t}=\mathrm{e}^{-\alpha t}\cosh(\alpha t)\).
+\end{solution}
 
+\begin{problem}\label{pro:2}
+  Assume \((N_t:t \geq 0)\) is a Possion process with parameter \(\alpha\).
+  Prove that \(\lim_{t \to \infty}\frac{N_t}{t}=\alpha,a.s.\).
+
+\end{problem}
+\begin{solution}
+  Let \(X_0=N_0,X_k=N_k-N_{k-1}, k= 1,\cdots,n,\cdots\), then \(N_0=0\), a.s., \(X_k \sim P(\alpha)\)
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Assume \((N_t:t \geq 0)\) is a Possion process with parameter \(\alpha>0\).
+  Prove that \(\frac{N_t-\alpha t}{\sqrt{ \alpha t}} \overset{d}{\to} N(0,1)\).
+\end{problem}
+
+\begin{problem}\label{pro:4}
+  Assume \((X_t:t \geq 0),(Y_t:t \geq 0)\) are two independent Possion processes with parameter \(\alpha,\beta\) respectively.
+  Prove that \((X_t + Y_t:t \geq 0)\) is Possion process with parameter \(\alpha + \beta\).
+\end{problem}
+\begin{problem}\label{pro:5}
+  Assume \((\xi_n:n \in \mathbb{N}^+)\) is a sequence of i.i.d. random variable ranging in \(\mathbb{Z}^d\).
+  Let \(X_n=X_0 + \sum_{k=1}^{n}\xi_k\), and \(X_0 \perp (\xi_n:n \in \mathbb{N}^+)\) ranging in \(\mathbb{Z}^d\), too.
+  Assume \((N_t:t \geq 0)\) is a Possion process with parameter \(\alpha>0\).
+  Discuss \(\frac{X_{N_t}}{t}\) when \(t \to \infty\).
+\end{problem}
 \end{document}
