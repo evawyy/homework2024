@@ -2,6 +2,7 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX TS-program = xelatex
 \documentclass{ctexart}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newif\ifpreface
 %\prefacetrue
 \input{../../../global/all}
@@ -32,22 +33,80 @@
 
 \end{problem}
 \begin{solution}
-  Let \(X_0=N_0,X_k=N_k-N_{k-1}, k= 1,\cdots,n,\cdots\), then \(N_0=0\), a.s., \(X_k \sim P(\alpha)\)
-\end{solution}
+  First of all, we prove \(\mathbb{P}(\forall 0 \leq s \leq t, N_s \leq N_t) = 1\).
+  For some \(s,t \in \mathbb{Q}, 0 \leq s \leq t\), we have \(\mathbb{P}(N_s > N_t)=0\) since \(N_t - N_s \sim Possion(\alpha(t-s))\).
+  So we get \(\mathbb{P}(\exists s,t \in \mathbb{Q},0 \leq s \leq t,N_s>N_t)=0\).
+  Now we will prove \(\exists s,t \in \mathbb{R},0 \leq s \leq t,N_s>N_t \iff \exists a,b \in \mathbb{Q},0 \leq a \leq b,N_a > N_b\).
+  Since \(\exists a, b \in \mathbb{Q} \subset \mathbb{R}, 0 \leq a \leq b, N_a > N_b\), then
+  we only need to prove \(\exists s,t \in \mathbb{R}, 0 \leq s \leq t, N_s > N.t \implies \exists a, b \in \mathbb{Q}, 0 \leq a \leq b, N_a > N_b\).
+  Let \(a_n= \frac{\lceil{ns}\rceil}{n},b_n=\frac{\lceil{nt}\rceil}{n}\). Then \(\lim a_n=s,\lim b_n=t\). Easily \(a_n \geq s,b_n \geq t\).
+  So since \(N_t\) is continuous we get \(\lim N_{a_n}=N_s,\lim N_{b_n}=N_t\).
+  Since \(N_s>N_t\), we get \(\exists n,N_{a_n}>N_{b_n}\). Let \(a=a_n,b=b_n\) will work.
+  So \(\mathbb{P}(\forall 0 \leq s \leq t,N_s \leq N_t)=1-\mathbb{P}(\exists 0 \leq s \leq t,N_s>N_t)=1-\mathbb{P}(\exists s,t \in \mathbb{Q},0 \leq s \leq t,N_s>N_t)=1-0=1\).
 
+  Let \(X_0=N_0,X_k=N_k-N_{k-1}, k= 1,\cdots,n,\cdots\), then \(N_0=0\), a.s., \(X_k \sim P(\alpha), k \in \mathbb{N}\).
+  Then \(\frac{\sum_{i=0}^{n}X_i}{n}=\frac{N_n}{n} \to \alpha, n \to \infty\), as LLN.
+  As we have proved, \(N_t\) is increasing almost sure, then \(\frac{N_{\lfloor t \rfloor}}{\lfloor t\rfloor} \frac{\lfloor t \rfloor}{t} \leq \frac{N_t}{t} \leq \frac{N_{\lceil t\rceil}}{\lceil t\rceil} \frac{\lceil t\rceil}{t} \).
+  So \(\frac{N_t}{t} \to \alpha\), a.s. .
+\end{solution}
 \begin{problem}\label{pro:3}
   Assume \((N_t:t \geq 0)\) is a Possion process with parameter \(\alpha>0\).
   Prove that \(\frac{N_t-\alpha t}{\sqrt{ \alpha t}} \overset{d}{\to} N(0,1)\).
 \end{problem}
+\begin{solution}
+  Let \(X_0=N_0,X_k=N_k-N_{k-1}, k= 1,\cdots,n,\cdots\), then \(N_0=0\), a.s., \(X_k \sim P(\alpha), k \in \mathbb{N}\).
+  So \(\mathbb{E}(X_k)=\alpha, \mathbb{V}(X_k)= \alpha\), then by CLT, \(\frac{N_n-\alpha n}{\sqrt{\alpha n}}=\frac{\sum_{k=0}^{n}X_k-\alpha n}{\sqrt{n \alpha}} \overset{d}{\to} N(0,1)\).
+  Noting \(\frac{N_t - \alpha t}{\sqrt{ \alpha t}}=\frac{N_{\floor{t}}-\alpha \lfloor t\lfloor}{\sqrt{ \alpha \floor{t}}} \frac{\sqrt{\floor{t}}}{\sqrt{t}} + \frac{N_t-N_{\floor{t}}-\alpha(t-\floor{t})}{\sqrt{\alpha t}}\).
+  So \(t \to \infty\), \(\floor{t}, \to \infty\), and \(\floor{t} \sim t\).
+  Since \(N_t-N_{\floor{t}}\overset{d}{=}N_{t-\floor{t}}\), and \(t - \floor{t} \leq 1\), we easily get \(\mathbb{P}(N_t-N_{\lfloor t\rfloor}=n)=\frac{((t-\lfloor t\rfloor)\alpha)^n}{n !} \mathrm{e}^{-(t-\lfloor t\rfloor)\alpha} \to 0, t \to \infty\).
+  Then \(\frac{N_t-N_{\floor{t}}}{\sqrt{ \alpha t}} \overset{d}{\to} 0\).
+  Easily \(\frac{\alpha(t-\floor{t})}{\alpha t} \to 0\), so finally we get that
+  \(\frac{N_t-\alpha t}{\sqrt{ \alpha t}} \overset{d}{\to} N(0,1)\)
+\end{solution}
 
 \begin{problem}\label{pro:4}
   Assume \((X_t:t \geq 0),(Y_t:t \geq 0)\) are two independent Possion processes with parameter \(\alpha,\beta\) respectively.
   Prove that \((X_t + Y_t:t \geq 0)\) is Possion process with parameter \(\alpha + \beta\).
 \end{problem}
+\begin{solution}
+  Let \(Z_t: =X_t + Y_t, t \geq 0\).
+  First we prove \(Z_{t+s}-Z_s \sim Possion((\alpha + \beta)t)\).
+  Since \(X_{t + s}-X_s \sim Possion(\alpha t),Y_{t+s}-Y_s \sim Possion(\beta t)\), and \(X_{t + s}-X_s \perp Y_{s + t}-Y_s\),
+  by the additional property of Possion, we can get
+  \(Z_{t + s}-Z_{s}=X_{t + s}-X_s+Y_{s + t}-Y_s \sim Possion((\alpha + \beta)t)\).
+
+  Second we prove \(\forall 0= t_0 < t_1 <\cdots < t_n,Z_{t_{k + 1}}-Z_{t_k} k=1, \cdots,n-1, Z_0\) are independent.
+  Easily \(Z_{t_{k + 1}}-Z_{t_k}= X_{t_{k + 1}}- X_{t_k} + Y_{t_{k + 1}}- Y_{t_k}\) and \(X_{t_{k + 1}} - X_{t_k}, X_0, Y_{t_{k + 1}} - Y_{t_k}, Y_1\) are independent.
+  Then \(X_{t_{k + 1}}- X_{t_k} + Y_{t_{k + 1}} - Y_{t_k} \in \sigma(\{X_{t_{k + 1}}- X_{t_k}: k = 1,\cdots,n\} \cup \{Y_{t_{k + 1}}- Y_{t_k}: k=1,\cdots,n\}), Z_0\) are independent.
+
+  Finally, we prove that \(\mathbb{P}(\forall t \in [0,\infty),\lim_{s \to t+}Z_s =Z_t,\forall t \in (0,\infty),\lim_{s \to t-}Z_s \in \mathbb{R})=1\)
+  Since \(Z_t=X_t + Y_t\), and
+  \(\mathbb{P}(\forall t \in [0,\infty),\lim_{s \to t+}Y_s =Y_t,\forall t \in (0,\infty),\lim_{s \to t-}Y_s \in \mathbb{R})=1\),
+  \(\mathbb{P}(\forall t \in [0,\infty),\lim_{s \to t+}X_s =X_t,\forall t \in (0,\infty),\lim_{s \to t-}X_s \in \mathbb{R})=1\),
+  then we can easily get \(\mathbb{P}(\forall t \in [0,\infty),\lim_{s \to t+}Z_s =Z_t,\forall t \in (0,\infty),\lim_{s \to t-}Z_s \in \mathbb{R})=1\).
+
+  All in all, \((X_t + Y_t:t \geq 0)\) is a Possion process with parameter \(\alpha + \beta\).
+\end{solution}
+
 \begin{problem}\label{pro:5}
   Assume \((\xi_n:n \in \mathbb{N}^+)\) is a sequence of i.i.d. random variable ranging in \(\mathbb{Z}^d\).
   Let \(X_n=X_0 + \sum_{k=1}^{n}\xi_k\), and \(X_0 \perp (\xi_n:n \in \mathbb{N}^+)\) ranging in \(\mathbb{Z}^d\), too.
   Assume \((N_t:t \geq 0)\) is a Possion process with parameter \(\alpha>0\).
   Discuss \(\frac{X_{N_t}}{t}\) when \(t \to \infty\).
 \end{problem}
+\begin{solution}
+  First we prove that \(\lim_{t \to \infty}N_t=\infty,a. s.\).
+  Since \(\mathbb{P}(\sup_{t}N_t \geq n)\geq \mathbb{P}(N_t \geq n),\forall t ,\forall n \in \mathbb{N}\).
+  and \(\lim_{t \to \infty}\mathbb{P}(N_t \geq n)=1- \lim_{t \to \infty}\sum_{i=1}^{n-1} \frac{(\alpha t)^i}{i!}\mathrm{e}^{-\alpha t}=1 \), so \(\mathbb{P}(\sup_{t}N_t \geq n)=1,\forall n \in \mathbb{N}\),
+  then \(\mathbb{P}(\sup_{t}N_t=\infty)=1\).
+  Since Problem \ref{pro:2} we know \(N_t\) is increasing almost sure,
+  then we can get \(\mathbb{P}(\lim_{t \to \infty}N_t = \infty)=1\).
+
+  Since \(\frac{X_{N_t}}{t}=\frac{X_{N_t}}{N_t} \frac{N_t}{t}\) and we have proved that \(\frac{N_t}{t} \to \alpha,a. s.\) in Problem \ref{pro:2},
+  so we only need to find \(\frac{X_{N_t}}{N_t}\).
+  Since \(N_t \to \infty,a. s.\), we only need to find \(\frac{X_n}{n}\) when \(n \to \infty\).
+
+  If \(\mathbb{E}(\xi_1)\) exists, then by LLN \(\frac{X_n}{n} \to \mathbb{E}(\xi_1),a. s.\).
+  Then we easily get \(\frac{X_{N_t}}{t} \to \alpha \mathbb{E}(\xi_1),a. s.\).
+\end{solution}
 \end{document}

@@ -22,23 +22,83 @@
   \]
 \end{problem}
 \begin{solution}
-
+  Let \(f: \mathbb{Z} \to \{1,\cdots,m-1\}, f(x) \equiv x \mod m \), then \(\left\{\frac{ai}{m}\right\}=\frac{f(ai)}{m}\).
+  Then \(\sum_{i \in A}\left\{\frac{ai}{m}\right\}=\sum_{i \in A}\frac{f(ai)}{m}\).
+  Obviously, we can get \(\{f(ai):i \in A\}=\{f(i):i \in A\}=:B\), then \(\sum_{a \in A}\left\{\frac{ai}{m}\right\}= \sum_{a \in A}\frac{f(i)}{m}= \sum_{x \in B}\frac{x}{m}\) and \(\card(B)=\phi(m)\).
+  And \(\forall x \in B\), \((x,m)=(m-x, m)=1\), then \(\exists y \in A\), s.t. \(x + y =m\), then \(\sum_{x \in B}\frac{x}{m}=\frac{m \card(B)}{2m}=\frac{1}{2}\phi(m)\).
 \end{solution}
 \begin{problem}\label{pro:42.3}
   \begin{enumerate}
-    \item Prove: \(\sum_{i=1}^{a}\phi(p^i)=p^a\), where \(p\) is prime.
+    \item Prove: \(\sum_{i=0}^{a}\phi(p^i)=p^a\), where \(p\) is prime.
     \item Prove: \(\sum_{d \in \mathbb{N}: d \mid a}\phi(d)=a\).
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Obviously, \(\phi(p^i)=p^i-p^{i-1}, i=1,\cdots,a\). So \(\sum_{i=0}^{a} \phi(p^i)=1 \sum_{i=1}^{a}(p^i-p^{i-1})=p^a\).
+    \item Since \(a\) can be decomposed by primes, let \(a=p_1^{r_1}\cdots p_s^{r_s}\), where \(p_i\) are primes,
+      \(p_i \neq p_j,i \neq j\), \(r_i \in \mathbb{N}\), \(i=1,\cdots,s\).
+      So \(A:=\{d \in \mathbb{N}: d \mid a\}=\{p_1^{t_1}\cdots p_s^{t_s}: 0 \leq t_i \leq r_i, i=1,\cdots,s\}\), then
+      \(\phi(p_1^{t_1}\cdots p_s^{t_s})=\phi(\prod_{i=1}^s p_i^{t_i})=\prod_{i =1}^{s} \phi(p_i^{t_i})\).
+      So \(\sum_{d \in A}\phi(d)=\sum_{0 \leq t_i \leq r_i,i=1,\cdots,s} \prod_{i=1}^s \phi(p_i^{t_i})\).
+      \begin{equation}\label{equ:42.3}
+        \begin{aligned}
+          \sum_{d \in A}\phi(d) & =\sum_{0 \leq t_i \leq r_i,i=1,\cdots,s} \prod_{i=1}^s \phi(p_i^{t_i})                                                   \\
+                                & =\sum_{0 \leq t_1 \leq r_1} \phi(p_1^{t_1})(\sum_{0 \leq t_i \leq r_i, i =2,\cdots,s} \prod_{i=2}^{s}  \phi(p_i^{t_i}) ) \\
+                                & =p_1^{r_1}\sum_{0 \leq t_i \leq r_i, i = 2,\cdots,s} \prod_{i =2}^{s} \phi(p_i^{t_i})                                    \\
+                                & =\prod_{i=1}^{s} p_i^{r_i}=a
+        \end{aligned}
+      \end{equation}
+
+  \end{enumerate}
+\end{solution}
+
 \begin{problem}\label{pro:45.1}
-  If today is Monday, then what day it is \(10^{10^{10}}\) days after today?
+  If today is Monday, then what day is it \(10^{10^{10}}\) days after today?
 \end{problem}
-\begin{problem}\label{pro:45.1}
+\begin{solution}
+  Since \(10^{10} \equiv 1 \mod 3\), \(10^{10} \equiv 0 \mod 2\), by Chinese Remainder Theorem, we only need to
+  find a integer \(n \leq 5\) which satisfies \(n \equiv 1 \mod 3\) and \(n \equiv 0 \mod 2\).
+  So \(n=4\), then \(10^{10} \equiv 4 \mod 6\). And \(\gcd(10,7)=1\), then \(10^{10^{10}} \equiv 3^{4} \equiv 4 \mod 7\).
+  So it is Friday \(10^{10^{10}}\) days later.
+\end{solution}
+
+\begin{problem}\label{pro:45.2}
   Find the remainder of \((12371^{56} + 34)^{28} \mod 111 \).
 \end{problem}
+\begin{solution}
+  Since \(111 = 3 \times 37\), then we can compute the remainder of \((12371^{56} + 34)^{28} \mod 3\), \((12371^{56} + 34)^{28} \mod 37\) at first.
+  \begin{enumerate}
+    \item Since \(34 \equiv 1\mod 3\), \(12371 \equiv 2 \mod 3\), then \(12371^{56} \equiv 2^{56}\equiv 1 \mod 3\), then
+      \(12371^{56} + 34 \equiv 2 \mod 3\). So \(\gcd(12371^{56}+ 34,3)=1\), so \((12371^{56} + 34)^{28} \equiv 2^{28} \equiv 1 \mod 3\).
+    \item Since \(12371 \equiv 13 \mod 37\), then \(\gcd(12371,37)=1\), and \(56 \equiv 20 \mod 36\), then
+      \(12371^{56} \equiv 13^{20} \equiv 16 \mod 37\). Then \(12371^{56} + 34 \equiv 13 \mod 37\), so
+      \(\gcd(12371^{56} + 34,37)=1\), then \((12371^{56} + 34)^{28} \equiv 13^{28} \equiv 33 \mod 37\).
+  \end{enumerate}
+  So by Chinese Remainder Theorem, we only need to find a integer \(n \leq 110\) which satisfies \(n \equiv 1 \mod 3, n \equiv 33 \mod 37\).
+  Assuming \(n=33 + 37k\), then \(k =0,1,2\), then \(33 + 37k \equiv 1 \mod 3\), then \(k=1\), so \(n=70\).
+  Thus \((12371^{56}+34)^{28} \equiv 70 \mod 111\).
+
+\end{solution}
+
 \begin{problem}\label{pro:45.4}
   Prove: \(\frac{a}{b} \in \mathbb{Q}, 0 < a<b , \gcd(a,b)=1\) is pure recurring decimal \(\iff\)
   \(\exists t \in \mathbb{N}^+\) s.t. \(10^t \equiv 1(\mod b)\), and \(\min\{t \in \mathbb{N}^+: 10^t \equiv 1(\mod b)\}\) is the length of cycle section.
 \end{problem}
+\begin{solution}
+
+  Let \(l\) be the length of cycle section of \(\frac{a}{b}\).
+  ``\(\implies\)'': Assume \(\frac{a}{b}=\sum_{k=1}^{\infty} 10^{-kl} x\), where \(x \in \mathbb{N},0 < x <10^l\),
+  so \(\frac{a}{b}=x\frac{1}{10^l} \frac{1}{1-10^{-l}}=\frac{x}{10^l-1}\).
+  Then \(a(10^l-1)=bx\). Since \(\gcd(a,b)=1\), we get \(b \mid 10^l-1\).
+  And we get \(l \in \{t \in \mathbb{N}^+:10^t \equiv 1 \mod b\}\).
+
+  ``\(\impliedby\)'': Assume \(10^t \equiv 1 \mod b\), where \(t \in \mathbb{N}^+\).
+  Let \(10^t-1=bk\), where \(k \in \mathbb{N}^+\). Let \(x=ak\), we will prove \(\frac{a}{b}=\sum_{k=1}^{\infty} 10^{-kt} x\).
+  Easily \(\sum_{k=1}^{\infty} 10^{-kt}x = \frac{x}{10^t-1}=\frac{ak}{bk}=\frac{a}{b}\).
+  So \(\frac{a}{b}\) is pure recurring decimal and \(l \mid t\).
+
+  So obviously \(l=\min\{t \in \mathbb{N}^+:10^t \equiv 1 \mod b\}\).
+\end{solution}
 
 \end{document}
