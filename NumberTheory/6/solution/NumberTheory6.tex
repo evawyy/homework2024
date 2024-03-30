@@ -1,0 +1,49 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%\maketitle \fi
+%from_here_to_type
+%p59: 1, 2, 4; p61: 1, 2
+\begin{problem}\label{pro:1}
+  Find the solution of \(6x^3 + 27 x^2 + 17x + 20 \equiv 0 (\mod 30)\).
+
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  Find the solution of \(31x^4 + 57x^3 + 96x + 191 \equiv 0 (\mod 225)\).
+\end{problem}
+\begin{solution}
+
+\end{solution}
+\begin{problem}\label{pro:3}
+  Prove: \(5x^2 + 11y^2 \equiv 1 (\mod m)\).
+\end{problem}
+\begin{problem}\label{pro:4}
+  If \(n \mid p-1, n > 1,(a,p)=1\), prove :
+  \begin{enumerate}
+    \item \(x^n \equiv a (\mod p)\) has solution \(\iff\) \(a^{\frac{p-1}{n}} \equiv 1 (\mod p)\).
+    \item If \(x^n \equiv a (\mod p)\) has solution, then it has \(n\) solution.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:5}
+  \(n \in \mathbb{N}^+\), \(\gcd(a,m)=1\), \(x^n \equiv a (\mod m)\) has one solution \(x \equiv x_0 (\mod m)\).
+  Prove all the solution of \(x^n \equiv a (\mod m)\) have the form of \(x \equiv yx_0 (\mod m)\),
+  where \(y\) is the solution of \(y^n \equiv 1(\mod m)\).
+\end{problem}
+
+\end{document}

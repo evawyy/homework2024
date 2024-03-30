@@ -1,0 +1,184 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume \((N_t:t \geq 0)\) is a Possion process with parament \(\alpha \geq 0\) and initial value \(0\).
+  \(\{\xi_n:n \in \mathbb{N}\}\) are i.i.d. r.v. with distrubution \(\mu\) and independent with \((N_t:t \geq 0)\).
+  Let \(X_t = \sum_{n=0}^{N_t} \xi_n,t \geq 0\).
+  \(\forall s \geq 0\),
+  \begin{enumerate}
+    \item \((N_{s + t} - N_s:t \geq 0)\) is a Possion process with parament \(\alpha\).
+    \item \(\{\xi_{N_s + n}: n \in \mathbb{N}^+\}\) are i.i.d. with distrubution \(\mu\) and are
+      independent with \((N_{s + t}-N_s:t \geq 0)\).
+    \item \((X_t:t \geq 0)\) satisfies \(\forall 0 = t_0<t_1<\cdots<t_n\), \(X_{t_1},X_{t_k}-X_{t_{k-1}},k=2,\cdots,n\)
+      are independent.
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Suppose \((N_t : t \geq 0)\) satisfies \(N_t-N_s \sim Possion(\alpha(t-s)), \forall t \geq s \geq 0\), then \((N_{t + r} - N_{r})-(N_{s + r}-N_{r})=N_{t + r}- N_{s + r} \sim Possion(a(t-s))\).
+      Besides, \(\forall 0=t_0 < t_1 < t_2 < \cdots < t_n\), \(D_{t}:= N_{t + r}- N_r\), then \(D_{t_k}-D_{t_{k-1}}=N_{t_k + r}-N_{t_{k-1} + r}, \forall k=1,\cdots,n\).
+      So \(D_{t_k}-D_{t_{k-1}}=N_{s_{k}}-N_{s_{k-1}}, \forall k = 1,\cdots,n\), where \(s_k=t_k + r\), are independent to each other.
+      Besides, \(N_{0 + r}-N_{r}=0\), obviously \(D_{t_k}-D_{t_{k-1}}\) is independent to \(N_{0 + r}-N_0\).
+      Last, since the orbit of \((N_t: t \geq 0 )\) is continuous, then \(N_{t + r}-N_{r}\) is continuous for any \(t \geq 0\).
+      Thus, by the definition of Possion process, we get \((N_{t + r}-N_r: t \geq 0)\) is Possion process.
+    \item Assume \((\Omega, \mathscr{F}), (\mathbb{N},\mathscr{P}(\mathbb{N})),(E,\mathscr{E})\) are sigma algebra.
+      \(\xi_n: \Omega \to E\), \(N_t:\Omega \to \mathbb{N}\).
+      First of all, we prove that \(\forall n \in \mathbb{N}^+\), \(\xi_{N_s + n}\) has contribution \(\mu\):
+      \(\forall A \in \mathscr{E}\), \(\mathbb{P}(\{\xi_{N_s + n} \in A\})=\mathbb{P}(\bigcup_{k =0}^{\infty} \{\xi_{k + n}  \in A, N_s=k\})=\sum_{k =0}^{\infty}
+      \mathbb{P}(\xi_{k + n} \in A, N_s =k)=\sum_{k=0}^{\infty} \mathbb{P}(\xi_{k + n} \in A)\mathbb{P}(N_s =k)=
+      \sum_{k=0}^{\infty} \mathbb{P}(\xi_1 \in A)\mathbb{P}(N_s =k)=\mathbb{P}(\xi_1 \in A)\).
+
+      Secondly, we prove that \(\{\xi_{N_s + n}:n \in \mathbb{N}^+\}\) are independent:
+      \(\forall J \subset \mathbb{N}^+, \card(J) < \infty, \{A_i \in \mathscr{E}: i \in J\}\), then
+      \(\mathbb{P}(\bigcap_{i \in J}\{\xi_{N_s + i} \in A_i\})=\mathbb{P}(\bigcup_{k=0}^{\infty} (\bigcap_{i \in J}\{\xi_{k + i} \in A_i, N_s =k\}))=
+      \sum_{k=0}^{\infty} \mathbb{P}(\bigcap_{i \in J}\{\xi_{k + i} \in A_i\}\cap \{N_s=k\}))=
+      \sum_{k=0}^{\infty} \mathbb{P}(\bigcap_{i \in J}\{\xi_{k + i}:i \in A_i\})\mathbb{P}(N_s=k)=
+      \sum_{k=0}^{\infty} \mathbb{P}(\bigcap_{i \in J}\{\xi_{1 + i}\in A_i\})\mathbb{P}(N_s =k)=
+      \mathbb{P}(\bigcap_{i \in J}\{\xi_{1 + i} \in A_i\})=
+      \prod_{i \in J}\mathbb{P}(\xi_{1 + i} \in A_i)=
+      \prod_{i \in J}\mathbb{P}(\xi_{N_s + i} \in A_i)\).
+
+      Last, we will prove that \(\{\xi_{N_s + n}:n \in \mathbb{N}^+\}\) are independent with \((N_{t + s}-N_s:t \geq 0)\).
+      \(\forall \{A_n \in \mathscr{E}:n \in \mathbb{N}^+\}, k \in \mathbb{N}\), then
+      \(\mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{N_s + n} \in A_n\}\cap\{N_{t + s}-N_{s}=k\})=
+      \mathbb{P}(\bigcup_{i \in \mathbb{N}}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\}\cap\{N_{t + s}=k + i,N_s=k\}))=
+      \sum_{i \in \mathbb{N}}\mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\}\cap\{N_{t + s}=k + i, N_s =i\})=
+      \sum_{i \in \mathbb{N}}\mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\})\mathbb{P}(N_{t + s}=k + i, N_s =i)=
+      \sum_{i \in \mathbb{N}}\prod_{n \in \mathbb{N}^+}\mathbb{P}(\xi_{1 + n} \in A_n)\mathbb{P}(N_{t + s}=k + i, N_s=i)=
+      \prod_{n \in \mathbb{N}^+}\mathbb{P}(\xi_{1 + n} \in A_n)\mathbb{P}(N_{t + s}-N_s=k)=
+      \prod_{n \in \mathbb{N}^+}\mathbb{P}(\xi_{N_s + n} \in A_n)\mathbb{P}(N_{t + s}-N_s=k)=
+      \mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{N_s + n} \in A_n\})\mathbb{P}(N_{t + s}-N_s=k)\).
+    \item \(\forall 0 = t_0<t_1<\cdots<t_n\), then \(X_{t_1}=\sum_{i =1}^{N_{t_1}}\xi_i,X_{t_k}-X_{t_{k-1}}=\sum_{i=1}^{N_{t_k}-N_{t_{k-1}}}\xi_{N_{t_{k-1}} + i}\xi_i,k=2,\cdots,n\),
+      then \(\forall\{A_k \in \mathscr{E}:k=1,\cdots,n\}\),
+      \begin{equation}
+        \begin{aligned}
+            & \mathbb{P}(\bigcap_{k =1}^n \sum_{i=1}^{N_{t_k}-N_{t_{k-1}}}\xi_{i + N_{t_{k-1}}} \in A_k)                                                                                              \\
+          = & \mathbb{P}(\bigcup_{0 \leq u_1\leq \cdots\leq u_n}\{\sum_{i=u_{k-1}+1}^{u_k}\xi_{i} \in A_k,N_{t_k}=u_k,k=1,\cdots,n\})                                                                 \\
+          = & \sum_{0 \leq u_1\leq \cdots\leq u_n}\mathbb{P}(\sum_{i=u_{k-1} + 1}^{u_k}\xi_i  \in A_k, k=1,\cdots,n| N_{t_k}=u_k,k=1,\cdots,n\})\mathbb{P}(N_{t_{k}}=u_k,k=1,\cdots,n)                \\
+          = & \sum_{0 \leq u_1\leq \cdots\leq u_n}\mathbb{P}(\sum_{i=u_{k-1} + 1}^{u_k}\xi_i  \in A_k, k=1,\cdots,n\})\mathbb{P}(N_{t_{k}}=u_k,k=1,\cdots,n)                                          \\
+          = & \sum_{0 \leq u_1\leq \cdots\leq u_n}\prod_{k=1}^{n} \mathbb{P}(\sum_{i=u_{k-1} + 1}^{u_k}\xi_i  \in A_k)\prod_{j=1}^{n} \mathbb{P}(N_{t_{j}}=u_j)                                       \\
+          = & \sum_{0 \leq u_1\leq \cdots\leq u_n}\prod_{k=1}^{n} \mathbb{P}(\sum_{i= 1}^{u_k-u_{k-1}}\xi_{u_{k-1}+ i}  \in A_k)\prod_{j=1}^{n} \mathbb{P}(N_{t_{j}}-N_{t_{j-1}}=u_j-u_{j-1})         \\
+          = & \sum_{0 \leq u_1\leq \cdots\leq u_n}\prod_{k=1}^{n} \mathbb{P}(\sum_{i= 1}^{u_k-u_{k-1}}\xi_{u_{k-1}+ i}  \in A_k)\mathbb{P}(N_{t_{k}}-N_{t_{k-1}}=u_k-u_{k-1})                         \\
+          = & \sum_{u_1-u_{0} \in \mathbb{N}}\cdots \sum_{u_n-u_{n-1} \in \mathbb{N}}\prod_{k=1}^{n} \mathbb{P}(\sum_{i= 1}^{u_k-u_{k-1}}\xi_{u_{k-1}+ i}  \in A_k,N_{t_{k}}-N_{t_{k-1}}=u_k-u_{k-1}) \\
+          = & \prod_{k=1}^{n} \sum_{u_k-u_{k-1} \in \mathbb{N}}\mathbb{P}(\sum_{i= 1}^{u_k-u_{k-1}}\xi_{u_{k-1}+ i}  \in A_k,N_{t_{k}}-N_{t_{k-1}}=u_k-u_{k-1})                                       \\
+          = & \prod_{k=1}^n\mathbb{P}(\sum_{i=1}^{N_{t_k}-N_{t_{k-1}}}\xi_{i + N_{t_{k-1}}}  \in A_k)
+        \end{aligned}
+      \end{equation}
+  \end{enumerate}
+
+\end{solution}
+\begin{problem}\label{pro:2}
+  \(X\) is a possion random measure on \((E,\mathscr{E})\) with intensity \(\mu\), where \(\mu\) is \(\sigma\) finite measure.
+  Prove \(\forall f \in (E,\mathscr{E})\), \(f \geq 0\), \[
+    \mathbb{E}\mathrm{e}^{-X(f)}=\mathrm{\exp}\left\{-\int_{E}(1-\mathrm{e}^{-f(x)})\mu(dx)\right\}.
+  \]
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item First, we consider \(\mu\) is finite and \(f=\sum_{i=1}^{n} \theta_i \mathbbm{1}_{B_i}(x)\):
+      Since \(X\) is a possion random measure, then \(\exists \eta \xi_1,\cdots,\xi_n,\cdots\), where \(\eta \sim Possion(\mu(E)),\{\xi_n:n \in \mathbb{N}^+\}\) are i.i.d.,
+      \(\xi_1 \sim \overline{\mu} := \mu(E)^{-1}\mu\).
+      \begin{equation}\label{equ:muf}
+        \begin{aligned}
+           & \mathbb{E}\mathrm{e}^{-X(f)}=\sum_{m=0}^{\infty} \mathbb{E}(\exp\left\{-\sum_{j=1}^{m} \sum_{i=1}^n \theta_i \mathbbm{1}_{B_i}(\xi_j)\right\})\mathbb{P}(\eta=m) \\
+           & =\sum_{m=0}^{\infty} \mathrm{e}^{-\mu(E)}\frac{\mu(E)^m}{m!}(\mathbb{E}(\exp\left\{-\sum_{i=1}^{n} \theta_i \mathbbm{1}_{B_i}(\xi_1)\right\}))^m                 \\
+           & =\sum_{m=0}^{\infty} \mathrm{e}^{-\mu(E)}\frac{1}{m!}(\int_{E}\exp \left\{-\sum_{i=1}^{n} \theta_i \mathbbm{1}_{B_i}(x)\right\}\mu(\mathrm{d} x))^m              \\
+           & = \exp \left\{-\mu(E) + \int_{E}\exp\{-\sum_{i=1}^{n} \theta_i \mathbbm{1}_{B_i}(x)\}\mu(\mathrm{d} x)\right\}                                                   \\
+           & = \exp\left\{\int_{E}\exp \{-\sum_{i=1}^{n} \theta_i \mathbbm{1}_{B_i}(x)\}-1\mu(\mathrm{d} x)\right\}                                                           \\
+           & = \exp\left\{\int_{E}-(1-\exp\{-\sum_{i=1}^{n}\theta_i \mathbbm{1}_{B_i}(x)\} )\mu(\mathrm{d} x)\right\}                                                         \\
+           & = \exp\left\{\int_{E}-(1-\exp\{-f(x)\} )\mu(\mathrm{d} x)\right\}
+        \end{aligned}
+      \end{equation}
+    \item Secondly, we consider \(\mu\) is finite and \(0 \leq f \in (E,\mathbb{E})\):
+      Then \(\exists f_j \geq 0, j \in \mathbb{N}\) is simple measurable function, such that \(f_j \to f, j \to \infty, \forall \omega \in \Omega\).
+      So by LCDT, we get \(\mathbb{E}\mathrm{e}^{-X(f)}=\exp\left\{\int_{E}-(1-\exp\{-f(x)\})\mu(\mathrm{d} x)\right\}\).
+    \item Lastly, we consider \(\mu\) is \(\sigma\) finite and \(0 \leq f \in (E,\mathbb{E})\):
+      Then \(E=\bigcup_{i=1}^{\infty} E_i \), \(\forall i, \mu(E_i) < \infty\). Let \(X_i=X \mathbbm{1}_{E_i}(x)\),
+      so \(\mathbb{E}\mathrm{e}^{-X(f)}
+      =\mathbb{E}\mathrm{e}^{\sum_{i=1}^{\infty} X_i(f)}
+      =\mathbb{E}\exp\{\sum_{i=2}^\infty X_i(f)\}\exp(\int_{E_1}-(1-\exp(-f(x)))\mu(\mathrm{d} x))
+      =\exp\left\{\sum_{i=1}^{\infty} \int_{E_i}-(1-\exp\{-f(x)\})\mu(\mathrm{d} x)\right\}\).
+  \end{enumerate}
+
+\end{solution}
+\begin{problem}
+  \(\mu\) is a finite measure, \(X\) is a possion random measure with intensity \(\mu\) on \((E,\mathscr{E})\).
+  \(\phi: (E,\mathscr{E}) \to (F, \mathscr{F})\) is measurable. Prove :
+  \(X \circ \phi^{-1}\) is a possion random measurable witn intensity \(\mu \circ \phi^{-1}\) on \((F, \mathscr{F})\).
+\end{problem}
+\begin{solution}
+  Obviously, \(\mu \circ \phi^{-1}\) is measurable on \((\mathscr{F})\) and finite.
+  \begin{enumerate}
+    \item First, we prove \(X \circ \phi^{-1}(B) \sim Possion(\mu \circ \phi^{-1}(B)), \forall B \in \mathscr{F}\):
+      Since \(\forall B \in \mathscr{F}, \phi^{-1}(B) \in \mathscr{E}\), then \(X \circ \phi^{-1}(B)=X(\phi^{-1}(B)) \sim Possion(\mu(\phi^{-1}(B)))=Possion(\mu \circ \phi^{-1}(B))\).
+    \item Secondly, \(\forall B_i \in \mathscr{F}, i \in \mathbb{N}, B_i \cap B_j = \emptyset, i \neq j\),
+      Then \(\phi^{-1}(B_i) \cap \phi^{-1}(B_j)=\varnothing\), then \(X(\phi^{-1}(B_i)),i \in \mathbb{N}\) are independent.
+      Besides, \(X \circ \phi^{-1}(\bigcup_{i \in \mathbb{N}}B_i)=X(\phi^{-1}(\bigcup_{i \in \mathbb{N}}B_i))=X(\bigcup_{i \in \mathbb{N}}\phi^{-1}(B_i))=\sum_{i \in \mathbb{N}}X(\phi^{-1}(B_i))=\sum_{i \in \mathbb{N}}X \circ \phi^{-1}(B_i)\).
+  \end{enumerate}
+\end{solution}
+\begin{problem}\label{pro:4}
+  \(\alpha \geq 0\) is constant, \(\mu\) is probability on \(\mathbb{R}\) and \(\mu(\{0\})=0\).
+  Let \(N(ds,dz,du)\) is a possion random measure on \((0,\infty)\times\mathbb{R}\times(0,\infty)\) with intensity \(ds \mu(dz)du\).
+  \(Y_0\) is independent with \(N(ds,dz,du)\). Let
+  \[
+    Y_t=Y_0 + \int_{0}^t \int_{\mathbb{R}} \int_{0}^{\alpha} z N(ds,dz,du),t >0.
+  \]
+  Prove: \((Y_t: t \geq 0)\) is a compound possion random process with rate \(\alpha\) and jumpping distrubution \(\mu\)
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Obviouly, since \(N(ds,dz,du)\) is a possion random measure, then \(\forall 0=t_0<t_1<\cdots<t_n\),
+      \(Y_{t_0}, Y_{t_{k}}-Y_{t_{k-1}},k=2,\cdots,n\) are independent.
+    \item \(\forall s,t \geq 0, \theta \in \mathbb{R}\), then
+      \begin{equation}
+        \begin{aligned}
+          \mathbb{E}\mathrm{e}^{\mathrm{i}\theta(Y_{s + t}-Y_s)} & =\mathbb{E}\exp\{\int_{s}^{s + t}\int_{\mathbb{R}}\int_{0}^{\alpha}\mathrm{i}\theta z N(ds,du,dz)\}                                \\
+                                                                 & = \exp\left\{t \alpha\int_{\mathbb{R}}(\mathrm{e}^{\mathrm{i}\theta z}-1) \mu(dz)\right\}                                          \\
+                                                                 & =\exp(-t \alpha)\sum_{k=0}^{\infty} \frac{1}{k!}(t \alpha \int_{\mathbb{R}}\mathrm{e}^{\mathrm{i} \theta z} \mu( d z))^k           \\
+                                                                 & =\mathrm{e}^{-t \alpha}\sum_{k=0}^{\infty} \frac{(\alpha k)^k}{k!}\int_{\mathbb{R}}\mathrm{e}^{\mathrm{i} \theta z} \mu^{* k}(d z)
+        \end{aligned}
+      \end{equation}
+  \end{enumerate}
+
+\end{solution}
+\begin{problem}\label{pro:5}
+  \(\mu\) is a finite measure, \(X\) is a possion random measure with intensity \(\mu\) on \((E,\mathscr{E})\).
+  Prove:
+  \begin{enumerate}
+    \item \(\mathbb{E}[X(f)\mathrm{e}^{-X(g)}]=\mu(f \mathrm{e}^{-g})\mathbb{E}[\mathrm{e}^{-X(g)}]\)
+    \item \(\mathbb{E}[X(f)^2\mathrm{e}^{-X(g)}]=[\mu(f^2 \mathrm{e}^{-g}) + \mu(f \mathrm{e}^{-g})^2]\mathbb{E}[\mathrm{e}^{-X(g)}]\)
+  \end{enumerate}
+
+\end{problem}
+\begin{enumerate}
+  \item \(\forall \theta \geq 0\), then \(\mathbb{E}\mathrm{e}^{-X(\theta f + g)}=\exp\left\{-\int_{E}(1-\mathrm{e}^{-\theta f(x)-g(x)})\mu(dx)\right\}\).
+    Since \(\mathrm{e}^{-X(\theta f + g)} \geq 0\), then \(\mathbb{E}[X(f)\mathrm{e}^{-X(\theta f + g)}] = \exp \left\{-\int_{E}(1-\mathrm{e}^{-\theta f(x)-g(x)})\mu(d x)\right\}\int_{E} f(x)\mathrm{e}^{-\theta f(x)-g(x)}\mu(dx)\).
+    Thus, when \(\theta =0\), we can get \(\mathbb{E}[X(f)\mathrm{e}^{-X(g)}]=\mu(f \mathrm{e}^{-g})\mathbb{E}[\mathrm{e}^{-X(g)}]\).
+  \item \(\forall \theta \geq 0\), then \(\mathbb{E}[X(f)\mathrm{e}^{-X(\theta f + g)}] = \exp \left\{-\int_{E}(1-\mathrm{e}^{-\theta f(x)-g(x)})\mu(d x)\right\}\int_{E} f(x)\mathrm{e}^{-\theta f(x)-g(x)}\mu(dx)\).
+    Since \(f \geq 0, \mathrm{e}^{-X(\theta f + g)} \geq 0\), then
+    \[
+      \begin{aligned}
+          & \mathbb{E}[X(f)^2\mathrm{e}^{-X(\theta f + g)}]                                                                                \\
+        = & \exp \left\{-\int_{E}(1-\mathrm{e}^{-\theta f(x)-g(x)})\mu(d x)\right\}(\int_{E} f(x)\mathrm{e}^{-\theta f(x)-g(x)}\mu(dx))^2  \\
+        + & \exp\left\{-\int_{E}(1-\mathrm{e}^{-\theta f(x)-g(x)})\mu (d x)\right\} \int_{E}f(x)^2\mathrm{e}^{\theta f(x)-g(x)} \mu (dx) .
+      \end{aligned}
+    \]
+    Thus, when \(\theta =0\), we can get \(\mathbb{E}[X(f)^2\mathrm{e}^{-X(g)}]=[\mu(f^2 \mathrm{e}^{-g}) + \mu(f \mathrm{e}^{-g})^2]\mathbb{E}[\mathrm{e}^{-X(g)}]\).
+\end{enumerate}
+
+\end{document}
