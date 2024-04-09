@@ -34,9 +34,9 @@
       Besides, \(\forall 0=t_0 < t_1 < t_2 < \cdots < t_n\), \(D_{t}:= N_{t + r}- N_r\), then \(D_{t_k}-D_{t_{k-1}}=N_{t_k + r}-N_{t_{k-1} + r}, \forall k=1,\cdots,n\).
       So \(D_{t_k}-D_{t_{k-1}}=N_{s_{k}}-N_{s_{k-1}}, \forall k = 1,\cdots,n\), where \(s_k=t_k + r\), are independent to each other.
       Besides, \(N_{0 + r}-N_{r}=0\), obviously \(D_{t_k}-D_{t_{k-1}}\) is independent to \(N_{0 + r}-N_0\).
-      Last, since the orbit of \((N_t: t \geq 0 )\) is continuous, then \(N_{t + r}-N_{r}\) is continuous for any \(t \geq 0\).
+      Last, since the path of \((N_t: t \geq 0 )\) is continuous, then \(N_{t + r}-N_{r}\) is continuous for any \(t \geq 0\).
       Thus, by the definition of Possion process, we get \((N_{t + r}-N_r: t \geq 0)\) is Possion process.
-    \item Assume \((\Omega, \mathscr{F}), (\mathbb{N},\mathscr{P}(\mathbb{N})),(E,\mathscr{E})\) are sigma algebra.
+    \item Assume \((\Omega, \mathscr{F}), (\mathbb{N},\mathscr{P}(\mathbb{N})),(E,\mathscr{E})\) are measurable spaces.
       \(\xi_n: \Omega \to E\), \(N_t:\Omega \to \mathbb{N}\).
       First of all, we prove that \(\forall n \in \mathbb{N}^+\), \(\xi_{N_s + n}\) has contribution \(\mu\):
       \(\forall A \in \mathscr{E}\), \(\mathbb{P}(\{\xi_{N_s + n} \in A\})=\mathbb{P}(\bigcup_{k =0}^{\infty} \{\xi_{k + n}  \in A, N_s=k\})=\sum_{k =0}^{\infty}
@@ -54,11 +54,11 @@
       \prod_{i \in J}\mathbb{P}(\xi_{N_s + i} \in A_i)\).
 
       Last, we will prove that \(\{\xi_{N_s + n}:n \in \mathbb{N}^+\}\) are independent with \((N_{t + s}-N_s:t \geq 0)\).
-      \(\forall \{A_n \in \mathscr{E}:n \in \mathbb{N}^+\}, k \in \mathbb{N}\), then
-      \(\mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{N_s + n} \in A_n\}\cap\{N_{t + s}-N_{s}=k\})=
-      \mathbb{P}(\bigcup_{i \in \mathbb{N}}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\}\cap\{N_{t + s}=k + i,N_s=k\}))=
-      \sum_{i \in \mathbb{N}}\mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\}\cap\{N_{t + s}=k + i, N_s =i\})=
-      \sum_{i \in \mathbb{N}}\mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\})\mathbb{P}(N_{t + s}=k + i, N_s =i)=
+      \(\forall \{A_n \in \mathscr{E}:n \in \mathbb{N}^+\}, k \in \mathbb{N}\), then let \(N_1 \subset \mathbb{N},N_2 \subset [0,+\infty ), |N_1|<\infty,|N_2|<\infty\), \(\{k_t \geq 0:t \in N_2\}\).
+      \(\mathbb{P}(\bigcap_{n \in N_1}\{\xi_{N_s + n} \in A_n\}\cap \bigcap_{t \in N_2}\{\{N_{t + s}-N_{s}=k_t\}\})=
+      \mathbb{P}(\bigcup_{i \in \mathbb{N}}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\}\cap \bigcap_{t \in N_2}\{N_{t + s}=k + i,N_s=k\}))=
+      \sum_{i \in \mathbb{N}}\mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\}\cap \bigcap_{t \in N_2}\{N_{t + s}=k + i, N_s =i\})=
+      \sum_{i \in \mathbb{N}}\mathbb{P}(\bigcap_{n \in \mathbb{N}^+}\{\xi_{i + n} \in A_n\})\mathbb{P}(N_{t + s}=k + i, N_s =i, t \in N_2)=
       \sum_{i \in \mathbb{N}}\prod_{n \in \mathbb{N}^+}\mathbb{P}(\xi_{1 + n} \in A_n)\mathbb{P}(N_{t + s}=k + i, N_s=i)=
       \prod_{n \in \mathbb{N}^+}\mathbb{P}(\xi_{1 + n} \in A_n)\mathbb{P}(N_{t + s}-N_s=k)=
       \prod_{n \in \mathbb{N}^+}\mathbb{P}(\xi_{N_s + n} \in A_n)\mathbb{P}(N_{t + s}-N_s=k)=
