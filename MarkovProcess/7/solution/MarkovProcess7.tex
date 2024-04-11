@@ -1,0 +1,43 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Let \((X_n:n \geq 0)\perp (Y_n: n \geq 0)\) are Markov chain on \(E\) with
+  transition matrix \((p_{ij}:i,j \in E),(q_{ij}:i,j \in E)\) respectively.
+  Prove: \(\{(X_n,Y_n):n \geq 0\}\) are Markov chain on \(E \times E\).
+  And calculate the transition matrix of \((X_n,Y_n):n \geq 0\).
+\end{problem}
+\begin{problem}\label{pro:2}
+  Let \(S_n\) is a one dimensional simple random walk.
+  Let \(\tau_a := \inf \{n \geq 0: S_n =a\}\).
+  Prove:
+  \begin{enumerate}
+    \item \((S_{\tau + n}:n \geq 0)\) is a one dimensional simple random walk.
+    \item \((S_{n \wedge \tau_a }:n \geq 0)\) is a Markov chain on \(\mathbb{Z}\) and give its
+      transition matrix.
+    \item \((S_{n \wedge \tau}:n \geq 0) \perp (S_{\tau_a + n}: n \geq 0)\).
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:3}
+  Let \(S_n\) is a one dimensional symmetry simple random walk starting from zero.
+  Prove: \((|S_n|: n \geq 0)\) is a Markov chain on \(\mathbb{Z}^+\) and give its transition matrix.
+\end{problem}
+\begin{problem}\label{pro:4}
+  Let \(S_n\) is a one dimensional simple random walk starting from zero.
+  Prove: \((|S_n|: n \geq 0)\) is a Markov chain on \(\mathbb{Z}^+\) and give its transition matrix.
+\end{problem}
+\end{document}
