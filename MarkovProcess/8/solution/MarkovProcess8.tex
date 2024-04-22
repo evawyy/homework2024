@@ -9,11 +9,60 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+  \input{../../../global/preface}
 \else
-%\maketitle
+  %\maketitle
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-%from_here_to_type
+%from_here_to_type.pr
+\begin{problem}\label{pro:1}
+  Assume \((X_n:n \geq 0)\) is an irreducible Markov chain on \(E\).
+  Prove that \((X_n:n \geq 0)\) is recurrent (or transient) \(\iff\)
+  \(\forall i \in E\),
+  \[
+    \mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1 (\text{or } 0).
+  \]
+\end{problem}
+\begin{problem}\label{pro:2}
+  Let \((X_n:n \geq 0)\) is a one dimension simple random walk, and \(P\) is it's transition matrix.
+  Let \(a \leq b \in \mathbb{Z}\) satisfies \(\mathbb{P}(a \leq X_0 \leq b)=1\).
+  Define \(\tau = \inf \{n \geq 0: X_n =a \text{or } b\}, Y_n=X_{n \AND \tau}\).
+  Prove: \((Y_n: n \geq 0)\) is Markov chain on \([a,b]\cap \mathbb{Z}\), and give its transition matrix and
+  the classification.
+\end{problem}
+\begin{problem}\label{pro:3}
+  Prove: \((X_n: n \geq 0)\) is Markov chain on \(E\), where \(E\) is finite. Then \(\exists x \in E\), \(x\) is recurrent.
+\end{problem}
+\begin{problem}\label{pro:4}
+  Assume \((X_n:n \geq 0)\) is Markov chain on \(\mathbb{Z}\). Prove it is transient \(\iff\)
+  \(\forall \mu_0\) is primitive distribution, \(\lim_{n \to \infty} |X_n| \overset{\text{a.s.}}{=} \infty\).
+\end{problem}
+\begin{problem}\label{pro:5}
+  Assume \(P\) is a transition matrix on \(\mathbb{Z}^+\), which has a first line \(\{a_0,a_1,\cdots\}\),
+  \(\forall i \geq 1\), \(p_{i,i-1}=1\), and \(\forall j \neq i-1\), \(p_{i,j}=0\).
+  Discuss the irreducibility, recurrence, ergodicity and periodicity of \(0\).
+\end{problem}
+\begin{problem}\label{pro:6}
+  Assume \(P\) is a transition matrix on \(E\).
+  Prove: \(\forall i \in E\), \(\lim_{n \to \infty}p_{ii}(n)\) exists, and \(\lim_{n \to \infty}p_{ii}(n)=\frac{1}{F'_{ii}(1)}=\frac{1}{\mathbb{P}_i(T_i)}\).
+\end{problem}
+\begin{problem}\label{pro:7}
+  Assume \(P\) is a transition matrix on \(E\) and \(P\) is irreducible, \(j \in E\).
+  Prove: \(P\) is recurrent \(\iff\) \(1\) is the minimum non negtive solution of
+  \[
+    y_i = \sum_{k \neq j} p_{ik}y_k + p_{ij}, i \in E
+  \]
+\end{problem}
+\begin{problem}\label{pro:8}
+  Let \(\{a_k:k \geq 0\}\) satisfies \(\sum_{k \geq 0}a_k =1, a_k \geq 1, a_0 >0\), \(\mu :=\sum_{k=1}^{\infty} ka_k >1\).
+  Define \(p_{ij}=
+  \begin{cases}
+    a_j         & , i =0                    \\
+    a_{j-i + 1} & ,i \geq 1 \AND j \geq i-1 \\
+    0           & ,\text{otherwise}
+  \end{cases}
+  \).
+  Prove: \(P\) is transient.
+\end{problem}
 
 \end{document}
