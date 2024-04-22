@@ -1,0 +1,153 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\newcommand{\norm}[1]{||#1||}
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle
+\fi
+%from_here_to_type
+\begin{solution}\label{pro:6}
+  \begin{enumerate}
+    \item 令 \(\xi_i = \mathbbm{1}_{\text{ 第\(i\) 次正面朝上}}\)。 那么\(X_n = \sum_{i=1}^{n} \xi_i\),显然\(X_n\)是马氏链。
+      设\(Y_n \equiv X_n \pmod{2}\), 那么\(Y_n\) 的状态空间是\(E = \{0,1\}\), 且\(Y_n\)是马氏链。
+      设\(Y_n\)的状态转移矩阵为\(P\), 那么\(P=(p_{ij})_{i,j \in E}\), 则\(p_{00}=p_{11}=\mathbb{P}\{\xi_i=0\}=\frac{2}{3}\),
+      \(p_{10}=p_{01}=\mathbb{P}\{\xi_i=1\}=\frac{1}{3}\)。
+      显然\(P\)是非周期，不可约的，且是有限维的，故\(P\) 具有唯一平稳分布。
+      设为\(\mu\)，\(\mu\)满足\(\mu P =P\)，其中\(\mu = (\mu_0,\mu_1)\)。
+      不难算出\(\mu=(\frac{1}{2},\frac{1}{2})\)。
+      故\(\lim_{n \to \infty}\mathbb{P}(Y_n=0)=\lim_{n \to \infty}\mathbb{P}(X_n \text{是偶数})=\frac{1}{2}\)。
+    \item 令\(\xi_n^{i}=\mathbbm{1}_{\text{第\(n\) 次抽出第\(i\)种五福}}, i=1,\cdots,5\), 那么\(X_n^{(i)}=\sum_{k=1}^{n} \xi_k^{(i)}\)。
+      那么，\(X_{2(n + 1)}^{(i)}-X_{2n}^{(i)}=\xi_{2n + 1}^{(i)} + \xi_{2n + 2}^{(i)} \perp \{\xi_k^{(i)}: k \leq 2n\}\), 故\(X_{2n}^{(i)}\)是马氏链。
+      令\(Y_n^{(i)} \equiv X_{2n}^{(i)} \pmod{2}, i=1,\cdots,5\), 那么\(\sum_{i=1}^{5} Y_n^{(i)}\equiv \sum_{i=1}^{5}X_{2n}^{(i)} \equiv 0\pmod{2}\)。
+      令\(Y_n=(Y_n^{(1)},\cdots,Y_n^{(5)})\), 则\(Y_n\) 是状态空间为\(E=\mathbb{Z}_2^5\}\)的马氏链。
+      设\(P\)为\((Y_n:n \geq 1)\)转移矩阵，\(P=(p_{ij})_{i,j \in E}\)。
+
+      下计算\(P\):
+      设\(i,j \in E\), \(i=(i_1,\cdots,i_5),j=(j_1,\cdots,j_5)\)。
+      \begin{enumerate}
+        \item 若\(\sum_{k=1}^{5} i_k \not\equiv 0 \pmod{2}\), 那么\(\forall j \in E\), \(p_{ij}=0\)。
+        \item 若\(\sum_{k=1}^{5} i_k \equiv 0 \pmod{2}\), 那么\(p_{ii}=\mathbb{P}(\exists i \in \{1,\cdots,5\}, \xi_1^{(i)}=1=\xi_2^{(i)}, \xi_1^{(j)}=\xi_2^{(j)}=0, \forall j \in \{1,\cdots,5\})=\sum_{i=1}^{5} p_i^2\)。
+          若\(j \neq i\), 那么\(\sum_{k=1}^{5} i_k-j_k \equiv 0 \pmod{2}\), 则\(|\{k:i_k \neq j_k\}|\in \{2,4\}\)。
+          \begin{enumerate}
+            \item \(|\{k:i_k \neq j_k\}|=2\), 那么\(p_{ij}=\mathbb{P}(\exists u \neq v \in \{1,\cdots,5\}, \xi_1^{(u)} =1,\xi_2^{(v)}=1, \forall s \in \{1,\cdots,5\} \setminus \{u\}, \xi_1^{(s)}=0 ,\forall s \in \{1,\cdots,5\} \setminus \{v\}, \xi_2^{(s)}=0)\)。
+              即\(p_{ij}=\sum_{1 \leq u,v \leq 5}p_up_v\)。
+            \item \(|\{k:i_k \neq j_k\}|=4\), 那么两次抽奖获得了4个福袋，则\(p_{ij}=0\)。
+            \item \(|\{k:i_k \neq j_k\}| \in \{1,3,5\}\), 则\(p_{ij}=0\)。
+          \end{enumerate}
+      \end{enumerate}
+      显然，\(P\) 非周期，\(\forall i,j \in E\), 则\(p_{ij}^{5} \geq \prod_{k:i_k \neq j_k} \mathbb{E}(\xi_n^{(k)})\prod_{k:i_k = j_k} (1-\mathbb{E}(\xi_n^{k})) >0\),
+      故\(P\) 是不可约的。那么\(P\)具有唯一的平稳分布记为\(\mu\), 则\(\mu P =\mu\)。
+      由于\(P\) 是对称的，则\(\mu P^{T} = \mu\), 即\(\sum_{k=1}^{16} \mu_k p_{ik}=1,\sum_{k=1}^{16} p_{ik}=1\),
+      由于\(\frac{1}{16}I\), \(I=(1,\cdots,1)_{1 \times 16}\) 满足平稳分布条件，又由于唯一性知，
+      \(\mu=\frac{1}{16}I\)。
+      从而\(\lim_{n \to \infty}P(Y_n=(0,0,0,0,0))=\lim_{n \to \infty}\mathbb{P}(X_n^{(i)} \text{是偶数}, \forall i=1,\cdots,5)=\frac{1}{16}\)。
+  \end{enumerate}
+
+\end{solution}
+\pagebreak
+\begin{solution}\label{pro:7}
+  \begin{enumerate}
+    \item Let \(g(x)=f^{-1}(x)\). Since \(f'' <0\), then \(g'' >0\), then \(g'\) increases.
+      Since \(K(x)=f^{-1}(f(x + \varepsilon))-x=\int_{f(x)}^{f(x) + \varepsilon} g'(t) dt\), then \(K\) increases.
+      If Green and Red never meet in the process, suppose the Red satisfies \(X(t)=0\) and Green satisfies \(Y(t)=x\).
+      Let \(x_0=x\), \(x_{n + 1}= 1-x_n -K(x_n)\). We can get to know \(x_{n + 1}\) is position of the different one when the another one arrives \(0\).
+      By the assumption, we can know \(x_n \in (0,1)\).
+      Next, we will prove \(x_0 = x_n, \forall n \geq 1\).
+      If not, then \(\{n \geq 1: x_0 \neq x_n\} \neq \varnothing\), w.l.o.g., we let \(1 = \min \{n \geq 1: x_0 \neq x_n\}\).
+      \begin{enumerate}
+        \item If \(x_1 < x_0\), then \(x_2=1-x_1-K(x_1)=1-(1-x_0-K(x_0))-K(x_1)=x_{0} + K(x_0) -K(x_1)\).
+          Since \(K' >0\), then \(x_2 <x_0\).
+          We prove \((-1)^n(x_{n + 2}-x_{n} )<0\) by mathematic induction.
+          \(n=0\), we have proved, next suppose \((-1)^n(x_{n + 2}-x_{n}) <0\), we go to \(n + 1\).
+          Then \((-1)^{n + 1}(x_{n + 3} + x_{n + 1}) = (-1)^{n + 1} (K(x_n)-K(x_{n + 2}) + x_n - x_{n + 2}) = (-1)^{n}(K(x_{n + 2})- K(x_n)) + (-1)^{n}(x_{n + 2}-x_n)\).
+          If \((-1)^n =1\), then \(x_{n + 2}-x_n <0\), then \(K(x_{n + 2})-K(x_n)<0\), then \((-1)^{n + 1}(x_{n + 3} + x_{n + 1})<0\).
+          If \((-1)^n=-1\), then \(x_{n + 2}-x_n >0\), then \(K(x_{n + 2})-K(x_n) >0\), then \((-1)^{n + 1}(x_{n + 3} + x_{n + 1})<0\).
+        \item If \(x_1 > x_0\), then \(x_2=1-x_1-K(x_1)=1-(1-x_0-K(x_0))-K(x_1)=x_{0} + K(x_0) -K(x_1)\).
+          Since \(K' >0\), then \(x_2 >x_0\).
+          We prove \((-1)^n(x_{n + 2}-x_{n} )>0\) by mathematic induction.
+          \(n=0\), we have proved, next suppose \((-1)^n(x_{n + 2}-x_{n}) >0\), we go to \(n + 1\).
+          Then \((-1)^{n + 1}(x_{n + 3} + x_{n + 1}) = (-1)^{n + 1} (K(x_n)-K(x_{n + 2}) + x_n - x_{n + 2}) = (-1)^{n}(K(x_{n + 2})- K(x_n)) + (-1)^{n}(x_{n + 2}-x_n)\).
+          If \((-1)^n =1\), then \(x_{n + 2}-x_n >0\), then \(K(x_{n + 2})-K(x_n)>0\), then \((-1)^{n + 1}(x_{n + 3} + x_{n + 1})>0\).
+          If \((-1)^n=-1\), then \(x_{n + 2}-x_n <0\), then \(K(x_{n + 2})-K(x_n) <0\), then \((-1)^{n + 1}(x_{n + 3} + x_{n + 1})>0\).
+      \end{enumerate}
+      Therefore, \(x_0\) satisfies \(F(x)=1-2x-K(x)\), \(F(x_0)=0=x_1-x_0=0\). And \(F'=-1-K'<0\), then \(x_0\) is
+      the only solution satisfies of \(F(x)\).
+      By now, we get if Green and Red never meet, then \(x_0\) s.t. \(F(x_0)=0\).
+      So, if \(x_0\) is not the solution of \(F(x)\), then Green and Red will meet.
+    \item Also, we consider \(g=f^{-1}\), then \(g(y)=\frac{\mathrm{e}^{by}-1}{\mathrm{e}^b-1}\).
+      And we define \(\{x_n:n \in \mathbb{N}\}\) as above.
+      So we find the circles that Red did before they meet, we need to find \(\lim_{n \to \infty} \frac{1}{|x_{n +3}-x_{n + 1}|}=\lim_{n \to \infty} \frac{1}{|K(x_{n + 2})-K(x_{n + 1})|}\).
+      Since \(K(u)-K(v)=g(f(u) + \varepsilon)-g(f(u))-(g(f(v) + \varepsilon) -g(f(v)))=\frac{(\mathrm{e}^{bf(u)}-\mathrm{e}^{bf(v)})(\mathrm{e}^{b \varepsilon}-1)}{\mathrm{e}^b-1}\),
+      and \(x_n \to 0, n \to \infty\), then \(\lim_{n \to \infty} \frac{1}{|x_{n +3}-x_{n + 1}|}=\lim_{n \to \infty} \frac{1}{|K(x_{n + 2})-K(x_{n + 1})|}=C \frac{1}{b \varepsilon}\),
+      where \(C\) is a constance.
+  \end{enumerate}
+\end{solution}
+\pagebreak
+\begin{solution}\label{pro:4}
+  \begin{enumerate}
+    \item Since \(\tra(A)=0\), so we can assume \(A=\begin{pmatrix}
+        a & b  \\
+        c & -a \\
+
+      \end{pmatrix}\).
+      And \(\mathrm{det}(A) \neq 0\), then \(-a^{2}-bc \neq 0\).
+      So \(A^2=\begin{pmatrix}
+        a^2+bc & 0      \\
+        0      & a^2+bc \\
+
+      \end{pmatrix}\).
+      So \(A^2=-(\mathrm{det}(A)) I_2\), where \(I_2=\begin{pmatrix}
+        1 & 0 \\
+        0 & 1 \\
+
+      \end{pmatrix}\).
+      \(\forall w=(w_1,w_2) \in \mathbb{R}^2 \forall n \geq 1\), \(A^{-n}w=(\overline{w_1},\overline{w_2}) \in \mathbb{R}^2\), let \(v =([\overline{w_1}],[\overline{w_2}]) \in \mathbb{Z}^2 \), so \(|v-A^{-n}w|<2\).
+      Consider \(A^nv-w=A^n(v-A^{-n}w)\):
+      \begin{enumerate}
+        \item If \(n=2k,k \in \mathbb{N}\), then \(|A^nv-w|=|a^2+bc|^k |v-A^{-n}w| \leq 2|a^2+bc|^k =2 |\mathrm{det}(A)|^{\frac{n}{2}} \).
+          Then \(\frac{\inf_{v \in \mathbb{Z}^2}|A^nv-w|}{|\mathrm{det} (A)|^{\frac{n}{2}}}\leq 2\).
+        \item If \(n=2k+1\), then we get that \(|A^nv-w|=|a^2+bc|^k|A(v-A^{-n}w)| \leq 2|a^2+bc|^k \norm{A} =\frac{2 \norm{A}}{|\mathrm{det}(A)|^{1/2}} |\mathrm{det}(A)|^{\frac{n}{2}}\).
+          Where \(\norm{A}=\sup_{x \in \mathbb{R}^2,x \neq 0}  \frac{|Ax|}{|x|}\), it must be well-defined, since \(\dim(Mn_2(\mathbb{R}))=2\).
+          Then \(\frac{\inf_{v \in \mathbb{Z}^2}|A^nv-w|}{|\mathrm{det}(A)|^{\frac{n}{2}}} \leq \frac{2 \norm{A}}{|\mathrm{det}(A)|^{\frac{1}{2}}}\).
+      \end{enumerate}
+      Then, \(C=\max\{2,\frac{2 \norm{A}}{|\mathrm{det}(A)|^{\frac{1}{2}}}\}\), we get what we want.
+    \item Let\(f(x)=x^2 + ax + b\), where \(a,b \in \mathbb{Z}\) is the characteristic polynomial of \(A\).
+      Since \(f(x)\) is irreducible in \(\mathbb{Q}\), we get \(f(x)\) has no rational root.
+      Therefore, \(f(x)\) has no shigene in \(\mathbb{R}\) if it has roots.
+      If \(x_1,x_2 \in \mathbb{C}\) are roots of \(f\):\\
+      \begin{enumerate}
+        \item If \(x_1=x_2\), then \(x_1+x_2=2 x_1=-a\), then \(x_1=-\frac{a}{2} \in \mathbb{Q}\), contradiction!
+        \item \(x_1 \neq x_2\), then \(x_1=\overline{x_2}\) and \(|x_1|=|x_2|=|\mathrm{det}(A)|^{\frac{1}{2}}\) and
+          \(\exists P \in M_2(\mathbb{C})\) \(PAP^{-1}=\Lambda\), where \(\Lambda=\begin{pmatrix}
+            x_1 & 0   \\
+            0   & x_2 \\
+
+          \end{pmatrix}\).
+          Then \(A^n = P^{-1}\Lambda^n P\).
+          And \(\norm{\Lambda}_{\mathbb{C}}=|x_1|\), then \(\norm{A^n}_\mathbb{C} = |\mathrm{det}(A)|^{\frac{n}{2}} \norm{P}\norm{P^{-1}}\),
+          then \(\forall w \in \mathbb{R}^2,\exists v \in \mathbb{Z}^2,|v-A^{-n}w| <2\), then
+          \(|v-A^nw| \leq \norm{A^n}|v-A^{-n}w| \leq 2 \norm{p}\norm{p^{-1}} |\mathrm{det}(A)|^{\frac{n}{2}}\).
+      \end{enumerate}
+  \end{enumerate}
+\end{solution}
+\begin{solution}
+  \begin{enumerate}
+    \item
+    \item \(\dim (W \cap U_0)=d + 1\).
+    \item
+  \end{enumerate}
+
+\end{solution}
+
+\end{document}

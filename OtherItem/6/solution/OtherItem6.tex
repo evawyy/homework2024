@@ -1,0 +1,41 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle
+\fi
+%from_here_to_type
+%知识结构、科研能力、研究成果、外语水平以及所应具备的研究生素质和培养潜能方面
+
+知识结构: 在概率方向选修了概率论，测度与概率，概率极限理论，数理统计，随机过程初步，正在修读马氏过程。
+在分析方向修读了数学分析，泛函分析，实变函数，复变函数。
+在方程方向修读了常微分方程，偏微分方程。
+在代数方向修读了高等代数，伽罗瓦理论，近世代数，群表示论，正在修读数论。
+在几何方向修读了解析几何，微分几何，拓扑学。
+
+科研能力和研究成果：
+\begin{enumerate}
+  \item 2021.05: xxxxxx
+  \item 2022.05-2023.05: 参加校本基项目并顺利结项，项目名称是：xxxxx，主要研究的是xxxxxx，主要负责：xxxxxx。
+  \item 2023.5--: 参加北创项目目前正在准备结项答辩中，项目名称是：xxxx，主要研究的是xxxxxx，主要负责：xxxxx。
+\end{enumerate}
+
+外语水平：
+\begin{enumerate}
+  \item 3月考了托福，获得92分，其中阅读28，听力26，口语，写作19。（口语写作没准备好，正在准备4月继续考。。）
+\end{enumerate}
+
+具备的研究生素养：
+
+\end{document}

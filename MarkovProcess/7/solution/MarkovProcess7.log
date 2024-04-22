@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  16 APR 2024 20:33
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  16 APR 2024 20:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/evawyy/homework/NumberTheory/6/solution/NumberTheory6.tex
-(/Users/evawyy/homework/NumberTheory/6/solution/NumberTheory6.tex
+**/Users/evawyy/homework/MarkovProcess/7/solution/MarkovProcess7.tex
+(/Users/evawyy/homework/MarkovProcess/7/solution/MarkovProcess7.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -959,8 +959,8 @@ Package: xeCJK-listings 2022/08/05 v3.9.1 xeCJK patch file for listings
 \c@problem=\count386
 )
 (../../../global/me) (../../../global/commands) (../../localcommands))
-(./NumberTheory6.aux)
-\openout1 = `NumberTheory6.aux'.
+(./MarkovProcess7.aux)
+\openout1 = `MarkovProcess7.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -1039,9 +1039,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 8.
 Package hyperref Info: Link coloring OFF on input line 8.
- (./NumberTheory6.out) (./NumberTheory6.out)
+ (./MarkovProcess7.out) (./MarkovProcess7.out)
 \@outlinefile=\write4
-\openout4 = `NumberTheory6.out'.
+\openout4 = `MarkovProcess7.out'.
 
 
 
@@ -1161,25 +1161,33 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 (fontspec)             <->"STFangsong/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
-[1
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 69.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+) [1
 
 
-] [2] (./NumberTheory6.aux)
+] [2]
+[3] [4] (./MarkovProcess7.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
-Package rerunfilecheck Info: File `NumberTheory6.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
- )
-(\end occurred when \iffalse on line 11 was incomplete) 
-Here is how much of TeX's memory you used:
- 32987 strings out of 474773
- 688852 string characters out of 5757725
- 1966839 words of memory out of 5000000
- 54595 multiletter control sequences out of 15000+600000
- 565402 words of font info for 84 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 112i,7n,113p,3373b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on NumberTheory6.pdf (2 pages).
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package rerunfilecheck Info: File `MarkovProcess7.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 33010 strings out of 474773
+ 689572 string characters out of 5757725
+ 1952839 words of memory out of 5000000
+ 54612 multiletter control sequences out of 15000+600000
+ 565797 words of font info for 87 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 112i,12n,113p,3375b,796s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on MarkovProcess7.pdf (4 pages).

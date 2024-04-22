@@ -100,7 +100,13 @@
 \begin{solution}
   \begin{enumerate}
     \item ``\(\implies\)'':Since \(\gcd(a,p)=1\), then \(\gcd(x,p)=1\). Then \(a^{\frac{p-1}{n}} \equiv x^{p-1} \equiv 1 \mod p\).
-    \item ``\(\impliedby\)'':
+      ``\(\impliedby\)'': Easy to know that there is at most \(\frac{p-1}{n}\) different \(a\) satisfy \(\exists x,x^n \equiv a \mod p\).
+      For every \(a\), there is at most \(n\) different \(x\) satisfy \(x^n \equiv a \mod p\).
+      And for every \(x\) satisfy \(\gcd(x,p)=1\), there is a unique \(a\) satisfy \(x^n \equiv a \mod p\).
+      So \(\sum_{x,a \in \mathbb{Z} / p \mathbb{Z},x^n \equiv a,x \neq 0}1=\sum_{a \in \mathbb{Z} / p \mathbb{Z},a^{\frac{p-1}{n}} \equiv 1}\sum_{x \in \mathbb{Z} / p \mathbb{Z},x^n \equiv a}1 \leq p-1\).
+      But \(\sum_{x,a \in \mathbb{Z} / p \mathbb{Z},x^n \equiv a,x \neq 0}1=\sum_{x \in \mathbb{Z} / p \mathbb{Z},x \neq 0} 1 = p-1\)
+      So we get \(\forall a:a^{\frac{p-1}{n}}\equiv 1 \mod p\), there is \(n\) different \(x\) satisfy \(x^n \equiv a \mod p\).
+    \item Have been proved above.
   \end{enumerate}
 
 \end{solution}
