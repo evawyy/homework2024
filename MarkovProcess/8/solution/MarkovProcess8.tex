@@ -23,36 +23,101 @@
     \mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\}\right)=1 (\text{or } 0).
   \]
 \end{problem}
-\begin{problem}\label{pro:2}
-  Let \((X_n:n \geq 0)\) is a one dimension simple random walk, and \(P\) is it's transition matrix.
-  Let \(a \leq b \in \mathbb{Z}\) satisfies \(\mathbb{P}(a \leq X_0 \leq b)=1\).
-  Define \(\tau = \inf \{n \geq 0: X_n =a \text{or } b\}, Y_n=X_{n \AND \tau}\).
-  Prove: \((Y_n: n \geq 0)\) is Markov chain on \([a,b]\cap \mathbb{Z}\), and give its transition matrix and
-  the classification.
-\end{problem}
+\begin{solution}
+  Since \((X_n: n \geq 0)\) is irreducible, then
+  \(\forall i \in E, \exists n_i\) s.t.\(0< \mathbb{P}(X_{n_i}=i))\leq 1\).
+  And \(\forall \omega \in \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k =i\}\), then \(\exists k_i \geq n_i X_{k_i}(\omega)=i\).
+  Besides, \((X_n:n \geq 1)\) is a Markov chain,
+  let \(T_i(\omega):=\min\{n \geq 1: X_0(\omega)=X_n(\omega)=i\}\),
+  then \(\mathbb{P}_i(T_i<\infty)=\mathbb{P}(\min\{n \geq 1: X_{n_i + n}(\omega)=i\}< \infty) \geq \mathbb{P}(\{\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\} \})\).
+
+  \(\forall \omega \in \{T_i < \infty\}\), then \(\exists m_i\) s.t. \(\forall 1 \leq j < m_i, X_j \neq i, X_{m_i}=i\),
+  Then \(\forall n \geq 1\), let \(t_n=[\frac{n}{m_i}]+ 1\), \(Y_m=X_k, m \equiv k \mod m_i, 0 \leq k \leq m_i-1\), so
+  \(Y_{t_nm_i}(\omega)=i\).
+  Thus, \(\mathbb{P}_i(T_i < \infty) \leq \mathbb{P}(\bigcap_{n=1}^{\infty} Y_{t_nm_i}=i)\).
+  Besides, \(\{\bigcup_{k=n}^{\infty} \{X_k=i\} \supset\{X_{t_nm_i}=i\}\supset\{Y_{t_nm_i}=i\}\).
+  Then \(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{X_k=i\} \supset \bigcap_{n=1}^{\infty} \{Y_{t_nm_i}=i\}\),
+  thus, \(\mathbb{P}_i(T_i < \infty) \leq \mathbb{P}(\bigcap_{n=1}^{\infty} Y_{t_nm_i}=i) \leq \mathbb{P}(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} X_k=i)\).
+
+  Therefore, \(\mathbb{P}_i(T_i < \infty) = \mathbb{P}(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} X_k=i)\). Then, \((X_n: n \geq 0)\) is recurrent (or transient)
+  \(\iff \) \(\mathbb{P}_i(T_i < \infty)=1 (\text{or} 0)\) \(\iff \mathbb{P}(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} X_k=i)=1 (\text{or 0})\).
+\end{solution}
+
+% \begin{problem}\label{pro:2}
+%   Let \((X_n:n \geq 0)\) is a one dimension simple random walk, and \(P\) is it's transition matrix.
+%   Let \(a \leq b \in \mathbb{Z}\) satisfies \(\mathbb{P}(a \leq X_0 \leq b)=1\).
+%   Define \(\tau = \inf \{n \geq 0: X_n =a \text{or } b\}, Y_n=X_{n \AND \tau}\).
+%   Prove: \((Y_n: n \geq 0)\) is Markov chain on \([a,b]\cap \mathbb{Z}\), and give its transition matrix and
+%   the classification.
+% \end{problem}
 \begin{problem}\label{pro:3}
   Prove: \((X_n: n \geq 0)\) is Markov chain on \(E\), where \(E\) is finite. Then \(\exists x \in E\), \(x\) is recurrent.
 \end{problem}
+\begin{solution}
+  If \(\forall y \in E\), \(y\) is transient, then \(\)
+\end{solution}
+
 \begin{problem}\label{pro:4}
   Assume \((X_n:n \geq 0)\) is Markov chain on \(\mathbb{Z}\). Prove it is transient \(\iff\)
   \(\forall \mu_0\) is primitive distribution, \(\lim_{n \to \infty} |X_n| \overset{\text{a.s.}}{=} \infty\).
 \end{problem}
+\begin{solution}
+  Only need to prove that \(\forall k \in \mathbb{N},\liminf_{n \to \infty}|X_n|>k,a. s.\).
+  Consider the event \(\liminf_{n \to \infty}|X_n|\leq k\), it means \(\forall n \in \mathbb{N},\exists t \geq n,X_t \in [-k,k]\).
+  So we only need to prove \(\mathbb{P}\left(\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t \in [-k,k]\}\right)=0\).
+  It is sufficient to prove that \(\mathbb{P}(\bigcup_{u \in [-k,k]}\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t=u\})=0\).
+  Since \((X_n)\) is transient, it has been proved that \(\mathbb{P}(\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t=u\})=0\).
+  So \(\mathbb{P}(\bigcup_{u \in [-k,k]}\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t=u\})=0 \leq \sum_{u \in [-k,k]}\mathbb{P}(\bigcap_{n=1}^{\infty} \bigcup_{t=n}^{\infty} \{X_t=u\})=0\).
+\end{solution}
 \begin{problem}\label{pro:5}
-  Assume \(P\) is a transition matrix on \(\mathbb{Z}^+\), which has a first line \(\{a_0,a_1,\cdots\}\),
-  \(\forall i \geq 1\), \(p_{i,i-1}=1\), and \(\forall j \neq i-1\), \(p_{i,j}=0\).
-  Discuss the irreducibility, recurrence, ergodicity and periodicity of \(0\).
+  Assume \(\{a_i: i \geq 1\} \subset (0,1)\). Consider \(E:=\mathbb{N}\), \(P\) is a transition matrix on \(E\),
+  where \(p_{ij}=a_i \mathbbm{1}_{\{j=0\}} + (1-a_i)\mathbbm{1}_{\{j=i+1\}}\).
+  Prove:
+  \begin{enumerate}
+    \item \(P\) is irreducible.
+    \item \(P\) is recurrent \( \iff \) \(\sum_{i}a_i=\infty\).
+    \item \(P\) is ergodici \(\iff \) \(\sum_{k=1}^{\infty} \prod_{i=1}^{k-1} (1-a_i)< \infty\).
+  \end{enumerate}
 \end{problem}
-\begin{problem}\label{pro:6}
-  Assume \(P\) is a transition matrix on \(E\).
-  Prove: \(\forall i \in E\), \(\lim_{n \to \infty}p_{ii}(n)\) exists, and \(\lim_{n \to \infty}p_{ii}(n)=\frac{1}{F'_{ii}(1)}=\frac{1}{\mathbb{P}_i(T_i)}\).
-\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item \(\forall i, j \in E\), if \(i > j\), then \(p_{ij}(j-i)=\prod_{k=i}^{j-1}(1-a_k)>0\). If \(i \leq j\), then \(p_{ij}(j + 1)=a_i \prod_{k=0}^{j-1} (1-a_k)>0\).
+      So \(P\) is recurrent.
+    \item Since \(P\) is irreducible, then we only need to concern the circumstance when \(X_0=0\). Then \(\{T_0 > n\} \overset{\text{a.s.}}{=}\{X_k=k,k=0,\cdots,n\}\).
+      Then \(\mathbb{P}_0(T_0 = \infty)=\mathbb{P}_0(\bigcap_{n}\{T_0 > n\})=\lim_{n \to \infty}\mathbb{P}_0(X_k=k,k=0,\cdots,n)=\lim_{n \to \infty}\prod_{k=0}^{n-1} (1-a_k) =\prod_{k=0}^{\infty} (1-a_k) \).
+      Then \(\mathbb{P}_0(T_0=\infty)=1 \iff \prod_{k=0}^{\infty} (1-a_k) =1\iff \sum_{k}a_k=\infty\).
+    \item Since \(\mathbb{E}_0(T_0)=\sum_{n \in E}\mathbb{P}_0(T_0 >n)=\sum_{n=0}^{\infty} \prod_{k=0}^{n-1} (1-a_k)\), then \(P\) is ergodici
+      \(\iff \) \(\mathbb{E}_0(T_0) < \infty\) \(\iff\) \(\sum_{n=0}^{\infty} \prod_{k=0}^{n-1} (1-a_k) <\infty\).
+  \end{enumerate}
+\end{solution}
+
+% \begin{problem}\label{pro:5}
+%   Assume \(P\) is a transition matrix on \(\mathbb{Z}^+\), which has a first line \(\{a_0,a_1,\cdots\}\),
+%   \(\forall i \geq 1\), \(p_{i,i-1}=1\), and \(\forall j \neq i-1\), \(p_{i,j}=0\).
+%   Discuss the irreducibility, recurrence, ergodicity and periodicity of \(0\).
+% \end{problem}
+% \begin{problem}\label{pro:6}
+%   Assume \(P\) is a transition matrix on \(E\).
+%   Prove: \(\forall i \in E\), \(\lim_{n \to \infty}p_{ii}(n)\) exists, and \(\lim_{n \to \infty}p_{ii}(n)=\frac{1}{F'_{ii}(1)}=\frac{1}{\mathbb{P}_i(T_i)}\).
+% \end{problem}
 \begin{problem}\label{pro:7}
   Assume \(P\) is a transition matrix on \(E\) and \(P\) is irreducible, \(j \in E\).
   Prove: \(P\) is recurrent \(\iff\) \(1\) is the minimum non negtive solution of
-  \[
-    y_i = \sum_{k \neq j} p_{ik}y_k + p_{ij}, i \in E
-  \]
+  \begin{equation}\label{equ:7}
+    y_i = \sum_{k \neq j} p_{ik}y_k + p_{ij}, i \in E\setminus\{j\}
+  \end{equation}
+
 \end{problem}
+\begin{solution}
+  ``\(\implies\)'': If \(P\) is recurrent, then the bounded solution of \(y_i=\sum_{k \in E}p_{ik}y_k, i  \in E\setminus\{j\}\) is constant.
+  so the bounded solution of Equation \eqref{equ:7} is constant. Sepcially, \(1\) is the minimum non negetive solution.
+
+  ``\(\impliedby\)'': If \(P\) is transient, then the bounded solution of \(y_i=\sum_{k \in E}p_{ik}y_k, i  \in E\setminus\{j\}\) has non constant ones.
+  Let it be \(\{z_i:i \in E\}\). W.L.O.G., we can assume \(z_j=0, z_1 \neq z_2,|z_i| \leq 1, \forall i \in E, \exists i_0 \in E, z_{i_0} <0\).
+  Let \(y_i = 1 + z_i, i \in E\), then \(\{y_i: i \in E\}\) is the bounded solution of Equation \eqref{equ:7}.
+  But \(y_{i_0} <1, y_i \geq 0, i \in E\), which is a contradiction.
+\end{solution}
+
 \begin{problem}\label{pro:8}
   Let \(\{a_k:k \geq 0\}\) satisfies \(\sum_{k \geq 0}a_k =1, a_k \geq 1, a_0 >0\), \(\mu :=\sum_{k=1}^{\infty} ka_k >1\).
   Define \(p_{ij}=
@@ -64,5 +129,20 @@
   \).
   Prove: \(P\) is transient.
 \end{problem}
+\begin{solution}
+  First of all, we prove that \(P\) is irreducible: Since \(\sum_{k=1}^{\infty} ka_k > 1\), then \(\exists a_m >0\).
+  And \(\forall i \geq 1\), \( p_{i-1,i}=a_0 >0\). Then \(\forall i,j \), if \(i < j\), then \(p_{ij}(j-i)=a_0^{j-i}>0\).
+  If \(i \geq j\), let \(t \equiv i-j \pmod{m}, 1 \leq t \leq m\), then \(p_{ij}(t + 1)=a_0^{t}a_m >0\).
+
+  Second, we prove that \(P\) is transient: Let \(f(z)=\sum_{k=0}^{\infty} a_kz^k, z \in [0,1]\),
+  \(F(z)=f(z)-z\). Then \(F(z) \in C^{\infty}[0,1]\), \(F(0)=F(1)=0\), \(F(1)'=f(1)-1=\mu-1>0\).
+  Then \(\exists \eta \in (0,1)\), \(F(\eta)<0\).
+  Besides, \(F^{(m)}(0)=a_m>0\), then easily we can get \(F'(0) >0\), then \(\exists \varepsilon \xi \in (0,1), F(\xi)>0\).
+  Thereofore, \(\exists \mid c \in (0,1)\), s.t. \(c=f(c)\), then \(\forall i \geq 1\),
+  \[
+    c^i=\sum_{k=0}^{\infty} a_kc^{k + i-1}=\sum_{j=i-1}^{\infty} a_{j-i + 1}c^j=\sum_{j=0}^{\infty} p_{ij}c^j
+  \]
+  So \(P\) is transient.
+\end{solution}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  22 APR 2024 19:13
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  23 APR 2024 12:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1133,11 +1133,63 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 18
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [1
+)
+
+Package fontspec Warning: Font "STFangsong" does not contain requested Script
+(fontspec)                "CJK".
 
 
-]
-(./MarkovProcess8.aux)
+Package fontspec Info: Could not resolve font "STFangsong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Font family 'STFangsong(0)' created for font
+(fontspec)             'STFangsong' with options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"STFangsong/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+
+Overfull \hbox (33.61003pt too wide) in paragraph at lines 65--71
+[]\TU/lmr/m/n/12.045 Only need to prove that $\OMS/cmsy/m/n/12.045 8\OML/cmm/m/
+it/12.045 k \OMS/cmsy/m/n/12.045 2 \U/msb/m/n/12.045 N\OML/cmm/m/it/12.045 ; []
+[] \OMS/cmsy/m/n/12.045 j\OML/cmm/m/it/12.045 X[]\OMS/cmsy/m/n/12.045 j \OML/cm
+m/m/it/12.045 > k; a:s:$\TU/lmr/m/n/12.045 . Consider the event $[][] \OMS/cmsy
+/m/n/12.045 j\OML/cmm/m/it/12.045 X[]\OMS/cmsy/m/n/12.045 j ^^T
+ []
+
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 74.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+)
+Overfull \hbox (7.69345pt too wide) in paragraph at lines 86--89
+\OMS/cmsy/m/n/12.045 f\OML/cmm/m/it/12.045 T[] > n\OMS/cmsy/m/n/12.045 g [] f\O
+ML/cmm/m/it/12.045 X[] \OT1/cmr/m/n/12.045 = \OML/cmm/m/it/12.045 k; k \OT1/cmr
+/m/n/12.045 = 0\OML/cmm/m/it/12.045 ; []  ; n\OMS/cmsy/m/n/12.045 g$\TU/lmr/m/n
+/12.045 . Then $\U/msb/m/n/12.045 P[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 
+T[] \OT1/cmr/m/n/12.045 = \OMS/cmsy/m/n/12.045 1\OT1/cmr/m/n/12.045 ) = \U/msb/
+m/n/12.045 P[]\OT1/cmr/m/n/12.045 ([][]\OMS/cmsy/m/n/12.045 f\OML/cmm/m/it/12.0
+45 T[] > n\OMS/cmsy/m/n/12.045 g\OT1/cmr/m/n/12.045 ) = [][] \U/msb/m/n/12.045 
+P[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 X[] \OT1/cmr/m/n/12.045 =
+ []
+
+[1
+
+
+] [2] (./MarkovProcess8.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1146,12 +1198,12 @@ Package rerunfilecheck Info: File `MarkovProcess8.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32956 strings out of 474773
- 688182 string characters out of 5757725
- 1956839 words of memory out of 5000000
- 54577 multiletter control sequences out of 15000+600000
- 565346 words of font info for 77 fonts, out of 8000000 for 9000
+ 33012 strings out of 474773
+ 689605 string characters out of 5757725
+ 1973839 words of memory out of 5000000
+ 54614 multiletter control sequences out of 15000+600000
+ 565797 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 112i,10n,113p,3375b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,10n,113p,3375b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MarkovProcess8.pdf (1 page).
+Output written on MarkovProcess8.pdf (2 pages).
