@@ -54,7 +54,9 @@
   Prove: \((X_n: n \geq 0)\) is Markov chain on \(E\), where \(E\) is finite. Then \(\exists x \in E\), \(x\) is recurrent.
 \end{problem}
 \begin{solution}
-  If \(\forall y \in E\), \(y\) is transient, then \(\)
+  Since \(\sum_{i \in E}p_{ki}^{*}=\sum_{i \in E}\sum_{n \geq 0}p_{ki}(n)=\sum_{n \geq 0}\sum_{i \in E}p_{ik}(n)=\infty\), and \(E\) is finite,
+  then \(\exists i\), \(p_{ki}^{*}=\infty\). So by colloary of 3.3.6 on textbook, then \(i\) is not
+  transient, so \(i\) is recurrent.
 \end{solution}
 
 \begin{problem}\label{pro:4}
@@ -76,17 +78,17 @@
   \begin{enumerate}
     \item \(P\) is irreducible.
     \item \(P\) is recurrent \( \iff \) \(\sum_{i}a_i=\infty\).
-    \item \(P\) is ergodici \(\iff \) \(\sum_{k=1}^{\infty} \prod_{i=1}^{k-1} (1-a_i)< \infty\).
+    \item \(P\) is ergodic \(\iff \) \(\sum_{k=1}^{\infty} \prod_{i=1}^{k-1} (1-a_i)< \infty\).
   \end{enumerate}
 \end{problem}
 \begin{solution}
   \begin{enumerate}
-    \item \(\forall i, j \in E\), if \(i > j\), then \(p_{ij}(j-i)=\prod_{k=i}^{j-1}(1-a_k)>0\). If \(i \leq j\), then \(p_{ij}(j + 1)=a_i \prod_{k=0}^{j-1} (1-a_k)>0\).
+    \item \(\forall i, j \in E\), if \(i < j\), then \(p_{ij}(j-i)=\prod_{k=i}^{j-1}(1-a_k)>0\). If \(i \geq j\), then \(p_{ij}(j + 1)=a_i \prod_{k=0}^{j-1} (1-a_k)>0\).
       So \(P\) is recurrent.
     \item Since \(P\) is irreducible, then we only need to concern the circumstance when \(X_0=0\). Then \(\{T_0 > n\} \overset{\text{a.s.}}{=}\{X_k=k,k=0,\cdots,n\}\).
       Then \(\mathbb{P}_0(T_0 = \infty)=\mathbb{P}_0(\bigcap_{n}\{T_0 > n\})=\lim_{n \to \infty}\mathbb{P}_0(X_k=k,k=0,\cdots,n)=\lim_{n \to \infty}\prod_{k=0}^{n-1} (1-a_k) =\prod_{k=0}^{\infty} (1-a_k) \).
-      Then \(\mathbb{P}_0(T_0=\infty)=1 \iff \prod_{k=0}^{\infty} (1-a_k) =1\iff \sum_{k}a_k=\infty\).
-    \item Since \(\mathbb{E}_0(T_0)=\sum_{n \in E}\mathbb{P}_0(T_0 >n)=\sum_{n=0}^{\infty} \prod_{k=0}^{n-1} (1-a_k)\), then \(P\) is ergodici
+      Then \(\mathbb{P}_0(T_0=\infty)=0 \iff \prod_{k=0}^{\infty} (1-a_k) =0\iff \sum_{k}a_k=\infty\).
+    \item Since \(\mathbb{E}_0(T_0)=\sum_{n \in E}\mathbb{P}_0(T_0 >n)=\sum_{n=0}^{\infty} \prod_{k=0}^{n-1} (1-a_k)\), then \(P\) is ergodic
       \(\iff \) \(\mathbb{E}_0(T_0) < \infty\) \(\iff\) \(\sum_{n=0}^{\infty} \prod_{k=0}^{n-1} (1-a_k) <\infty\).
   \end{enumerate}
 \end{solution}
@@ -100,26 +102,29 @@
 %   Assume \(P\) is a transition matrix on \(E\).
 %   Prove: \(\forall i \in E\), \(\lim_{n \to \infty}p_{ii}(n)\) exists, and \(\lim_{n \to \infty}p_{ii}(n)=\frac{1}{F'_{ii}(1)}=\frac{1}{\mathbb{P}_i(T_i)}\).
 % \end{problem}
+
 \begin{problem}\label{pro:7}
   Assume \(P\) is a transition matrix on \(E\) and \(P\) is irreducible, \(j \in E\).
-  Prove: \(P\) is recurrent \(\iff\) \(1\) is the minimum non negtive solution of
+  Prove: \(P\) is recurrent \(\iff\) \(1\) is the minimum non negetive solution of
   \begin{equation}\label{equ:7}
     y_i = \sum_{k \neq j} p_{ik}y_k + p_{ij}, i \in E\setminus\{j\}
   \end{equation}
-
 \end{problem}
 \begin{solution}
   ``\(\implies\)'': If \(P\) is recurrent, then the bounded solution of \(y_i=\sum_{k \in E}p_{ik}y_k, i  \in E\setminus\{j\}\) is constant.
-  so the bounded solution of Equation \eqref{equ:7} is constant. Sepcially, \(1\) is the minimum non negetive solution.
+  Specially, \(1\) is the minimum non-negetive solution.
+  If \(1\) is not the minimum non-negetive solution of Equation \eqref{equ:7}, let \(\{z_i:i \geq 0\}\) be the minimum
+  non-negetive solution. Let \(x_i=z_i-1\), then \(\{x_i:i \geq 0\}\) is the bounded solution of
+  \(y_i = \sum_{k \in E}p_{ik}y_k, i \in E\setminus\{j\}\), contradiction.
 
   ``\(\impliedby\)'': If \(P\) is transient, then the bounded solution of \(y_i=\sum_{k \in E}p_{ik}y_k, i  \in E\setminus\{j\}\) has non constant ones.
-  Let it be \(\{z_i:i \in E\}\). W.L.O.G., we can assume \(z_j=0, z_1 \neq z_2,|z_i| \leq 1, \forall i \in E, \exists i_0 \in E, z_{i_0} <0\).
+  Let it be \(\{z_i:i \in E\}\). W.L.O.G., we can assume \(z_j=0,|z_i| \leq 1, \forall i \in E, \exists i_0 \in E, z_{i_0} <0\).
   Let \(y_i = 1 + z_i, i \in E\), then \(\{y_i: i \in E\}\) is the bounded solution of Equation \eqref{equ:7}.
-  But \(y_{i_0} <1, y_i \geq 0, i \in E\), which is a contradiction.
+  But \(y_{i_0} <1, y_i \geq 0, i \in E\), and \(\{y_i: i \in E\}\) is smaller than \(1\), which is a contradiction.
 \end{solution}
 
 \begin{problem}\label{pro:8}
-  Let \(\{a_k:k \geq 0\}\) satisfies \(\sum_{k \geq 0}a_k =1, a_k \geq 1, a_0 >0\), \(\mu :=\sum_{k=1}^{\infty} ka_k >1\).
+  Let \(\{a_k:k \geq 0\}\) satisfies \(\sum_{k \geq 0}a_k =1, a_k \geq 0, a_0 >0\), \(\mu :=\sum_{k=1}^{\infty} ka_k >1\).
   Define \(p_{ij}=
   \begin{cases}
     a_j         & , i =0                    \\
@@ -130,15 +135,13 @@
   Prove: \(P\) is transient.
 \end{problem}
 \begin{solution}
-  First of all, we prove that \(P\) is irreducible: Since \(\sum_{k=1}^{\infty} ka_k > 1\), then \(\exists a_m >0\).
+  First of all, we prove that \(P\) is irreducible: Since \(\sum_{k=1}^{\infty} ka_k > 1\), then \(\exists m : a_m >0\).
   And \(\forall i \geq 1\), \( p_{i-1,i}=a_0 >0\). Then \(\forall i,j \), if \(i < j\), then \(p_{ij}(j-i)=a_0^{j-i}>0\).
   If \(i \geq j\), let \(t \equiv i-j \pmod{m}, 1 \leq t \leq m\), then \(p_{ij}(t + 1)=a_0^{t}a_m >0\).
 
   Second, we prove that \(P\) is transient: Let \(f(z)=\sum_{k=0}^{\infty} a_kz^k, z \in [0,1]\),
-  \(F(z)=f(z)-z\). Then \(F(z) \in C^{\infty}[0,1]\), \(F(0)=F(1)=0\), \(F(1)'=f(1)-1=\mu-1>0\).
-  Then \(\exists \eta \in (0,1)\), \(F(\eta)<0\).
-  Besides, \(F^{(m)}(0)=a_m>0\), then easily we can get \(F'(0) >0\), then \(\exists \varepsilon \xi \in (0,1), F(\xi)>0\).
-  Thereofore, \(\exists \mid c \in (0,1)\), s.t. \(c=f(c)\), then \(\forall i \geq 1\),
+  then \(f(0)=a_0 >0, f(1)=1\), \(f'' \geq 0\), \(f'(0)=a_1 \geq 0\).
+  Therefore, \(\exists \mid c \in (0,1)\), s.t. \(c=f(c)\), then \(\forall i \geq 1\),
   \[
     c^i=\sum_{k=0}^{\infty} a_kc^{k + i-1}=\sum_{j=i-1}^{\infty} a_{j-i + 1}c^j=\sum_{j=0}^{\infty} p_{ij}c^j
   \]

@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  23 APR 2024 15:06
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  28 APR 2024 21:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/evawyy/homework/MarkovProcess/8/solution/MarkovProcess8.tex
-(/Users/evawyy/homework/MarkovProcess/8/solution/MarkovProcess8.tex
+**/Users/evawyy/homework/MarkovProcess/9/solution/MarkovProcess9.tex
+(/Users/evawyy/homework/MarkovProcess/9/solution/MarkovProcess9.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -959,8 +959,8 @@ Package: xeCJK-listings 2022/08/05 v3.9.1 xeCJK patch file for listings
 \c@problem=\count386
 )
 (../../../global/me) (../../../global/commands) (../../localcommands))
-(./MarkovProcess8.aux)
-\openout1 = `MarkovProcess8.aux'.
+No file MarkovProcess9.aux.
+\openout1 = `MarkovProcess9.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -1039,10 +1039,11 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 8.
 Package hyperref Info: Link coloring OFF on input line 8.
- (./MarkovProcess8.out) (./MarkovProcess8.out)
 \@outlinefile=\write4
-\openout4 = `MarkovProcess8.out'.
+\openout4 = `MarkovProcess9.out'.
 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 
 Package fixdif Warning: Requires `no-math' option of fontspec!
@@ -1133,77 +1134,35 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 18
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-
-Package fontspec Warning: Font "STFangsong" does not contain requested Script
-(fontspec)                "CJK".
+) [1
 
 
-Package fontspec Info: Could not resolve font "STFangsong/BI" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "STFangsong/B" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "STFangsong/I" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Font family 'STFangsong(0)' created for font
-(fontspec)             'STFangsong' with options [Script={CJK}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"STFangsong/OT:language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-
-
-Overfull \hbox (33.61003pt too wide) in paragraph at lines 67--73
-[]\TU/lmr/m/n/12.045 Only need to prove that $\OMS/cmsy/m/n/12.045 8\OML/cmm/m/
-it/12.045 k \OMS/cmsy/m/n/12.045 2 \U/msb/m/n/12.045 N\OML/cmm/m/it/12.045 ; []
-[] \OMS/cmsy/m/n/12.045 j\OML/cmm/m/it/12.045 X[]\OMS/cmsy/m/n/12.045 j \OML/cm
-m/m/it/12.045 > k; a:s:$\TU/lmr/m/n/12.045 . Consider the event $[][] \OMS/cmsy
-/m/n/12.045 j\OML/cmm/m/it/12.045 X[]\OMS/cmsy/m/n/12.045 j ^^T
- []
-
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 76.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-Overfull \hbox (7.69345pt too wide) in paragraph at lines 88--91
-\OMS/cmsy/m/n/12.045 f\OML/cmm/m/it/12.045 T[] > n\OMS/cmsy/m/n/12.045 g [] f\O
-ML/cmm/m/it/12.045 X[] \OT1/cmr/m/n/12.045 = \OML/cmm/m/it/12.045 k; k \OT1/cmr
-/m/n/12.045 = 0\OML/cmm/m/it/12.045 ; []  ; n\OMS/cmsy/m/n/12.045 g$\TU/lmr/m/n
-/12.045 . Then $\U/msb/m/n/12.045 P[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 
-T[] \OT1/cmr/m/n/12.045 = \OMS/cmsy/m/n/12.045 1\OT1/cmr/m/n/12.045 ) = \U/msb/
-m/n/12.045 P[]\OT1/cmr/m/n/12.045 ([][]\OMS/cmsy/m/n/12.045 f\OML/cmm/m/it/12.0
-45 T[] > n\OMS/cmsy/m/n/12.045 g\OT1/cmr/m/n/12.045 ) = [][] \U/msb/m/n/12.045 
-P[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 X[] \OT1/cmr/m/n/12.045 =
- []
-
-[1
-
-
-] [2] (./MarkovProcess8.aux)
+]
+(./MarkovProcess9.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
-Package rerunfilecheck Info: File `MarkovProcess8.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `MarkovProcess9.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `MarkovProcess9.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33012 strings out of 474773
- 689605 string characters out of 5757725
- 1972839 words of memory out of 5000000
- 54614 multiletter control sequences out of 15000+600000
- 565797 words of font info for 87 fonts, out of 8000000 for 9000
+ 32941 strings out of 474773
+ 687927 string characters out of 5757725
+ 1938839 words of memory out of 5000000
+ 54568 multiletter control sequences out of 15000+600000
+ 565346 words of font info for 77 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 112i,10n,113p,3375b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,6n,113p,3375b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MarkovProcess8.pdf (2 pages).
+Output written on MarkovProcess9.pdf (1 page).
