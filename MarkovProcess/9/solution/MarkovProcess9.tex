@@ -16,14 +16,59 @@
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 \begin{problem}\label{pro:1}
-  Let \(X=\{X(n): n \geq 0\}\) is Markorv chain defined on probability space \((\Omega,\mathscr{F},\mathbb{P})\), with state space \(E\) and
-  transition probability matrix \(P=(p(i,j):i,j \in E)\). Let \(a, b \in E\), \(\tau_0 =0\), \(\sigma_k = \inf \{n \geq \tau_{k-1}: X(n)=b\}, \tau_k=\inf\{n \geq \sigma_{k-1}: X(n)=a\}\).
+  Let \(X=\{X(n): n \geq 0\}\) be Markov chain defined on probability space \((\Omega,\mathscr{F},\mathbb{P})\), with state space \(E\) and
+  transition probability matrix \(P=(p(i,j):i,j \in E)\). Let \(a, b \in E\), \(\tau_0 =0\), \(\sigma_k = \inf \{n \geq \tau_{k-1}: X(n)=b\}, \tau_k=\inf\{n \geq \sigma_{k}: X(n)=a\}\).
   Prove: \(\tau_n,\sigma_n, n \geq 1 \) are all stopping time on \((\mathscr{F}_n: n \geq 0)\).
 \end{problem}
+\begin{solution}
+  Since \(\sigma_1= \inf \{n \geq 0: X(n)=b\}\), then \(\{\sigma_1 = m\} = \{X(i) \neq b, 0 \leq i \leq m-1, X(m)=b\} \in \sigma\{X(i),0 \leq i \leq m-1, X_m\} = \mathscr{F}_m\).
+  Then \(\sigma_1\) is stopping time.
+  Next, we will prove \(\sigma_k, \tau_{k-1}, k \in \mathbb{N}\) are stopping time. Since \(\sigma_1, \tau_0\) are stopping time, which
+  we have proved. Assume \(\sigma_k, \tau_{k-1}\) are stopping time, we will prove \(\sigma_{k + 1}, \tau_{k}\) are stopping time.
+  Let \(m \in \mathbb{N}^+\), \(\{\tau_k=m\}=\bigcup_{i \in [0,m-1]\cap \mathbb{N}}\{\sigma_k=i,X(i + l) \neq a, 1 \leq l \leq m-i-1, X(m)=a\}\in \mathscr{F}_m\), since
+  \(\{\sigma_k=i\} \in \mathscr{F}_i \subset \mathscr{F}_m, \forall 0 \leq i \leq m-1, \sigma(X_j) \subset \mathscr{F}_m, j \leq m\).
+  Let \(m \in \mathbb{N}^+\), \(\{\sigma_{k + 1}=m\}=\bigcup_{i \in [0,m-1]\cap \mathbb{N}}\{\tau_k=i,X(i + l) \neq a, 1 \leq l \leq m-i-1, X(m)=b\}\in \mathscr{F}_m\), since
+  \(\{\tau_k=i\} \in \mathscr{F}_i \subset \mathscr{F}_m, \forall 0 \leq i \leq m-1, \sigma(X_j) \subset \mathscr{F}_m, j \leq m\).
+  Therefore, \(\sigma_{k + 1}, \tau_k\) are stopping time.
+\end{solution}
+
 \begin{problem}\label{pro:2}
-  Let \((X(n): n \geq 0)\) is a one-dimension simple random walk starting at \(1\). Let \(e(n)=\{X(n \AND \tau_1): n \geq 0\}\), where \(\tau_1=\inf \{n \geq 0: X(n)=0\}\).
+  Let \((X_n: n \geq 0)\) is a one-dimension simple random walk starting at \(1\). Let \(e(n)=\{X_{n \wedge \tau_1}: n \geq 0\}\), where \(\tau_1=\inf \{n \geq 0: X_n=0\}\).
   Find the distribution of \(\sup_{n \geq 0}e(n)\).
 \end{problem}
+\begin{solution}
+  Assume \(\mathbb{P}(X_{n + 1}-X_n=1)=p,\mathbb{P}(X_{n + 1}-X_n=-1)=q, p,q >0, p + q=1\).
+  Let \(E := \sup_{n \geq 0}e(n)\).
+  Let \(\gamma = \inf \{n \geq 0 : X_n=0 \text{or} X_n=m\} \geq 1\), where \(m \in \mathbb{N}^+\).
+  First of all, if \(p=q=\frac{1}{2}\):
+  Easy to get that \(\gamma<\infty,a. s.\), so \(X_{n \wedge \gamma} \overset{\text{a.s.}}{\to} X_{\gamma}\).
+  And \(0 \leq X_{n \wedge \gamma} \leq m\), so \(\mathbb{E}(X_{\gamma})=\mathbb{E}(X_{n \wedge \gamma})=\mathbb{E}(X_0)\).
+  Noting that \(\{X_\gamma =0\}\overset{\text{a.s.}}{=}\{E<m\}\) and \(\{X_{\gamma}= m\}\overset{\text{a.s.}}{=}\{E \geq m\}\),
+  we get two equations:
+  \[
+    \begin{cases}
+      \mathbb{P}(E<m)+\mathbb{P}(E \geq m)=1 \\
+      0\mathbb{P}(E<m)+m\mathbb{P}(E \geq m) =1
+    \end{cases}.
+  \]
+  Solve this equation, we get \(\mathbb{P}(E \geq m)=\frac{1}{m}\).
+  So \(\mathbb{P}(E=m)=\frac{1}{m(m+1)}\), and easily \(\mathbb{P}(E=\infty)=0\).
+
+  Secondly, \(p \neq q\): Let \(Y_n:=(\frac{q}{p})^{X_n}\), then \(\mathbb{E}(Y_{n + 1})=\mathbb{E}(\mathbb{E}(Y_{n + 1} \mid Y_n))=\mathbb{E}((\frac{q}{p})^{X_n + 1} p+(\frac{q}{p})^{X_n-1}q )=\mathbb{E}((\frac{q}{p})^{X_n})=\mathbb{E}(Y_n)\).
+  Obviously, \(\gamma\) is stopping  time.
+  Then \(\mathbb{E}(Y_{n + 1 \wedge \gamma})=\mathbb{E}(\mathbb{E}(Y_{n + 1 \wedge \gamma} \mid Y_{n \wedge \gamma}))=\mathbb{E}(\mathbbm{1}_{n < \gamma}\mathbb{E}(Y_{n + 1} \mid Y_n) + \mathbbm{1}_{n \geq \gamma} \mathbb{E}(Y_{\gamma} \mid Y_\gamma))=\mathbb{E}(\mathbbm{1}_{n < \gamma}Y_n + \mathbbm{1}_{n \geq \gamma}\mathbb{E}(Y_{\gamma}))=\mathbb{E}(Y_{\gamma \wedge n})\).
+  Then \(\mathbb{E}(Y_{n \wedge \gamma})= \mathbb{E}(Y_0)=\frac{q}{p}\). Besides, \(\gamma < \infty, a. s.\), \(Y_{n \wedge \gamma} \overset{\text{a.s.}}{\to} Y_{\gamma} \), \(Y_n < \infty a. s.\).
+  Then \(\mathbb{E}(Y_{n \wedge \gamma}) \to \mathbb{E}(Y_{\gamma})=\mathbb{P}(T_0 < T_m) + (\frac{q}{p})^m \mathbb{P}(T_0 > T_m)\), where \(T_i=\inf \{k \geq 1: X_k=i\}, i \in \mathbb{N}\).
+  Additionally, \(\{T_0 < T_m\}\overset{\text{a.s.}}{=}\{E <m\}, \{T_0 > T_m\}\overset{\text{a.s.}}{=}\{E \geq m\}\).
+  Then \(\mathbb{P}(E < m) + (\frac{q}{p})^m \mathbb{P}(E \geq m)= \frac{q}{p}, \mathbb{P}(E < m) + \mathbb{P}(E \geq m) =1\).
+  Thus, \(\mathbb{P}(E \geq m) = \frac{p^m-qp^{m-1}}{p^m-q^m}\), \(\mathbb{P}(E < m)=\frac{qp^{m-1}-q^m}{p^m-q^m}\).
+  Then \(\mathbb{P}(E=m)=\frac{(\frac{p}{q})^m(\frac{p}{q}-1)}{((\frac{p}{q})^m-1)((\frac{p}{q})^{m+1}-1)}\).
+  Furthermore, easily \(\mathbb{P}(E=\infty)=\lim_{m \to \infty}\mathbb{P}(E \geq m)=\begin{cases}
+    0             & \frac{q}{p}>1 \\
+    1-\frac{q}{p} & \frac{q}{p}<1
+  \end{cases}\).
+\end{solution}
+
 \begin{problem}\label{pro:3}
   Prove:
   \begin{enumerate}
@@ -31,8 +76,54 @@
     \item When \(0 < q \leq p\), the reflecting random walk with transition matrix \(Q^a_-\) is recurrent.
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  By symmetry, only need to prove the first question. Without loss of generality we can assume \(a=0\).
+  We consider the equation
+  \[
+    y_0=y_1,\forall i \geq 1,y_i=qy_{i-1}+py_{i+1}
+  \]
+  Only need to prove its all bounded solution are all constant.
+  Easy to get \(y_{i+2}=\frac{1}{p}y_{i+1}-\frac{q}{p}y_{i}\).
+  Consider the charasteristic equation of this sequence, \(x^2-\frac{x}{p}+\frac{q}{p}=0\).
+  We get \(x_1=1,x_2=\frac{q}{p} \geq 1\).
+  If \(x_2>1\), then \(y_n=c_1 x_1^n + c_2 x_2^n\) is bounded \(\iff c_2=0\), so \(y_n=c_1 x_1^n=c_1\) is constant.
+  Else, \(x_2=x_1=1\), then \(y_n=(an+b)x_1^n=an+b\) is bounded \(\iff a=0\), so \(y_n=b\) is constant.
+  So the Markov chain is recurrent.
+\end{solution}
+
 \begin{problem}\label{pro:4}
-  Prove: collorary \(4.4.3\).
+  Let \(\phi_0(n:n \in \mathbb{N}^+)\) be simple random walk begin at \(\phi_0(0) \geq a+1\),
+  let \(\zeta_0:=\inf \{m:\phi_0(m)=a+1\}\), let \((W_n:n \in \mathbb{N})\) be reflecting simple random walk on \(\mathbb{Z}^a_+\), starting at \(a+1\), indenpendent with \(\phi_0\).
+  Let \(X_n:=\begin{cases}
+    \phi_0(n)   & n \leq \zeta_0 \\
+    W_n-\zeta_0 & n \geq \zeta_0
+  \end{cases}\).
+  Prove that \((X_n:n \in \mathbb{N})\) is reflecting random walk on \(\mathbb{Z}^a_+\) begin at \(\phi_0(0)\).
 \end{problem}
+\begin{solution}
+  Now we consider \(n \in \mathbb{N}^+\) and \(i_0,i_1,i_2,\cdots,i_{n+1}  \in \mathbb{Z}^a_+\).
+  \begin{enumerate}
+    \item If \(\forall k:1 \leq k \leq n,i_k \neq a+1\), then we have
+      \[
+        \begin{aligned}
+          \mathbb{P}(X_0=i_0,\cdots,X_{n+1} =i_{n+1} ) & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(n+1)=i_{n+1} )                                            \\
+                                                       & =\mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(n)=i_n)\mathbb{P}(\phi_0(n+1)=i_{n+1} \mid \phi_0(n)=i_n) \\
+                                                       & =\mathbb{P}(X_0=i_0,\cdots,X_n=i_n)q^a_+(i_n,i_{n+1})
+        \end{aligned}
+      \]
+    \item Else, we let \(k:=\inf \{m:1 \leq m \leq n,i_m=a+1\}\).
+      Then we have
+      \[
+        \begin{aligned}
+            & \mathbb{P}(X_0=i_0,\cdots,X_{n+1}=i_{n+1})                                                                                  \\
+          = & \mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k,W_0=a+1,W_{k + 2 + i}=i_{k+i},i=1,\cdots, n-k + 1)                            \\
+          = & \mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k)\mathbb{P}(W_0=a+1,W_{k + 2 + i}=i_{k+i},i=1,\cdots, n-k + 1)                 \\
+          = & \mathbb{P}(\phi_0(0)=i_0,\cdots,\phi_0(k)=i_k)\mathbb{P}(W_0=a+1,W_{k + 2 + i}=i_{k+i},i=1,\cdots, n-k  )q^a_+(i_n,i_{n+1}) \\
+          = & \mathbb{P}(X_0=i_0,\cdots,X_n=i_n)q^a_+(i_n,i_{n+1})
+        \end{aligned}
+      \]
+  \end{enumerate}
+  So we get \((X_n:n \geq 0)\) is reflecting simple random walk on \(\mathbb{Z}^a_+\).
+\end{solution}
 
 \end{document}
