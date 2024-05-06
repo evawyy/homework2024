@@ -15,5 +15,53 @@
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
+\begin{problem}\label{pro:1}
+  \begin{enumerate}
+    \item   Assume \(\{Y_i(n):n \geq 0\}, \{Y_2(n):n \geq 0\}\) are two independent migrating branch process with descending distribution 
+  \((p(i):i \in \mathbb{Z}_+)\) and the migrating probobility respectively are \((\gamma_1(i): i \in \mathbb{Z}_{+}),(\gamma_2(i): i \in \mathbb{Z}_+)\). 
+  Prove: \(\{Y_1(n )+ Y_2(n): n \geq 0\}\) is migrating branching process with descending distribution \(p(i): i \in \mathbb{Z}_+\) 
+  and migrating probability \(\gamma_1 * \gamma_2(i): i \in \mathbb{Z}_+\).
+\item   Let \(\{Y(n): n \in \mathbb{Z}_+\}\) be migrating branch process with descending distribution \(p(j): j \in \mathbb{Z}_+\)
+  and the migrating distribution \(\gamma(i): i \in \mathbb{Z}_+\). 
+  \(P_n^\gamma=(p_n^\gamma (i,j); i,j \in \mathbb{Z}_+)\) is the \(n\)-th transition matrix. 
+  Prove: \(\forall i,n \geq 1\)
+  \[
+    \sum_{j=0}^{\infty} p_n^\gamma(i,j)z^j = g_n(z)^i \prod_{k=1}^{n} h(g_{k-1}(z)), |z| \leq 1
+  \]
+  where \(h\) is the generating function of \((\gamma(j): j \in \mathbb{Z}_+)\).
+  \(g\) is the generating funtion of \((p(j): j \in \mathbb{Z}_+)\).
+\item  \(h,g\) are defined as above. Assume \(m :=g'(1-) < \infty, \mu:=h'(1-) < \infty\). 
+  Prove: \(\forall i,n \geq 1\), \[
+    \mathbb{P}(Y_n \mid Y_0 =i)=im^n + \mu \sum_{k=1}^{n} m^{k-1}
+  \]
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:2}
+  Assume \(b \in (0,1), p \in (0,1)\). Let \(\mu(0)=\frac{1-b-p}{1-p}\mu(j)=bp^{j-1},j \geq 1\). 
+  Prove: 
+\begin{enumerate}
+  \item   \((\mu(j):j \in \mathbb{Z}_+)\) is probability distribution and \[
+    g(z):=\sum_{j=0}^{\infty} \mu(j)z^j=\frac{1-b-p}{1-p} + \frac{bz}{1-pz}.
+  \]
+
+\item Let \(b =(1-p)^2\). 
+  Prove: 
+\begin{enumerate}
+  \item   \(g'(1)=1\) and \[
+    g(z)=p + \frac{(1-p)^2 z}{1-pz}=\frac{p-(2p-1)z}{1-pz}.
+  \]
+\item \(\forall n \geq 1\), then \[
+  g_n(z)=\frac{np-((n + 1)p-1)z}{1 + (n-1)p-npz}.
+\]     
+\end{enumerate}
+\end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:3}
+
+  
+\end{problem}
+
+
+
 
 \end{document}
