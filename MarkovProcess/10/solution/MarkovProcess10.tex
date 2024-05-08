@@ -17,33 +17,68 @@
 %from_here_to_type
 \begin{problem}\label{pro:1}
   \begin{enumerate}
-    \item   Assume \(\{Y_i(n):n \geq 0\}, \{Y_2(n):n \geq 0\}\) are two independent migrating branch process with descending distribution
-      \((p(i):i \in \mathbb{Z}_+)\) and the migrating probobility respectively are \((\gamma_1(i): i \in \mathbb{Z}_{+}),(\gamma_2(i): i \in \mathbb{Z}_+)\).
-      Prove: \(\{Y_1(n )+ Y_2(n): n \geq 0\}\) is migrating branching process with descending distribution \(p(i): i \in \mathbb{Z}_+\)
-      and migrating probability \(\gamma_1 * \gamma_2(i): i \in \mathbb{Z}_+\).
-    \item   Let \(\{Y(n): n \in \mathbb{Z}_+\}\) be migrating branch process with descending distribution \(p(j): j \in \mathbb{Z}_+\)
-      and the migrating distribution \(\gamma(i): i \in \mathbb{Z}_+\).
-      \(P_n^\gamma=(p_n^\gamma (i,j); i,j \in \mathbb{Z}_+)\) is the \(n\)-th transition matrix.
+    \item Assume \(\{Y_1(n):n \geq 0\}, \{Y_2(n):n \geq 0\}\) are two independent migrating branch process with offspring distribution
+      \((p(i):i \in \mathbb{N})\) and the migrating probability respectively are \((\gamma_1(i): i \in \mathbb{Z}_{+}),(\gamma_2(i): i \in \mathbb{N})\).
+      Prove: \(\{Y_1(n )+ Y_2(n): n \geq 0\}\) is migrating branching process with offspring distribution \(p(i): i \in \mathbb{N}\)
+      and migrating probability \(\gamma_1 * \gamma_2(i): i \in \mathbb{N}\).
+    \item Let \(\{Y(n): n \in \mathbb{N}\}\) be migrating branch process with offspring distribution \(p(j): j \in \mathbb{N}\)
+      and the migrating distribution \(\gamma(i): i \in \mathbb{N}\).
+      \(P_n^\gamma=(p_n^\gamma (i,j); i,j \in \mathbb{N})\) is the \(n\)-th transition matrix.
       Prove: \(\forall i,n \geq 1\)
       \[
         \sum_{j=0}^{\infty} p_n^\gamma(i,j)z^j = g_n(z)^i \prod_{k=1}^{n} h(g_{k-1}(z)), |z| \leq 1
       \]
-      where \(h\) is the generating function of \((\gamma(j): j \in \mathbb{Z}_+)\).
-      \(g\) is the generating funtion of \((p(j): j \in \mathbb{Z}_+)\).
-    \item  \(h,g\) are defined as above. Assume \(m :=g'(1-) < \infty, \mu:=h'(1-) < \infty\).
+      where \(h\) is the generating function of \((\gamma(j): j \in \mathbb{N})\).
+      \(g\) is the generating function of \((p(j): j \in \mathbb{N})\).
+    \item \(h,g\) are defined as above. Assume \(m :=g'(1-) < \infty, \mu:=h'(1-) < \infty\).
       Prove: \(\forall i,n \geq 1\), \[
         \mathbb{P}(Y_n \mid Y_0 =i)=im^n + \mu \sum_{k=1}^{n} m^{k-1}
       \]
   \end{enumerate}
 \end{problem}
+\begin{enumerate}
+  \item Let \(Z_n:=Y_1(n) + Y_2(n)\), \(\forall\{i_0,\cdots,i_n,i_{n + 1} \} \in \mathbb{N}\), \(G_n=\{Z_k=i_k,0 \leq k \leq n \}\).
+    \[
+      \begin{aligned}
+               & \mathbb{P}(Z_{n + 1}=i_{n + 1}, G_n)                                                                                                                                                                          \\
+        =      & \sum_{t_0=0}^{i_0} \cdots \sum_{t_{n + 1}=0}^{i_{n + 1}} \mathbb{P}(Y_1(k)=t_k,Y_2(k)=i_k-t_k, 0 \leq k \leq n + 1)                                                                                           \\
+        =      & \sum_{t_0=0}^{i_0} \cdots \sum_{t_{n + 1}}^{i_{n + 1}}\mathbb{P}(Y_1(k)=t_k, 0 \leq k \leq n + 1)\mathbb{P}(Y_2(k)=i_k-t_k, 0 \leq k \leq n + 1)                                                              \\
+        =      & \sum_{t_0=0}^{i_0} \cdots \sum_{t_n=0}^{i_{n + 1}} \mathbb{P}(Y_1(k)=t_k, 0 \leq k \leq n)p_1^{\gamma_1}(t_n,t_{n + 1})\mathbb{P}(Y_2(k)=i_k-t_k, 0 \leq k \leq n)p_1^{\gamma_2}(i_n-t_n,i_{n + 1}-t_{n + 1}) \\
+        =      & \sum_{t_0=0}^{i_0} \cdots \sum_{t_n=0}^{i_{n + 1}} \mathbb{P}(Y_1(k)=t_k, 0 \leq k \leq n)p^{*t_n}*\gamma_1(t_{n + 1})                                                                                        \\
+        \times & \mathbb{P}(Y_2(k)=i_k-t_k, 0 \leq k \leq n)p^{*i_n-t_n}*\gamma_2(i_{n + 1}-t_{n + 1})                                                                                                                         \\
+        =      & \sum_{t_0=0}^{i_0} \cdots \sum_{t_n=0}^{i_{n }} \mathbb{P}(Y_1(k)=t_k, 0 \leq k \leq n)                \mathbb{P}(Y_2(k)=i_k-t_k, 0 \leq k \leq n)p^{*i_n}*(\gamma_1*\gamma_2(i_{n + 1}))                     \\
+        =      & \sum_{t_0=0}^{i_0} \cdots \sum_{t_n=0}^{i_{n }} \mathbb{P}(Y_1(k)=t_k, Y_2(k)=i_k-t_k, 0 \leq k \leq n)p^{*i_n}*(\gamma_1*\gamma_2(i_{n + 1}))                                                                \\
+        =      & \mathbb{P}(G_n)p^{*i_n}*(\gamma_1 *\gamma_2(i_{n + 1}))
+      \end{aligned}
+    \]
+    Therefore, \(\mathbb{P}(Z_{n + 1=i_{n + 1}} \mid G_n)=p^{* i_n}*(\gamma_1 * \gamma_2(i_{n + 1}))\).
+    That is \(\{Y_1(n )+ Y_2(n): n \geq 0\}\) is migrating branching process with offspring distribution \(p(i): i \in \mathbb{N}\)
+    and migrating probability \(\gamma_1 * \gamma_2(i): i \in \mathbb{N}\).
+  \item Let \(G_n(i,z)=\sum_{j=0}^{\infty} p_n^\gamma(i,j)z^j\). And \(G_n(i,z)=\sum_{j=0}^{\infty} p_0^\gamma(i,j)z^j=z^i=g_0(z)^i\).
+    Assume \(n=k\),\(        \sum_{j=0}^{\infty} p_n^\gamma(i,j)z^j = g_n(z)^i \prod_{k=1}^{n} h(g_{k-1}(z)), |z| \leq 1\). Next, we will
+    prove \(n=k + 1\),\(        \sum_{j=0}^{\infty} p_n^\gamma(i,j)z^j = g_n(z)^i \prod_{k=1}^{n} h(g_{k-1}(z)), |z| \leq 1\).
+    Then \(p_{n + 1}^\gamma(i,j)=\sum_{l=0}^{\infty} p^{*i}*\gamma(l)p_n^\gamma(l,j)\).
+    Then \[
+      \begin{aligned}
+         & \sum_{j=0}^{\infty} p_{n + 1}^\gamma(i,j)z^j = \sum_{j=0}^{\infty} \sum_{l=0}^{\infty} p^{*i}*\gamma(l)p_n^{\gamma}(l,j)z^j
+        \\        & =\sum_{l=0}^{\infty} p^{*i}*\gamma(l)g_n(z)^l \prod_{k=1}^{n} h(g_{k-1}(z))
+        \\        & =\sum_{s+t=0}^{\infty} p^{*i}(s)\gamma(t)g_n(z)^{(s + t)} \prod_{k=1}^{n} h(g_{k-1}(z))
+        \\        & =\sum_{s+t=0}^{\infty} p^{*i}(s)g_n(z)^{s}\gamma(t)g_n(z)^t \prod_{k=1}^{n} h(g_{k-1}(z))
+        \\        & =g_{n + 1}(z)^{i}h(g_n(z)) \prod_{k=1}^{n} h(g_{k-1}(z))
+        \\&        =g_{n + 1}(z)^{i}\prod_{k=1}^{n + 1} h(g_{k-1}(z))
+      \end{aligned}
+    \]
+  \item Since \(G_n(i,z)'=ig_n(z)^{i-1}(g_n(z)')\prod_{k=1}^{n}h(g_{k -1}(z)) + g_n(z)^i \prod_{k=1}^{n} h'(g_{k-1}(z))(g_{k-1}(z))' \), then
+    \(\mathbb{P}(Y_n|Y_0=i)=G_n(i,1-)'=im^n + \mu \prod_{k=1}^{n} m^{k -1}\).
+\end{enumerate}
+
 \begin{problem}\label{pro:2}
-  Assume \(b \in (0,1), p \in (0,1)\). Let \(\mu(0)=\frac{1-b-p}{1-p}\mu(j)=bp^{j-1},j \geq 1\).
+  Assume \(b \in (0,1), p \in (0,1),0 < b + p \leq 1\). Let \(\mu(0)=\frac{1-b-p}{1-p},\mu(j)=bp^{j-1},j \geq 1\).
   Prove:
   \begin{enumerate}
-    \item   \((\mu(j):j \in \mathbb{Z}_+)\) is probability distribution and \[
+    \item   \((\mu(j):j \in \mathbb{N})\) is probability distribution and \[
         g(z):=\sum_{j=0}^{\infty} \mu(j)z^j=\frac{1-b-p}{1-p} + \frac{bz}{1-pz}.
       \]
-
     \item Let \(b =(1-p)^2\).
       Prove:
       \begin{enumerate}
@@ -56,30 +91,100 @@
       \end{enumerate}
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Obviously, \(\forall j \geq 1\), \(\mu(j)=bp^{j-1}>0\). \(\mu(0)=1-\frac{b}{1-p}\geq 0\).
+      And \(\sum_{j=0}^{\infty} \frac{1-b-p}{1-p}+bp^{j-1}=1\), then \((\mu(j):j \in \mathbb{N})\) is probability distribution.
+      \(g(z)=\sum_{j=0}^{\infty} \mu(j)z^j=\frac{1-b-p}{1-p} + \sum_{j=1}^{\infty} \frac{b}{p}(pz)j=\frac{1-b-p}{1-p} + \frac{bz}{1-pz}\).
+    \item Let \(b=(1-p)^2\), we can easily get that \(g(z)=p + \frac{(1-p)^2z}{1-pz}\).
+      Since \(g_{n + 1}(z)=g(g_n(z))=\frac{(1-p)^2g_n(z)}{1-pg_n(z)} + p\), then \(g_{n + 1}(z)-1=\frac{(g_n(z)-1)(1-p)}{1-pz}\).
+      Then \(\frac{1}{g_{n + 1}(z)}=\frac{1}{g_n(z) + 1}+ \frac{p}{p-1}\). So \(\frac{1}{g_n(z)-1}=\frac{pn}{p-1} + \frac{1}{z-1}=\frac{1-p + pn(1-z)}{(1-p)(1-z)}\).
+      Therefore, \(g_n(z)=\frac{np-((n + 1)p-1)z}{1 + (n-1)p-npz}\).
+  \end{enumerate}
+\end{solution}
+
 \begin{problem}\label{pro:3}
-  Let \(\{Y(n): n \in \mathbb{Z}_+\}\) be branch process with descending distribution \(p(j): j \in \mathbb{Z}_+\).
-  And \(g\) is the generating function. Let \(m_2:=g'(1) + g''(1) < \infty\).
+  Let \(\{X(n): n \in \mathbb{N}\}\) be branch process with offspring distribution \(p(j): j \in \mathbb{N}\).
+  And \(g\) is the generating function. Let \(m_2:=g'(1) + g''(1) < \infty,m=g'(1)<\infty\).
   \(\forall k \geq 1\), \(X_n^{(k)}=k^{-1}X_n\).
   Prove: \(\forall \varepsilon >0, i,n \geq 1\), \(\mathbb{P}(|X_n^{(k)} -im^n| \geq \varepsilon \mid X_0^{(k)}=i) \to 0, k \to \infty\).
 \end{problem}
+\begin{solution}
+  \((Y(n,j):n,j \in \mathbb{N})\) are branch process with offspring distribution \((p(j):j \in \mathbb{N})\)
+  and initial point \(Y(0,j)=i,j \in \mathbb{N}\).
+  Then \(\sum_{j=1}^{k} Y(n,j) \overset{d}{=} X_n \mid X_0=ki\).
+  Since \(\frac{\sum_{j=1}^{k} Y(n,j)}{k} \overset{\text{a.s.}}{=} \mathbb{E}(Y(n,1))=im^n ,k \to \infty\).
+  Then \(\mathbb{P}(|X_n^{(k)}-im^n| \geq \varepsilon \mid X_0^{(k)}=i)=\mathbb{P}(|\frac{X_n}{k}-im^n|\geq  \varepsilon \mid X_0=ki)=\mathbb{P}(|\frac{\sum_{j=1}^{k} Y(n,j)}{k}-im^n| \geq \varepsilon)=0, k \to \infty\).
+\end{solution}
+
 \begin{problem}\label{pro:4}
-  Let \(\{Y(n): n \in \mathbb{Z}_+\}\) be branch process with descending distribution \(p(j): j \in \mathbb{Z}_+\).
+  Let \(\{Y(n): n \in \mathbb{N}\}\) be branch process with offspring distribution \(p(j): j \in \mathbb{N}\).
   And \(g\) is the generating function, where \(m :=g' (1) \in (1, \infty), m_2:=g'(1) + g''(1) < \infty\).
-  Let \(\sigma^2:=m_2-m^2 = \mathbb{D}(Y(1))\).
+  Let \(\sigma^2:=m_2-m^2 = \mathbb{D}(Y(1)), \lim_{n \to \infty}\frac{Y_n}{m^n}=W\).
   Prove: \[
-    \lim_{n \to \infty}\mathbb{E}_1[(m^{-n}X_n -W)^2]= 0, \mathbb{D}_1(W)=\sigma^2 m^{(-1)}(m-1)^{-1}
+    \lim_{n \to \infty}\mathbb{E}_1[(m^{-n}Y_n -W)^2]= 0, \mathbb{D}_1(W)=\sigma^2 m^{(-1)}(m-1)^{-1}
   \]
 \end{problem}
+\begin{solution}
+  For convenience we write \(\mathbb{E},\mathbb{D}\) instead of \(\mathbb{E}_1,\mathbb{D}_1\).
+  Easy to get that \(\mathbb{E}(m ^{-2n} Y_n^2)=\frac{\sigma^2(1-m^{-n})}{m^2-m}+1\).
+  So by Fatou theorem we get that \(\mathbb{E}(W^2) \leq \lim_{n \to \infty}\mathbb{E}(m^{-2n}Y_n^2)=\frac{\sigma^2}{m^2-m}+1<\infty\).
+  And by Doob Stochastic Processes p317 theorem 3.4 we get that
+  \(\mathbb{E}(\max_{n \in \mathbb{N}}m^{-2n}Y_n^2) < \infty\).
+  Thus, \(m^{-2n}Y_n^2\) are integrable uniformly, and so do \((m^{-n}Y_n-W)^2\).
+  So by LCDT we can get \(\lim_{n \to \infty}\mathbb{E}((m^{-n}Y_n-W)^2)=0\).
+  Noting that
+  \[
+    \mathbb{E}(m^{-2n}Y_n^2-W^2)=\mathbb{E}((m^{-n}Y_n+W)(m^{-n}Y_n-W)) \leq \sqrt{\mathbb{E}((m^{-n}Y_n+W)^2) \mathbb{E}((m^{-n}Y_n-W)^2)} \to 0
+  \]
+  ,
+  we get \(\mathbb{E}(W^2)=\lim \mathbb{E}(m^{-2n}Y_{n}^2)=\frac{\sigma^2}{m^2-m}+1\).
+  Also, \(\mathbb{E}(|m^{-n}Y_n-W|)^2 \leq \mathbb{E}((m^{-n}Y_n-W)^2)\),
+  so \(\mathbb{E}(W)=\lim \mathbb{E}(m^{-n}Y_n)=1\).
+  So \(\mathbb{D}(W)=\mathbb{E}(W^2)-\mathbb{E}(W)^2=\frac{\sigma^2}{m(m-1)}\).
+
+\end{solution}
+
 \begin{problem}\label{pro:5}
-  Let \(\{Y(n): n \in \mathbb{Z}_+\}\) be branch process with descending distribution \(p(j): j \in \mathbb{Z}_+\).
+  Let \(\{Y(n): n \in \mathbb{N}\}\) be branch process with offspring distribution \(p(j): j \in \mathbb{N}\),
   And \(g\) is the generating function, where \(m :=g' (1) \leq 1\).
-  Prove \((p^\gamma(j): j \in \mathbb{Z}_+)\) is the steady-state vector of
-  transition matrix \(P_n^\gamma\), that is \(\sum_{i =0}^{\infty} p^\gamma(i)p_n^\gamma(i,j)=p^{\gamma}(j), i \geq 0\).
+  Prove \((p^\gamma(j): j \in \mathbb{N})\) is the steady-state vector of
+  transition matrix \(P_n^\gamma\), that is \(\sum_{i =0}^{\infty} p^\gamma(i)p_n^\gamma(i,j)=p^{\gamma}(j), j \geq 0\).
 \end{problem}
+\begin{solution}
+  Since \(\lim_{m \to \infty}p_m^\gamma(i,j)=p^\gamma(j),\forall i \in \mathbb{N}\) and \(\forall k,j \in \mathbb{N}\), then
+  \(\sum_{l=0}^{\infty} p_n(k,l)p_m(l,j)=p_{n + m}(k,j)\). Then we only need to prove \[
+    \lim_{m \to \infty}\sum_{i=0}^{\infty} (p^\gamma(i)-p_m^\gamma(k,i))p_n^\gamma(i,j)=0
+  \]
+  Since \(\sum_{j=0}^\infty p_m^\gamma(i,j)=1, \forall i \in \mathbb{N}\), then by LCDT we can get that
+  \(\sum_{j=0}^{\infty} p^\gamma(i,j)=1, \forall i \in \mathbb{N}\).
+  Then \(\forall \varepsilon >0, \exists N>0\), \(\sum_{j=N}^{\infty} p^\gamma(i,j) <\varepsilon\) and
+  \(\exists M >0, \forall 0 \leq i \leq N-1, \forall m \geq M, |p_m^\gamma(k,i)-p^\gamma(i)| < \frac{\varepsilon}{N}\).
+  Then, \[
+    \begin{aligned}
+       & |\sum_{i=0}^{\infty} (p^\gamma(i)-p_m^\gamma(k,i))p_n^\gamma(i,j)|                                                                     \\
+       & \leq \sum_{i=0}^{\infty} |p^\gamma(i)-p_m^\gamma(k,i)|p_n^\gamma(i,j)                                                                  \\
+       & \leq \sum_{i=0}^{N-1} |p^\gamma(i)-p_m^\gamma(k,i)|p_n^\gamma(i,j) + \sum_{i=N}^{\infty}|p^\gamma(i)-p_m^{\gamma}(k,i)|p_n^\gamma(i,j) \\
+       & \leq \varepsilon + \sum_{i=N}^{\infty} p^\gamma(i)p_n^\gamma(i,j) + \sum_{i=N}^{\infty} p_m^\gamma(k,i)p_n^\gamma(i,j)                 \\
+       & \leq \varepsilon + \sum_{i=N}^{\infty} p^\gamma(i)+\sum_{i=N}^{\infty} p_m^\gamma(k,i)                                                 \\
+       & \leq 2\varepsilon + 1-\sum_{i=0}^{N-1} p^\gamma(i)+\sum_{i=0}^{N-1} |p_m^\gamma(k,i)-p^\gamma(i)|                                      \\
+       & \leq 2\varepsilon + \sum_{i=N}^{\infty} p^\gamma(i)+\varepsilon                                                                        \\
+       & \leq 4\varepsilon < \varepsilon
+    \end{aligned}
+  \]
+\end{solution}
+
 \begin{problem}\label{pro:6}
-  Let \(\{Y(n): n \in \mathbb{Z}_+\}\) be branch process with descending distribution \(p(j): j \in \mathbb{Z}_+\).
+  Let \(\{Y(n): n \in \mathbb{N}\}\) be migrating branch process with offspring distribution \(p(j): j \in \mathbb{N}\),
+  and migrating distribution \(\gamma(i):i \in \mathbb{N}\).
   And \(g\) is the generating function, where \(m :=g' (1) \leq 1\).
   Discuss \(\lim_{n \to \infty}\mathbb{E}(Y_n \mid Y_0=i)\).
 \end{problem}
+\begin{solution}
+  \(\lim_{n \to \infty}\mathbb{E}(Y_n \mid Y_0=i)=\lim_{n \to \infty}im^n + \mu \sum_{k=1}^{n} m^{k-1}=\begin{cases}
+    \infty          & m=1  \\
+    \frac{\mu}{1-m} & m <1
+  \end{cases}\).
+\end{solution}
 
 \end{document}

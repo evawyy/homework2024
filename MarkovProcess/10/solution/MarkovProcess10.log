@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  6 MAY 2024 23:24
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  8 MAY 2024 19:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1133,11 +1133,43 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 18
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [1
+)
+Overfull \hbox (48.85104pt too wide) detected at line 53
+[][]
+ []
+
+[1
 
 
-] [2]
-(./MarkovProcess10.aux)
+]
+
+Package fontspec Warning: Font "STFangsong" does not contain requested Script
+(fontspec)                "CJK".
+
+
+Package fontspec Info: Could not resolve font "STFangsong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Font family 'STFangsong(0)' created for font
+(fontspec)             'STFangsong' with options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"STFangsong/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+[2] [3] [4] (./MarkovProcess10.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1146,12 +1178,12 @@ Package rerunfilecheck Info: File `MarkovProcess10.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32955 strings out of 474773
- 688225 string characters out of 5757725
- 1953839 words of memory out of 5000000
- 54576 multiletter control sequences out of 15000+600000
- 565346 words of font info for 77 fonts, out of 8000000 for 9000
+ 32987 strings out of 474773
+ 688947 string characters out of 5757725
+ 1955839 words of memory out of 5000000
+ 54595 multiletter control sequences out of 15000+600000
+ 565402 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 112i,6n,113p,3377b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,8n,113p,3377b,800s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MarkovProcess10.pdf (2 pages).
+Output written on MarkovProcess10.pdf (4 pages).

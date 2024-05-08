@@ -51,18 +51,35 @@
 
 \end{solution}
 \begin{problem}\label{pro:3}
-Find out all the squared remainder and non squared remainder of \(37\).
+  Find out all the squared remainder and non squared remainder of \(37\).
 \end{problem}
 \begin{solution}
-By the Theorem 2 on page 65 of text book, we can get that \(\{k^2 + 37t:1 \leq k \leq 18, t \in \mathbb{Z}\}=\{k + 37 t: t \in \mathbb{Z}, k \in A\}\), 
-where \(A:=\{1,4,9,16,25,36,12,27,7,26,10,33,21,11,3,34,30,28\}\) are squared remainder. 
-And \(\{k + 37t: t \in \mathbb{Z}, k \in B\}\), where \(B=\mathbb{N}^+ \cap[0,36] \setminus A\) are non 
-squared remainder.
+  By the Theorem 2 on page 65 of text book, we can get that \(\{k^2 + 37t:1 \leq k \leq 18, t \in \mathbb{Z}\}=\{k + 37 t: t \in \mathbb{Z}, k \in A\}\),
+  where \(A:=\{1,4,9,16,25,36,12,27,7,26,10,33,21,11,3,34,30,28\}\) are squared remainder.
+  And \(\{k + 37t: t \in \mathbb{Z}, k \in B\}\), where \(B=\mathbb{N}^+ \cap[0,36] \setminus A\) are non
+  squared remainder.
 \end{solution}
 \begin{problem}\label{pro:4}
-  
+  \begin{enumerate}
+    \item Use the conclusion in the formar chapters, prove: there must exist quadratic residue and
+      non quadratic residue in the reduced residue system of \(p\).
+    \item Assume \(x_1,x_2\) are quadratic residues, \(X_3\) is non quadratic residue:
+      prove \(x_1x_2\) is quadratic residue, \(x_1x_3\) is non quadratic residue.
+    \item Apply the conclusions above, prove that both the quadratic residue and the non quadratic residue
+      in the reduced residue system of \(p\) have
+      \(\frac{p-1}{2}\) elements.
+  \end{enumerate}
 \end{problem}
-
-
+\begin{problem}\label{pro:5}
+  Prove: the solution of \(x^2 \equiv a\pmod{p^\alpha},\gcd(\alpha,p)=1\) is \(x \equiv \pm PQ'\pmod{p^\alpha}\), where \[
+    P=\frac{(z + \sqrt{\alpha})^\alpha + (z - \sqrt{\alpha})^\alpha}{2}, Q=\frac{(z + \sqrt{\alpha})^\alpha - (z-\sqrt{\alpha})^\alpha}{\sqrt{\alpha}},
+  \]
+  \[
+    z^2\equiv \alpha\pmod{p}, QQ' \equiv 1 \pmod{p^\alpha}.
+  \]
+\end{problem}
+\begin{problem}\label{pro:6}
+  Prove the solution of \(x^2 + 1 \equiv 0 \pmod{p},p=4m + 1\) is \(x \equiv \pm 1 \cdot 2 \cdot \cdots \cdot (2m)\pmod{p}\).
+\end{problem}
 
 \end{document}
