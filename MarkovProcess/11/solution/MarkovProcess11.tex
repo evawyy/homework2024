@@ -1,0 +1,61 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Let \(S=(S_n:n \geq 0)\) be the one-dimensional symmetry simple random walk with \(S_0=c \geq 0\).
+  Let \(k \geq 1\) and \(\tau\) is the time of the \(k\)-th undercrossing \(0\).
+  \(X_b\) is the times of \((S_{n \AND \tau}:n \geq 0)\) undercrossing \(b\). Prove:
+  \begin{enumerate}
+    \item \((X_b:b \geq c-1)\) is branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
+    \item \((X_{-a}:a \geq 1)\) is branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
+    \item \((X_b:0 \leq b \leq c-1)\) is migrating branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
+      And the migrating distribution is concentrating on \(1\).
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:2}
+  \(c < b \in \mathbb{Z}_+\). Let \(W=(W_n :n \geq 0)\) be the one-dimensional reflecting symmetry simple
+  random walk with \(W_0=c \geq 0\) on \(\mathbb{Z}^{0,b}\), whose transition matrix is \(P^{0,b}\), where
+  \(a = 0,p,q >0, p + q =1\).
+  Let \(k \geq 1\) and \(\tau\) is the time of the \(k\)-th undercrossing \(0\) on \((W_n)\).
+  \(0 \leq a \leq b\),
+  \(X_a\) is the times of \((S_{n \AND \tau}:n \geq 0)\) undercrossing \(a\). Prove:
+  \begin{enumerate}
+    \item \((X_b:c-1 \leq a \geq b-1)\) is branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
+    \item \((X_b:0 \leq b \leq c-1)\) is migrating branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
+      And the migrating distribution is concentrating on \(1\).
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:3}
+  Let \(W=(W_n:n \geq 0)\) be the one-dimensional simple random walk with \(W_0=0\), whose transition matrix \(P\) given by equation \((4.4.3)\)
+  on textbook, \(0< p<q<1\).
+  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) undercrossing \(a\).
+  \(r=\frac{p}{q}\).
+  Prove:
+  \begin{enumerate}
+    \item \(\mathbb{P}(X_0=i)=r^i(1-r),i \geq 0\);
+    \item \(a \geq 0\), \(\mathbb{P}(X_a=0)=1-r^{a +1}\), \(\mathbb{P}(X_a=i)=r^{a + 1}(1 -r),i \geq 1\).
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:4}
+  Let \(W=(W_n:n \geq 0)\) be the one-dimensional simple random walk with \(W_0=0\), whose transition matrix \(P\) given by equation \((4.4.3)\)
+  on textbook, \(0< p<q<1\).
+  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) undercrossing \(a\).
+  \(r=\frac{p}{q}\).
+  Prove: if \(a \leq -1\), then \(X_a \sim G(1-r)\), i.e. \(\mathbb{P}(X_a=i)=r^{i-1}(1-r),i \geq 1\).
+\end{problem}
+
+\end{document}

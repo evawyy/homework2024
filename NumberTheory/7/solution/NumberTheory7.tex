@@ -29,6 +29,7 @@
 
   And obviously, \(\forall y:V_p(y) \geq \frac{\alpha }{2}\), then \(V_p(y^2) =2V_p(y) \geq \alpha\), then \(p^\alpha \mid y^2\).
 \end{solution}
+
 \begin{problem}\label{pro:2}
   Prove:
   \[
@@ -43,15 +44,17 @@
 \end{problem}
 \begin{solution}
   Since \(\gcd(2a,m)=1\), then \(2 \nmid m, a \nmid m\), then \(\gcd(4a,m)=1\).
-  So the solution of \(ax^2 + bx + c \equiv 0 \pmod{m}\) \(\iff\) it is the solution of \((2ax + b)^2 + (4ac -b^2) \equiv 0 \pmod{m}\)
-  \(\implies\) \(y^2 + 4ac-b^2 \equiv 0 \pmod{m}\), where \(y \equiv 2ax + b \pmod{m}\).
+  \(ax^2 + bx + c \equiv 0 \pmod{m}\) has solutions \(\iff\) \((2ax + b)^2 + (4ac -b^2) \equiv 0 \pmod{m}\) has solutions.
+  \(\implies\) :\(y^2 + 4ac-b^2 \equiv 0 \pmod{m}\), where \(y \equiv 2ax + b \pmod{m}\).
   Since \(\gcd(2a,m)=1\), then the solution of \(y^2 + 4ac-b^2 \equiv 0 \pmod{m}\) \(y\), we
   let \(x \equiv A(y-b) \pmod{m}\), where \(A(2a) \equiv 1 \pmod{m}\),
   \(x\) is the solution of \((2ax + b)^2 + (4ac -b^2) \equiv 0 \pmod{m}\).
-
+  \(\impliedby\): \((2ax + b)^2 + (4ac -b^2) \equiv 0 \pmod{m}\) has solution \(x\), then \(2ax + b\) is the solution of \(ax^2 + bx + c \equiv 0 \pmod{m}\), same
+  way as above.
 \end{solution}
+
 \begin{problem}\label{pro:3}
-  Find out all the squared remainder and non squared remainder of \(37\).
+  Find out all the squared remainder and non quadratic remainder of \(37\).
 \end{problem}
 \begin{solution}
   By the Theorem 2 on page 65 of text book, we can get that \(\{k^2 + 37t:1 \leq k \leq 18, t \in \mathbb{Z}\}=\{k + 37 t: t \in \mathbb{Z}, k \in A\}\),
@@ -61,7 +64,7 @@
 \end{solution}
 \begin{problem}\label{pro:4}
   \begin{enumerate}
-    \item Use the conclusion in the formar chapters, prove: there must exist quadratic residue and
+    \item Use the conclusion in the former chapters, prove: there must exist quadratic residue and
       non quadratic residue in the reduced residue system of \(p\).
     \item Assume \(x_1,x_2\) are quadratic residues, \(X_3\) is non quadratic residue:
       prove \(x_1x_2\) is quadratic residue, \(x_1x_3\) is non quadratic residue.
@@ -70,6 +73,27 @@
       \(\frac{p-1}{2}\) elements.
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Obviously, \(1\) is quadratic residue of \(p\). Consider function \(f: \mathbb{Z}_p\setminus\{0\} \to \mathbb{Z}_p\setminus\{0\},i \to i^2\).
+      When \(p >2\), if every elements in \(\mathbb{Z}_p\setminus\{0\}\) is quadratic residue, then \(f\) is bijective. But
+      \(1 \not \equiv -1 \pmod{p} \) and \(f(-1)\equiv f(1)\equiv 1 \pmod{p}\),
+      then \(f\) is not surjective, contradiction!
+      Then there must exist non-quadratic residue of \(p\).
+    \item Assume \(x_1 \equiv y_1^2,x_2 \equiv y_2^2 \pmod{p}\), then \(x_1x_2 \equiv y_1^2y_2^2 \pmod{p} \). Then \(x_1x_2\) is quadratic residue.
+      Since \(y_1 \not \equiv 0 \pmod{p}\), then \(\exists z\) such that \(y_{1z} \equiv 1 \pmod{p}\).
+      If \(x_1x_3 \equiv t^2 \pmod{p}, \exists t\). Then \(x_3 \equiv z^2x_1x_3 \equiv (zt)^2 \pmod{p}\), contradiction!
+    \item Recall \(f\), we only need to prove \(|f(\mathbb{Z}_p\setminus\{0\})|=\frac{p-1}{2}\).
+      For every \(x \in f(\mathbb{Z}_p\setminus\{0\})\), consider \(x \equiv y^2 \pmod{p}\). Then \(\exists y\) such that \(x \equiv y^2 \pmod{p}\).
+      If \(y_1^2 \equiv y_2^2 \equiv \pmod{p}\), then \(p \mid (y_1 + y_2)(y_1-y_2)\), then \(y_2 \equiv \pm y_1 \pmod{p}\).
+      Then \(|f^{-1}(x)| \leq 2\). On the other hand, easy to prove that \(y \not \equiv 0 \pmod{p} \to y \not \equiv -y \pmod{p}\),
+      and \(x \equiv y^2 \pmod{p} \to x \equiv (-y)^2 \pmod{p}\). So \(|f^{-1}(x)|=2\). Then \[
+        \sum_{x \in f(\mathbb{Z}_p\setminus\{0\})}2 = \sum_{x \in f(\mathbb{Z}_p\setminus\{0\})}\sum_{y \in \mathbb{Z}_p, x \equiv y^2 }1 = \sum_{y \in \mathbb{Z}_p\setminus\{0\}}\sum_{x \equiv y^2}1=\sum_{y \in \mathbb{Z}_p\setminus\{0\}}1=p-1
+      \]
+      Therefore, \(|f(\mathbb{Z}_p\setminus\{0\})|=\frac{p-1}{2}\).
+  \end{enumerate}
+\end{solution}
+
 \begin{problem}\label{pro:5}
   Prove: the solution of \(x^2 \equiv a\pmod{p^\alpha},\gcd(\alpha,p)=1\) is \(x \equiv \pm PQ'\pmod{p^\alpha}\), where \[
     P=\frac{(z + \sqrt{\alpha})^\alpha + (z - \sqrt{\alpha})^\alpha}{2}, Q=\frac{(z + \sqrt{\alpha})^\alpha - (z-\sqrt{\alpha})^\alpha}{\sqrt{\alpha}},
@@ -78,8 +102,20 @@
     z^2\equiv \alpha\pmod{p}, QQ' \equiv 1 \pmod{p^\alpha}.
   \]
 \end{problem}
+\begin{solution}
+  First, if \(x^2 \equiv a \pmod{p^\alpha}\) has solution, then \(z^2 \equiv a \pmod{p}\) has solution.
+  So we only need to prove that if \(z^2 \equiv a \pmod{p}\) has solution, then \(\pm PQ'\) is the
+  solution of \(x^2 \equiv a \pmod{p^\alpha}\). Easy to get that \(P + \sqrt{a}Q=(z + \sqrt{a})^\alpha\)
+  and \(P-\sqrt{a}Q=(z-\sqrt{a})^\alpha\). So \(P^2-aQ^2=((z + \sqrt{a})(z-\sqrt{a}))^\alpha=(z^2-a)^\alpha\).
+  Since \(z^2 \equiv a \pmod{p}\), we know \(p \mid z^2-a\), so \(p^\alpha \mid P^2-aQ^2\).
+  So \(P^2 \equiv aQ^2 \pmod{p}\). So \(x^2 \equiv P^2Q'^2 \equiv aQ^2Q'^2 \equiv a \pmod{p}\).
+\end{solution}
 \begin{problem}\label{pro:6}
   Prove the solution of \(x^2 + 1 \equiv 0 \pmod{p},p=4m + 1\) is \(x \equiv \pm 1 \cdot 2 \cdot \cdots \cdot (2m)\pmod{p}\).
 \end{problem}
-
+\begin{solution}
+  Easy to know that \(x^2 \equiv \prod_{i=1}^{2m} i \prod_{i=1}^{2m} i \equiv \prod_{i=1}^{2m} i(-1)^{2m} \prod_{i=1}^{2m} -i \equiv \prod_{i=1}^{4m} i \pmod{p}\).
+  So we only need to prove that for \(p \in \mathbb{P} \AND p \neq 2, (p-1)!\equiv -1 \mod p\).
+  It is obvious by Wilson's Theorem.
+\end{solution}
 \end{document}

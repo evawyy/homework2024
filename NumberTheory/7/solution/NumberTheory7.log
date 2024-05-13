@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  8 MAY 2024 23:48
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  10 MAY 2024 14:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -958,7 +958,7 @@ Package: xeCJK-listings 2022/08/05 v3.9.1 xeCJK patch file for listings
 )
 \c@problem=\count386
 )
-(../../../global/me) (../../../global/commands) (../../localcommands))
+(../../../global/me) (../../../global/commands) (../../localcommands.tex))
 (./NumberTheory7.aux)
 \openout1 = `NumberTheory7.aux'.
 
@@ -1164,26 +1164,22 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 [1
 
 
-] (./NumberTheory7.aux)
+] [2] (./NumberTheory7.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `NumberTheory7.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  )
 (\end occurred when \iffalse on line 11 was incomplete) 
 Here is how much of TeX's memory you used:
- 32983 strings out of 474773
- 688791 string characters out of 5757725
+ 32990 strings out of 474773
+ 688922 string characters out of 5757725
  1970839 words of memory out of 5000000
- 54591 multiletter control sequences out of 15000+600000
+ 54598 multiletter control sequences out of 15000+600000
  565402 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  112i,6n,113p,3373b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on NumberTheory7.pdf (1 page).
+Output written on NumberTheory7.pdf (2 pages).
