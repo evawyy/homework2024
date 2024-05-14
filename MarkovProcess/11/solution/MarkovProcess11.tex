@@ -17,45 +17,97 @@
 %from_here_to_type
 \begin{problem}\label{pro:1}
   Let \(S=(S_n:n \geq 0)\) be the one-dimensional symmetry simple random walk with \(S_0=c \geq 0\).
-  Let \(k \geq 1\) and \(\tau\) is the time of the \(k\)-th undercrossing \(0\).
-  \(X_b\) is the times of \((S_{n \AND \tau}:n \geq 0)\) undercrossing \(b\). Prove:
+  Let \(k \geq 1\) and \(\tau\) be the time of the \(k\)-th downcrossing \(0\).
+  \(X_b\) is the times of \((S_{n \AND \tau}:n \geq 0)\) downcrossing \(b\). Prove:
   \begin{enumerate}
-    \item \((X_b:b \geq c-1)\) is branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
-    \item \((X_{-a}:a \geq 1)\) is branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
-    \item \((X_b:0 \leq b \leq c-1)\) is migrating branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
+    \item \((X_b:b \geq c-1)\) is branch process. And offspring distribution has \(Geo(\frac{1}{2})\).
+    \item \((X_{-a}:a \geq 1)\) is branch process. And offspring distribution has \(Geo(\frac{1}{2})\).
+    \item \((X_b:0 \leq b \leq c-1)\) is migrating branch process. And offspring distribution has \(Geo(\frac{1}{2})\).
       And the migrating distribution is concentrating on \(1\).
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  
+\end{solution}
 \begin{problem}\label{pro:2}
   \(c < b \in \mathbb{Z}_+\). Let \(W=(W_n :n \geq 0)\) be the one-dimensional reflecting symmetry simple
   random walk with \(W_0=c \geq 0\) on \(\mathbb{Z}^{0,b}\), whose transition matrix is \(P^{0,b}\), where
   \(a = 0,p,q >0, p + q =1\).
-  Let \(k \geq 1\) and \(\tau\) is the time of the \(k\)-th undercrossing \(0\) on \((W_n)\).
+  Let \(k \geq 1\) and \(\tau\) is the time of the \(k\)-th downcrossing \(0\) on \((W_n)\).
   \(0 \leq a \leq b\),
-  \(X_a\) is the times of \((S_{n \AND \tau}:n \geq 0)\) undercrossing \(a\). Prove:
+  \(X_a\) is the times of \((S_{n \AND \tau}:n \geq 0)\) downcrossing \(a\). Prove:
   \begin{enumerate}
     \item \((X_b:c-1 \leq a \geq b-1)\) is branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
     \item \((X_b:0 \leq b \leq c-1)\) is migrating branch process. And offspring distribution is presented by equation \((6.3.1)\) on textbook.
       And the migrating distribution is concentrating on \(1\).
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  
+\end{solution}
 \begin{problem}\label{pro:3}
   Let \(W=(W_n:n \geq 0)\) be the one-dimensional simple random walk with \(W_0=0\), whose transition matrix \(P\) given by equation \((4.4.3)\)
   on textbook, \(0< p<q<1\).
-  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) undercrossing \(a\).
+  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) downcrossing \(a\).
   \(r=\frac{p}{q}\).
   Prove:
   \begin{enumerate}
-    \item \(\mathbb{P}(X_0=i)=r^i(1-r),i \geq 0\);
+    \item \label{ite:3.1} \(\mathbb{P}(X_0=i)=r^i(1-r),i \geq 0\);
     \item \(a \geq 0\), \(\mathbb{P}(X_a=0)=1-r^{a +1}\), \(\mathbb{P}(X_a=i)=r^{a + 1}(1 -r),i \geq 1\).
   \end{enumerate}
 \end{problem}
+\begin{solution}
+\begin{enumerate}
+  \item Since \(p <q\), then \(W_n \to -\infty,n \to \infty\). Let \(\tau_0=0, \forall k \geq 1\), 
+    \(\sigma_k=\inf \{n \geq \tau_{k-1}:W_n=1\},\tau_k=\inf \{n \geq \sigma_k:W_n=0\}\).
+    \begin{enumerate}
+      \item If \(i=0\), then \(\{X_0=i\}\overset{\text{a.s.}}{=}\{\sigma_1=\infty\}\). Then \(\mathbb{P}(X_0=i)=\mathbb{P}(\sigma_1=\infty)=r\).
+      \item If \(i \geq 1\), then \(\{X_0=i\}\overset{\text{a.s.}}{=}\{\sigma_i <\infty,\sigma_{i + 1}=\infty\}\). 
+        Since \(\{\tau_{i} <\infty\} \subset \{\sigma_{i} \infty\}, \mathbb{P}(\sigma_i <\infty, \tau_i = \infty)=0\), 
+        then by strong markov property,
+        \[
+          \begin{aligned}
+          \mathbb{P}(\sigma_{i + 1} <\infty \mid \sigma_{i} < \infty) &= \mathbb{P}(\sigma_{i + 1} < \infty \mid \sigma_i <\infty, \tau_i < \infty) \\ 
+          &=\mathbb{P}(\sigma_{i + 1}<\infty \mid \tau_i < \infty)\\ 
+          &=\mathbb{P}(\sigma_{i + 1}< \infty \mid \tau_i < \infty, W_{\tau_i}=0)\\ 
+          &=\mathbb{P}(\sigma_1 < \infty)=r
+        \end{aligned}
+        \]
+        Therefore, 
+        \[
+            \mathbb{P}(\sigma_{i + 1} < \infty)&=\mathbb{P}(\sigma_{i + 1}<\infty \mid \sigma_i < \infty )\mathbb{P}(\sigma_i < \infty)\\
+        \]
+        Then \(\mathbb{P}(\sigma_{i }<\infty)=r^i\). 
+        Therefore, \(\mathbb{P}(X_0=i)=\mathbb{P}(\sigma_i < \infty,\sigma_{i + 1}=\infty)=\mathbb{P}(\sigma_i < \infty) \mathbb{P}(\sigma_{i + 1}=\infty \mid \sigma_i < \infty)=r^i(1-r)\).
+    \end{enumerate}
+  \item Let \(D_a=\inf (n \geq 0: W_n=a)\), then \(\mathbb{P}(D_a < \infty)=r^a\). By strong markov property, 
+    \((W_{D_a + n-a:n \geq 0})\) is a random walk starting from \(0\) under \(\mathbb{P}(\cdot \mid D_a < \infty)=\mathbb{P}(\cdot \mid D_a < \infty, W_{D_a}=a)\). 
+    By the conclusion in \ref{ite:3.1}, \(\mathbb{P}(X_a=i \mid D_a < \infty)=r^i(1-r), i \geq 0\).
+    Then \[
+      \begin{aligned}
+      \mathbb{P}(X_a=0)&=\mathbb{P}(D_a=\infty) + \mathbb{P}(D_a < \infty, X_a=0)\\ 
+      &=1-r^a + \mathbb{P}(D_a < \infty)\mathbb{P}(X_a=0 \mid D_a < \infty)\\ 
+      &=1-r^a + r^a(1-r)=1-r^{a + 1}
+    \end{aligned}
+    \]
+    \(\forall i \geq 1\),
+\[
+  \begin{aligned}
+    \mathbb{P}(X_a=i)&=\mathbb{P}(D_a< \infty,X_a=i)\\ 
+                     &=    \mathbb{P}(D_a< \infty)\mathbb{P}(X_a = i \mid D_a < \infty)\\ 
+                     &=r^ar^i(1-r)=r^{a + i}(1-r)
+  \end{aligned}
+\]
+\end{enumerate}
+\end{solution}
 \begin{problem}\label{pro:4}
   Let \(W=(W_n:n \geq 0)\) be the one-dimensional simple random walk with \(W_0=0\), whose transition matrix \(P\) given by equation \((4.4.3)\)
   on textbook, \(0< p<q<1\).
-  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) undercrossing \(a\).
+  \(X_a\) is the times of \((W_{n \AND \tau}:n \geq 0)\) downcrossing \(a\).
   \(r=\frac{p}{q}\).
   Prove: if \(a \leq -1\), then \(X_a \sim G(1-r)\), i.e. \(\mathbb{P}(X_a=i)=r^{i-1}(1-r),i \geq 1\).
 \end{problem}
-
+\begin{solution}
+  \(D_a= \inf \{\}\)
+\end{solution}
 \end{document}
