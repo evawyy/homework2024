@@ -1,0 +1,49 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%\maketitle \fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Find the number of all the intergal solution of equations as follow:
+  \begin{enumerate}
+    \item \(x^2 \equiv 3766 \pmod{5987}\);
+    \item \(x^2 \equiv 3149 \pmod{5987}\).
+      Where \(5987\) is a prime.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:2}
+  \begin{enumerate}
+    \item When the equation has solutions, apply theorm 1 in section 2 to
+      find the solution of \(x^2 \equiv a \pmod{p}, p=4m + 3\).
+    \item When the equation has solutions, apply theorem 1 in section 2 and section 3 to
+      find the solution of \(x^2 \equiv a \pmod{p}, p=8m + 5\).
+    \item If the equation \(x^2 \equiv a \pmod{p},p=8m + 1\) has solutions, and \(N \) is non quadratic residue.
+      Give one way to solve the equation ablow.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:3}
+  Solve the equation \(\begin{cases}
+    x^2 & \equiv 59 \pmod{125} \\
+    x^2 & \equiv 41 \pmod{64}
+  \end{cases}\).
+\end{problem}
+\begin{problem}\label{pro:4}
+  \begin{enumerate}
+    \item \label{ite:4.1} Prove equation \(x^2 \equiv 1 \pmod{m}\) and \((x + 1)(x-1) \equiv 0 \pmod{m}\) are equal.
+    \item Apply \ref{ite:4.1} to give one way of finding all the solutions of \(x^2 \equiv 1 \pmod{m}\).
+  \end{enumerate}
+\end{problem}
+
+\end{document}

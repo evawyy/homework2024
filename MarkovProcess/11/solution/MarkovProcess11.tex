@@ -15,7 +15,9 @@
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
-  For a random walk \(y\), we let \(D(n,y)\) be the number of downcrossings of \(y\) over \(n\).
+For a random walk \(y\), we let \(D(n,y)\) be the number of downcrossings of \(y\) over \(n\).
+
+
 \begin{problem}\label{pro:1}
   Let \(S=(S_n:n \geq 0)\) be the one-dimensional symmetry simple random walk with \(S_0=c \geq 0\).
   Let \(k \geq 1\) and \(\tau\) be the time of the \(k\)-th downcrossing of \(0\).
@@ -103,7 +105,7 @@
   Prove:
   \begin{enumerate}
     \item \label{ite:3.1} \(\mathbb{P}(X_0=i)=r^i(1-r),i \geq 0\);
-    \item \(a \geq 0\), \(\mathbb{P}(X_a=0)=1-r^{a +1}\), \(\mathbb{P}(X_a=i)=r^{a + 1}(1 -r),i \geq 1\).
+    \item \(a \geq 0\), \(\mathbb{P}(X_a=0)=1-r^{a +1}\), \(\mathbb{P}(X_a=i)=r^{a + i}(1 -r),i \geq 1\).
   \end{enumerate}
 \end{problem}
 \begin{solution}
@@ -158,9 +160,8 @@
   Prove: if \(a \leq -1\), then \(X_a-1 \sim Geo(1-r)\), i.e. \(\mathbb{P}(X_a-1=i)=r^{i-1}(1-r),i \geq 1\).
 \end{problem}
 \begin{solution}
-Let \(D_a= \inf \{n \geq 0: X_n=a\}\). Then \(\lim_{n \to \infty}W_n = -\infty\), so \(\mathbb{P}(D_a < \infty)\). 
-By strong markov property, \((W_{D_a + n}-a: n \geq 0)\) is a random walk starting at \(0\) with the downcrossing \(X_a-1\) on \(0\). 
-By the conclution of \ref{pro:3}, we get \(X_{a} -1\sim G(1-r)\).
-
+  Let \(D_a= \inf \{n \geq 0: X_n=a\}\). Then \(\lim_{n \to \infty}W_n = -\infty\), so \(\mathbb{P}(D_a < \infty)\).
+  By strong markov property, \((W_{D_a + n}-a: n \geq 0)\) is a random walk starting at \(0\) with the downcrossing \(X_a-1\) on \(0\).
+  By the conclution of \ref{pro:3}, we get \(X_{a} -1\sim G(1-r)\).
 \end{solution}
 \end{document}
