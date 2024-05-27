@@ -1,0 +1,30 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  A radio is powered by one battery, the lifetime of the battery obey the distrubution of exponential distribution
+  with parament \(\lambda = \frac{1}{30}\). In long term, in which frequence should we change the battery?
+\end{problem}
+
+\begin{problem}\label{pro:2}
+  Consider a primitive renewing process with average renewing internal time \(\mu\). Assume every renewing time
+  is recorded by probability \(p\), and each record and each renew are independence. Let \(N_r(t)\) be the
+  times of renewing by recorded until time \(t\). \(\{N_r(t): t \geq 0\}\) is a renewing process or not?
+  And calculate \(\lim_{t \to \infty}\frac{N_r(t)}{t}\).
+\end{problem}
+
+\end{document}
