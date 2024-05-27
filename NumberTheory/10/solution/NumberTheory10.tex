@@ -9,25 +9,47 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-\input{../../../global/preface}
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-%\maketitle \fi
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle \fi
 %from_here_to_type
 \begin{problem}\label{pro:1}
-  Assume \(p\) is an odd prime, \(a > 1\) is integal.
+  Assume \(p,q\) are odd primes, \(a > 1\) is integal.
   Prove:
   \begin{enumerate}
-    \item The odd prime factor of \(a^p-1\) is \(a-1\) or \(2px + 1\),
-      where \(x\) is integal.
-    \item The odd prime factor of \(a^p +1\) is \(a + 1\) or \(2px + 1\),
-      where \(x\) is integal.
+    \item \(q \mid a^p-1\) \(\implies\) \(q \mid a-1\) or \(2p \mid q- 1\).
+    \item \(q \mid a^p + 1\) \(\implies\) \(q \mid a +1\) or \(2p \mid q- 1\).
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Consider \(a \in \mathbb{Z}_q^{*}\). Since \(a^{p}-1 =0 \) in \(\mathbb{Z}_q^{*}\), then \(o(a) \mid p\).
+      So \(o(a)=1\) or \(o(a)=p\).
+      If \(o(a)=1\), then \(a \equiv 1 \pmod{q}\), then \(q \mid a-1\).
+      If \(o(a)=p\), then \(p=o(a) \mid o(\mathbb{Z}_q^{*})=q-1\).
+      Since \(2 \mid q-1\), \((p,2)=1\), then \(2p \mid q-1\).
+    \item Consider \(-a \in \mathbb{Z}_q^{*}\). Since \((-a)^p-1 =0 \) in \(\mathbb{Z}_q^{*}\), then \(o(-a) \mid p\).
+      So \(o(-a)=1\) or \(o(-a)=p\).
+      If \(o(-a)=1\), then \(-a \equiv 1 \pmod{q}\), then \(q \mid a +1\).
+      If \(o(-a)=p\), then \(p=o(-a) \mid o(\mathbb{Z}_q^{*})=q-1\).
+      Since \(2 \mid q-1\), \((p,2)=1\), then \(2p \mid q-1\).
+  \end{enumerate}
+\end{solution}
 
 \begin{problem}\label{pro:2}
-  Find at least one primitive root for each number \(7,49,343,686\).
+  Find primitive root for each number \(7,49,343,686\).
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Obviously, \(3\) is the primitive root of \(7\).
+    \item \(3\) is the primitive root of \(49\).
+    \item \(3\) is the primitive root of \(343\).
+    \item Since the primitive root of \(686\) is the odd one of \(3, 3 + 343\), then \(3\) is
+      the primitive root of \(686\).
+  \end{enumerate}
+
+\end{solution}
 
 \end{document}
