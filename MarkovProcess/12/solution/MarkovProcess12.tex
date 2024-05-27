@@ -9,19 +9,83 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+  \input{../../../global/preface}
 \else
-%\maketitle
+  %\maketitle
 \fi
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 %from_here_to_type
 \begin{problem}\label{pro:1}
-Assume \((N(t):t \geq 0)\) is a renewing process, calculate \(g(t):=\mathbb{E}(N(t)^2)\).  
+  Assume \((N(t):t \geq 0)\) is a renewing process with renewing internal
+  \(\{\xi_n: n \geq 1\}\), \(S_n=\sum_{k=1}^{n} \xi_k\), \(N(t):=\sup \{n: S_n \leq t\}\), calculate \(g(t):=\mathbb{E}(N(t)^2)\).
 \end{problem}
+\begin{solution}
+  Let \(T_1=\xi_1\), then \(g(t)=\mathbb{E}(\mathbb{E}(N(t)^2 \mid T_1))=\int_{0}^t \mathbb{E}(N(t)^2 \mid T_1=x)d F(x)\).
+  By the independence, \[
+    \mathbb{E}(N(t)^2 \mid T_1=x)=\begin{cases}
+      0                          & , x > t    \\
+      \mathbb{E}((1 + N(t-x))^2) & , x \leq t
+    \end{cases}
+  \]
+  That is \(\mathbb{E}(N(t)^2 \mid T_1=x)=\begin{cases}
+    0                    & ,x > t    \\
+    1 + 2m(t-x) + g(t-x) & ,x \leq t
+  \end{cases}\).
+  Therefore,
+  \[
+    g(t)=F(t) + 2\int_{0}^t m(t-x)d F(x) + \int_{0}^t g(t-x)d F(x)
+  \]
+  So \(g(t)=2m(t)-F(t) + \int_{0}^t g(t-x)d F(x)\).
+  Thus, \(g(t)=2m(t)-F(t) + (2m-F)*m(t)\), so \(g(t)=m(t) + 2m * m(t)\).
+\end{solution}
+
 \begin{problem}\label{pro:2}
-  
+  Assume renewing internal time obey \(U(0,1)\). \(0 < t< 1\), calculate the distrubution of \(S_{N(t)}\)
+  and \(\mathbb{E}(S_{N(t)})\).
+\end{problem}
+\begin{solution}
+  By calculating, \(m(t)=\mathrm{e}^t-1, 0 < t< 1\). \(\forall 0 \leq s \leq t <1\), \[
+    \mathbb{P}(S_{N(t)}\leq s)=1-t + \int_{0}^s(1-t + x)\mathrm{e}^x dx=1-(t-s)\mathrm{e}^s
+  \]
+  Therefore, \[
+    \mathbb{E}(S_{N(t)})=\int_{0}^t s(1-t + s)\mathrm{e}^s ds=\mathrm{e}^t -t -1
+  \]
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Assume renewing internal time obey random variable \(X\) with distrubution function \(F\).
+  Let \(\gamma_t=S_{N(t) + 1}-t\) be the rest lifetime at time \(t\).
+  Prove: \[
+    \mathbb{P}(\gamma_t > z)=1-F(t + z) + \int_{0}^t(1-F(t + z -x))d m(x)
+  \]
+\end{problem}
+\begin{solution}
+  Let \(A_z(t)=\mathbb{P}(\gamma_t > z)\), then \[
+    \mathbb{P}(\gamma_t > z \mid \xi_1=x)=\begin{cases}
+      1        & ,x > t + z         \\
+      0        & , t < x \leq t + z \\
+      A_z(t-x) & , 0 < x \leq t
+    \end{cases}
+  \]
+  Then,
+  \[
+    A_z(t)=\int_{0}^\infty \mathbb{P}(\gamma_t > z \mid \xi_1=x)d F(x)=1-F(t + z) + \int_{0}^tA_z(t-z)dF(x)
+  \]
+  Thus, \[
+    A_z(t)=1-F(t + z) + \int_{0}^\infty(1-F(t + z -x))dm(x)
+  \]
+\end{solution}
+
+\begin{problem}\label{pro:4}
+  One kind of devices are replaced as they are worn out. Let the lifetime of the devices by sequences
+  \(\{\xi_n:n \geq 1\}\), \(S_n=\sum_{k=1}^{n} \xi_k\), \(N(t)=\sup \{n: S_n \leq t\}\). \(L(t)=S_{N(t) + 1}-S_{N(t)}\).
+  Prove: \(\mathbb{P}(L(t)> x) \geq \mathbb{P}(\xi_1 > x)\).
 \end{problem}
 
-
+\begin{problem}\label{pro:5}
+  Toss a coin until we get two successively head, call it a renew.
+  We toss the coin \(k\) times, call the number of renews \(N(k)\).
+  Find the distribution and expectation of interval time \(T\)
+\end{problem}
 
 \end{document}
