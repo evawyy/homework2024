@@ -1,0 +1,49 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%\maketitle \fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume \(A=\{a \in P \mid a \mid m\} = \{q_i \mid i=1,\cdots,s\}\), where \(P \subset \mathbb{N}\), \(\forall p \in P\), \(p\) is prime,
+  \(s = |A|\).
+  Prove: \(g\) is the primative root mod \(m\) \(\iff\)
+  \(g\) is \(q_i\)-tic non-residue mod \(m\), \(\forall i=1,\cdots,s\).
+\end{problem}
+\begin{problem}\label{pro:2}
+  Prove:
+  \begin{enumerate}
+    \item \(10\) is the primative root mod \(17,257\).
+    \item The length of repetend of \(\frac{1}{17}\) is \(16\), the length of repetend of \(\frac{1}{257}\) is \(256\).
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:3}
+  Apply index table to solve the equation \[
+    x^{15 } \equiv 14 \pmod{41}.
+  \]
+\end{problem}
+\begin{problem}\label{pro:4}
+  Assume \(m >2\) has primative root, prove \(\forall g\), \(g\) is the primative root mod \(m\),
+  the index of \(-1\) is \(\frac{1}{2}\phi(m)\).
+\end{problem}
+\begin{problem}\label{pro:5}
+  Assume \(g_1,g_2\) are two primative root mod \(m\), prove:
+  \begin{enumerate}
+    \item \(\ind_{g_1}g \cdot \ind_{g}g_1 \equiv 1 \pmod{\phi(m)}\);
+    \item \(\ind_g a \equiv \ind_g g_1 \cdot\ind_{g_1}a \pmod{\phi(m)}\)
+  \end{enumerate}
+
+\end{problem}
+
+\end{document}
