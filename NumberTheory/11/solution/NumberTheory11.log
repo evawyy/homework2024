@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  31 MAY 2024 15:00
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  31 MAY 2024 15:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1045,6 +1045,9 @@ Package hyperref Info: Link coloring OFF on input line 8.
 
 
 
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+
 Package fixdif Warning: Requires `no-math' option of fontspec!
 (fixdif)                 on input line 8.
 
@@ -1133,26 +1136,77 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 18
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [1
+)
+
+Package fontspec Warning: Font "STFangsong" does not contain requested Script
+(fontspec)                "CJK".
 
 
-]
-(./NumberTheory11.aux)
+Package fontspec Info: Could not resolve font "STFangsong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Font family 'STFangsong(0)' created for font
+(fontspec)             'STFangsong' with options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"STFangsong/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+File: ./mod41.png Graphic file (type bmp)
+<./mod41.png>
+
+Overfull \hbox (2125.99498pt too wide) in paragraph at lines 61--62
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 719.89743pt on input line 62.
+
+
+Overfull \hbox (18.13374pt too wide) in paragraph at lines 80--84
+[]\TU/lmr/m/n/12.045 Let $\OML/cmm/m/it/12.045 a \OT1/cmr/m/n/12.045 = [][] \OM
+L/cmm/m/it/12.045 g; b \OT1/cmr/m/n/12.045 = [][] \OML/cmm/m/it/12.045 g[]$\TU/
+lmr/m/n/12.045 . By the defination, we can get that $\OML/cmm/m/it/12.045 g[] \
+OMS/cmsy/m/n/12.045 ^^Q \OML/cmm/m/it/12.045 g\OT1/cmr/m/n/12.045 ([]\OML/cmm/m
+/it/12.045 ^^^\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 m\OT1/cmr/m/n/12.045 ))
+\OML/cmm/m/it/12.045 ; g[] \OMS/cmsy/m/n/12.045 ^^Q
+ []
+
+[1
+
+
+] [2] (./NumberTheory11.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `NumberTheory11.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  )
 (\end occurred when \iffalse on line 11 was incomplete) 
 Here is how much of TeX's memory you used:
- 32961 strings out of 474773
- 688318 string characters out of 5757725
- 1942839 words of memory out of 5000000
- 54582 multiletter control sequences out of 15000+600000
- 565346 words of font info for 77 fonts, out of 8000000 for 9000
+ 33002 strings out of 474773
+ 689137 string characters out of 5757725
+ 1968839 words of memory out of 5000000
+ 54608 multiletter control sequences out of 15000+600000
+ 565402 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 112i,6n,113p,3375b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,6n,113p,3375b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on NumberTheory11.pdf (1 page).
+Output written on NumberTheory11.pdf (2 pages).
