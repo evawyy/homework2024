@@ -1,0 +1,43 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+\else
+  %\maketitle
+\fi
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+%from_here_to_type
+\begin{problem}\label{pro:4 }
+  A kind of product is qualified with probability \(p(0 < p < 1)\).
+  We sample these product by the following way: we check all the product at first until there appears
+  \(k\) qualified product sequently. Then we check the rest of product by probability \(\alpha(0 < \alpha <1)\)
+  until there appears one unqualified product, then one circle ends. Next we restart another checking
+  circle. Please find out the proportion of checked product after a long time.
+\end{problem}
+\begin{solution}
+  For sake of convenience, we call the \(k\) qualified products appearing sequently as \(k\) qualified sequence.
+  Assume the proportion of checked product after a long time is \(\beta\).
+  Let \(N_k\) be the amount of product when the first \(k\) qualified sequence ends. \(M_k=\mathbb{E}(N_k)\). \(G_k\) is the
+  event that the next one is qualified after the first \(k-1\) qualified sequence ends. Obviously, \(\mathbb{E}(N_k-N_{k-1} \mid G_k)=1\).
+  And \(\mathbb{E}(N_k-N_{k-1} \mid G_k)=\mathbb{E}(N_k) + 1\).
+  Therefore, \(\mathbb{E}(N_k-N_{k-1})=p + (1-p)(\mathbb{E}(N_k) + 1)\). So \(M_{k-} M_{k-1}=p + (1-p)( 1 + M_k)\).
+  Then \(pM_k=M_{k-1} + 1\). Thus, \(M_k=\frac{\frac{1}{p^k}-1}{1-p}\).
+  Let \(A=\{\)The amount of product checked in one circle\(\}\), \(B=\{\)The amount of product in one circle\(\}\).
+  So finding one unqualified product need average checking time \(\frac{1}{1-p}\) according to geometric distribution.
+  Then we averagely need \(\frac{1}{\alpha(1-p)}\) product to find out the unqualified one.
+  Then \(\mathbb{E}(A)=M_k + \frac{1}{1-p}, \mathbb{E}(B)=M_k + \frac{1}{\alpha(1-p)}\).
+  So \[
+    \beta = \frac{\mathbb{E}(A)}{\mathbb{E}(B)}=\frac{\frac{\frac{1}{p^k}-1}{1-p} + \frac{1}{1-p}}{\frac{\frac{1}{p^k}-1}{1-p} + \frac{1}{\alpha(1-p)}}=\frac{\alpha}{\alpha + p^k-\alpha p^k}
+  \]
+
+\end{solution}
+
+\end{document}

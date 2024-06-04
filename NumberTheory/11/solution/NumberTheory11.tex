@@ -2,6 +2,7 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX TS-program = xelatex
 \documentclass{ctexart}
+\usepackage{float}
 \newif\ifpreface
 %\prefacetrue
 \input{../../../global/all}
@@ -9,11 +10,11 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-\input{../../../global/preface}
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
-\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-%\maketitle \fi
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle \fi
 %from_here_to_type
 \begin{problem}\label{pro:1}
   Assume \(A=\{a \in P \mid a \mid m\} = \{q_i \mid i=1,\cdots,s\}\), where \(P \subset \mathbb{N}\), \(\forall p \in P\), \(p\) is prime,
@@ -56,17 +57,25 @@
 \end{problem}
 \begin{solution}
   Use \(6\) as primative root of \(41\), we have this table of index:
-  \begin{figure}
+  \begin{figure}[H]
     \centering
-    \includegraphics{./mod41.png}
+    \includegraphics[width=\linewidth]{./mod41.png}
   \end{figure}
-
+  Then \(x^{15} \equiv 14 \mod 41 \iff 15 \ind x \equiv \ind 14 \mod 40 \iff 3 \ind x \equiv 5 \mod 8 \iff \ind x \equiv 7 \mod 8\).
+  So \(\ind x = 7,15,22,29,36\). So \(x \equiv 29,3,5,22,23 \mod 41\).
 \end{solution}
 
 \begin{problem}\label{pro:4}
   Assume \(m >2\) has primative root, prove \(\forall g\) is the primative root mod \(m\),
   \(\ind_g -1=\frac{1}{2}\phi(m)\).
 \end{problem}
+\begin{solution}
+  We have \(g^{\phi(m)} \equiv 1 \mod m\).
+  So \(\ind_g 1=0\).
+  Since \((-1)^2 \equiv 1 \mod m\), we have \(2 \ind_g -1 \equiv \ind_g 1 \mod \phi(m)\).
+  So \(\ind_g -1 \equiv 0 \mod \frac{\phi(m)}{2}\).
+  But obviously \(\ind_g -1 \neq 0\), so we obtain \(\ind_g -1 = \frac{\phi(m)}{2}\).
+\end{solution}
 
 \begin{problem}\label{pro:5}
   Assume \(g_1,g_2\) are two primative root mod \(m\), prove:
@@ -81,9 +90,9 @@
       By the defination, we can get that \(g_1^a \equiv g \pmod{\phi(m)}, g^b \equiv g_1 \pmod{\phi(m)}\).
       Then \((g_1^{a})^b = g_1^{ab}\equiv g^b \equiv g_1 \pmod{\phi(m)}\).
       Since \(g_1\) is the primative root of \(m\), then \(ab \equiv 1 \pmod{\phi(m)}\).
-    \item Let \(x_1=\ind_{g} a\)
+    \item Only need to check \(g^{\ind_g g_1 \cdot \ind_{g_1} a} \equiv a \mod m\).
+      Easily \(g^{\ind_g g_1 \cdot \ind_{g_1} a} \equiv g_1^{\ind_{g_1} a}\equiv a \mod m \).
   \end{enumerate}
-
 \end{solution}
 
 \end{document}

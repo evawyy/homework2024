@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  24 MAY 2024 13:13
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  31 MAY 2024 15:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1045,9 +1045,6 @@ Package hyperref Info: Link coloring OFF on input line 8.
 
 
 
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
-
 Package fixdif Warning: Requires `no-math' option of fontspec!
 (fixdif)                 on input line 8.
 
@@ -1195,18 +1192,14 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `NumberTheory10.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33041 strings out of 474773
- 690387 string characters out of 5757725
+ 33043 strings out of 474773
+ 690394 string characters out of 5757725
  1945839 words of memory out of 5000000
- 54623 multiletter control sequences out of 15000+600000
+ 54625 multiletter control sequences out of 15000+600000
  565498 words of font info for 96 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  112i,6n,113p,3375b,800s stack positions out of 10000i,1000n,20000p,200000b,200000s
