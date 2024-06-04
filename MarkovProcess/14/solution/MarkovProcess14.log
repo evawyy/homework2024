@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  4 JUN 2024 11:33
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  4 JUN 2024 11:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1045,9 +1045,6 @@ Package hyperref Info: Link coloring OFF on input line 8.
 
 
 
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
-
 Package fixdif Warning: Requires `no-math' option of fontspec!
 (fixdif)                 on input line 8.
 
@@ -1164,10 +1161,15 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 (fontspec)             <->"STFangsong/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
-[1
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 57.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+) [1
 
 
-] (./MarkovProcess14.aux)
+] [2]
+(./MarkovProcess14.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1180,12 +1182,12 @@ Package rerunfilecheck Info: File `MarkovProcess14.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32968 strings out of 474773
- 688627 string characters out of 5757725
- 1939839 words of memory out of 5000000
- 54576 multiletter control sequences out of 15000+600000
- 565402 words of font info for 84 fonts, out of 8000000 for 9000
+ 33002 strings out of 474773
+ 689458 string characters out of 5757725
+ 1966839 words of memory out of 5000000
+ 54604 multiletter control sequences out of 15000+600000
+ 565797 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  112i,6n,113p,3377b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MarkovProcess14.pdf (1 page).
+Output written on MarkovProcess14.pdf (2 pages).
