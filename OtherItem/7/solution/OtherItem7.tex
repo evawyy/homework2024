@@ -1,0 +1,37 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+  \input{../../../global/preface}
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+  \maketitle
+\fi
+%from_here_to_type
+\begin{solution}
+  \begin{enumerate}
+    \item Assume \(x,y\) can be constructible by \((x_i,y_i),i=1,\cdots,n\), where \((x_n,y_n)=(x,y)\).
+      Then by the symmetry, we can get \((y_i,x_i),i=1,\cdots,n\) can construct \((y_n,x_n)=(y,x)\).
+      If \(x,y \geq 0\), we can construct \((x + y,y + x)\) by series \((x + y_i,y + x_i),i=1,\cdots,n\) starting
+      with the point \((x,y)\). Then \(x + y\) is constructible.
+      If \(xy <0\), w.l.o.g., we assume \(x >0,y <0\)
+  \end{enumerate}
+
+\end{solution}
+\begin{solution}
+  \begin{enumerate}
+    \item \(\mathbb{Z}_8=\{0,1,2,3,4,5,6,7\}\), then \(\ord(1)=8,\ord(2)=4,\ord(3)=8,\ord(4)=2,\ord(5)=8,\ord(6)=4,\ord(7)=8\).
+      So \(|\{x \in \mathbb{Z}_8:\ord(x)=8\}|=|\{1,3,5,7\}|=4,|\{x \in \mathbb{Z}_8 : \ord(x)=4\}|=|\{2,6\}|=2\)
+  \end{enumerate}
+
+\end{solution}
+
+\end{document}
