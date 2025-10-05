@@ -1,0 +1,56 @@
+%arara: xelatex
+\documentclass{ctexart}
+\usepackage{amsmath,amssymb,amsthm,bbm}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{problem}{Problem}
+\newtheorem{solution}{Solution}
+\everymath{\displaystyle}
+\newlength\inlineHeight
+\newlength\inlineWidth
+\long\def\(#1\){%
+  \settoheight{\inlineHeight}{$#1$}%
+  \settowidth{\inlineWidth}{$#1$}%
+  \ifdim \inlineWidth > 0.5\textwidth%
+  $$#1$$%
+  \else%
+  \ifdim \inlineHeight > 1.5em%
+  $$#1$$%
+  \else%
+  $#1$%
+  \fi%
+  \fi%
+}
+\usepackage{tkz-euclide}
+\begin{document}
+\begin{tikzpicture}[scale=.75]
+  \tkzDefPoint(0,0){O}
+  \tkzDefPoint(2,-1){A}
+  \tkzDefPointBy[rotation= center O angle 90](A)
+  \tkzGetPoint{B}
+  \tkzDrawArc[color=orange,<->](O,A)(B)
+  \tkzDrawArc(O,B)(A)
+  \tkzDrawLines[add = 0 and .5](O,A O,B)
+  % \tkzDrawPoints(O,A,B)
+  \tkzLabelPoints[below](O,A,B)
+\end{tikzpicture}
+\begin{tikzpicture}
+  \tkzDefPoint(0,0){O}
+  \tkzDefPoint(5,0){I}
+  \tkzDefPoint(0,5){J}
+  \tkzInterCC(O,I)(I,O)\tkzGetPoints{B}{C}
+  \tkzInterCC(O,I)(J,O)\tkzGetPoints{D}{A}
+  \tkzInterCC(I,O)(J,O)\tkzGetPoints{L}{K}
+  \tkzDrawArc[angles](O,I)(0,90)
+  \tkzDrawArc[angles,color=gray,
+  style=dashed](I,O)(90,180)
+  \tkzDrawArc[angles,color=gray,
+  style=dashed](J,O)(-90,0)
+  \tkzDrawPoints(A,B,K)
+  \foreach \point in {I,A,B,J,K}{%
+  \tkzDrawSegment(O,\point)}
+  \tkzLabelPoints[below](O,A,B,I,J,K,C,D,L)
+\end{tikzpicture}
+\end{document}
+
+

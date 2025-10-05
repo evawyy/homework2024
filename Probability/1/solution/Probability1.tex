@@ -1,0 +1,168 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1.4.2}
+  证明\(\sigma \)-代数是集代数。
+\end{problem}
+\begin{solution}
+  假定\(\mathcal{A}\)是\(\sigma\)-代数，那么\(\Omega \in \mathcal{A} \)，\(\mathcal{A}\)对补运算封闭。只需证明\(\mathcal{A}\)对有限并封闭。
+  \(A,B \in \mathcal{A}\)，令\(A_n=\varnothing=\Omega^c \in \mathcal{A}, n \geq 3\)，那么\(A \cup B \cup \bigcup_{n \geq 3}A_n=A \cup B \in \mathcal{A}\)。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.3}
+  设\(\mathcal{C} \)是集类，则\(\forall A \in \sigma(\mathcal{C}),\exists \mathcal{C}_1 \subset \mathcal{C},|\mathcal{C}_1| \leq \aleph_0,A \in \sigma(\mathcal{C}_1) \)。
+\end{problem}
+\begin{solution}
+  令\(\mathcal{A}:=\{A \in \sigma(\mathcal{C}):\exists \mathcal{C}_1 \subset \mathcal{C}, |\mathcal{C}_1| \leq \aleph_0, A \in \sigma(\mathcal{C}_1) \}\).
+  下证\(\mathcal{A} \supset \sigma (\mathcal{C}) \)，即证\(\mathcal{A} \)为包含\(\mathcal{C} \)的\(\sigma \)-代数。
+  \begin{itemize}
+    \item 由于\(\forall A \in \mathcal{C} , \sigma(\{A\})=\{\varnothing,\Omega,A,A^c\} \)，那么\(\mathcal{C}  \subset \mathcal{A} \)。
+    \item 由\(\Omega \in \sigma(\varnothing)=\{\varnothing,\Omega\} \)，那么\(\Omega \in \mathcal{A} \)。
+    \item 设\(A \in \mathcal{A} \)，那么\(\exists \mathcal{C}_1 \subset \mathcal{C}, |\mathcal{C}_1|\leq \aleph_0\)，\(A \in \sigma(\mathcal{C}_1) \).
+      由于\(\sigma(\mathcal{C}_1) \)是\(\sigma \)-代数，那么\(A^c \in \sigma(\mathcal{C}_1) \).所以\(A^c \in \mathcal{A} \)。
+    \item 设\(A_n \in \mathcal{A} ,n \in \mathbb{N}\)，那么\(\exists \mathcal{C}_n \subset \mathcal{C} , |\mathcal{C}_n|\leq \aleph_0,n \in \mathbb{N}   \)，满足\(A_n \in \sigma(\mathcal{C}_n) \forall n \in \mathbb{N}\)。
+      令\(\mathcal{T}=\bigcup_{n \in \mathbb{N}} \mathcal{C}_n \)，由\(|\mathcal{C}_n|\leq \aleph_0 ,\mathcal{C}_n \subset \mathcal{C}\)，可知\(|\mathcal{T}| \leq \aleph_0,\mathcal{T} \subset \mathcal{C} \)，那么\(A_n \in \sigma(\mathcal{C}_n)\subset \sigma (\mathcal{T}), \forall n \in \mathbb{N}\)。
+      所以\(\bigcup_{n \in \mathbb{N} }A_n \in \sigma(\mathcal{T}) \)。那么\(\bigcup_{n \in \mathbb{N}}A_n \in \mathcal{A} \)。
+  \end{itemize}
+ 综上，\(\mathcal{A} \)为包含\(\mathcal{C} \)的\(\sigma \)-代数。故\(\mathcal{A} \supset \sigma(\mathcal{C}) \)。 
+ 又由于\(\mathcal{A} \subset \sigma(\mathcal{C}) \)，故\(\mathcal{A}=\sigma(\mathcal{C}) \)。
+从而，\(\forall A \in \sigma(\mathcal{C}),\exists \mathcal{C}_1 \subset \mathcal{C},|\mathcal{C}_1| \leq \aleph_0,A \in \sigma(\mathcal{C}_1) \)。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.4}
+  \(\sigma \)-代数\(\mathcal{A} \)称为可数生成的，如果存在可数的子集类\(\mathcal{C} \subset \mathcal{A} \)使\(\sigma(\mathcal{C})=\mathcal{A} \)。
+  证明\(\mathcal{B}^d \)是可数生成的。
+\end{problem}
+\begin{solution}
+  考虑\(\mathcal{A}:=\{B(p,r):p \in \mathbb{Q}^d, r \in \mathbb{Q}_{+}\} \)，其中\(B(p,r)=\{x \in \mathbb{R}^d:\norm{x-p} < r\} \)。显然\(|\mathcal{A}|=\aleph_0 \)。
+  下证\(\mathcal{B}^d=\sigma(\mathcal{A}) \)。
+  令\(\mathcal{O}:=\{\mathcal{B}^d \text{中的开集}\} \)，
+  由于\(\mathcal{B}^d=\sigma(\mathcal{O}) \)，那么\( \mathcal{A} \subset \mathcal{O} \)，从而\(\sigma(\mathcal{A})\subset \sigma(\mathcal{O}) \)。
+  只需证明\(\mathcal{O} \subset \sigma(\mathcal{A}) \)。\\ 
+  \(\forall A \in \mathcal{O} \), \( \forall x \in A \),\(\exists U=B(x,s) \),\(x \in U \subset A \)。由于\(\mathbb{Q}^d \)在\(\mathbb{R}^d \)中稠密，故\(\exists p_x \in B(x,\frac{s}{2}) \cap \mathbb{Q}^d \)。
+  取\(r_x \in \mathbb{Q}_{+} \)使\(\norm{x-p_x} <r_x<\frac{s}{2} \)， 由 \(\forall y \in B(p_x,r_x) \)，有\(\norm{y-x}\leq \norm{y-p_x}+\norm{p_x-x} < r_x+\frac{s}{2}<s \)得 \(B(p_x,r_x) \subset B(x,s)\subset A \)，
+    则有 \(\bigcup_{x \in A}B(p_x,r_x) \subset  A \)。
+  显然\(x \in B(p_x,r_x) \)，那么\(A \subset \bigcup_{x \in A}B(p_x,r_x) \)，从而 \(\forall A \in \mathcal{O},\bigcup_{x \in A}B(p_x,r_x) = A \)。
+  由于\(|\mathcal{A}|=\aleph_0 \)，那么\(\bigcup_{x \in A}B(p_x,r_x),\forall A \in \mathcal{O}  \)一定为可数的并。从而\(\forall A \in \mathcal{O},A \in \sigma(\mathcal{A}) \)。
+\end{solution}
+
+
+\begin{problem}\label{pro:1.4.6}
+  设\(\mathcal{C} \)是\(\Omega \)中任一集代数，则存在\(\Omega \)中的单调类\(\mathcal{M}_0 \)满足：
+  \begin{enumerate}
+    \item \(\mathcal{C} \subset \mathcal{M}_0 \)，
+    \item 对于包含\(\mathcal{C} \)的单调类\(\mathcal{M} \)，有\(\mathcal{M}_0 \subset \mathcal{M} \)。
+  \end{enumerate}
+  称这样的单调类为\(\mathcal{C} \)生成的单调类，记作\(\mathcal{M}(\mathcal{A}) \)。
+\end{problem}
+\begin{solution}
+考虑\(\mathcal{A} :=\{\mathcal{M}:\mathcal{M} \text{为单调类且} \mathcal{C} \subset \mathcal{M} \} \)。由于\(\Omega \)的全体子集\(P(\Omega) \)显然为包含\(\mathcal{C} \)的单调类。
+那么\(P(\Omega) \in \mathcal{A} \)，故\(\mathcal{A} \neq \varnothing\)。令\(\mathcal{M}_0=\bigcap_{A \in \mathcal{A}} A \)，那么\(\mathcal{C} \subset \mathcal{M}_0 \)。
+下证\(\mathcal{M}_0 \)为单调类。
+\begin{itemize}
+  \item \(A_n \in \mathcal{M}_0, n \in \mathbb{N} \)，满足\(A_n \subset A_{n + 1}, n \in \mathbb{N} \)。\(\forall A \in \mathcal{A}  \)，\(A_n \in A \)，由于\(A \)为单调类，那么\(\cup_{n \in \mathbb{N}} A_n \in A \)。
+    故\(\cup_{n \in \mathbb{N}} A_n \in \bigcap_{A \in \mathcal{A} }A \)。
+  \item 同理可证，\(A_n \in \mathcal{M}_0, n \in \mathbb{N} \)，满足\(A_n \supset A_{n + 1}, n \in \mathbb{N} \)，则\(\cap_{n \in \mathbb{N}}A_n \in \cap_{A \in \mathcal{A} }A \)。
+\end{itemize}
+设\(\mathcal{M}  \)为包含\(\mathcal{C} \)的单调类，那么\(\mathcal{M} \in \mathcal{A} \)，那么\(\mathcal{M} \supset \mathcal{M}_0 \)。
+\end{solution}
+
+\begin{problem}\label{pro:1.4.9}
+  设\(\Omega_i ,i=1,2,\cdots,n\)是\(n \)个集合，\(\mathcal{A}_i \)是\(\Omega_i \)上的\(\sigma \)-代数。证明\(\mathcal{C}=\{A_1 \times \cdots \times A_n:A_i \in \mathcal{A}_i\} \)为半集代数。
+\end{problem}
+\begin{solution}
+  \begin{lemma}\label{lem:1.4.9}
+    \(\Omega_i,i=1,2 \) 为两个集合，\(A_i,B_i \subset \Omega_i,i=1,2\)，那么以下命题正确。
+    \begin{itemize}
+      \item \label{ite:1} \((A_1 \times A_2) \cap (B_1 \times B_2)=(A_1 \cap B_1) \times (A_2 \cap B_2) \)；
+      \item \label{ite:2} 若\(A_1 \times A_2 \subset B_1 \times B_2 \)，那么\(B_1 \times B_2 = (A_1 \times A_2) \cup ((B_1 / A_1) \times B_2) \cup (A_1 \times (B_2 / A_2)) \)，
+        其中\((A_1 \times A_2) , ((B_1 / A_1) \times B_2) , (A_1 \times (B_2 / A_2))\)两两不交。
+      \item \label{ite:3} 若\(A_1 \times A_2 \subset B_1 \times B_2 \)，那么\(A_1 \subset B_1 \)，\(A_2 \subset B_2 \)。
+    \end{itemize}
+  \end{lemma}
+ \begin{proof}
+   \begin{itemize}
+     \item \(\forall (a,b) \in (A_1 \times A_2) \cap (B_1 \times B_2) \)，那么\((a,b) \in A_1 \times A_2 \)且\((a,b) \in B_1 \times B_2 \)。
+    从而\(a \in A_1, b \in A_2 \)，\(a \in B_1,b \in B_2 \)。故\(a \in A_1 \cap B_1 \)， \(b \in A_2 \cap B_2 \)。
+    那么\((a,b) \in (A_1 \cap B_1) \times (A_2 \cap B_2) \)。另一方面，\(\forall (a,b) \in (A_1 \cap B_1)\times (A_2 \times B_2) \)，
+    那么\(a \in A_1 \cap B_1,b \in A_2 \times B_2 \)，故\((a,b) \in A_1 \times A_2 \)，\((a,b) \in B_1 \times B_2 \)。故\((a,b) \in (A_1 \times A_2)\cap (B_1 \times B_2) \)。
+  \item 先证 \((A_1 \times A_2) , ((B_1 / A_1) \times B_2) , (A_1 \times (B_2 / A_2))\)两两不交：由\ref{ite:1}知， \((A_1 \times A_2) \cap ((B_1 / A_1)\times B_2)=\varnothing \times B_2 =\varnothing \)。
+    \((A_1 \times A_2) \cap (A_1 \times(B_2 / A_2))=A_1 \times \varnothing=\varnothing \)。\(((B_1/A_1)\times B_2)\cap (A_1 \times (B_2 /A_2))= \varnothing \times B_2 \)。
+       下证\(B_1 \times B_2 = (A_1 \times A_2) \cup ((B_1 / A_1) \times B_2) \cup (A_1 \times (B_2 / A_2)) \)。由于\(A_1, B_1 / A_1 \subset B_1, A_2, B_2/A_2 \subset B_2 \)，
+       那么\((A_1 \times A_2) , ((B_1 / A_1) \times B_2) , (A_1 \times (B_2 / A_2)) \subset B_1 \times B_2\)，从而\( (A_1 \times A_2) \cup ((B_1 / A_1) \times B_2) \cup (A_1 \times (B_2 / A_2)) \subset B_1 \times B_2 \)。
+       又\(B_1 \times B_2 =((B_1 /A_1) \times B_2)\cup (A_1 \times B_2) =((B_1 /A_1) \times B_2) \cup ((A_1 \times (B_2 / A_2)) \cup (A_1 \times A_2))  \)，从而结论正确。
+     \item 若\(A_1 / B_1 \neq \varnothing \)，设\(a \in A_1/B_1 \)，取\(b \in A_2 \)，那么\((a,b) \in A_1 \times A_2 \)，但\((a,b) \notin B_1 \times B_2  \)，与\(A_1 \times A_2 \subset B_1 \times B_2 \)矛盾。
+   \end{itemize}
+ \end{proof}
+由于\(\mathcal{A}_i,1 \leq i \leq n \) 是\(\Omega_i \)  上的\(\sigma \)-代数，从而\(\mathcal{A}_i,1 \leq i \leq n \)为\(\Omega_i \)上的半集代数。
+我们可以用数学归纳法证明以下命题：设\(\Omega_i ,i=1,2,\cdots,n\)是\(n \)个集合，\(\mathcal{A}_i \)是\(\Omega_i \)上的半集代数，那么\(\mathcal{C}_n=\{A_1 \times \cdots \times A_n:A_i \in \mathcal{A}_i\} \)为半集代数。
+\begin{itemize}
+  \item 当\(n=1 \)时，\(\mathcal{C}_1=\mathcal{A}_1 \)，显然为半集代数。
+  \item 当\(n=2 \)时，\(\mathcal{C}_2=\{A_1 \times A_2: A_i \in \mathcal{A}_i,i=1,2\} \)。下证\(\mathcal{C}_2 \)为半集代数。
+    \begin{itemize}
+      \item 由于\(A_1,A_2 \)为半集代数，那么\(\Omega_i, \varnothing \in A_i，i=1,2\)。
+    从而\(\{\varnothing \times \varnothing , \Omega_1 \times \Omega_2\} \subset \mathcal{C}_1 \)。
+  \item 设\(A_1 \times A_2, B_1 \times B_2 \in \mathcal{C} \)，那么由\ref{lem:1.4.9}中的\ref{ite:1}可知 \((A_1 \times A_2) \cap (B_1 \times B_2)=(A_1 \cap B_1) \times (A_2 \cap  B_2) \)。
+    又由\(\mathcal{A}_i,i=1,2 \)均为半集代数，那么\(A_i \cap B_i \in \mathcal{A}_i, i=1,2 \)。那么\((A_1 \cap B_1) \times (A_2 \times B_2) \in \mathcal{C}_2  \)。
+    故\((A_1 \times A_2) \cap (B_1 \times B_2) \in \mathcal{C}_2 \)。
+  \item 若\(A_1 \times A_2 \subset B_1 \times B_2 \)，那么由\ref{lem:1.4.9}中的\ref{ite:3}知\(A_1 \subset B_1 \)，\(A_2 \subset B_2 \)。
+    由于\(A_i, B_i \in \mathcal{A}_i\)，那么\(\exists C^i_k \in \mathcal{A}_i,1 \leq k \leq N_i, N_i \in \mathbb{N}_{+} \)两两不交，与\(A_i \)也不交，且\(B_i=A_i \cup (\bigcup_{1 \leq k \leq N_i} C^i_k),i=1,2\)。
+    由于\(C^i_k \in \mathcal{A}_i, 1 \leq k \leq N_i,i=1,2\)，那么\(C^1_k \times B_2 \in \mathcal{C}_2, 1 \leq k \leq N_1 \)， \(A_1 \times C^2_k \in \mathcal{C}_2, 1 \leq k \leq N_2 \)。
+    由于\(C^i_k \in \mathcal{A}_i, 1 \leq k \leq N_i,i=1,2\)两两不交，那么\(C^1_k \times B_2, 1 \leq k \leq N_1\)两两不交，\(A_1 \times C^2_k,1 \leq k \leq N_2 \)两两不交。
+    又由于\ref{lem:1.4.9}中的\ref{ite:2}知，
+        \(B_1 \times B_2 = (A_1 \times A_2) \cup ((B_1 / A_1) \times B_2) \cup (A_1 \times (B_2 / A_2)) \)。那么
+\[
+ \begin{aligned}
+   B_1 \times B_2 =& (A_1 \times A_2) \cup (( \bigcup_{1 \leq k \leq N_1} C^1_k )\times B_2 )\cup (A_1 \times (\bigcup_{1 \leq k \leq N_2} C^2_k))\\ 
+   =&(A_1 \times A_2) \cup \bigcup_{1 \leq k \leq N_1} (C^1_k \times B_2) \cup \bigcup_{1 \leq k \leq N_2}(A_1 \times C^2_k)\\
+ \end{aligned}
+\]
+又由\((A_1 \times A_2) , ((B_1 / A_1) \times B_2) , (A_1 \times (B_2 / A_2)) \)两两不交，
+        从而\((A_1 \times A_2) , (\bigcup_{1 \leq k \leq N_1} (C^1_k \times B_2) ), ( \bigcup_{1 \leq k \leq N_2} (A_1 \times C^2_k)) \)，
+        故\((A_1 \times A_2) , (C^1_k \times B_2 ), (A_1 \times C^2_j), 1 \leq  k \leq N_1, 1 \leq j \leq N_2 \)两两不交。
+        从而\(B_1 \times B_2 \)能表示成\(A_1 \times A_2 \) 与\(\mathcal{C}_2 \)中元素的不交并。
+    \end{itemize}
+  \item 设\(n=k, 1 \leq k \leq n-1\)时，\(\mathcal{C}_k:=\{A_1 \times \cdots \times A_k:A_i \in \mathcal{A}_i, 1 \leq i \leq k\} \)为半集代数。
+    那么\[
+      \begin{aligned}
+        \mathcal{C}_{k + 1}:=&\{A_1 \times \cdots \times A_{k + 1}: A_i \in \mathcal{A}_i, 1 \leq i \leq k + 1\}\\
+        =&\{(A_1 \times \cdots \times A_k)\times A_{k + 1}: A_i \in \mathcal{A}_i, 1 \leq i \leq k + 1\} \\ 
+        =&\{C \times A: C \in \mathcal{C}_k ,A \in \mathcal{A}_{k + 1}\}.
+      \end{aligned}
+    \]
+    由\(n=2 \)的情形可知\(\mathcal{C}_{k + 1} \)为半集代数。
+\end{itemize}
+\end{solution}
+
+\begin{problem}\label{pro:1.4.11}
+  举例说明可加测度未处有限可加。
+\end{problem}
+\begin{problem}
+  举例说明半集代数\(\mathcal{T}\)生成的\(\sigma\)代数不能一般性地表述为
+  \[
+    \sigma(\mathcal{T})=\{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\}.
+  \]
+  但如果\(\omega\)至多可数时，如上表述是正确的.
+\end{problem}
+\begin{solution}
+  
+\end{solution}
+
+\end{document}
+
+

@@ -10,115 +10,114 @@
 \setlength{\baselineskip}{1.2em}
 \date{Beijing Normal University}
 \ifpreface
-  \input{../../../global/preface}
-  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+	\input{../../../global/preface}
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
-  \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-  \maketitle
+	\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+	\maketitle
 \fi
 %from_here_to_type
 \begin{problem}
-  Prove that \(3|n(n+1)(2n + 1)\), where \(n \in \mathbb{Z}\).
+Prove that \(3|n(n+1)(2n + 1)\), where \(n \in \mathbb{Z}\).
 
 \end{problem}
 \begin{solution}
-  \begin{enumerate}
-    \item If \(n = 3k, k \in \mathbb{Z}\), then \(3 | n(n + 1)(2n + 1)\).
-    \item If \(n = 3k + 1, k \in \mathbb{Z}\), then \(2n + 1 = 2(3k + 1) + 1= 6k + 3= 3(2k + 1)\), then \(3 \mid n(n+1)(2n+1)\).
-    \item If \(n = 3k +2, k \in \mathbb{Z}\), then \(n + 1 = 3k + 3 =3(k + 1)\), then \(3 \mid n(n + 1)(2n + 1)\).
-  \end{enumerate}
+	\begin{enumerate}
+		\item If \(n = 3k, k \in \mathbb{Z}\), then \(3 | n(n + 1)(2n + 1)\).
+		\item If \(n = 3k + 1, k \in \mathbb{Z}\), then \(2n + 1 = 2(3k + 1) + 1= 6k + 3= 3(2k + 1)\), then \(3 \mid n(n+1)(2n+1)\).
+		\item If \(n = 3k +2, k \in \mathbb{Z}\), then \(n + 1 = 3k + 3 =3(k + 1)\), then \(3 \mid n(n + 1)(2n + 1)\).
+	\end{enumerate}
 \end{solution}
 \begin{problem}\label{pro:2}
-  If \(a,b \in \mathbb{Z}\), \(b \neq 0\), prove: \(\exists s,t \in \mathbb{Z}\) s.t.
-  \[
-    a = bs + t, |t| \leq \frac{|b|}{2}
-  \]
-  and when \(b\) is odd, \(s,t \) are unique, how about that \(b\) is even?
+If \(a,b \in \mathbb{Z}\), \(b \neq 0\), prove: \(\exists s,t \in \mathbb{Z}\) s.t.
+\[
+	a = bs + t, |t| \leq \frac{|b|}{2}
+\]
+and when \(b\) is odd, \(s,t \) are unique, how about that \(b\) is even?
 \end{problem}
 \begin{solution}
-  First of all, when \(b \geq 0\), by Euclidean division, \(\exists u,v \in \mathbb{Z}\), s.t. \(a = bu + v, 0 \leq v <b\).
-  If \(|v| \leq \frac{|b|}{2}\), then \(s = u, t= v\). If \(\frac{|b|}{2}<v<|b|\), then \(s=u+1, t=v-b\), where \(|t| \leq \frac{|b|}{2}\).
-  So when \(b < 0\), only need to consider \(a, -b >0\), then \(\exists p,q \in \mathbb{Z}\), s.t. \(a=(-b)p +q  = b(-p) + q\), let \(s = -p, t=q\).
+	First of all, when \(b \geq 0\), by Euclidean division, \(\exists u,v \in \mathbb{Z}\), s.t. \(a = bu + v, 0 \leq v <b\).
+	If \(|v| \leq \frac{|b|}{2}\), then \(s = u, t= v\). If \(\frac{|b|}{2}<v<|b|\), then \(s=u+1, t=v-b\), where \(|t| \leq \frac{|b|}{2}\).
+	So when \(b < 0\), only need to consider \(a, -b >0\), then \(\exists p,q \in \mathbb{Z}\), s.t. \(a=(-b)p +q  = b(-p) + q\), let \(s = -p, t=q\).
 
-  When \(b\) is odd, if \(a = bs_1 + t_1 = bs_2 + t_2\), where \(|t_1|,|t_2| \leq \frac{|b|}{2}\). Then \(|t_1|,|t_2| \leq \frac{|b|-1}{2} < \frac{|b|}{2}\).
-  So \(b(s_1-s_2) = t_2-t_1\), then \(|b| \mid |t_2 - t_1|\). And \(|t_1-t_2| \leq |t_1|+|t_2| < |b|\), then \(|t_1-t_2|=0\).
-  Thus, \(s_1=s_2,t_1=t_2\).
+	When \(b\) is odd, if \(a = bs_1 + t_1 = bs_2 + t_2\), where \(|t_1|,|t_2| \leq \frac{|b|}{2}\). Then \(|t_1|,|t_2| \leq \frac{|b|-1}{2} < \frac{|b|}{2}\).
+	So \(b(s_1-s_2) = t_2-t_1\), then \(|b| \mid |t_2 - t_1|\). And \(|t_1-t_2| \leq |t_1|+|t_2| < |b|\), then \(|t_1-t_2|=0\).
+	Thus, \(s_1=s_2,t_1=t_2\).
 
-  When \(b\) is even, consider \(a = bx + \frac{b}{2} \exists x \in \mathbb{Z} \), then \(a = b(x+1) -\frac{b}{2}\).
-  For \(a \notin \{bx + \frac{b}{2}: x \in \mathbb{Z}\}\), then \(a = bm + n\), where \(|n| \leq \frac{|b|}{2}\).
-  Then by the same reason in the situation when \(b\) is odd, we can get \(\exists \mid s,t\) s.t. \(a = bs + t\), where \(|t| \leq \frac{|b|}{2}\).
+	When \(b\) is even, consider \(a = bx + \frac{b}{2} \exists x \in \mathbb{Z} \), then \(a = b(x+1) -\frac{b}{2}\).
+	For \(a \notin \{bx + \frac{b}{2}: x \in \mathbb{Z}\}\), then \(a = bm + n\), where \(|n| \leq \frac{|b|}{2}\).
+	Then by the same reason in the situation when \(b\) is odd, we can get \(\exists \mid s,t\) s.t. \(a = bs + t\), where \(|t| \leq \frac{|b|}{2}\).
 \end{solution}
 
 \begin{problem}
-  Use Problem \ref{pro:2} to prove \(\forall a,b \in \mathbb{Z}, b \neq 0\), \(\exists \gcd(a,b)\), and show its argorithm.
-  Use the argorithm and Euclidean algorithm to compute \(\gcd(76501,9719)\).
+Use Problem \ref{pro:2} to prove \(\forall a,b \in \mathbb{Z}, b \neq 0\), \(\exists \gcd(a,b)\), and show its argorithm.
+Use the argorithm and Euclidean algorithm to compute \(\gcd(76501,9719)\).
 \end{problem}
 \begin{solution}
-  \begin{enumerate}
-    \item \label{it:1} If \(a =0\), then \(\gcd(a,b) = b\).
-      If \(a \neq 0\), since \(\gcd(a,b) = \gcd(|a|,|b|)\), we only need to consider \(a,b \in \mathbb{N}^+\).
-      Without loss of generality, assume \(a \geq b > 0\), then by
-      Problem \ref{pro:2}, then \(\exists s, t \in \mathbb{Z}\) s.t. \(a = bs + t\), where \(|t| \leq \frac{b}{2}\).
-      If \(t=0\), then \(\gcd(a,b) =b\). If \(|t| >0\), then by \(\gcd(a,b) = \gcd(b,|t|)\) and Problem \ref{pro:2} again, we get \(\exists s_1,t_1 \in \mathbb{Z}, |t_1| \leq \frac{|t|}{2}\) such that
-      \(b = |t|s_1 + t_1\). Repeat the process above, until it appers that the remainder becomes \(0\).
-      That is because \(t_0:=t\) is finite, and the remainder \( t_{k + 1} = \frac{t_k}{2}, k \geq 0\).
-      So we will get these equations:
-      \begin{equation}
-        \begin{aligned}
-           & a = bs + t_0, 0 < |t_0| < \frac{|b|}{2},                           \\
-           & b = |t_0|s_1 + t_1, 0 < |t_1| < \frac{|t_0|}{2},                   \\
-           & |t_0| = |t_1|s_2 + t_2, 0 < |t_2| < \frac{|t_1|}{2},               \\
-           & \cdots\cdots                                                       \\
-           & |t_{n-1}| = |t_{n}|s_{n+1}+t_{n+1}, 0< |t_{n+1}| <\frac{|t_n|}{2}, \\
-           & |t_{n}| = |t_{n+1}|s_{n+2}.
-        \end{aligned}
-      \end{equation}
-      So we can get \(\gcd(a,b)=\gcd(b,|t_0|)=\cdots=\gcd(|t_n|,|t_{n+1}|)=|t_{n+1}|\)
-    \item The argorithm of \ref{it:1}:
-      \lstinputlisting[style=Lua]{gcd.lua}
-    \item Two ways to compute the \(\gcd(76501,9719)\):\\
-      \begin{enumerate}
-        \item Use the argorithm in \ref{it:1}
-          \[
-            \begin{aligned}
-              76501 & = & 8   \times   & 9719    & - & 1251 \\
-              9719  & = & (-8)  \times & (-1251) & - & 289  \\
-              -1251 & = & 4   \times   & (-289)  & - & 95   \\
-              -289  & = & 3   \times   & (-95)   & - & 4    \\
-              -95   & = & 24  \times   & (-4)    & + & 1    \\
-              -4    & = & (-4)  \times & 1       & + & 0
-            \end{aligned}
-          \]
-        \item Use Euclidean algorithm:\\
-          \[
-            \begin{aligned}
-              76501 & = 7  & \times & 9719 & + & 8468 \\
-              9719  & = 1  & \times & 8468 & + & 1251 \\
-              8468  & = 6  & \times & 1251 & + & 962  \\
-              1251  & = 1  & \times & 962  & + & 289  \\
-              962   & = 3  & \times & 289  & + & 95   \\
-              289   & =3   & \times & 95   & + & 4    \\
-              95    & = 23 & \times & 4    & + & 3    \\
-              4     & = 1  & \times & 3    & + & 1    \\
-              3     & = 3  & \times & 1    & + & 0
-            \end{aligned}
-          \]
-      \end{enumerate}
-      So \(\gcd(76501,9719)=1\).
-  \end{enumerate}
+	\begin{enumerate}
+		\item \label{it:1} If \(a =0\), then \(\gcd(a,b) = b\).
+		      If \(a \neq 0\), since \(\gcd(a,b) = \gcd(|a|,|b|)\), we only need to consider \(a,b \in \mathbb{N}^+\).
+		      Without loss of generality, assume \(a \geq b > 0\), then by
+		      Problem \ref{pro:2}, then \(\exists s, t \in \mathbb{Z}\) s.t. \(a = bs + t\), where \(|t| \leq \frac{b}{2}\).
+		      If \(t=0\), then \(\gcd(a,b) =b\). If \(|t| >0\), then by \(\gcd(a,b) = \gcd(b,|t|)\) and Problem \ref{pro:2} again, we get \(\exists s_1,t_1 \in \mathbb{Z}, |t_1| \leq \frac{|t|}{2}\) such that
+		      \(b = |t|s_1 + t_1\). Repeat the process above, until it appers that the remainder becomes \(0\).
+		      That is because \(t_0:=t\) is finite, and the remainder \( t_{k + 1} = \frac{t_k}{2}, k \geq 0\).
+		      So we will get these equations:
+		      \begin{equation}
+			      \begin{aligned}
+				       & a = bs + t_0, 0 < |t_0| < \frac{|b|}{2},                           \\
+				       & b = |t_0|s_1 + t_1, 0 < |t_1| < \frac{|t_0|}{2},                   \\
+				       & |t_0| = |t_1|s_2 + t_2, 0 < |t_2| < \frac{|t_1|}{2},               \\
+				       & \cdots\cdots                                                       \\
+				       & |t_{n-1}| = |t_{n}|s_{n+1}+t_{n+1}, 0< |t_{n+1}| <\frac{|t_n|}{2}, \\
+				       & |t_{n}| = |t_{n+1}|s_{n+2}.
+			      \end{aligned}
+		      \end{equation}
+		      So we can get \(\gcd(a,b)=\gcd(b,|t_0|)=\cdots=\gcd(|t_n|,|t_{n+1}|)=|t_{n+1}|\)
+		\item The argorithm of \ref{it:1}:
+		      \lstinputlisting[style=Lua]{gcd.lua}
+		\item Two ways to compute the \(\gcd(76501,9719)\):\\
+		      \begin{enumerate}
+			      \item Use the argorithm in \ref{it:1}
+			            \[
+				            \begin{aligned}
+					            76501 & = & 8   \times   & 9719    & - & 1251 \\
+					            9719  & = & (-8)  \times & (-1251) & - & 289  \\
+					            -1251 & = & 4   \times   & (-289)  & - & 95   \\
+					            -289  & = & 3   \times   & (-95)   & - & 4    \\
+					            -95   & = & 24  \times   & (-4)    & + & 1    \\
+					            -4    & = & (-4)  \times & 1       & + & 0
+				            \end{aligned}
+			            \]
+			      \item Use Euclidean algorithm:\\
+			            \[
+				            \begin{aligned}
+					            76501 & = 7  & \times & 9719 & + & 8468 \\
+					            9719  & = 1  & \times & 8468 & + & 1251 \\
+					            8468  & = 6  & \times & 1251 & + & 962  \\
+					            1251  & = 1  & \times & 962  & + & 289  \\
+					            962   & = 3  & \times & 289  & + & 95   \\
+					            289   & =3   & \times & 95   & + & 4    \\
+					            95    & = 23 & \times & 4    & + & 3    \\
+					            4     & = 1  & \times & 3    & + & 1    \\
+					            3     & = 3  & \times & 1    & + & 0
+				            \end{aligned}
+			            \]
+		      \end{enumerate}
+		      So \(\gcd(76501,9719)=1\).
+	\end{enumerate}
 
 \end{solution}
 \begin{problem}
-  Let \(F(x)=\sum_{k=0}^na_kx^{n} \in \mathbb{Z}[x]\), where \(a_0,a_n \neq 0\). Then reasonable root \(\frac{p}{q}\) of \(F(x)\)
-  must satisfiy that \(p | a_0, q | a_n, \gcd(p,q)=1\). Therefore, \(\sqrt{2}\) is not reasonable.
+Let \(F(x)=\sum_{k=0}^na_kx^{n} \in \mathbb{Z}[x]\), where \(a_0,a_n \neq 0\). Then reasonable root \(\frac{p}{q}\) of \(F(x)\)
+must satisfiy that \(p | a_0, q | a_n, \gcd(p,q)=1\). Therefore, \(\sqrt{2}\) is not reasonable.
 
 \end{problem}
 \begin{solution}
-  Since \(F(\frac{p}{q}) = \sum_{k=0}^na_k (\frac{p}{q})^{k}=0\), then \(\sum_{k=0}^na_kp^{k}q^{n-k}=0\).
-  Then \(-a_np^n=\sum_{k=0}^{n-1}a_kp^{k}q^{n-k}=p(\sum_{k=1}^{n-1}a_kp^{k-1}q^{n-k})+a_0q^n=q(\sum_{k=0}^{n-1}a_kq^{n-k-1}p^{k})\).
-  Since \(\gcd(p,q) = 1\), then \(q \mid a_n, p \mid a_0\).
-  Since \(F(x)=x^2-2\) s.t. \(F(\sqrt{2}) = 0\). If \(\sqrt{2}\) is reasonable, then \(\sqrt{2} =\frac{p}{q}\).
-  Thus, \(p \mid 2, q \mid 1\), so \(\sqrt{2}=2,1\), which is contradict with the define of \(\sqrt{2}\)!
+	Since \(F(\frac{p}{q}) = \sum_{k=0}^na_k (\frac{p}{q})^{k}=0\), then \(\sum_{k=0}^na_kp^{k}q^{n-k}=0\).
+	Then \(-a_np^n=\sum_{k=0}^{n-1}a_kp^{k}q^{n-k}=p(\sum_{k=1}^{n-1}a_kp^{k-1}q^{n-k})+a_0q^n=q(\sum_{k=0}^{n-1}a_kq^{n-k-1}p^{k})\).
+	Since \(\gcd(p,q) = 1\), then \(q \mid a_n, p \mid a_0\).
+	Since \(F(x)=x^2-2\) s.t. \(F(\sqrt{2}) = 0\). If \(\sqrt{2}\) is reasonable, then \(\sqrt{2} =\frac{p}{q}\).
+	Thus, \(p \mid 2, q \mid 1\), so \(\sqrt{2}=2,1\), which is contradict with the define of \(\sqrt{2}\)!
 \end{solution}
-
 \end{document}

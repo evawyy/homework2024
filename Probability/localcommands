@@ -1,0 +1,1 @@
+\newcommand{\norm}[1]{\lVert #1 \rVert}

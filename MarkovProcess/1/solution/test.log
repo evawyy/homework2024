@@ -1,0 +1,602 @@
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.4.4)  24 JAN 2025 20:29
+ restricted system commands enabled.
+**test.tex
+(./test.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
+ollection.
+luaotfload | conf : Root cache directory is "/Users/evawyy/Library/texlive/2024/
+texmf-var/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
+olved path "/usr/local/texlive/2024/texmf-dist/tex/luatex/luaotfload/fontloader-
+2023-12-28.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.134
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "/Users/evawyy/Library/texlive/2024/
+texmf-var/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (/usr/local/texlive/202
+4/texmf-dist/tex/latex/ctex/ctexart.cls
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg
+File: ctexbackend.cfg 2022/07/14 v2.5.10 Backend configuration file (CTEX)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2024-02-20 L3 programming layer (loader) 
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2024-02-20 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count186
+Inserting `l3color' in `luaotfload.parse_color'.
+\l__pdf_internal_box=\box51
+))
+Document Class: ctexart 2022/07/14 v2.5.10 Chinese adapter for class article (C
+TEX)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/ctexhook.sty
+Package: ctexhook 2022/07/14 v2.5.10 Document and package hooks (CTEX)
+\c__ctex_package_cctab=\catcodetable14
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/ctexpatch.sty
+Package: ctexpatch 2022/07/14 v2.5.10 Patching commands (CTEX)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fix-cm.sty
+Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+))
+\l__ctex_tmp_int=\count187
+\l__ctex_tmp_box=\box52
+\l__ctex_tmp_dim=\dimen139
+\g__ctex_section_depth_int=\count188
+\g__ctex_font_size_int=\count189
+\g__cctab_next_cctab=\catcodetable15
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
+File: ctexopts.cfg 2022/07/14 v2.5.10 Option configuration file (CTEX)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from /Users/evawyy/Library/texlive/
+2024/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count190
+\c@section=\count191
+\c@subsection=\count192
+\c@subsubsection=\count193
+\c@paragraph=\count194
+\c@subparagraph=\count195
+\c@figure=\count196
+\c@table=\count197
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/engine/ctex-engine-luatex.de
+f
+File: ctex-engine-luatex.def 2022/07/14 v2.5.10 LuaLaTeX adapter (CTEX)
+ (/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/luatexja.sty
+Package: luatexja 2024-02-19 Japanese Typesetting with Lua(La)TeX
+
+(/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/luatexja-core.sty
+Package: luatexja-core 2023-04-06 Core of LuaTeX-ja
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX 
+
+(/usr/local/texlive/2024/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
+Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
+\@catcodetablestackcnt=\count198
+)
+\CatcodeTableOther=\catcodetable16
+\CatcodeTableExpl=\catcodetable17
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks17
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks18
+\XKV@tempa@toks=\toks19
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count199
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count266
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/everyhook/everyhook.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/svn-prov/svn-prov.sty
+Package: svn-prov 2010/04/24 v3.1862 Package Date/Version from SVN Keywords
+)
+Package: everyhook 2014/11/26 v1.2 (SVN Rev: 12)\ Hooks for low level TeX every
+X primitives.
+\everypar=\toks20
+\frozen@everymath=\toks21
+\frozen@everydisplay=\toks22
+\everyhbox=\toks23
+\everyvbox=\toks24
+\everycr=\toks25
+)
+\ltjlineendcomment=\count267
+\ltj@dimen@zw=\dimen141
+\ltj@dimen@zh=\dimen142
+\ltj@dimen@jQ=\dimen143
+\ltj@icflag=\attribute4
+\ltj@curjfnt=\attribute5
+\ltj@curtfnt=\attribute6
+\ltj@charclass=\attribute7
+\ltj@charcode=\attribute8
+\ltj@autospc=\attribute9
+\ltj@autoxspc=\attribute10
+\ltj@yablshift=\attribute11
+\ltj@ykblshift=\attribute12
+\ltj@tablshift=\attribute13
+\ltj@tkblshift=\attribute14
+\jfam=\attribute15
+\ltj@vert@ori=\attribute16
+\ltj@dir=\attribute17
+\ltj@@japanese=\language2
+\ltj@tempcnta=\count268
+\ltj@tempdima=\dimen144
+\ltj@@stack=\count269
+\ltj@@group@level=\count270
+\ltj@kcat0=\attribute18
+\ltj@kcat1=\attribute19
+\ltj@kcat2=\attribute20
+\ltj@kcat3=\attribute21
+\ltj@kcat4=\attribute22
+\ltj@kcat5=\attribute23
+\ltj@kcat6=\attribute24
+Custom whatsit inhibitglue = 1
+Custom whatsit stack_marker = 2
+Custom whatsit begin_par = 3
+Custom whatsit direction = 4
+Custom whatsit box_boundary = 5
+Custom whatsit ja_al_boundary = 6(load cache: ltj-cid-auto-adobe-japan1.luc)
+Lua module: luatexja.charrange 2022-08-19 Handling the range of Japanese charact
+ers
+Lua module: luatexja.stack 2022-08-20 LuaTeX-ja stack system
+Inserting `ltj.create_dir_whatsit' in `hpack_filter'.
+Inserting `ltj.create_dir_whatsit' in `post_linebreak_filter'.
+Inserting `ltj.direction' in `vpack_filter'.
+Inserting `ltj.direction' in `pre_output_filter'.
+Inserting `ltj.lineskip' in `post_linebreak_filter'.
+Inserting `ltj.lineskip' in `append_to_vlist_filter'.
+Lua module: luatexja.jfont 2023-04-06 Loader for Japanese fonts
+Removing  `luaotfload.define_font' from `define_font'.
+Inserting `luatexja.font_callback' in `define_font'.
+Removing  `luaotfload.aux.set_sscale_dimens' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.set_font_index' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.patch_cambria_domh' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.set_capheight' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.set_xheight' from `luaotfload.patch_font'.
+Removing  `luaotfload.rewrite_fontname' from `luaotfload.patch_font'.
+Inserting `ltj.prepare_extra_data' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `ltj.prepare_extra_data' in `luatexja.define_font'.(load cache: extra_
+lmroman10-regular.luc)
+Inserting `ltj.get_vert_form' in `luatexja.define_jfont'.
+Removing  `ltj.prepare_extra_data' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.set_sscale_dimens' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.set_font_index' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.patch_cambria_domh' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.set_capheight' from `luaotfload.patch_font'.
+Removing  `luaotfload.aux.set_xheight' from `luaotfload.patch_font'.
+Removing  `luaotfload.rewrite_fontname' from `luaotfload.patch_font'.
+Inserting `ltj.supply_tounicode' in `luaotfload.patch_font'.
+Inserting `ltj.prepare_extra_data' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `ltj.process_input_buffer' in `process_input_buffer'.
+Inserting `ltj.hyphenate' in `hyphenate'.
+Removing  `luaotfload.node_processor' from `hpack_filter'.
+Removing  `luaotfload.harf.finalize_hlist' from `hpack_filter'.
+Removing  `ltj.create_dir_whatsit' from `hpack_filter'.
+Inserting `ltj.set_stack_level' in `hpack_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `ltj.create_dir_whatsit' in `hpack_filter'.
+Removing  `luaotfload.node_processor' from `pre_linebreak_filter'.
+Inserting `ltj.set_stack_level' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Lua module: luatexja.jfmglue 2022-08-29 Insertion process of JFM glues, [x]kanji
+skip and others
+Inserting `luatexja.beginpar.np_info' in `luatexja.jfmglue.whatsit_getinfo'.
+Inserting `luatexja.beginpar.np_info_after' in `luatexja.jfmglue.whatsit_after'.
+Inserting `ltj.mlist_to_hlist_pre' in `pre_mlist_to_hlist_filter'.
+Inserting `ltj.main' in `pre_linebreak_filter'.
+Removing  `luaotfload.harf.finalize_hlist' from `hpack_filter'.
+Removing  `ltj.create_dir_whatsit' from `hpack_filter'.
+Inserting `ltj.main' in `hpack_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `ltj.create_dir_whatsit' in `hpack_filter'.
+Removing  `ltj.set_stack_level' from `pre_linebreak_filter'.
+Removing  `luaotfload.node_processor' from `pre_linebreak_filter'.
+Removing  `ltj.main' from `pre_linebreak_filter'.
+Inserting `ltj.adjust_icflag' in `pre_linebreak_filter'.
+Inserting `ltj.set_stack_level' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `ltj.main' in `pre_linebreak_filter'.
+Removing  `ltj.set_stack_level' from `hpack_filter'.
+Removing  `luaotfload.node_processor' from `hpack_filter'.
+Removing  `ltj.main' from `hpack_filter'.
+Removing  `luaotfload.harf.finalize_hlist' from `hpack_filter'.
+Removing  `ltj.create_dir_whatsit' from `hpack_filter'.
+Inserting `ltj.adjust_icflag' in `hpack_filter'.
+Inserting `ltj.set_stack_level' in `hpack_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `ltj.main' in `hpack_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `ltj.create_dir_whatsit' in `hpack_filter'.
+(/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/ltj-base.sty
+Package: ltj-base 2021-03-16
+\ltj@tempcntb=\count271
+\ltj@tempcntc=\count272
+\ltj@afbox=\box53
+)
+\ltj@@italic@inner=\luafunction25
+\ltj@@start@time@measure@inner=\luafunction26
+\ltj@@stop@time@measure@inner=\luafunction27
+\ltj@@jfont@inner=\luafunction28
+\ltj@zw@inner=\luafunction29
+\ltj@zh@inner=\luafunction30
+\ltj@reset@globaldefs@inner=\luafunction31
+\ltj@restore@globaldefs@inner=\luafunction32
+\ltj@@disihb@inner=\luafunction33
+\ltj@@ihb@inner=\luafunction34
+\ltj@@fakeparbegin@inner=\luafunction35
+\ltj@@fakeboxbdd@inner=\luafunction36
+\ltj@@ins@xk@inner=\luafunction37
+\ltj@@ins@k@inner=\luafunction38
+\ltjsetkanjiskip@inner=\luafunction39
+\ltjsetxkanjiskip@inner=\luafunction40
+\ltj@@getparam@one@inner=\luafunction41
+\ltj@alljachar@inner=\luafunction42
+\ltj@@lua@populate@insertwhatsit@inner=\luafunction43
+\ltj@@vadjust@begin@inner=\luafunction44
+\ltj@@vadjust@dirhook@inner=\luafunction45
+\ltj@@vadjust@check@dir@inner=\luafunction46
+\ltj@@box@dirhook@inner=\luafunction47
+\ltj@@reset@badness@inner=\luafunction48
+\ltj@@lua@raisebox@inner=\luafunction49
+\ltj@@vsplit@inner=\luafunction50
+\ltj@@lua@unboxcheckdir@inner=\luafunction51
+\ltj@@lua@uncopycheckdir@inner=\luafunction52
+\ltj@@lua@uncopy@restore@whatsit@inner=\luafunction53
+(load cache: ltj-kinsoku_default.luc)
+
+Package ctexhook Info: Package `ltj-latex' can not be loaded with `ctexart'.
+
+LaTeX Info: Package 'ltj-latex.sty' has been disabled.
+            Load request ignored on input line 781.
+\ltj@temp@cctb=\catcodetable18
+)
+(/usr/local/texlive/2024/texmf-dist/tex/luatex/luatexja/luatexja-compat.sty
+Package: luatexja-compat 2020-08-08 Compatibility with pTeX
+(load cache: ltj-jisx0208.luc)
+\hour=\count273
+\minute=\count274
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2024-02-18 L3 Experimental document command parser
+)
+Package: fontspec 2024/02/13 v2.9a Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2024/02/13 2.9a Font selection for XeLaTeX and LuaLaTeX
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+Package: fontspec-luatex 2024/02/13 v2.9a Font selection for XeLaTeX and LuaLaT
+eX
+\l__fontspec_script_int=\count275
+\l__fontspec_language_int=\count276
+\l__fontspec_strnum_int=\count277
+\l__fontspec_tmp_int=\count278
+\l__fontspec_tmpa_int=\count279
+\l__fontspec_tmpb_int=\count280
+\l__fontspec_tmpc_int=\count281
+\l__fontspec_em_int=\count282
+\l__fontspec_emdef_int=\count283
+\l__fontspec_strong_int=\count284
+\l__fontspec_strongdef_int=\count285
+\l__fontspec_tmpa_dim=\dimen145
+\l__fontspec_tmpb_dim=\dimen146
+\l__fontspec_tmpc_dim=\dimen147
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.cfg)(load cache:
+ extra_lmroman10-bold.luc)))
+\g__cctab_next_cctab=\catcodetable19
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/tuenc.def
+File: tuenc.def 2021/04/29 v2.0v Standard LaTeX file
+\@remove@tlig@@@=\luafunction54
+LaTeX Font Info:    Redeclaring font encoding TU on input line 105.
+)
+Lua function ctex_ltj_add_kyenc:n = 55
+Lua function ctex_ltj_is_kenc:n = 56
+Lua function ctex_ltj_patch_external_font:n = 57
+Lua function ctex_ltj_set_alt_font:nnnn = 58
+Lua function ctex_ltj_clear_alt_font:n = 59
+Lua function ctex_ltj_pickup_alt_font:nn = 60
+Lua function __ctex_ltj_pickup_alt_font:Nn = 61
+Lua function __ctex_ltj_if_alt_set:nT = 62
+Lua function ctex_ltj_zero_globaldefs: = 63
+\symCJKmath=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `CJKmath' in version `bold'
+(Font)                  LTJY3/song/m/n --> LTJY3/song/b/n on input line 471.
+\g__ctex_ltj_family_int=\count286
+\ccwd=\dimen148
+\l__ctex_ccglue_skip=\skip50
+(load cache: ltj-cid-auto-adobe-gb1.luc)
+(/usr/local/texlive/2024/texmf-dist/tex/luatex/chinese-jfm/jfm-zh_CN.lua)
+\l__ctex_xkanjiskip_skip=\skip51
+\cht=\dimen149
+\cdp=\dimen150
+\cwd=\dimen151
+Lua function ctex_update_kanjisize: = 64)
+\l__ctex_ziju_dim=\dimen152
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
+\l__zhnum_scale_int=\count287
+\l__zhnum_tmp_int=\count288
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
+File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
+))
+\l__ctex_heading_skip=\skip52
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-a
+rticle.def
+File: ctex-scheme-chinese-article.def 2022/07/14 v2.5.10 Chinese scheme for art
+icle (CTEX)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
+File: ctex-name-utf8.cfg 2022/07/14 v2.5.10 Caption with encoding UTF-8 (CTEX)
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/ctex-c5size.clo
+File: ctex-c5size.clo 2022/07/14 v2.5.10 c5size option (CTEX)
+)(load cache: extra_lmroman8-regular.luc)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-mac.def
+File: ctex-fontset-mac.def 2022/07/14 v2.5.10 macOS fonts definition (CTEX)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-macold.
+def
+File: ctex-fontset-macold.def 2022/07/14 v2.5.10 macOS fonts definition for Yos
+emite or earlier version (CTEX)
+luaotfload | cache : Lookup cache loaded from /Users/evawyy/Library/texlive/2024
+/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.(save cache: /
+Users/evawyy/Library/texlive/2024/texmf-var/luatexja/extra_stsong.lua.gz)(save c
+ache: /Users/evawyy/Library/texlive/2024/texmf-var/luatexja/extra_stsong.luc)
+luaotfload | aux : font no 21 (nil) defines no feature for script latn
+luaotfload | aux : font no 21 (nil) defines no feature for script dflt(save cach
+e: /Users/evawyy/Library/texlive/2024/texmf-var/luatexja/extra_stkaiti.lua.gz)(s
+ave cache: /Users/evawyy/Library/texlive/2024/texmf-var/luatexja/extra_stkaiti.l
+uc)
+
+Package fontspec Info: Could not resolve font "STKaiti/B" (it probably doesn't
+(fontspec)             exist).
+
+(save cache: /Users/evawyy/Library/texlive/2024/texmf-var/luatexja/extra_stheiti
+.lua.gz)(save cache: /Users/evawyy/Library/texlive/2024/texmf-var/luatexja/extra
+_stheiti.luc)
+
+Package fontspec Info: Could not resolve font "STHeiti/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "STSong/BI" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Font family 'STSong(0)' created for font 'STSong' with
+(fontspec)             options
+(fontspec)             [NFSSEncoding=LTJY3,JFM=zh_CN/quanjiao,BoldFont={STHeiti
+},ItalicFont={STKaiti},LTJFONTUID=1].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"name:STSong:mode=node;language=dflt;jfm=zh_CN/quanji
+ao;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"name:STHeiti:mode=node;language=dflt;jfm=zh_CN/quanj
+iao;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"name:STKaiti:mode=node;language=dflt;jfm=zh_CN/quanj
+iao;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+
+luaotfload | aux : font no 27 (nil) does not define feature vert for script dflt
+ with language dflt
+luaotfload | aux : font no 27 (nil) does not define feature vrt2 for script dflt
+ with language dflt))) (/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/confi
+g/ctex.cfg
+File: ctex.cfg 2022/07/14 v2.5.10 Configuration file (CTEX)
+)
+LaTeX Font Info:    Redeclaring symbol font `CJKmath' on input line 4.
+LaTeX Font Info:    Overwriting symbol font `CJKmath' in version `normal'
+(Font)                  LTJY3/song/m/n --> LTJY3/STSong(0)/m/n on input line 4.
+
+LaTeX Font Info:    Overwriting symbol font `CJKmath' in version `bold'
+(Font)                  LTJY3/song/b/n --> LTJY3/STSong(0)/m/n on input line 4.
+
+LaTeX Font Info:    Overwriting symbol font `CJKmath' in version `bold'
+(Font)                  LTJY3/STSong(0)/m/n --> LTJY3/STSong(0)/b/n on input li
+ne 4.
+
+No file test.aux.
+
+\openout1 = test.aux
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for LTJY3/song/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+
+Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup5
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 4.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 4.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 4.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 4.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 4.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 4.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 4.
+LaTeX Font Info:    Redeclaring math accent \check on input line 4.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 4.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 4.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 4.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 4.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 4.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 4.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 4.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 4.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 4.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 4.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 4.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 4.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 4.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 4.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 4.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 4.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 4.
+(load cache: extra_lmromanslant10-regular.luc)
+LaTeX Font Info:    Font shape `LTJY3/STSong(0)/m/sl' in size <10.53937> not av
+ailable
+(Font)              Font shape `LTJY3/STSong(0)/m/it' tried instead on input li
+ne 6.
+luaotfload | aux : font no 29 (nil) does not define feature vert for script dflt
+ with language dflt
+luaotfload | aux : font no 29 (nil) does not define feature vrt2 for script dflt
+ with language dflt [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap
+/pdftex.map}
+
+]
+(./test.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2022/07/14>
+ ***********
+)
+
+Here is how much of LuaTeX's memory you used:
+ 6778 strings out of 476447
+ 100000,1977958 words of node,token memory allocated
+ 569 words of node memory still in use:
+   4 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 57 attribute, 50 glue_spec
+, 11 attribute_list, 1 write, 6 user_defined nodes
+   avail lists: 1:2,2:334,3:11,4:17,5:25,6:2,7:36,9:24
+ 28768 multiletter control sequences out of 65536+600000
+ 29 fonts using 66734959 bytes
+ 90i,5n,97p,346b,254s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</System/Library/Fonts/Supplemental/Songti.ttc></usr/local/texlive/2024/texmf-di
+st/fonts/opentype/public/lm/lmroman10-regular.otf>
+Output written on test.pdf (1 page, 143638 bytes).
+
+PDF statistics: 22 PDF objects out of 1000 (max. 8388607)
+ 12 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+
