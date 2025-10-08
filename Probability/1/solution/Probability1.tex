@@ -1,6 +1,7 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
 %arara: xelatex
+%!TEX language=zh
 \documentclass{ctexart}
 \newif\ifpreface
 %\prefacetrue
@@ -61,7 +62,6 @@
   由于\(|\mathcal{A}|=\aleph_0 \)，那么\(\bigcup_{x \in A}B(p_x,r_x),\forall A \in \mathcal{O}  \)一定为可数的并。从而\(\forall A \in \mathcal{O},A \in \sigma(\mathcal{A}) \)。
 \end{solution}
 
-
 \begin{problem}\label{pro:1.4.6}
   设\(\mathcal{C} \)是\(\Omega \)中任一集代数，则存在\(\Omega \)中的单调类\(\mathcal{M}_0 \)满足：
   \begin{enumerate}
@@ -88,15 +88,15 @@
 \begin{solution}
   \begin{lemma}\label{lem:1.4.9}
     \(\Omega_i,i=1,2 \) 为两个集合，\(A_i,B_i \subset \Omega_i,i=1,2\)，那么以下命题正确。
-    \begin{itemize}
+    \begin{enumerate}
       \item \label{ite:1} \((A_1 \times A_2) \cap (B_1 \times B_2)=(A_1 \cap B_1) \times (A_2 \cap B_2) \)；
       \item \label{ite:2} 若\(A_1 \times A_2 \subset B_1 \times B_2 \)，那么\(B_1 \times B_2 = (A_1 \times A_2) \cup ((B_1 / A_1) \times B_2) \cup (A_1 \times (B_2 / A_2)) \)，
         其中\((A_1 \times A_2) , ((B_1 / A_1) \times B_2) , (A_1 \times (B_2 / A_2))\)两两不交。
       \item \label{ite:3} 若\(A_1 \times A_2 \subset B_1 \times B_2 \)，那么\(A_1 \subset B_1 \)，\(A_2 \subset B_2 \)。
-    \end{itemize}
+    \end{enumerate}
   \end{lemma}
  \begin{proof}
-   \begin{itemize}
+   \begin{enumerate}
      \item \(\forall (a,b) \in (A_1 \times A_2) \cap (B_1 \times B_2) \)，那么\((a,b) \in A_1 \times A_2 \)且\((a,b) \in B_1 \times B_2 \)。
     从而\(a \in A_1, b \in A_2 \)，\(a \in B_1,b \in B_2 \)。故\(a \in A_1 \cap B_1 \)， \(b \in A_2 \cap B_2 \)。
     那么\((a,b) \in (A_1 \cap B_1) \times (A_2 \cap B_2) \)。另一方面，\(\forall (a,b) \in (A_1 \cap B_1)\times (A_2 \times B_2) \)，
@@ -107,7 +107,7 @@
        那么\((A_1 \times A_2) , ((B_1 / A_1) \times B_2) , (A_1 \times (B_2 / A_2)) \subset B_1 \times B_2\)，从而\( (A_1 \times A_2) \cup ((B_1 / A_1) \times B_2) \cup (A_1 \times (B_2 / A_2)) \subset B_1 \times B_2 \)。
        又\(B_1 \times B_2 =((B_1 /A_1) \times B_2)\cup (A_1 \times B_2) =((B_1 /A_1) \times B_2) \cup ((A_1 \times (B_2 / A_2)) \cup (A_1 \times A_2))  \)，从而结论正确。
      \item 若\(A_1 / B_1 \neq \varnothing \)，设\(a \in A_1/B_1 \)，取\(b \in A_2 \)，那么\((a,b) \in A_1 \times A_2 \)，但\((a,b) \notin B_1 \times B_2  \)，与\(A_1 \times A_2 \subset B_1 \times B_2 \)矛盾。
-   \end{itemize}
+   \end{enumerate}
  \end{proof}
 由于\(\mathcal{A}_i,1 \leq i \leq n \) 是\(\Omega_i \)  上的\(\sigma \)-代数，从而\(\mathcal{A}_i,1 \leq i \leq n \)为\(\Omega_i \)上的半集代数。
 我们可以用数学归纳法证明以下命题：设\(\Omega_i ,i=1,2,\cdots,n\)是\(n \)个集合，\(\mathcal{A}_i \)是\(\Omega_i \)上的半集代数，那么\(\mathcal{C}_n=\{A_1 \times \cdots \times A_n:A_i \in \mathcal{A}_i\} \)为半集代数。
@@ -117,10 +117,10 @@
     \begin{itemize}
       \item 由于\(A_1,A_2 \)为半集代数，那么\(\Omega_i, \varnothing \in A_i，i=1,2\)。
     从而\(\{\varnothing \times \varnothing , \Omega_1 \times \Omega_2\} \subset \mathcal{C}_1 \)。
-  \item 设\(A_1 \times A_2, B_1 \times B_2 \in \mathcal{C} \)，那么由\ref{lem:1.4.9}中的\ref{ite:1}可知 \((A_1 \times A_2) \cap (B_1 \times B_2)=(A_1 \cap B_1) \times (A_2 \cap  B_2) \)。
+  \item 设\(A_1 \times A_2, B_1 \times B_2 \in \mathcal{C} \)，那么由引理\ref{lem:1.4.9}中的\ref{ite:1}可知 \((A_1 \times A_2) \cap (B_1 \times B_2)=(A_1 \cap B_1) \times (A_2 \cap  B_2) \)。
     又由\(\mathcal{A}_i,i=1,2 \)均为半集代数，那么\(A_i \cap B_i \in \mathcal{A}_i, i=1,2 \)。那么\((A_1 \cap B_1) \times (A_2 \times B_2) \in \mathcal{C}_2  \)。
     故\((A_1 \times A_2) \cap (B_1 \times B_2) \in \mathcal{C}_2 \)。
-  \item 若\(A_1 \times A_2 \subset B_1 \times B_2 \)，那么由\ref{lem:1.4.9}中的\ref{ite:3}知\(A_1 \subset B_1 \)，\(A_2 \subset B_2 \)。
+  \item 若\(A_1 \times A_2 \subset B_1 \times B_2 \)，那么由引理\ref{lem:1.4.9}中的\ref{ite:3}知\(A_1 \subset B_1 \)，\(A_2 \subset B_2 \)。
     由于\(A_i, B_i \in \mathcal{A}_i\)，那么\(\exists C^i_k \in \mathcal{A}_i,1 \leq k \leq N_i, N_i \in \mathbb{N}_{+} \)两两不交，与\(A_i \)也不交，且\(B_i=A_i \cup (\bigcup_{1 \leq k \leq N_i} C^i_k),i=1,2\)。
     由于\(C^i_k \in \mathcal{A}_i, 1 \leq k \leq N_i,i=1,2\)，那么\(C^1_k \times B_2 \in \mathcal{C}_2, 1 \leq k \leq N_1 \)， \(A_1 \times C^2_k \in \mathcal{C}_2, 1 \leq k \leq N_2 \)。
     由于\(C^i_k \in \mathcal{A}_i, 1 \leq k \leq N_i,i=1,2\)两两不交，那么\(C^1_k \times B_2, 1 \leq k \leq N_1\)两两不交，\(A_1 \times C^2_k,1 \leq k \leq N_2 \)两两不交。
@@ -150,17 +150,47 @@
 \end{solution}
 
 \begin{problem}\label{pro:1.4.11}
-  举例说明可加测度未处有限可加。
+  举例说明可加测度未必有限可加。
 \end{problem}
+\begin{solution}
+考虑\(\Omega=\{1,2,3\},\mathcal{T}=\{\{1\},\{2\},\{3\},\{1,2,3\},\varnothing \} \)，\(\Phi:\mathcal{T} \to \{0,1\} \)，
+其中\(\Phi(\{\varnothing\})=0,\Phi(A)=1,A \in \mathcal{T}\setminus\{\varnothing\} \)。
+那么\(\Phi \)为\(\mathcal{T} \)上的可加测度。考虑\(\{1\},\{2\},\{3\} \)两两不交且\(\{1,2,3\}=\{1\} \cup \{2\}\cup \{3\} \in \mathcal{T} \)，
+则\(\Phi(\{1\} \cup \{2\} \cup \{3\})=\Phi(\{1,2,3\})=1\)，\(\sum_{k=1}^{3}\Phi(\{k\})=\sum_{k=1}^{3}1=3 \)。
+故\(\sum_{k=1}^{3}\Phi(\{k\}) \neq \Phi(\{1,2,3\}) \)。故\(\Phi \)不是有限可加测度。
+\end{solution}
+
 \begin{problem}
-  举例说明半集代数\(\mathcal{T}\)生成的\(\sigma\)代数不能一般性地表述为
+  举例说明半集代数\(\mathcal{T}\)生成的\(\sigma\)-代数不能一般性地表述为
   \[
     \sigma(\mathcal{T})=\{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\}.
   \]
-  但如果\(\omega\)至多可数时，如上表述是正确的.
+  但如果\(\Omega\)至多可数时，如上表述是正确的.
 \end{problem}
 \begin{solution}
-  
+  下证如上表述在\(\Omega \)可数时，不正确。
+ 考虑\(\mathcal{T}:=\{A \subset \mathbb{N}: 0 \in A, |A^c| < \infty \text{或}
+  0 \notin A, |A| < \infty  \} \)。令\(\mathcal{A}:=\{\sum_{n=1}^{\infty}A_n:\forall n \geq 1, A_n \in \mathcal{T}\} \)，
+先证\(\mathcal{T} \)为半集代数。
+  \begin{itemize}
+    \item 由于\(0 \notin \varnothing\)，且\(|\varnothing| =0 \)，那么\(\varnothing \in \mathcal{T} \)。
+      又由于\(0 \in \mathbb{N} \)，且\(|\mathbb{N}^c|=|\varnothing|=0 \)，那么\(\mathbb{N} \in \mathcal{T} \)。
+    \item \(\forall A, B \in \mathcal{T} \)，若\(0 \in A, 0 \in B\)，那么\(0 \in A \cap B \)。
+      由于\(|A^c|,|B^c|< \infty \)，那么\(|(A \cap B)^c|=|A^c \cup B^c|\leq |A^c| + |B^c| < \infty \)。
+      故\(A \cap B \in \mathcal{T} \)。若\(0 \in A, 0 \notin B \)，那么\(0 \notin A \cap B \)。
+      由于\(|A^c|,|B| < \infty \)， 那么\(|A \cap B | \leq |B| < \infty \)。从而\(A \cap B \in \mathcal{T} \)。
+      若\(0 \notin A, 0 \notin B \)，那么\(0 \notin A \cap B \)。
+      又由于\(|A|,|B|< \infty \)，那么\(|A \cap B| \leq |A| < \infty \)。
+      从而\(A \cap B \in \mathcal{T} \)。综上，\(A \cap B \in \mathcal{T} \)。
+    \item \(\forall A \in \mathcal{T} \)，若\(0 \in A \)，那么\(|A^c|< \infty \)。又由于\(0 \notin A^c \)，
+      那么\(A^c \in \mathcal{T} \)。若\(0 \notin A \)，那么\(|A| < \infty \)。又由于\(0 \in A^c \)，
+      那么\(|(A^c)^c|< \infty \)。故\(A^c \in \mathcal{T} \)。综上，\(A^c \in \mathcal{T} \)。
+  \end{itemize}
+   下证\(\sigma(\mathcal{T}) \neq \mathcal{A} \)。 事实上，\(\{0\} \in \sigma(\mathcal{T}) \setminus \mathcal{A} \)。
+   若\(\{0\} \in \mathcal{A} \)，那么\(\exists A_n \in \mathcal{T},n \geq 1,A_i \cap A_j = \varnothing ,i \neq j \)，使得\(\{0\}=\sum_{n=1}^{\infty}A_n \)。
+   由于\(|\{0\}|=1 < \infty \)，那么\(|A_n|<\infty ,\forall n \geq 1\)。
+   故\(0 \notin A_n ,\forall n \geq 1\)。从而\(0 \notin \cup_{n \geq 1}A_n \)。
+   故\(\{0\} \notin \mathcal{A} \)。而\(\{0\}=(\cup_{k \geq 1}\{k\})^c \)，\(\{k\} \in \mathcal{T},k \geq1 \)。故\(\{0\} \in \sigma(\mathcal{T}) \)。
 \end{solution}
 
 \end{document}

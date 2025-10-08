@@ -9,6 +9,7 @@
   "mak": "MarkovProcess",
   "num": "NumberTheory",
   "pro": "Probability",
+  "ite": "Iterative",
   "oth": "OtherItem",
   "eng": "English"
 }

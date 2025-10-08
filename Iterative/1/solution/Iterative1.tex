@@ -1,0 +1,76 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX language=zh
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{lemma}\label{lem:1.13}
+\end{lemma}
+
+\begin{problem} 
+  Let \(A_1=B^{-1}C \) and \(A_2 =CB \) where \(C \) is a Hermitian matrix and 
+  \(B \) is a Hermitian Positive Definite matrix. Are \(A_1 \) and \(A_2 \) 
+  Hermitian in general? Show that \(A_1 \) and \(A_2 \) are Hermitian (self-adjoint)
+  with respect to the \(B \)-inner product.
+\end{problem}
+\begin{problem} 
+  Let a matrix \(A \) be such that \(A^H =p(A) \), where \(p \) is a polynomial. 
+  Show that \(A \) is normal. Given a diagonal complex matrix \(D \), show 
+  that there exists a polynomial of degree \(< n \) such that \(\overline{D} =p(\overline{D} ) \). 
+  Use this to show that a normal matrix satisfies \(A^H=p(A) \) for a certain 
+  polynomial of \(p \) of degree \(<n \). As an application, use this result to 
+  provide an alternative proof of \ref{lem:1.13}. 
+\end{problem}
+\begin{problem}  
+  Let \(A \) be an \(M \)-matrix and \(u,v \) are two nonnegative vectors such 
+  that \(V^T A^{-1} u <1 \). Show that \(A-uv^T \) is an \(M \)-matrix.
+\end{problem}
+\begin{problem} 
+  \begin{itemize}
+    \item   Consider two matrices \(A \) and \(B \) of dimension \(n \times n \), whose diagonal 
+      elements are all nonzeros. Let \(E_X \) denote the set of edges in the 
+      adjacency graph of a matrix \(X \) (that is the set of pairs \((i,j) \) 
+      such \(  X_{ij} \neq 0\)), then show that \[
+        E_{AB} \supset E_A \supset E_B
+      \]
+    \item Given extreme examples when \(|E_{AB}| =n^2 \) while \(E_A \cup E_B \) is of 
+      order \(n \). What practical implications does this have on ways to store 
+      products of sparse matrices? (Is this better to store \(AB \) or pairs \(A,B \) 
+      separately? Consider both the computation cost for performing matrix-vector 
+      products and the cost of memory.)
+  \end{itemize}
+\end{problem}
+\begin{problem} 
+  You are given an \(8 \) matrix which has the following pattern: 
+  \begin{itemize}
+    \item Show the adjacency graph of \(A \);
+    \item Find the Cuthill Mc Kee ordering for the matrix (break ties by 
+      giving priority to the node with lowest index). Show the graph of 
+      the matrix permuted according to the Cuthill-Mc Kee ordering.
+    \item What is the Reverse Cuthill Mc Kee ordering for this case? Show the matrix 
+      reordered according to the reverse Cuthill Mc Kee ordering.
+    \item Find a multicoloring of the graph using the greedy multicolor 
+      algorithm. What is the minimum number of colors required for multicoloring 
+      the graph? 
+    \item Consider the variation of the Cuthill Mc Kee ordering in which the 
+      first level consists \(L_0 \) several vertices instead on only one vertex. 
+      Find the Cuthill Mc Kee ordering with this variant with the starting level 
+      \(L_0 = \{1,8\} \).
+  \end{itemize}
+\end{problem}
+  
+
+\end{document}
