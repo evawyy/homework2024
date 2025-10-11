@@ -210,10 +210,13 @@
       Since \(A,B \) satisfy diagonal elements are all nonzeros, we can get \(E_A \cap E_B \supset \{(i,i):1 \leq i \leq n\} \).
       Assume \(A =(a_{ij}),B=(b_{ij}) \), so \(\forall (i,j) \in E_{A} \), \(\sum_{k=1}^{n}a_{ik}b_{kj} \geq a_{ij}b_{jj}  \), where \(a_{ij}b_{jj} \neq 0 \).
       So \((i,j) \in E_{AB} \). Thus, \(E_{A} \subset E_{AB} \). In the same way, we can prove \(E_{B} \subset E_{AB} \).
-    \item Let \(A=I, B=(b_{ij}) \), where \(b_{1j}=1, b_{ij}=0, i \neq 1, j=1,\cdots,n \).  Then \(AB=(c_{ij}) \), where \(c_{ij}=1, i,j=1,\cdots,n \).
-      Then \(|E_{A} \cup E_{B}| =2n \sim O(n) \), while \(|E_{AB}|= n^2\). In this way, 
-      when \(n \) is huge, it is more economical to save \(A,B \) separately, although it cost time to do \(2 \) times 
-      matrix-vector products.
+    \item Let \(A=(a_{ij}), B=(b_{ij}) \), where \(a_{ii}=1,a_{i 1}=1,a_{ij}=0, j \neq i, 1 \leq i,j \leq n \), 
+      \(b_{ii}=1,  b_{1j}=1, b_{ij}=0, i \neq 1, j=1,\cdots,n \).  Then \(AB=(c_{ij}) \), where \(c_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj} \geq a_{i 1}b_{1j}=1, \forall i,j=1,\cdots,n   \).
+      Then \(|E_{A} \cup E_{B}| =4n-2 \sim O(n) \), while \(|E_{AB}|= n^2\). 
+
+      This example shows that the product of two sparse matrices can become dense — a phenomenon known as \emph{fill-in}.  
+Therefore, it is usually better to store the sparse factors \(A\) and \(B\) rather than the product \(AB\) itself, unless the product is used repeatedly and storage cost is not a concern.  
+In practice, one often computes \(ABx\) by performing \(Bv\) followed by \(A(Bv)\), saving both memory and time in large-scale computations.
   \end{enumerate}
  \end{solution}
 
