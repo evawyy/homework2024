@@ -160,7 +160,7 @@
 故\(\sum_{k=1}^{3}\Phi(\{k\}) \neq \Phi(\{1,2,3\}) \)。故\(\Phi \)不是有限可加测度。
 \end{solution}
 
-\begin{problem}
+\begin{problem}\label{pro:10}
   举例说明半集代数\(\mathcal{T}\)生成的\(\sigma\)-代数不能一般性地表述为
   \[
     \sigma(\mathcal{T})=\{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\}.
@@ -191,6 +191,79 @@
    由于\(|\{0\}|=1 < \infty \)，那么\(|A_n|<\infty ,\forall n \geq 1\)。
    故\(0 \notin A_n ,\forall n \geq 1\)。从而\(0 \notin \cup_{n \geq 1}A_n \)。
    故\(\{0\} \notin \mathcal{A} \)。而\(\{0\}=(\cup_{k \geq 1}\{k\})^c \)，\(\{k\} \in \mathcal{T},k \geq1 \)。故\(\{0\} \in \sigma(\mathcal{T}) \)。
+\end{solution}
+\begin{problem} 
+  设\(\mathcal{C}_n \)为单调上升的子集类：
+  \begin{enumerate}
+    \item 若\(\mathcal{C}_n \)为集代数，则\(\cup_{n=1}^{\infty}\mathcal{C}_n \)为集代数。
+    \item 若\(\mathcal{C}_n \)为\(\sigma \)代数，举例\(\cup_{n=1}^{\infty}\mathcal{C}_n \)不为\(\sigma \)代数。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+由于\(\mathcal{C}_n \)单调上升，那么\(\mathcal{C}_n \subset \mathcal{C}_{n + 1}, n \geq 1 \).
+\begin{enumerate}
+  \item 令\(\mathcal{A}:=\cup_{n=1}^{\infty} \mathcal{C}_n \)。下证\(\mathcal{A} \)为集代数。
+    \begin{itemize}
+      \item 由于\(\mathcal{C}_n,n \geq 1\)为集代数，那么\(\Omega \in \mathcal{C}_n ,n \geq 1 \)。 故\(\Omega \in \cup_{n=1}^{\infty} \mathcal{C}_n \)。
+      \item \(\forall A,B \in \mathcal{A} \)，那么\(\exists n_1,n_2 \geq 1 \)，满足 \(A \in \mathcal{C}_{n_1},B \in \mathcal{C}_{n_2} \)。
+        不妨\(n = \max\{n_1,n_2\} \)，那么\(A \in \mathcal{C}_{n_1} \subset \mathcal{C}_n, B \in \mathcal{C}_{n_2} \subset \mathcal{C}_n\).
+        由于\(\mathcal{C}_n \)为集代数，那么\(A \setminus B \in \mathcal{C}_n \)。故\(A \setminus B \in \mathcal{A} \)。
+    \end{itemize}
+  \item 考虑\(\mathcal{C}_n=\sigma(\{\{k\}: 1 \leq k \leq n\}) \)。令\( \)
+\end{enumerate}
+\end{solution}
+
+
+\begin{problem} 
+  证明\(\sigma \)-代数不可能是可数无穷的。
+\end{problem}
+
+\begin{problem} 
+  设\((\Omega_n,\mathcal{A}_n,\mu_{n}),n \geq 1 \)为一列测度空间，\(\Omega_n \)两两不交。令 \[
+    \Omega=\sum_{n=1}^{\infty} \Omega_n, \mathcal{A}=\{A \subset \Omega : \forall n \geq 1,A \cap \Omega_n \in \mathcal{A}_n\},\mu (A)=\sum_{n=1}^{\infty} \mu_{n} (A \cap \Omega_n), A \in \mathcal{A} 
+  \]
+  证明\((\Omega , \mathcal{A} , \mu ) \)为测度空间。
+\end{problem}
+\begin{solution}
+  先证\(\mathcal{A} \)为\(\sigma \)-代数。
+  \begin{itemize}
+    \item 由于\(\Omega=\sum_{n=1}^{\infty} \Omega_n \)，那么\(\Omega \cap \Omega_n= \Omega_n \in \mathcal{A}_n, \forall n \geq 1 \)。 故\(\Omega \in \mathcal{A}\)。
+    \item \(\forall A, B \in \mathcal{A}\)，那么\(\forall n \geq 1, A \cap \Omega_n, B \cap \Omega_n \in \mathcal{A}_n  \)。由于\(\mathcal{A}_n \)为\(\sigma \)代数，
+      那么\((A \cap \Omega_n) \cap ( B \cap \Omega_n)=(A \cap B) \cap \Omega_n \in \mathcal{A}_n\)。从而\(A \cap B \in \mathcal{A} \)。
+    \item \(A_n \in \mathcal{A} , n \geq 1 \)， 那么\(\forall k \geq 1, A_n \cap \Omega_k  \in  \mathcal{A}_k \)。由于\(\mathcal{A}_k \)为\(\sigma \)代数，
+      那么\(\bigcup_{n \geq 1}(A_n \cap \Omega_k) = (\bigcup_{n \geq 1} A_n) \cap \Omega_k \in \mathcal{A}_k \)，从而\(\bigcup_{n \geq 1}A_n \in \mathcal{A} \)。
+  \end{itemize}
+ 再证\(\mu \)为测度。
+  \begin{itemize}
+    \item 由于\(\forall A \in \mathcal{A} \)， \(\mu(A)=\sum_{n=1}^{\infty} \mu_n(A \cap \Omega_n) \)，而\(A \cap \Omega_n \in \mathcal{A}_n, \forall n \geq 1 \)，故\(\mu_n(A \cap \Omega_n) \geq 0 \).
+      从而，\(\mu(A)= \sum_{n=1}^{\infty} \mu_n(A \cap \Omega_n) \geq 0 \).
+    \item \(\forall A_n \in \mathcal{A}, n \geq 1, A_i \cap A_j =\varnothing, i \neq j \)，\(\sum_{n \geq 1}A_n=\sum_{n \geq 1}(A_n \cap \bigcup_{k \geq 1}\Omega_k)=\sum_{n \geq 1}(\sum_{k \geq 1} (A_n \cap \Omega_k))= 
+      \sum_{k \geq 1}\sum_{n \geq 1} (A_n \cap \Omega_k)  = \sum_{k \geq 1} (\sum_{n \geq 1} A_n) \cap \Omega_k\)。
+      由于\(\forall n \geq 1, A_n \cap \Omega_k \in \mathcal{A}_k \)，那么\(\sum_{n \geq 1} A_n \cap \Omega_k  \in \mathcal{A}_k\) 。故有\(\mu(\sum_{n \geq 1}A_k \cap \Omega_k)=\mu_k(\sum_{n \geq 1}A_n \cap \Omega_k)=\sum_{n \geq 1} \mu_k(A_n \cap \Omega_k) \)。
+      \[
+        \begin{aligned}
+          \mu(\sum_{n \geq 1} A_n) &= \mu(\sum_{n \geq 1} (\sum_{k \geq 1} (A_n \cap \Omega_k)))\\ 
+          &= \mu(\sum_{k \geq 1} (\sum_{n \geq 1} (A_n \cap \Omega_k)))\\ 
+          &= \sum_{k \geq 1}\mu_k(\sum_{n \geq 1}(A_n \cap \Omega_k))\\ 
+          &= \sum_{k \geq 1}\sum_{n \geq 1} \mu_k(A_n \cap \Omega_k)\\ 
+          &=\sum_{n \geq 1}\sum_{k \geq 1}\mu_k(A_n \cap \Omega_k)\\ 
+          &=\sum_{n \geq 1}\mu(A_n)
+        \end{aligned}
+      \]
+  \end{itemize}
+\end{solution}
+
+\begin{problem} 
+  设\(\Omega \)为一无穷集，令\(\mathcal{F} \)为\(\Omega \)中的有限集或者余有限集构成的集合，\(\mathbb{P} \)在次两类集合上取值
+  分别为\(0 \)或\(1 \)。
+  \begin{itemize}
+    \item 证明\(\mathcal{F} \)为集代数，\(\mathbb{P} \)为有限可加。
+    \item 若\(\Omega \)为可数集，则\(\mathbb{P} \)不可能为\(\sigma \)可加。
+    \item 若\(\Omega \)为不可数集，则\(\mathbb{P} \)为可数可加。
+  \end{itemize}
+\end{problem}
+\begin{solution}
+  
 \end{solution}
 
 \end{document}
