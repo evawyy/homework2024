@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  11 OCT 2025 11:09
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  11 OCT 2025 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1206,25 +1206,21 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 ] [2]
 Missing character: There is no ， (U+FF0C) in font [lmroman12-regular]:mapping=t
 ex-text;!
-[3] [4] [5] (./Probability1.aux)
+[3] [4] [5] [6] [7] (./Probability1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `Probability1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33093 strings out of 474773
- 693101 string characters out of 5757725
+ 33095 strings out of 474773
+ 693126 string characters out of 5757725
  1962839 words of memory out of 5000000
- 54667 multiletter control sequences out of 15000+600000
+ 54669 multiletter control sequences out of 15000+600000
  565554 words of font info for 103 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  112i,8n,113p,3325b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Probability1.pdf (5 pages).
+Output written on Probability1.pdf (7 pages).
