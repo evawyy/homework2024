@@ -18,45 +18,137 @@
 %from_here_to_type
 
 \begin{problem} 
-  \begin{itemize}
-    \item   Consider two matrices \(A \) and \(B \) of dimension \(n \times n \), whose diagonal 
-      elements are all nonzeros. Let \(E_X \) denote the set of edges in the 
-      adjacency graph of a matrix \(X \) (that is the set of pairs \((i,j) \) 
-      such \(  X_{ij} \neq 0\)), then show that \[
-        E_{AB} \supset E_A \supset E_B
-      \]
-    \item Given extreme examples when \(|E_{AB}| =n^2 \) while \(E_A \cup E_B \) is of 
-      order \(n \). What practical implications does this have on ways to store 
-      products of sparse matrices? (Is this better to store \(AB \) or pairs \(A,B \) 
-      separately? Consider both the computation cost for performing matrix-vector 
-      products and the cost of memory.)
-  \end{itemize}
-\end{problem}
-\begin{solution}
- \begin{enumerate}
-   \item According to the definition of \(E_X \), we can get that \( E_X  \) 
- \end{enumerate}
+  \begin{enumerate}
+    \item Prove that the iteration matrix \( G_{\omega} \) of SSOR, as defined by 
+  \[
+G_{\omega} = (D - \omega F)^{-1} (\omega E + (1 - \omega) D)
+              (D - \omega E)^{-1} (\omega F + (1 - \omega) D).
+  \]
+  can be expressed as  
+\[
+G_{\omega} = I - \omega(2 - \omega)(D - \omega F)^{-1} D (D - \omega E)^{-1} A.
+\]
+\item Deduce the expression below for the preconditioning matrix associated with the SSOR iteration.
+  \[
+M_{SSOR} = \frac{1}{\omega (2 - \omega)} (D - \omega E) D^{-1} (D - \omega F)
+\]
+  \end{enumerate}
   
-\end{solution}
+\end{problem}
+ \begin{problem}
+Let \(A\) be a matrix with a positive diagonal \(D\).
 
-\begin{problem} 
-  You are given an \(8 \) matrix which has the following pattern: 
-  \begin{itemize}
-    \item Show the adjacency graph of \(A \);
-    \item Find the Cuthill Mc Kee ordering for the matrix (break ties by 
-      giving priority to the node with lowest index). Show the graph of 
-      the matrix permuted according to the Cuthill-Mc Kee ordering.
-    \item What is the Reverse Cuthill Mc Kee ordering for this case? Show the matrix 
-      reordered according to the reverse Cuthill Mc Kee ordering.
-    \item Find a multicoloring of the graph using the greedy multicolor 
-      algorithm. What is the minimum number of colors required for multicoloring 
-      the graph? 
-    \item Consider the variation of the Cuthill Mc Kee ordering in which the 
-      first level consists \(L_0 \) several vertices instead on only one vertex. 
-      Find the Cuthill Mc Kee ordering with this variant with the starting level 
-      \(L_0 = \{1,8\} \).
-  \end{itemize}
+\begin{enumerate}[label=(\alph*)]
+  \item Obtain an expression equivalent to that of (4.13) for \(G_{\omega}\), 
+  but which involves the matrices
+  \[
+    S_E \equiv D^{-1/2} E D^{-1/2}
+    \quad \text{and} \quad
+    S_F \equiv D^{-1/2} F D^{-1/2}.
+  \]
+
+  \item Show that
+  \[
+    D^{1/2} G_{\omega} D^{-1/2}
+    = (I - \omega S_F)^{-1} (I - \omega S_E)^{-1}
+      (\omega S_E + (1 - \omega) I)
+      (\omega S_F + (1 - \omega) I).
+  \]
+
+  \item Now assume that, in addition to having a positive diagonal, 
+  \(A\) is symmetric.  
+  Prove that the eigenvalues of the SSOR iteration matrix \(G_{\omega}\) 
+  are real and nonnegative.
+\end{enumerate}
 \end{problem}
+ 
+\begin{problem} 
+A matrix of the form 
+\[
+B = 
+\begin{pmatrix}
+0 & E & 0 \\
+0 & 0 & F \\
+H & 0 & 0
+\end{pmatrix}
+\]
+is called a three-cyclic matrix.
+\begin{enumerate}[label=(\alph*)]
+  \item What are the eigenvalues of \( B \)? (Express them in terms of eigenvalues of a certain matrix which depends on \( E, F, \) and \( H \).)
   
+  \item Assume that a matrix \( A \) has the form \( A = D + B \), where \( D \) is a nonsingular diagonal matrix, and \( B \) is three-cyclic.  
+  How can the eigenvalues of the Jacobi iteration matrix be related to those of the Gauss--Seidel iteration matrix?  
+  How does the asymptotic convergence rate of the Gauss--Seidel iteration compare with that of the Jacobi iteration matrix in this case?
+  
+  \item Answer the same questions as in (b) for the case when SOR replaces the Gauss--Seidel iteration.
+  \item    A matrix of the form
+\[
+B =
+\begin{pmatrix}
+0      & E_1    & 0      & \cdots & 0      \\
+0      & 0      & E_2    & \ddots & \vdots \\
+\vdots & \ddots & \ddots & \ddots & 0      \\
+0      & \cdots & 0      & 0      & E_{p-1} \\
+E_p    & 0      & \cdots & 0      & 0
+\end{pmatrix}
+\]
+is called a \(p\)-cyclic matrix, where the blocks \(E_1,\dots,E_p\) are conformable
+(for instance, each \(E_i\) is an \(m_i\times m_{i+1}\) block with \(m_{p+1}=m_1\)).
+\end{enumerate}
+\end{problem}
+  \begin{problem}
+Consider the linear system \(Ax=b\), where \(A\) is symmetric positive definite.  
+Consider a projection step with \(K=L=\operatorname{span}\{v\}\), where \(v\) is some nonzero vector.  
+Let \(x_{\text{new}}\) be the new iterate after one projection step from \(x\), and let
+\[
+d = A^{-1}b - x,\qquad d_{\text{new}} = A^{-1}b - x_{\text{new}}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+  \item Show that
+  \[
+    (A d_{\text{new}},\, d_{\text{new}})
+    = (A d,\, d) - \frac{(r, v)^2}{(A v, v)},
+  \]
+  where \(r=b-Ax\). Does this equality establish convergence of the algorithm?
+  
+  \item (Gastinel's method.) In Gastinel's method the vector \(v\) is selected so that
+  \((v,r)=\|r\|_1\); for example one can take \(v\) with components \(v_i=\operatorname{sign}(e_i^T r)\),
+  where \(r=b-Ax\) is the current residual. Show that
+  \[
+    \|d_{\text{new}}\|_A \le \Bigl(1-\frac{1}{n\kappa(A)}\Bigr)^{1/2}\,\|d\|_A,
+  \]
+  where \(\kappa(A)\) is the spectral condition number of \(A\). Does this prove that the algorithm converges?
+  
+  \item Compare the cost of one step of this method with that of cyclic Gauss--Seidel (see Example 5.1)
+  and with that of an “optimal” Gauss--Seidel in which at each step \(K=L=\operatorname{span}\{e_i\}\)
+  and \(i\) is chosen to be the index of largest magnitude in the current residual vector.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Consider the iteration
+\[
+x_{k+1} = x_k + \alpha_k d_k,
+\]
+where \(d_k\) is a nonzero vector called the search direction and \(\alpha_k\) is a scalar.  
+Assume a method that chooses \(\alpha_k\) so that the residual \(\|r_{k+1}\|_2\) is minimized, where \(r_k=b-Ax_k\).
+
+\begin{enumerate}[label=(\alph*)]
+  \item Determine \(\alpha_k\) that minimizes \(\|r_{k+1}\|_2\).
+  
+  \item Show that the residual vector \(r_{k+1}\) obtained in this manner is orthogonal to \(A d_k\).
+  
+  \item Show that the residuals satisfy
+  \[
+    \|r_{k+1}\|_2 \le \|r_k\|_2 \,\sin\angle(r_k, A d_k).
+  \]
+  
+  \item Assume that at each step \(k\) we have \((r_k, A d_k)\neq 0\). Will the method always converge?
+  
+  \item Now assume \(A\) is symmetric positive definite and choose \(d_k \equiv r_k\) at each step. Prove that the method converges for any initial guess \(x_0\).
+\end{enumerate}
+\end{problem}
 
 \end{document}
