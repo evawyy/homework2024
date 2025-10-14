@@ -1,0 +1,110 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:10}
+  举例说明半集代数\(\mathcal{T}\)生成的\(\sigma\)-代数不能一般性地表述为
+  \[
+    \sigma(\mathcal{T})=\{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\}.
+  \]
+  但如果\(\Omega\)至多可数时，如上表述是正确的.
+\end{problem}
+\begin{solution}
+  下证如上表述在\(\Omega \)可数时，不正确。
+ 考虑\(\mathcal{T}:=\{A \subset \mathbb{N}: 0 \in A, |A^c| < \infty \text{或}
+  0 \notin A, |A| < \infty  \} \)。令\(\mathcal{A}:=\{\sum_{n=1}^{\infty}A_n:\forall n \geq 1, A_n \in \mathcal{T}\} \)，
+先证\(\mathcal{T} \)为半集代数。
+  \begin{itemize}
+    \item 由于\(0 \notin \varnothing\)，且\(|\varnothing| =0 \)，那么\(\varnothing \in \mathcal{T} \)。
+      又由于\(0 \in \mathbb{N} \)，且\(|\mathbb{N}^c|=|\varnothing|=0 \)，那么\(\mathbb{N} \in \mathcal{T} \)。
+    \item \(\forall A, B \in \mathcal{T} \)，若\(0 \in A, 0 \in B\)，那么\(0 \in A \cap B \)。
+      由于\(|A^c|,|B^c|< \infty \)，那么\(|(A \cap B)^c|=|A^c \cup B^c|\leq |A^c| + |B^c| < \infty \)。
+      故\(A \cap B \in \mathcal{T} \)。若\(0 \in A, 0 \notin B \)，那么\(0 \notin A \cap B \)。
+      由于\(|A^c|,|B| < \infty \)， 那么\(|A \cap B | \leq |B| < \infty \)。从而\(A \cap B \in \mathcal{T} \)。
+      若\(0 \notin A, 0 \notin B \)，那么\(0 \notin A \cap B \)。
+      又由于\(|A|,|B|< \infty \)，那么\(|A \cap B| \leq |A| < \infty \)。
+      从而\(A \cap B \in \mathcal{T} \)。综上，\(A \cap B \in \mathcal{T} \)。
+    \item \(\forall A \in \mathcal{T} \)，若\(0 \in A \)，那么\(|A^c|< \infty \)。又由于\(0 \notin A^c \)，
+      那么\(A^c \in \mathcal{T} \)。若\(0 \notin A \)，那么\(|A| < \infty \)。又由于\(0 \in A^c \)，
+      那么\(|(A^c)^c|< \infty \)。故\(A^c \in \mathcal{T} \)。综上，\(A^c \in \mathcal{T} \)。
+  \end{itemize}
+   下证\(\sigma(\mathcal{T}) \neq \mathcal{A} \)。 事实上，\(\{0\} \in \sigma(\mathcal{T}) \setminus \mathcal{A} \)。
+   若\(\{0\} \in \mathcal{A} \)，那么\(\exists A_n \in \mathcal{T},n \geq 1,A_i \cap A_j = \varnothing ,i \neq j \)，使得\(\{0\}=\sum_{n=1}^{\infty}A_n \)。
+   由于\(|\{0\}|=1 < \infty \)，那么\(|A_n|<\infty ,\forall n \geq 1\)。
+   故\(0 \notin A_n ,\forall n \geq 1\)。从而\(0 \notin \cup_{n \geq 1}A_n \)。
+   故\(\{0\} \notin \mathcal{A} \)。而\(\{0\}=(\cup_{k \geq 1}\{k\})^c \)，\(\{k\} \in \mathcal{T},k \geq1 \)。故\(\{0\} \in \sigma(\mathcal{T}) \)。
+\end{solution}
+
+\begin{problem}\label{pro:21}
+  设\(\mu^* \)为\(\mu \)生成的外测度，则测度空间\((\Omega,\mathcal{A},\mu) \)是完全的\(\iff \) \(\mathcal{A} \supset \{A \subset  \Omega:\mu^*(A)=0\} \).
+\end{problem}
+\begin{solution}
+    由于\((\Omega,\mathcal{A},\mu) \)为测度空间，那么\(\mu \)的外侧度\(\mu^* \)可定义为
+  \[
+    \mu^*(A):=\{\sum_{n}\mu(A_n):A \subset \cup_n A_n, A_n \in \mathcal{A}\}, A \subset \Omega
+  \]
+  ``\(\implies\)'':由于\((\Omega,\mathcal{A},\mu) \)为完全的，那么\(\forall N \)满足\(\exists B \in \mathcal{A} \)，\(N \subset B \)，\(\mu(B)=0 \)，都有\(N \in \mathcal{A} \)。
+  若 \(\mu^*(A)=0\)，那么\(\forall k \in \mathbb{N}_{+} \)，\(\exists A_{n,k} \in \mathcal{A}, n \in \mathbb{N} \)，满足\(\cup_{n} A_{n,k} \supset A \)，\( \mu(\cup_n A_{n,k}) \leq \sum_n \mu(A_{n,k}) < \mu^*(A) + \frac{1}{k} =\frac{1}{k}\)。
+  那么\( \mathcal{A}\ni  B:=\cap_k \cup_n A_{n,k} \supset A \)。而由于\(\mu(\cap_k^m \cup_n A_{n,k} ) < \frac{1}{m}<\infty, m \in \mathbb{N}\)，由\(\mu \)的连续性可知，
+  \(0 \leq \mu(B)=\mu(\cap_k \cup_n A_{n,k}) = \lim_{m \to \infty } \mu(\cap_k^m \cup_n A_{n,k}) \leq \lim_{m \to \infty} \frac{1}{m} =0 \)。故\(\mu(B)=0 \).
+  从而\(A \)为\(\mu \)零测集。故\(A \in \mathcal{A} \)。
+
+  ``\(\impliedby\)'':\(\forall N \)满足\(\exists B \in \mathcal{A} \)，\(N \subset B \)，\(\mu(B)=0 \)，都有\(\mu^*(N) \leq \mu(B)=0 \)。那么\(\mu^*(N)=0 \).
+  从而\(N \in \mathcal{A} \)。故\((\Omega, \mathcal{A}, \mu) \)为完全测度空间。
+\end{solution}
+
+\begin{problem}\label{pro:22}
+  \(\mathcal{T} \)为半集代数，\(\mu \)为\(\mathcal{T} \)上的有限测度。记\((\Omega,\mathcal{A}^*,\mu^*) \)为\(\mu \)扩张至\(\sigma(\mathcal{T}) \)的完全化，令 
+  \[
+    \mu_*(A):=\sup \{\sum_{n}\mu(A_n):A_n \in \mathcal{T} \text{两两不交},\sum_{n}A_n \subset A\},
+  \]
+  \[
+    \mathcal{A}_*:=\{A \subset \Omega:\mu^*(A)=\mu_*(A)\}.
+  \]
+  证明：\(\mathcal{A}^* \supset \mathcal{A}_* \)。
+\end{problem}
+\begin{solution}
+  \(\forall A \in \mathcal{A}_* \)，那么\(\mu_*(A)=\mu^*(A) \)。由\(\mu_* \)的定义知，\(\forall k \in \mathbb{N}_{+} \)，\(\exists A_{n,k} \in \mathcal{T} , n \in \mathbb{N}\)，两两不交，且\(\cup_n A_{n,k} \subset A \)，
+  满足\(\sum_{n}\mu(A_{n,k}) > \mu_*(A)-\frac{1}{k} \)。由于\(A_{n,k} \)两两不交，那么\(\mu(\cup_n A_{n,k})=\sum_{n}\mu(A_{n,k}) \)。
+  由于书本定理\(1.51 \)知，\(\mu^* \)即为\(\mu \)的外测度，\(\mathcal{A}^* \)上的测度。
+  故\(\mu^*(\cup_n A_{n,k})=\mu(\cup_n A_{n,k})=\sum_{n}\mu(A_{n,k}) \)。
+  令\(B:= \cup_k \cup_n A_{n,k} \in \sigma(\mathcal{T}) \subset \mathcal{A}^*\)，那么\(B= \cup_{m=1}^{\infty} \cup_{k=1}^{m} \cup_{n=0}^{\infty}A_{n,k} \subset A \subset \Omega\)，\(\mu^*(B) \leq \mu^*(A) \leq \mu^*(\Omega)<\infty \)。
+  且\(A_{n,k} \)两两不交\(\forall n,k \)。
+  由于\(\mu^*(B)=\lim_{m \to \infty }\mu^*(\cup_{k=1}^m \cup_{n=0}^{\infty}A_{n,k}) \geq \lim_{m \to \infty} \mu^*(\cup_n A_{n,m})=\lim_{m \to \infty}\mu(\cup_n A_{n,m})=\lim_{m \to \infty} \mu_*(A)-\frac{1}{m}=\mu_*(A)\)，
+  从而\(\mu^*(B) \geq \mu_*(A)=\mu^*(A) \)。故\(\mu^*(B)=\mu^*(A) \)。令\(C=A\setminus B \)，由于\(B \in \mathcal{A}^* \)，那么\(\mu^*(A)=\mu^*(A \cap B) + \mu^*(A \cap B^c)=\mu^*(B) + \mu^*(C) \)。
+  从而\(\mu^*(C)=0 \)。那么\(C \)为\(\mu^* \)-零测集。故\(A=B \cup C \)。由\((\Omega,\mathcal{A}^*,\mu^*) \) 完全及书本定理\(1.51 \)知，\(\mathcal{A}^*=\{B \cup N: B \in \mathcal{A}^*,N \text{为}\mu^* \text{零测集} \} \)。
+  从而，\(A \in \mathcal{A}^* \)。
+
+  % 事实上，\(\mathcal{A}^* \supsetneq \mathcal{A}_* \)。下证存在\(A \in \mathcal{A}^* \setminus \mathcal{A}_* \)。
+  % 考虑\(\Omega=\mathbb{R}, \mathcal{T}:=\{\text{有限集或余有限集}\} \)，\(\mu(A)=\begin{cases}
+  % 0, & A \text{有限}\\
+  % 1, & A \text{余有限}
+  % \end{cases} \)。
+\end{solution}
+
+\begin{problem}\label{pro:23}
+ 设\((\Omega,\mathcal{A},\mu) \)为测度空间，\(\mu^* \)为由\(\mu \)生成的外测度。证明\(N \subset \Omega \)为\(\mu  \)零测集当且仅当\(\mu^*(N)=0 \). 
+\end{problem}
+\begin{solution}
+``\(\implies\)'': 若\(N \)为\(\mu \)零测集，那么\(\exists B \in \mathcal{A} \)，\(\mu(B)=0 \)，\(N \subset B \)。
+那么\(\mu^*(N) \leq \mu(B)=0 \)。故\(\mu^*(N)=0 \)。 
+
+``\(\impliedby\)'': 若\(\mu^*(N)=0 \)，那么\(\mu^*(N)=\inf\{\sum_{n}\mu(A_n):A_n \in \mathcal{A}, n \in \mathbb{N}, \cup_n A_n \supset N\}=0\)。故\(\forall k  \geq 1, \exists A_{n,k} \in \mathcal{A}, n  \geq 1, \)满足\(\cup_n A_{n,k} \supset N, \sum_{n}\mu(A_{n,k}) < \mu^*(N) + \frac{1}{k}=\frac{1}{k} \)。
+令\(B := \cap_k \cup_n A_{n,k} \)，则\(B \supset N, B \in \mathcal{A} \)。那么\(\mu(B)=\mu(\cap_{m} \cap_{ 1 \leq k \leq m} \cup_{n}A_{n,k})=\lim_{m \to \infty}\mu(\cap_{1 \leq k \leq m} \cup_n A_{n,k}) \leq \lim_{m \to \infty} \mu(\cup_n A_{n,m}) = \lim_{m \to \infty} \frac{1}{m} =0  \)。
+那么\(N \)为\(\mu \)零测集。
+\end{solution}
+\end{document}
