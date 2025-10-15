@@ -35,9 +35,27 @@ M_{SSOR} = \frac{1}{\omega (2 - \omega)} (D - \omega E) D^{-1} (D - \omega F)
   \end{enumerate}
   
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 由于\(\omega E + (1-\omega )D = -(D-\omega E)+ (2-\omega )D \)，\(\omega F + (1-\omega )D = -(D-\omega F)+ (2-\omega )D  \)，考虑：
+  \[
+    \begin{aligned}
+      G_{\Omega}&=(D- \omega F)^{-1}(\omega E + (1-\omega )D)(D -\omega E)^{-1}(\omega F + (1-\omega)D)\\ 
+      &=(D- \omega F)^{-1}(-(D-\omega E)+ (2-\omega )D )(D -\omega E)^{-1}(-(D-\omega F)+ (2-\omega )D)\\ 
+      &=(D- \omega F)^{-1}(-I+ (2-\omega )D (D -\omega E)^{-1})(-(D-\omega F)+ (2-\omega )D)\\ 
+      &=I -(2-\omega)(D-\omega F)^{-1}D -(2-\omega)(D-\omega F)^{-1}D(D-\omega E)^{-1}(D-\omega F)\\ 
+      &+ (2-\omega )^2(D-\omega F)^{-1}D(D-\omega E)^{-1}D\\ 
+      &=I - (2-\omega)(D-\omega F)^{-1}D(D-\omega E)^{-1}(D-\omega F + (2-\omega)D + D - \omega E )\\ 
+      &=I - \omega (2-\omega)(D-\omega F)^{-1}D(D-\omega E)^{-1}(D-E-F)\\
+      &=I - \omega(2 - \omega)(D - \omega F)^{-1} D (D - \omega E)^{-1} A.
+    \end{aligned}
+  \]
+\item \(I-G_{\omega}=M_{SSOR}A \) 
+  \end{enumerate}
+\end{solution}
+
  \begin{problem}
 Let \(A\) be a matrix with a positive diagonal \(D\).
-
 \begin{enumerate}[label=(\alph*)]
   \item Obtain an expression equivalent to that of (4.13) for \(G_{\omega}\), 
   but which involves the matrices
@@ -61,6 +79,56 @@ Let \(A\) be a matrix with a positive diagonal \(D\).
   are real and nonnegative.
 \end{enumerate}
 \end{problem}
+\begin{solution}
+\begin{enumerate}
+  \item  \( D \) 的对角元均为正，因此 \( D^{1/2} \) 与 \( D^{-1/2} \) 均存在。
+
+注意以下恒等式：
+\[
+\begin{aligned}
+D - \omega F &= D^{1/2} (I - \omega S_F) D^{1/2}, \\
+D - \omega E &= D^{1/2} (I - \omega S_E) D^{1/2}, \\
+\omega E + (1 - \omega) D &= D^{1/2} (\omega S_E + (1 - \omega) I) D^{1/2}, \\
+\omega F + (1 - \omega) D &= D^{1/2} (\omega S_F + (1 - \omega) I) D^{1/2}.
+\end{aligned}
+\]
+
+因此它们的逆可以写作：
+\[
+\begin{aligned}
+(D - \omega F)^{-1} &= D^{-1/2} (I - \omega S_F)^{-1} D^{-1/2}, \\
+(D - \omega E)^{-1} &= D^{-1/2} (I - \omega S_E)^{-1} D^{-1/2}.
+\end{aligned}
+\]
+
+代入\(G_{\omega } \)得：
+\[
+\begin{aligned}
+G_{\omega}&= 
+  (D^{-1/2} (I - \omega S_F)^{-1} D^{-1/2})(D^{1/2} (\omega S_E + (1 - \omega) I) D^{1/2})\\
+  &=(D^{-1/2} (I - \omega S_E)^{-1} D^{-1/2})(D^{1/2} (\omega S_F + (1 - \omega) I) D^{1/2})\\
+  &=D^{-1/2}(I - \omega S_F)^{-1}(\omega S_E + (1 - \omega) I)(I - \omega S_E)^{-1}(\omega S_F + (1 - \omega) I)D^{1/2}
+\end{aligned}
+\]
+这一形式仅依赖于矩阵 \( S_E, S_F \)，
+并且是 (4.13) 的等价表达。
+\item  由上一小问的结果可立马得到 \[
+    D^{1/2} G_{\omega} D^{-1/2}
+    = (I - \omega S_F)^{-1} (I - \omega S_E)^{-1}
+      (\omega S_E + (1 - \omega) I)
+      (\omega S_F + (1 - \omega) I).
+  \]
+\item 由于\(A \)对称，那么\(E=F^T \)，从而\(S_F=S_E^T \)。
+  由第二问的结论可知，\[
+\begin{aligned}
+  B:&=D^{\frac{1}{2}}G_{\omega}D^{\frac{1}{2}}= (I - \omega S_E^T)^{-1} (I - \omega S_E)^{-1}\\
+      &(\omega S_E + (1 - \omega) I)(\omega S_E^T + (1 - \omega) I)(I-\omega S_E^T)^{-1}(I-\omega S_E^T)\\ 
+
+\end{aligned}
+    \]
+\end{enumerate}
+  
+\end{solution}
  
 \begin{problem} 
 A matrix of the form 
