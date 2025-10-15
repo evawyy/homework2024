@@ -5,6 +5,7 @@
 \newif\ifpreface
 %\prefacetrue
 \input{../../../global/all}
+\newcommand{\norm}[1]{\lVert#1\rVert}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
@@ -40,7 +41,7 @@ M_{SSOR} = \frac{1}{\omega (2 - \omega)} (D - \omega E) D^{-1} (D - \omega F)
     \item 由于\(\omega E + (1-\omega )D = -(D-\omega E)+ (2-\omega )D \)，\(\omega F + (1-\omega )D = -(D-\omega F)+ (2-\omega )D  \)，考虑：
   \[
     \begin{aligned}
-      G_{\Omega}&=(D- \omega F)^{-1}(\omega E + (1-\omega )D)(D -\omega E)^{-1}(\omega F + (1-\omega)D)\\ 
+      G_{\omega}&=(D- \omega F)^{-1}(\omega E + (1-\omega )D)(D -\omega E)^{-1}(\omega F + (1-\omega)D)\\ 
       &=(D- \omega F)^{-1}(-(D-\omega E)+ (2-\omega )D )(D -\omega E)^{-1}(-(D-\omega F)+ (2-\omega )D)\\ 
       &=(D- \omega F)^{-1}(-I+ (2-\omega )D (D -\omega E)^{-1})(-(D-\omega F)+ (2-\omega )D)\\ 
       &=I -(2-\omega)(D-\omega F)^{-1}D -(2-\omega)(D-\omega F)^{-1}D(D-\omega E)^{-1}(D-\omega F)\\ 
@@ -121,13 +122,15 @@ G_{\omega}&=
 \item 由于\(A \)对称，那么\(E=F^T \)，从而\(S_F=S_E^T \)。
   由第二问的结论可知，\[
 \begin{aligned}
-  B:&=D^{\frac{1}{2}}G_{\omega}D^{\frac{1}{2}}= (I - \omega S_E^T)^{-1} (I - \omega S_E)^{-1}\\
-      &(\omega S_E + (1 - \omega) I)(\omega S_E^T + (1 - \omega) I)(I-\omega S_E^T)^{-1}(I-\omega S_E^T)\\ 
-
+  &D^{\frac{1}{2}}G_{\omega}D^{-\frac{1}{2}}\\
+  =& (I - \omega S_E^T)^{-1} (I - \omega S_E)^{-1}(\omega S_E + (1 - \omega) I)(\omega S_E^T + (1 - \omega) I)(I-\omega S_E^T)^{-1}(I-\omega S_E^T)\\ 
+  =& B^{-1}Q^TQB
 \end{aligned}
     \]
+    其中\(Q=(\omega S_E^T + (1 - \omega) I)(I-\omega S_E^T)^{-1}, B=I-\omega S_E^T \)。
+那么\(G_{\omega}=(BD^{\frac{1}{2}})^{-1}Q^TQ (BD^{\frac{1}{2}})\)，即\(G_{\omega} \)相似于对称半正定矩阵\(Q^TQ \)。
+从而\(G_{\omega} \)有实的非负特征值。
 \end{enumerate}
-  
 \end{solution}
  
 \begin{problem} 
@@ -164,6 +167,208 @@ is called a \(p\)-cyclic matrix, where the blocks \(E_1,\dots,E_p\) are conforma
 (for instance, each \(E_i\) is an \(m_i\times m_{i+1}\) block with \(m_{p+1}=m_1\)).
 \end{enumerate}
 \end{problem}
+\begin{solution}
+\begin{enumerate}
+  \item 设矩阵
+\[
+B = 
+\begin{pmatrix}
+0 & E & 0 \\
+0 & 0 & F \\
+H & 0 & 0
+\end{pmatrix},
+\]
+其中各块矩阵的维度使得乘法 $EFH$ 有定义。
+
+设 $\lambda \ne 0$ 是 $B$ 的特征值，存在非零向量
+\[
+v = 
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+\]
+使得 $Bv = \lambda v$，即
+\[
+\begin{cases}
+E y = \lambda x, \\
+F z = \lambda y, \\
+H x = \lambda z.
+\end{cases}
+\]
+从而， $z = \lambda^{-1} H x$，\(F(\lambda^{-1} H x) = \lambda y \quad \Rightarrow \quad y = \lambda^{-2} F H x\),\(E(\lambda^{-2} F H x) = \lambda x\).
+因此,\(E F H x = \lambda^3 x\).
+若 $x \ne 0$，则 $\lambda^3$ 为 $EFH$ 的特征值。
+
+另一方面，若 $EFH x = \mu x$ 且 $x \ne 0$，任取 $\lambda$ 满足 $\lambda^3 = \mu$，定义
+\[
+z = \lambda^{-1} H x, \qquad y = \lambda^{-2} F H x.
+\]
+则有\(E y = E (\lambda^{-2} F H x) = \lambda^{-2} E F H x = \lambda^{-2} \mu x = \lambda x\)
+并且\(F z = F (\lambda^{-1} H x) = \lambda^{-1} F H x = \lambda y, H x = \lambda z\)
+因此
+\[
+B
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\lambda
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix},
+\]
+即 $\lambda$ 为 $B$ 的特征值。
+
+综上所述，矩阵 $B$ 的非零特征值 $\lambda$ 与矩阵 $EFH$ 的特征值 $\mu$ 满足
+\[
+\lambda^3 = \mu.
+\]
+\item 由于\(G_J=-D^{-1}B \)，因此\[
+    G_J=-\begin{pmatrix}
+      D_1^{-1}&0&0\\
+      0&D_2^{-1}&0\\ 
+      0&0&D_3^{-1}
+      \end{pmatrix}
+      \begin{pmatrix}
+        0&E&0\\ 
+        0&0&F\\ 
+        H&0&0
+        \end{pmatrix}
+        =\begin{pmatrix}
+          0&D_1^{-1}E&0\\
+          0&0&D_2^{-1}F\\ 
+          D_3^{-1}F&0&0
+          \end{pmatrix}
+\] 
+令\(P:=D_1^{-1}ED_2^{-1}FD_3^{-1}H \)，
+那么由上一问的结果可知，\(G_J \)的非零特征值\(\lambda \)满足\(-\lambda^3 \)为 \(P \)的特征值。
+
+设
+\[
+A = D + B,\qquad
+B=\begin{pmatrix}0 & E & 0\\[4pt]0 & 0 & F\\[4pt]H & 0 & 0\end{pmatrix},
+\qquad
+D=\operatorname{diag}(D_1,D_2,D_3),
+\]
+其中每个 $D_i$ 可逆。
+记 Gauss--Seidel 迭代矩阵为
+\[
+G_{GS} = - (D+L)^{-1} U.
+\]
+设 $\mu$ 是 $G_{GS}$ 的一个非零特征值，且
+\[
+x=\begin{pmatrix}x_1\\ x_2\\ x_3\end{pmatrix}
+\]
+是对应的分块特征向量。特征方程为
+\[
+G_{GS} x = \mu x
+\quad\Longleftrightarrow\quad
+- (D+L)^{-1} U x = \mu x.
+\]
+两边同乘以 $-(D+L)$ 得到等价形式
+\[
+U x = -\mu (D+L) x.
+\]
+从而，
+\begin{align}
+E x_2 &= -\mu D_1 x_1, \\
+F x_3 &= -\mu D_2 x_2, \\
+0     &= -\mu (D_3 x_3 + H x_1). 
+\end{align}
+从而得到：
+\[
+  x_3 = - D_3^{-1} H x_1,\quad
+x_2 = \frac{1}{\mu}\,D_2^{-1} F D_3^{-1} H x_1, \quad
+D_1^{-1} E D_2^{-1} F D_3^{-1} H x_1 = -\mu^2 x_1.
+\]
+故
+\[
+E\left(\frac{1}{\mu} D_2^{-1} F D_3^{-1} H x_1\right) = -\mu D_1 x_1.
+\]
+故
+\[
+P x_1 = -\mu^2 x_1.
+\]
+
+因此，对于任一使 $x_1\neq 0$，$\mu$ 必满足
+\[
+\mu^2 = -\theta,\qquad\text{其中 }\theta\in\operatorname{eig}(P).
+\]
+也就是说，$G_{GS}$ 的非零特征值是矩阵 $-P$ 的二次根。
+
+从而\(G_J \)的特征值\(\lambda \)，总能找到\(G_{GS} \)的特征值\(\mu  \)满足 \(\lambda^3=\mu^2 \).
+
+下面进行渐近收敛率比较：\\
+设
+\[
+\Theta := \max\{\,|\theta|:\theta\in\operatorname{eig}(P)\,\}.
+\]
+则对于 Jacobi 迭代矩阵 $G_J=-D^{-1}B$，有 $\lambda^3 = -\theta$，因此
+\[
+\max_{\lambda\in\operatorname{eig}(G_J)} |\lambda| = \Theta^{1/3}.
+\]
+而对于 Gauss--Seidel，非零特征值满足 $\mu^2 = -\theta$，因此
+\[
+\max_{\mu\in\operatorname{eig}(G_{GS})} |\mu| = \Theta^{1/2}.
+\]
+
+当 Jacobi 收敛，即 $\Theta<1$时，由 $0\le\Theta<1$ 有 $\Theta^{1/2}<\Theta^{1/3}$，因此
+\[
+\max|\mu| < \max|\lambda|,
+\]
+即 Gauss--Seidel 的特征值最大模更小，故其渐近收敛速度优于 Jacobi。
+
+\item 设 $\rho$ 是 SOR 迭代矩阵 $G_\omega$ 的一个非零特征值，  
+并令 $x = (x_1, x_2, x_3)^T$ 为其对应的块特征向量，其中每个 $x_i$ 的维度与 $D_i$ 相容。  
+特征值方程
+\[
+G_\omega x = \rho x
+\]
+等价于
+\[
+\bigl((1-\omega) D + \omega U \bigr) x = \rho (D - \omega L) x.
+\]
+将此关系按块形式展开:
+\begin{align*}
+  \text{（第1行）:} &\quad 
+  \omega E x_2 = \bigl(\rho - (1-\omega)\bigr) D_1 x_1, \\
+  \text{（第2行）:} &\quad 
+  \omega F x_3 = \bigl(\rho - (1-\omega)\bigr) D_2 x_2, \\
+  \text{（第3行）:} &\quad 
+  (1-\omega) D_3 x_3 = \rho D_3 x_3 - \rho \omega H x_1.
+\end{align*}
+即：
+\[
+D_1^{-1} E x_2 = \frac{\rho - (1-\omega)}{\omega}  x_1, 
+\quad
+D_2^{-1} F x_3 = \frac{\rho - (1-\omega)}{\omega}  x_2,
+\quad
+D_3^{-1} H x_1 = \frac{\rho - (1-\omega) }{\rho \omega}x_3,
+\]
+从而，
+\[
+P x_1 = \frac{(\rho  + \omega -1)^3}{\omega^3v} x_1,
+\quad \text{其中 } 
+P := D_1^{-1} E D_2^{-1} F D_3^{-1} H.
+\]
+
+由此可见，$x_1$ 是矩阵 $P$ 的特征向量，其对应的特征值为
+\[
+  \theta = \frac{(\rho  + \omega -1 )^3}{\omega^3v}.
+\]
+最终的代数关系式：
+\[
+\omega^3\rho\theta = (\rho + \omega - 1)^3.
+\]
+\item 
+  \begin{itemize}
+    \item \(B \) 的非零特征值\(\lambda \)满足\(\lambda^p \)为\(E_1\cdots E_p \)的特征值。
+    \item 
+  \end{itemize}
+  
+\end{enumerate}
+\end{solution}
+
   \begin{problem}
 Consider the linear system \(Ax=b\), where \(A\) is symmetric positive definite.  
 Consider a projection step with \(K=L=\operatorname{span}\{v\}\), where \(v\) is some nonzero vector.  
@@ -181,10 +386,10 @@ d = A^{-1}b - x,\qquad d_{\text{new}} = A^{-1}b - x_{\text{new}}.
   where \(r=b-Ax\). Does this equality establish convergence of the algorithm?
   
   \item (Gastinel's method.) In Gastinel's method the vector \(v\) is selected so that
-  \((v,r)=\|r\|_1\); for example one can take \(v\) with components \(v_i=\operatorname{sign}(e_i^T r)\),
+  \((v,r)=\lVert r \rVert_1\); for example one can take \(v\) with components \(v_i=\operatorname{sign}(e_i^T r)\),
   where \(r=b-Ax\) is the current residual. Show that
   \[
-    \|d_{\text{new}}\|_A \le \Bigl(1-\frac{1}{n\kappa(A)}\Bigr)^{1/2}\,\|d\|_A,
+    \lVert d_{\text{new}} \rVert_A \le \Bigl(1-\frac{1}{n\kappa(A)}\Bigr)^{1/2}\,\lVert d \rVert_A,
   \]
   where \(\kappa(A)\) is the spectral condition number of \(A\). Does this prove that the algorithm converges?
   
@@ -193,6 +398,163 @@ d = A^{-1}b - x,\qquad d_{\text{new}} = A^{-1}b - x_{\text{new}}.
   and \(i\) is chosen to be the index of largest magnitude in the current residual vector.
 \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+\item 设投影在
+\[
+K = L = \operatorname{span}\{v\}
+\]
+上，令
+\[
+x_{\text{new}} = x + \alpha v,
+\]
+其中 \(\alpha\) 由正交投影条件知：
+\[
+v^{T}(b - A(x + \alpha v)) = 0
+\]
+即\[
+v^{T}r - \alpha\, v^{T}Av = 0.
+\]
+因此有
+\[
+\alpha = \frac{(r, v)}{(Av, v)}.
+\]
+故\(d_{\text{new}}=A^{-1} b -x - \alpha v=d-\alpha v \).
+下证明恒等式：
+\[
+(Ad_{\text{new}}, d_{\text{new}})
+= (A(d - \alpha v),\, d - \alpha v)
+= (Ad, d) - 2\alpha(Ad, v) + \alpha^2 (Av, v).
+\]
+由于 \(Ad = r\)，代入
+\[
+\alpha = \frac{(r, v)}{(Av, v)}
+\]
+得到
+\[
+\begin{aligned}
+(Ad_{\text{new}}, d_{\text{new}})
+&= (Ad, d) - 2 \frac{(r, v)}{(Av, v)} (r, v) + \frac{(r, v)^2}{(Av, v)^2} (Av, v) \\[6pt]
+&= (Ad, d) - \frac{(r, v)^2}{(Av, v)}.
+\end{aligned}
+\]
+
+下面说明关于收敛性的讨论：
+由上式可见
+\[
+\norm{d} _A^2 = (Ad, d)
+\]
+在每一步迭代中，当 \((r, v) \neq 0\) 时 \(\norm{d}_{A}^2  \)减小，当 \((r, v) = 0\)，即 \(v\) 与残差正交时，\(\norm{d}_A^2 \)不变。
+
+因此该恒等式说明：每一次投影步骤都不会使误差在范数意义下增大，只有当 \(v\) 与当前残差正交时，能量不再减小。
+故不能保证算法必然收敛到零误差，因为如果在某些迭代步中总是选取与残差正交的 \(v\)，则算法可能停滞，不再进步。
+因此，为了保证整体收敛性，必须对向量 \(v\) 的选择施加额外条件或采用合适的选取策略，使得每一步迭代都能有效降低误差。
+\item 
+\[
+(r,v) = \sum_i r_i \operatorname{sign}(r_i)
+= \sum_i |r_i|
+= \lVert r \rVert_1.
+\]
+由 (a) 的恒等式：
+\[
+\lVert d_{\mathrm{new}} \rVert_A^2 
+= \lVert d \rVert_A^2 
+- \frac{(r,v)^2}{(A v, v)}.
+\]
+我们要估计\(\norm{d}_A^2 \) 的下界：\\
+分子下界:
+\[
+(r,v)^2 
+= (\sum_i |r_i|)^2 \geq (\sum_{i} r_i^2)
+= (A d)^T (A d) = d^T A^2 d,
+\]
+分母上界：
+设 \(A\in\mathbb R^{n\times n}\) 为对称正定矩阵，记其特征值按照非降序为
+\[
+0<\lambda_{\min}=\lambda_1\le \lambda_2\le\cdots\le\lambda_n=\lambda_{\max},
+\]
+$v$ 的二范数满足
+\[
+\lVert v \rVert_2^2 = n
+\]
+故
+\[
+(A v, v) \le \lambda_{\max}\lVert v \rVert_2^2 = n\lambda_{\max}.
+\]
+由此得到
+\[
+\frac{(r,v)^2}{(A v,v)} 
+\ge \frac{d^T A^2 d}{n \lambda_{\max}}.
+\]
+下面估计\(d^TA^2d \)：\\
+取正交特征向量矩阵 \(Q\)（即 \(Q^TQ=I\)），使得
+\[
+A = Q\Lambda Q^T,\qquad \Lambda=\operatorname{diag}(\lambda_1,\dots,\lambda_n).
+\]
+
+由于 \(d\in\mathbb R^n\)，令 \(y=Q^T d\)。由于 \(Q\) 正交，有 \(\lVert y \rVert_2=\lVert d \rVert_2\)。由此可得
+\[
+d^T A d =(Qd)^T \Lambda Qd =y^T \Lambda y= \sum_{i=1}^n \lambda_i y_i^2,
+\]
+以及
+\[
+d^T A^2 d = y^T \Lambda^2 y = \sum_{i=1}^n \lambda_i^2 y_i^2.
+\]
+因为对所有 \(i\) 都有 \(\lambda_i \ge \lambda_{\min}\)，于是
+\[
+\lambda_i^2 y_i^2 \;\ge\; \lambda_{\min}\, \lambda_i y_i^2,
+\]
+故
+\[
+\sum_{i=1}^n \lambda_i^2 y_i^2 \;\ge\; \lambda_{\min}\sum_{i=1}^n \lambda_i y_i^2.
+\]
+即
+\[
+d^T A^2 d \;\ge\; \lambda_{\min}\, d^T A d.
+\]
+
+记 \(A\)-范数为 \(\lVert d \rVert_A:=\sqrt{d^T A d}\)，则上式可写为
+\[
+ \; d^T A^2 d \;\ge\; \lambda_{\min}\, d^T A d \;=\; \lambda_{\min}\, \lVert d \rVert_A^2 \; 
+\]
+% 同理有上界
+% \[
+% d^T A^2 d \le \lambda_{\max}\, d^T A d,
+% \]
+% 因此
+% \[
+% \lambda_{\min}\, \lVert d \rVert_A^2 \le d^T A^2 d \le \lambda_{\max}\, \lVert d \rVert_A^2.
+% \]
+% 这显示了 \(A^2\) 在 \(A\)-内积下被最小/最大特征值控制的性质。
+
+综上可得：
+\[
+\frac{(r,v)^2}{(A v,v)}
+\ge \frac{\lambda_{\min}}{n \lambda_{\max}}\, \lVert d \rVert_A^2
+= \frac{1}{n \kappa(A)}\, \lVert d \rVert_A^2,
+\]
+其中 $\kappa(A) = \lambda_{\max} / \lambda_{\min}$。
+从而，
+\[
+\lVert d_{\mathrm{new}} \rVert_A^2
+\le 
+\left(1 - \frac{1}{n \kappa(A)}\right)
+\lVert d \rVert_A^2,
+\]
+两边取平方根得
+\[
+\lVert d_{\mathrm{new}} \rVert_A
+\le 
+\left(1 - \frac{1}{n \kappa(A)}\right)^{1/2}
+\lVert d \rVert_A.
+\]
+因此，每一步的投影迭代在 $A$-范数下的收缩因子至多为 
+$\left(1 - \frac{1}{n \kappa(A)}\right)^{1/2}$。
+只要\(\kappa(A) <1 \)序列收敛到精确解。
+\item 每步 Gastinel 的主要代价是一次矩阵向量乘 \(O(m) \)，与一次完整的 Gauss–Seidel sweep 同阶；
+而“最优”逐坐标选择尽管每次坐标更新的局部效果更好,在选择索引上的额外开销通常总成本更高.
+\end{enumerate}
+\end{solution}
 
 
 \begin{problem}
@@ -201,16 +563,16 @@ Consider the iteration
 x_{k+1} = x_k + \alpha_k d_k,
 \]
 where \(d_k\) is a nonzero vector called the search direction and \(\alpha_k\) is a scalar.  
-Assume a method that chooses \(\alpha_k\) so that the residual \(\|r_{k+1}\|_2\) is minimized, where \(r_k=b-Ax_k\).
+Assume a method that chooses \(\alpha_k\) so that the residual \(\lVert r_{k+1} \rVert_2\) is minimized, where \(r_k=b-Ax_k\).
 
 \begin{enumerate}[label=(\alph*)]
-  \item Determine \(\alpha_k\) that minimizes \(\|r_{k+1}\|_2\).
+  \item Determine \(\alpha_k\) that minimizes \(\lVert r_{k+1} \rVert_2\).
   
   \item Show that the residual vector \(r_{k+1}\) obtained in this manner is orthogonal to \(A d_k\).
   
   \item Show that the residuals satisfy
   \[
-    \|r_{k+1}\|_2 \le \|r_k\|_2 \,\sin\angle(r_k, A d_k).
+    \lVert r_{k+1} \rVert_2 \le \lVert r_k \rVert_2 \,\sin\angle(r_k, A d_k).
   \]
   
   \item Assume that at each step \(k\) we have \((r_k, A d_k)\neq 0\). Will the method always converge?
@@ -218,5 +580,137 @@ Assume a method that chooses \(\alpha_k\) so that the residual \(\|r_{k+1}\|_2\)
   \item Now assume \(A\) is symmetric positive definite and choose \(d_k \equiv r_k\) at each step. Prove that the method converges for any initial guess \(x_0\).
 \end{enumerate}
 \end{problem}
+\begin{solution}
+ \begin{enumerate}
+   \item 由迭代公式
+\[
+r_{k+1} = r_k - \alpha_k A d_k,
+\]
+我们希望选取合适的步长 $\alpha_k$ 使得残差 $\lVert r_{k+1} \rVert_2$ 最小。为此，考虑如下标量函数：
+\[
+\phi(\alpha) = \lVert r_k - \alpha A d_k \rVert_2^2.
+\]
+展开：
+\[
+\begin{aligned}
+\phi(\alpha)&:= (r_k - \alpha A d_k,\; r_k - \alpha A d_k) \\
+&= \lVert r_k \rVert_2^2 - 2\alpha (r_k, A d_k) + \alpha^2 \lVert A d_k \rVert_2^2.
+\end{aligned}
+\]
+对 $\alpha$ 求导并令导数为零：
+\[
+\phi'(\alpha) = -2 (r_k, A d_k) + 2 \alpha \lVert A d_k \rVert_2^2 = 0.
+\]
+解得：
+\[
+\alpha_k = \frac{(r_k, A d_k)}{\lVert A d_k \rVert_2^2}.
+\]
+因此，取此 $\alpha_k$ 可以保证下一步残差 $\lVert r_{k+1} \rVert_2$ 在所有 $\alpha$ 中最小。
+\item 
+由迭代公式
+\[
+r_{k+1} = r_k - \alpha_k A d_k,
+\]
+其中\(\alpha_k \)为上一问的结果，
+\[
+\alpha_k = \frac{(r_k, A d_k)}{\lVert A d_k \rVert_2^2}
+\]
+下面考察残差与方向的关系。
+\[
+(r_{k+1}, A d_k)
+= (r_k - \alpha_k A d_k, A d_k)
+= (r_k, A d_k) - \alpha_k \lVert A d_k \rVert_2^2.
+\]
+将 $\alpha_k$ 的表达式代入：
+\[
+(r_{k+1}, A d_k)
+= (r_k, A d_k)
+- \frac{(r_k, A d_k)}{\lVert A d_k \rVert_2^2} \lVert A d_k \rVert_2^2
+= 0.
+\]
+因此得出结论：
+\[
+(r_{k+1}, A d_k) = 0,
+\]
+即新的残差 $r_{k+1}$ 与 $A d_k$ 正交。
+\item 由前面 (a) 中的公式可得残差平方范数的更新：
+\[
+\begin{aligned}
+\lVert r_{k+1} \rVert_2^2 
+&= \lVert r_k - \alpha_k A d_k \rVert_2^2 \\
+&= \lVert r_k \rVert_2^2 - 2 \alpha_k (r_k, A d_k) + \alpha_k^2 \lVert A d_k \rVert_2^2 \\
+&= \lVert r_k \rVert_2^2 - \frac{(r_k, A d_k)^2}{\lVert A d_k \rVert_2^2}.
+\end{aligned}
+\]
+令
+\[
+\theta = \angle(r_k, A d_k),
+\]
+注意
+\[
+(r_k, A d_k) = \lVert r_k \rVert_2 \, \lVert A d_k \rVert_2 \cos \theta.
+\]
+代入上式得到：
+\[
+\lVert r_{k+1} \rVert_2^2 = \lVert r_k \rVert_2^2 \bigl( 1 - \cos^2 \theta \bigr) = \lVert r_k \rVert_2^2 \, \sin^2 \theta.
+\]
+因此有：
+\[
+\lVert r_{k+1} \rVert_2 = \lVert r_k \rVert_2 \, |\sin \theta| \le \lVert r_k \rVert_2 \, \sin \angle(r_k, A d_k),
+\]
+\item 前面的公式可得：
+\[
+\lVert r_{k+1} \rVert_2^2 = \lVert r_k \rVert_2^2 - \frac{(r_k, A d_k)^2}{\lVert A d_k \rVert_2^2} < \lVert r_k \rVert_2^2,
+\]
+因此序列 $\{\lVert r_k \rVert_2\}$ 是单调递减的，并且显然有下界 $0$，于是 $\{\lVert r_k \rVert_2\}$ 一定收敛到某个极限
+\[
+L \ge 0.
+\]
+这并不意味着 $L=0$。
+当矩阵 $A$ 为SPD 且在第 $k$ 步选择搜索方向
+\[
+d_k = r_k,
+\]
+此时生成的搜索空间正好是Krylov子空间：
+\[
+K_{k+1}(A, r_0) = \mathrm{span}\{ r_0, A r_0, A^2 r_0, \dots, A^k r_0 \}.
+\]
+由于迭代完全在 Krylov 子空间中进行，因此可以保证收敛到线性方程组的真解。
+\item 在此情形下，每步迭代的搜索方向取为残差自身，即
+\[
+d_k = r_k.
+\]
+根据(a)的公式，步长为
+\[
+\alpha_k = \frac{(r_k, A r_k)}{\lVert  A r_k  \rVert_2^2}.
+\]
+由(c)式（将 $d_k = r_k$ 代入）可得：
+\[
+\lVert  r_{k+1}  \rVert_2^2 = \lVert  r_k  \rVert_2^2 \left( 1 - \frac{(r_k, A r_k)^2}{\lVert  r_k  \rVert_2^2 \, \lVert  A r_k  \rVert_2^2} \right).
+\]
+若 $A$ 的最大，最小值特征值为
+\[
+0 < \lambda_{\min} \le \lambda_{\max},
+\]
+设条件数 $\kappa = \lambda_{\max}/\lambda_{\min}$，则由Kantorovich 不等式，
+\[
+\frac{(r_k^T A r_k)^2}{(r_k^T r_k)(r_k^T A^2 r_k)} \ge \frac{4\kappa}{(\kappa + 1)^2}.
+\]
+即可得到
+\[
+\lVert  r_{k+1}  \rVert_2^2 \le \lVert  r_k  \rVert_2^2 \left( 1 - \frac{4 \kappa}{(\kappa + 1)^2} \right) 
+= \lVert  r_k  \rVert_2^2 \frac{(\kappa - 1)^2}{(\kappa + 1)^2}.
+\]
+取平方根：
+\[
+\lVert  r_{k+1}  \rVert_2 \le \frac{\kappa - 1}{\kappa + 1} \, \lVert  r_k  \rVert_2.
+\]
+
+由于 $\frac{\kappa - 1}{\kappa + 1} \in [0,1)$，这给出了一个与 $k$ 无关的严格收缩因子，从而保证残差范数以线性速率收敛到 $0$。  
+
+又因为 $r_k = A e_k$，其中 $e_k = x^* - x_k$，且 $A$ 可逆，$r_k \to 0$ 等价于 $x_k \to x^* = A^{-1} b$。
+因此，在 $A$ SPD 且 $d_k = r_k$ 的情形下，对任意初始 $x_0$ 都能保证收敛，其收敛速度由条件数 $\kappa(A)$ 决定。
+ \end{enumerate}
+\end{solution}
 
 \end{document}
