@@ -107,5 +107,31 @@
 令\(B := \cap_k \cup_n A_{n,k} \)，则\(B \supset N, B \in \mathcal{A} \)。那么\(\mu(B)=\mu(\cap_{m} \cap_{ 1 \leq k \leq m} \cup_{n}A_{n,k})=\lim_{m \to \infty}\mu(\cap_{1 \leq k \leq m} \cup_n A_{n,k}) \leq \lim_{m \to \infty} \mu(\cup_n A_{n,m}) = \lim_{m \to \infty} \frac{1}{m} =0  \)。
 那么\(N \)为\(\mu \)零测集。
 \end{solution}
+\begin{problem}\label{pro:2.5.2}
+  \begin{enumerate}
+    \item   设\(g \)是\((\overline{\mathbb{R}}^n,\overline{\mathcal{B}}^n) \)上的实（复）可测函数，\(f_1,\cdots,f_n \)是\((\Omega,\mathcal{A}) \)上的实可测函数。
+      则\(g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的实（复）可测函数。
+    \item   设\(g \)是\((\overline{\mathbb{C}}^n,\overline{\mathcal{B}}^n_c) \)上的实（复）可测函数，\(f_1,\cdots,f_n \)是\((\Omega,\mathcal{A}) \)上的复可测函数。
+      则\(g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的实（复）可测函数。
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item
+      由定理2.6（2）可知\(F:=(f_1,\cdots,f_n) \)是{ \((\Omega,\mathcal{A}) \) }上的{实（复）可测函数}。
+      故由定理2.7可得\(g \circ F=g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的{实（复）可测函数}。
+    \item
+      由定理2.6（2）可知\(F:=(f_1,\cdots,f_n) \)是{ \((\Omega,\mathcal{A}) \) }上的{实（复）可测函数}。
+      故由定理2.7可得\(g \circ F=g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的{实（复）可测函数}。
+  \end{enumerate}
+\end{solution}
 
+\begin{problem}\label{pro:2.5.3}
+  \begin{enumerate}
+    \item   设\(g \)是\((\overline{\mathbb{R}}^n,\overline{\mathcal{B}}^n) \)上的实（复）可测函数，\(f_1,\cdots,f_n \)是\((\Omega,\mathcal{A},\mathbb{P}) \)上的随机变量。
+      且\(\mathbb{P}(|g(f_1,\cdots,f_n)|=\infty)=0 \)。 则\(g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的实（复）随机变量。
+    \item   设\(g \)是\((\overline{\mathbb{C}}^n,\overline{\mathcal{B}}^n_c) \)上的实（复）可测函数，\(f_1,\cdots,f_n \)是\((\Omega,\mathcal{A},\mathbb{P}) \)上的复随机变量。
+      且\(\mathbb{P}(|g(f_1,\cdots,f_n)|=\infty)=0 \)。 则\(g(f_1,\cdots,f_n) \)是\((\Omega,\mathcal{A}) \)上的实（复）随机变量。
+  \end{enumerate}
+\end{problem}
 \end{document}
