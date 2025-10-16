@@ -160,38 +160,38 @@
 故\(\sum_{k=1}^{3}\Phi(\{k\}) \neq \Phi(\{1,2,3\}) \)。故\(\Phi \)不是有限可加测度。
 \end{solution}
 
-\begin{problem}\label{pro:10}
-  举例说明半集代数\(\mathcal{T}\)生成的\(\sigma\)-代数不能一般性地表述为
-  \[
-    \sigma(\mathcal{T})=\{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\}.
-  \]
-  但如果\(\Omega\)至多可数时，如上表述是正确的.
-\end{problem}
-\begin{solution}
-  下证如上表述在\(\Omega \)可数时，不正确。
- 考虑\(\mathcal{T}:=\{A \subset \mathbb{N}: 0 \in A, |A^c| < \infty \text{或}
-  0 \notin A, |A| < \infty  \} \)。令\(\mathcal{A}:=\{\sum_{n=1}^{\infty}A_n:\forall n \geq 1, A_n \in \mathcal{T}\} \)，
-先证\(\mathcal{T} \)为半集代数。
-  \begin{itemize}
-    \item 由于\(0 \notin \varnothing\)，且\(|\varnothing| =0 \)，那么\(\varnothing \in \mathcal{T} \)。
-      又由于\(0 \in \mathbb{N} \)，且\(|\mathbb{N}^c|=|\varnothing|=0 \)，那么\(\mathbb{N} \in \mathcal{T} \)。
-    \item \(\forall A, B \in \mathcal{T} \)，若\(0 \in A, 0 \in B\)，那么\(0 \in A \cap B \)。
-      由于\(|A^c|,|B^c|< \infty \)，那么\(|(A \cap B)^c|=|A^c \cup B^c|\leq |A^c| + |B^c| < \infty \)。
-      故\(A \cap B \in \mathcal{T} \)。若\(0 \in A, 0 \notin B \)，那么\(0 \notin A \cap B \)。
-      由于\(|A^c|,|B| < \infty \)， 那么\(|A \cap B | \leq |B| < \infty \)。从而\(A \cap B \in \mathcal{T} \)。
-      若\(0 \notin A, 0 \notin B \)，那么\(0 \notin A \cap B \)。
-      又由于\(|A|,|B|< \infty \)，那么\(|A \cap B| \leq |A| < \infty \)。
-      从而\(A \cap B \in \mathcal{T} \)。综上，\(A \cap B \in \mathcal{T} \)。
-    \item \(\forall A \in \mathcal{T} \)，若\(0 \in A \)，那么\(|A^c|< \infty \)。又由于\(0 \notin A^c \)，
-      那么\(A^c \in \mathcal{T} \)。若\(0 \notin A \)，那么\(|A| < \infty \)。又由于\(0 \in A^c \)，
-      那么\(|(A^c)^c|< \infty \)。故\(A^c \in \mathcal{T} \)。综上，\(A^c \in \mathcal{T} \)。
-  \end{itemize}
-   下证\(\sigma(\mathcal{T}) \neq \mathcal{A} \)。 事实上，\(\{0\} \in \sigma(\mathcal{T}) \setminus \mathcal{A} \)。
-   若\(\{0\} \in \mathcal{A} \)，那么\(\exists A_n \in \mathcal{T},n \geq 1,A_i \cap A_j = \varnothing ,i \neq j \)，使得\(\{0\}=\sum_{n=1}^{\infty}A_n \)。
-   由于\(|\{0\}|=1 < \infty \)，那么\(|A_n|<\infty ,\forall n \geq 1\)。
-   故\(0 \notin A_n ,\forall n \geq 1\)。从而\(0 \notin \cup_{n \geq 1}A_n \)。
-   故\(\{0\} \notin \mathcal{A} \)。而\(\{0\}=(\cup_{k \geq 1}\{k\})^c \)，\(\{k\} \in \mathcal{T},k \geq1 \)。故\(\{0\} \in \sigma(\mathcal{T}) \)。
-\end{solution}
+% \begin{problem}\label{pro:10}
+%   举例说明半集代数\(\mathcal{T}\)生成的\(\sigma\)-代数不能一般性地表述为
+%   \[
+%     \sigma(\mathcal{T})=\{\sum_{n=1}^{\infty} A_n:\forall n \geq 1, A_n \in \mathcal{T}\}.
+%   \]
+%   但如果\(\Omega\)至多可数时，如上表述是正确的.
+% \end{problem}
+% \begin{solution}
+%   下证如上表述在\(\Omega \)可数时，不正确。
+%  考虑\(\mathcal{T}:=\{A \subset \mathbb{N}: 0 \in A, |A^c| < \infty \text{或}
+%   0 \notin A, |A| < \infty  \} \)。令\(\mathcal{A}:=\{\sum_{n=1}^{\infty}A_n:\forall n \geq 1, A_n \in \mathcal{T}\} \)，
+% 先证\(\mathcal{T} \)为半集代数。
+%   \begin{itemize}
+%     \item 由于\(0 \notin \varnothing\)，且\(|\varnothing| =0 \)，那么\(\varnothing \in \mathcal{T} \)。
+%       又由于\(0 \in \mathbb{N} \)，且\(|\mathbb{N}^c|=|\varnothing|=0 \)，那么\(\mathbb{N} \in \mathcal{T} \)。
+%     \item \(\forall A, B \in \mathcal{T} \)，若\(0 \in A, 0 \in B\)，那么\(0 \in A \cap B \)。
+%       由于\(|A^c|,|B^c|< \infty \)，那么\(|(A \cap B)^c|=|A^c \cup B^c|\leq |A^c| + |B^c| < \infty \)。
+%       故\(A \cap B \in \mathcal{T} \)。若\(0 \in A, 0 \notin B \)，那么\(0 \notin A \cap B \)。
+%       由于\(|A^c|,|B| < \infty \)， 那么\(|A \cap B | \leq |B| < \infty \)。从而\(A \cap B \in \mathcal{T} \)。
+%       若\(0 \notin A, 0 \notin B \)，那么\(0 \notin A \cap B \)。
+%       又由于\(|A|,|B|< \infty \)，那么\(|A \cap B| \leq |A| < \infty \)。
+%       从而\(A \cap B \in \mathcal{T} \)。综上，\(A \cap B \in \mathcal{T} \)。
+%     \item \(\forall A \in \mathcal{T} \)，若\(0 \in A \)，那么\(|A^c|< \infty \)。又由于\(0 \notin A^c \)，
+%       那么\(A^c \in \mathcal{T} \)。若\(0 \notin A \)，那么\(|A| < \infty \)。又由于\(0 \in A^c \)，
+%       那么\(|(A^c)^c|< \infty \)。故\(A^c \in \mathcal{T} \)。综上，\(A^c \in \mathcal{T} \)。
+%   \end{itemize}
+%    下证\(\sigma(\mathcal{T}) \neq \mathcal{A} \)。 事实上，\(\{0\} \in \sigma(\mathcal{T}) \setminus \mathcal{A} \)。
+%    若\(\{0\} \in \mathcal{A} \)，那么\(\exists A_n \in \mathcal{T},n \geq 1,A_i \cap A_j = \varnothing ,i \neq j \)，使得\(\{0\}=\sum_{n=1}^{\infty}A_n \)。
+%    由于\(|\{0\}|=1 < \infty \)，那么\(|A_n|<\infty ,\forall n \geq 1\)。
+%    故\(0 \notin A_n ,\forall n \geq 1\)。从而\(0 \notin \cup_{n \geq 1}A_n \)。
+%    故\(\{0\} \notin \mathcal{A} \)。而\(\{0\}=(\cup_{k \geq 1}\{k\})^c \)，\(\{k\} \in \mathcal{T},k \geq1 \)。故\(\{0\} \in \sigma(\mathcal{T}) \)。
+% \end{solution}
 \begin{problem} 
   设\(\mathcal{C}_n \)为单调上升的子集类：
   \begin{enumerate}
