@@ -1,0 +1,76 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem} 
+In the Householder implementation of the Arnoldi algorithm, show the following points of detail:
+\begin{enumerate}[label=(\alph*)]
+    \item $Q_{j+1}$ is unitary and its inverse is $Q_{j+1}^{T}$.
+    \item $Q_{j+1}^{T} = P_1 P_2 \cdots P_{j+1}$.
+    \item $Q_{j+1}^{T} e_i = v_i$ for $i < j$.
+    \item $Q_{j+1} A V_m = V_{m+1} [e_1, e_2, \ldots, e_{j+1}] \bar{H}_m$, where $e_i$ is the $i$-th column of the $n \times n$ identity matrix.
+    \item The vectors $v_1, v_2, \ldots, v_j$ are orthonormal.
+    \item The vectors $v_1, \ldots, v_j$ are equal to the Arnoldi vectors produced by the Gram-Schmidt version, except possibly for a scaling factor.
+\end{enumerate}
+\end{problem}
+\begin{problem} 
+To derive the basic version of GMRES, we use the standard formula
+\begin{equation} \label{eq:5.7}
+\tilde{x} = x_0 + V \left( W^{T} A V \right)^{-1} W^{T} r_0,
+\end{equation}
+where \( V = V_m \) and \( W = A V_m \).
+\end{problem}
+
+\begin{problem} 
+  Let a matrix \( A \) have the form  
+\[
+A = 
+\begin{pmatrix}
+I & Y \\
+0 & I
+\end{pmatrix}.
+\]
+Assume that (full) GMRES is used to solve a linear system with the coefficient matrix \( A \).  
+What is the maximum number of steps that GMRES would require to converge?
+\end{problem}
+\begin{problem} 
+  Consider a matrix of the form  
+\begin{equation}
+A = I + \alpha B 
+\end{equation}
+where \( B \) is skew-symmetric (real), i.e., such that \( B^T = -B \).
+
+\begin{enumerate}
+    \item Show that \( \dfrac{(A x, x)}{(x, x)} = 1 \) for all nonzero \( x \).
+    
+    \item Consider the Arnoldi process for \( A \). Show that the resulting Hessenberg matrix will have the following tridiagonal form
+    \[
+    H_m =
+    \begin{pmatrix}
+    1 & -\eta_2 &  &  &  \\
+    \eta_2 & 1 & -\eta_3 &  &  \\
+     & \eta_3 & 1 & \ddots &  \\
+     &  & \ddots & \ddots & -\eta_m \\
+     &  &  & \eta_m & 1
+    \end{pmatrix}.
+    \]
+    
+    \item Using the result of the previous question, explain why the CG algorithm applied as is to a linear system with the matrix \( A \), which is nonsymmetric, will still yield residual vectors that are orthogonal to each other.
+\end{enumerate}
+\end{problem}
+
+\end{document}
