@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  14 OCT 2025 20:10
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  20 OCT 2025 18:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1203,21 +1203,51 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 [1
 
 
-] [2] (./Probability2.aux)
+] [2]
+Overfull \hbox (27.2793pt too wide) in paragraph at lines 129--131
+[]\TU/STSong(0)/m/n/12.045 设 $\OML/cmm/m/it/12.045 g$ \TU/STSong(0)/m/n/12.045 
+是 $\OT1/cmr/m/n/12.045 ([][]\OML/cmm/m/it/12.045 ; [][]\OT1/cmr/m/n/12.045 )$ \
+TU/STSong(0)/m/n/12.045 上 的 实  |（复）|  可 测 函 数，| $\OML/cmm/m/it/12.045 f[]; []  
+; f[]$ \TU/STSong(0)/m/n/12.045 是 $\OT1/cmr/m/n/12.045 (
+\OML/cmm/m/it/12.045 ; \OMS/cmsy/m/n/12.045 A\OML/cmm/m/it/12.045 ; \U/msb/m/n/
+12.045 P\OT1/cmr/m/n/12.045 )$ \TU/STSong(0)/m/n/12.045 上 的 随 机 变 量。|  且 $\U/ms
+b/m/n/12.045 P\OT1/cmr/m/n/12.045 (\OMS/cmsy/m/n/12.045 j\OML/cmm/m/it/12.045 g
+\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 f[]; []  ; f[]\OT1/cmr/m/n/12.045 )\O
+MS/cmsy/m/n/12.045 j \OT1/cmr/m/n/12.045 =
+ []
+
+
+Overfull \hbox (39.3243pt too wide) in paragraph at lines 131--133
+[]\TU/STSong(0)/m/n/12.045 设 $\OML/cmm/m/it/12.045 g$ \TU/STSong(0)/m/n/12.045 
+是 $\OT1/cmr/m/n/12.045 ([][]\OML/cmm/m/it/12.045 ; [][]\OT1/cmr/m/n/12.045 )$ \
+TU/STSong(0)/m/n/12.045 上 的 实  |（复）|  可 测 函 数，| $\OML/cmm/m/it/12.045 f[]; []  
+; f[]$ \TU/STSong(0)/m/n/12.045 是 $\OT1/cmr/m/n/12.045 (
+\OML/cmm/m/it/12.045 ; \OMS/cmsy/m/n/12.045 A\OML/cmm/m/it/12.045 ; \U/msb/m/n/
+12.045 P\OT1/cmr/m/n/12.045 )$ \TU/STSong(0)/m/n/12.045 上 的 复 随 机 变 量。|  且 $\U/
+msb/m/n/12.045 P\OT1/cmr/m/n/12.045 (\OMS/cmsy/m/n/12.045 j\OML/cmm/m/it/12.045
+ g\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 f[]; []  ; f[]\OT1/cmr/m/n/12.045 )
+\OMS/cmsy/m/n/12.045 j \OT1/cmr/m/n/12.045 =
+ []
+
+[3] (./Probability2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `Probability2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33053 strings out of 474773
- 691787 string characters out of 5757725
+ 33086 strings out of 474773
+ 693500 string characters out of 5757725
  1960839 words of memory out of 5000000
- 54629 multiletter control sequences out of 15000+600000
+ 54662 multiletter control sequences out of 15000+600000
  565538 words of font info for 101 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  112i,8n,113p,3325b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Probability2.pdf (2 pages).
+Output written on Probability2.pdf (3 pages).
