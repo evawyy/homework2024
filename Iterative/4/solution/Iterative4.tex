@@ -1,0 +1,69 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+Using the notation of Section~7.1.2, prove that 
+\[
+q_{j+k}(t) = t^{k} p_{j}(t)
+\]
+is orthogonal to the polynomials 
+\[
+p_1, p_2, \ldots, p_{j-k},
+\]
+assuming that \( k \leq j \). 
+Show that if \( q_{j+k} \) is orthogonalized against 
+\( p_1, p_2, \ldots, p_{j-k} \), 
+the result would be orthogonal to all polynomials of degree 
+\( < j + k \). 
+Derive a general \textbf{Look-Ahead non-Hermitian Lanczos procedure} based on this observation.
+\end{problem}
+\begin{problem}\label{pro:2}
+Consider the matrices 
+\[
+V_m = [v_1, v_2, \ldots, v_m], \qquad 
+W_m = [w_1, w_2, \ldots, w_m],
+\]
+obtained from the Lanczos biorthogonalization algorithm.
+
+\begin{enumerate}
+  \item What are the matrix representations of the (oblique) projector onto 
+  \(\mathcal{K}_m(A, v_1)\)
+  orthogonal to the subspace 
+  \(\mathcal{K}_m(A^{T}, w_1)\),
+  and the projector onto 
+  \(\mathcal{K}_m(A^{T}, w_1)\)
+  orthogonal to the subspace 
+  \(\mathcal{K}_m(A, v_1)\)?
+  
+  \item Express a general condition for the existence of an oblique projector onto a subspace 
+  \(K\),
+  orthogonal to another subspace 
+  \(L\).
+  
+  \item How can this condition be interpreted using the Lanczos vectors and the Lanczos algorithm?
+\end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:3}
+Show a three-term recurrence satisfied by the residual vectors \(r_j\) of the BCG algorithm. 
+Include the first two iterates to start the recurrence. 
+
+Similarly, establish a three-term recurrence for the conjugate direction vectors \(p_j\) in BCG.
+\end{problem}
+
+
+\end{document}

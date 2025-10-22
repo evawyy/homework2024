@@ -46,27 +46,12 @@
       \[
         Q_{j+1}^T = (P_{j+1} \cdots P_1)^T = P_1 P_2 \cdots P_{j+1}.
       \]
-    \item 对 $i < j$，证明 $Q_{j+1}^T e_i = v_i$。
-
-      这里的 $e_i$ 是标准基向量。
-      首先说明 $v_i$ 的意义：在 Householder 版本的 Arnoldi 过程中，
-      逐步构造出向量序列 $\{v_i\}$，第 $i$ 步时通过前 $i$ 个反射矩阵将相应的向量
-      对齐到第 $i$ 个标准方向。
-
-      第一步中，构造 $P_1$ 使得 $P_1 x = \alpha e_1$，于是 $v_1 = P_1 e_1 = Q_{j+1}^T e_1$
-      （当 $j+1 \ge 1$ 时一致）。
-
-      假设对所有 $i \le t$，都有 $Q_{t+1}^T e_i = v_i$，则在第 $t+1$ 步，$P_{t+1}$ 只作用于第 $t+1$ 及之后的分量，不改变前 $t$ 个标准基向量，因此有
+    \item 由于\(P_ke_i=e_i,\forall k >i \)。那么\(j >i \)时有
       \[
         Q_{j+1}^T e_i = P_1 P_2 \cdots P_{j+1} e_i = P_1 \cdots P_i e_i = v_i.
       \]
       因此命题对所有 $i < j$ 成立。
-    \item 证明关系式
-      \[
-        Q_{j+1} A V_m = [e_1, e_2, \dots, e_{m+1}] \bar{H}_m.
-      \]
-
-      标准 Arnoldi 关系为
+    \item 标准 Arnoldi 关系为
       \[
         A V_m = V_{m+1} \bar{H}_m,
       \]
@@ -79,21 +64,18 @@
       \[
         Q_{j+1} A V_m = [e_1, e_2, \dots, e_{m+1}] \bar{H}_m.
       \]
-      这就是所需的结果。
-    \item 证明向量 $v_1, v_2, \dots, v_j$ 正交归一。
-      由 (c) 有 $v_i = Q_{j+1}^T e_i$。由于 $Q_{j+1}^T$ 是正交矩阵，它保持内积不变，因此
+    \item 由 (c) 有 $v_i = Q_{j+1}^T e_i$。由于 $Q_{j+1}^T$ 是正交矩阵，它保持内积不变，因此
       \[
         \langle v_i, v_\ell \rangle = \langle Q_{j+1}^T e_i, Q_{j+1}^T e_\ell \rangle
         = \langle e_i, e_\ell \rangle = \delta_{i\ell}.
       \]
       于是 $\{v_1, \dots, v_j\}$ 构成一组正交归一向量。
-    \item 证明 $\{v_1, \dots, v_j\}$ 与 Gram–Schmidt 版本的 Arnoldi 向量一致，至多相差一个常数因子。
+    \item
       Gram–Schmidt 版和 Householder 版 Arnoldi 都在同一 Krylov 子空间
       \[
         \mathcal{K}_m(A, b) = \operatorname{span}\{b, Ab, \dots, A^{m-1} b\}
       \]
       中构造正交基，且都满足 Arnoldi 关系 $A V_m = V_{m+1} \bar{H}_m$。
-      因此两种方法得到的每一步新向量方向相同，仅可能因反射方向不同而相差一个符号（或归一化常数）。
       由于在 (e) 中已证明 Householder 构造的 $\{v_i\}$ 也是单位正交的，所以两者在数值上最多相差 $\pm 1$ 的符号因子。
       故结论成立。
   \end{enumerate}
@@ -108,34 +90,32 @@
 \end{problem}
 \begin{solution}
   GMRES 要求选择 \(y\) 使得残差的二范数最小，即求解
-\[
-y = \arg_{z\in\mathbb{R}^m}\min \|r_0 - A V z\|_2,
-\]
-其中 \(W \equiv A V\)。
-\[
-\min_{z\in\mathbb{R}^m} \|r_0 - W z\|_2.
-\]
+  \[
+    y = \arg_{z\in\mathbb{R}^m}\min \norm{r_0 - A V z}_2,
+  \]
+  其中 \(W \equiv A V\)。
+  \[
+    \min_{z\in\mathbb{R}^m} \norm{r_0 - W z}_2.
+  \]
 
-对平方范数对 \(z\) 求导并令梯度为零，
-\[
-W^T W \, y = W^T r_0,
-\]
-即
-\[
-( A V )^T ( A V ) \, y = ( A V )^T r_0.
-\]
-由于\(A \)为非奇异矩阵，则\(W^T W\)可逆，则正规方程的解为
-\[
-y = (W^T W)^{-1} W^T r_0 = \big( (AV)^T (AV) \big)^{-1} (AV)^T r_0.
-\]
+  对平方范数对 \(z\) 求导并令梯度为零，
+  \[
+    W^T W \, y = W^T r_0,
+  \]
+  即
+  \[
+    ( A V )^T ( A V ) \, y = ( A V )^T r_0.
+  \]
+  由于\(A \)为非奇异矩阵，则\(W^T W\)可逆，则正规方程的解为
+  \[
+    y = (W^T W)^{-1} W^T r_0 = \big( (AV)^T (AV) \big)^{-1} (AV)^T r_0.
+  \]
 
-将 \(y\) 代回近似解的表达式 \( \tilde{x} = x_0 + V y \)，得到
-\[
-\boxed{ \;
-\tilde{x} = x_0 + V (W^T W)^{-1} W^T r_0
-= x_0 + V \big( (AV)^T(AV) \big)^{-1} (AV)^T r_0 \;
-}
-\]
+  将 \(y\) 代回近似解的表达式 \( \tilde{x} = x_0 + V y \)，得到
+  \[
+    \tilde{x} = x_0 + V (W^T W)^{-1} W^T r_0
+    = x_0 + V \big( (AV)^T(AV) \big)^{-1} (AV)^T r_0 \;
+  \]
 \end{solution}
 
 \begin{problem}
@@ -151,7 +131,101 @@ y = (W^T W)^{-1} W^T r_0 = \big( (AV)^T (AV) \big)^{-1} (AV)^T r_0.
   What is the maximum number of steps that GMRES would require to converge?
 \end{problem}
 \begin{solution}
-  
+  \begin{lemma}\label{lem:3}
+    设 \(A\in\mathbb C^{n\times n}\)，初始猜测为 \(x_0\)，初始残量 \(r_0=b-Ax_0\), 假设 \(r_0\neq0\)。令
+    \[
+      \mathcal K_k(A,r_0)=\operatorname{span}\{r_0,Ar_0,\dots,A^{k-1}r_0\},
+      \qquad
+      \mathcal P_k=\{p\in\mathbb C[t]:\deg p\le k\}.
+    \]
+    则 GMRES 在第 \(k\) 步的残量满足
+    \[
+      \norm{r_k}=\min_{x\in x_0+\mathcal K_k}\norm{b-Ax}
+      =\min_{p\in\mathcal P_k,\;p(0)=1}\norm{p(A)r_0}.
+    \]
+  \end{lemma}
+  \begin{proof}
+    任意 \(x\in x_0+\mathcal K_k\) 可表示为
+    \[
+      x=x_0+\sum_{j=0}^{k-1}\gamma_j A^j r_0
+      = x_0 + q(A) r_0,
+    \]
+    其中 \(q(t)=\sum_{j=0}^{k-1}\gamma_j t^j\) 且 \(\deg q\le k-1\)。此时残量为
+    \[
+      r=b-Ax = r_0 - A q(A) r_0.
+    \]
+    令
+    \[
+      p(t):=1 - t q(t),
+    \]
+    则显然 \(p(0)=1\)、\(\deg p\le k\)，且
+    \[
+      r = p(A) r_0.
+    \]
+    因此每个 \(x\in x_0+\mathcal K_k\) 都产生某个满足 \(p(0)=1\)、\(\deg p\le k\) 的多项式 \(p\)，使得残量等于 \(p(A)r_0\)。
+    反之，任取 \(p\in\mathcal P_k\)，\(P_k \)为次数小于\(k \)的所有多项式，且 \(p(0)=1\)，那么
+    \[
+      p(t)=\sum_{j=0}^k a_j t^j,\qquad a_0=p(0)=1.
+    \]
+    则
+    \[
+      p(t)=1 + \sum_{j=1}^k a_j t^j = 1 - t\Big(-\sum_{j=1}^k a_j t^{\,j-1}\Big).
+    \]
+    令 \(q(t):=-\sum_{j=1}^k a_j t^{\,j-1}\)，则 \(\deg q\le k-1\) 且 \(p(t)=1-tq(t)\)。
+    那么\(q(A)r_0=-\sum_{j=1}^{k}a_jA^jr_0 \in \mathcal{K}_k \)
+    故
+    \[
+      x = x_0 + q(A) r_0 \in x_0+\mathcal K_k,
+    \]
+    可得对应的残量
+    \[
+      b-Ax = p(A) r_0.
+    \]
+    这说明集合 \(\{x\in x_0+\mathcal K_k\}\) 与集合 \(\{p\in\mathcal P_k:\,p(0)=1\}\) 通过残量映射一一对应，且对应残量范数相等。
+    从而，
+    \[
+      \min_{x\in x_0+\mathcal K_k}\norm{b-Ax}
+      = \min_{\substack{p\in\mathcal P_k\\ p(0)=1}} \norm{p(A) r_0}.
+    \]
+    GMRES 第 \(k\) 步定义为在 \(x_0+\mathcal K_k\) 中选择使残量范数最小的 \(x_k\)，因此
+    \[
+      \norm{r_k}=\min_{x\in x_0+\mathcal K_k}\norm{b-Ax}
+      =\min_{p\in\mathcal P_k,\;p(0)=1}\norm{p(A)r_0}.
+    \]
+  \end{proof}
+  由 GMRES 的定义及 lemma \ref{lem:3}，在第 \(k\) 步我们在 \(x_0+\mathcal K_k(A,r_0)\) 中寻找使残量范数最小的 \(x_k\)，即
+  \[
+    \norm{r_k}=\min_{x\in x_0+\mathcal K_k}\norm{b-Ax}
+    =\min_{\substack{p\in\mathcal P_k\\ p(0)=1}}\norm{p(A)r_0}.
+  \]
+  设 \(\mu_{A,r_0}(t)\) 为关于向量 \(r_0\) 的\(A \)最小多项式，且 \(\deg(\mu_{A,r_0})=d\)。则
+  \[
+    \mu_{A,r_0}(A) r_0 = 0.
+  \]
+
+  若 \(\mu_{A,r_0}(0)\neq 1\)，考虑
+  \[
+    \mu_{A,r_0}(t) = c\big(1+\beta_1 t+\beta_2 t^2+\cdots+\beta_d t^d\big)
+  \]
+  其中 \(c\neq0\)。令
+  \[
+    \tilde\mu(t) := 1+\beta_1 t+\beta_2 t^2+\cdots+\beta_d t^d,
+  \]
+  则 \(\tilde\mu(0)=1\) 且
+  \[
+    \tilde\mu(A) r_0 = c^{-1}\mu_{A,r_0}(A) r_0 = 0.
+  \]
+  故存在次数不超过 \(d\) 且常数项为 \(1\) 的多项式, 即 \(\tilde\mu\)使 \(\tilde\mu(A)r_0=0\)。
+  若 \(\mu_{A,r_0}(0)=0\)，设\(\mu_{A,r_0}(t)=\sum_{k=1}^{d}\alpha_k t^k \)，那么\(A(\sum_{k=m}^{d-m}\alpha_k A^k)r_0=0 \)，\(m=\min\{k : 0 \leq k \leq d, a_k \neq 0\} \)
+  由于\(A \)非奇异，那么\( \tilde{\mu}(A)r_0=(\sum_{k=m}^{d-m}\alpha_kA^k)r_0\)。
+  故存在次数不超过 \(d\) 且常数项为 \(1\) 的多项式, 即 \(\tilde\mu\)使 \(\tilde\mu(A)r_0=0\)。
+  总之，\( \exists p\in\mathcal P_d\) 满足 \(p(0)=1\) 且 \(p(A)r_0=0\)。
+  将该多项式代入第 \(k\) 步的变分表示，取 \(k=d\) 可得
+  \[
+    \min_{\substack{p\in\mathcal P_d\\ p(0)=1}}\norm{p(A)r_0} \le \norm{p(A)r_0} = 0.
+  \]
+  因此 GMRES 在第 \(d\) 步或之前可得到零残量，即 \(\norm{r_d}=0\)。换言之，full GMRES 在至多 \(d\) 步内精确收敛。
+  而\((A-I)^2=0 \)，那么\(\mu_{A,r_0} \)的次数小于等于\(2 \)。若\(Y \neq 0 \)，则最大迭代次数为\(2 \)。
 \end{solution}
 
 \begin{problem}
@@ -178,7 +252,205 @@ y = (W^T W)^{-1} W^T r_0 = \big( (AV)^T (AV) \big)^{-1} (AV)^T r_0.
   \end{enumerate}
 \end{problem}
 \begin{solution}
-  
-\end{solution}
+  \begin{enumerate}
+    \item 对任意非零向量 $x$，
+      \[
+        (Ax,x) = x^T (I+\alpha B) x = x^T x + \alpha\, x^T B x.
+      \]
+      由于 $B$ 为实反对称矩阵，得
+      \[
+        x^T B x = (x^T B x)^T = x^T B^T x = x^T(-B) x = - x^T B x,
+      \]
+      因此 $x^T B x = 0$。于是 $(Ax,x)=x^T x$，故
+      \[
+        \frac{(Ax,x)}{(x,x)}=\frac{x^T x}{x^T x}=1.
+      \]
+    \item 设 $v_1,\dots,v_m$ 为标准 Arnoldi 得到的正交标准基，则对每个 $j$ 有
+      \[
+        A v_j = \sum_{i=1}^{j+1} h_{i,j}\, v_i,
+        \qquad h_{i,j}=(Av_j, v_i)=v_i^T A v_j,
+      \]
+      并且 $h_{j+1,j}=\norm{w}$。
 
+      又$A=I+\alpha B$ 故
+      \[
+        h_{i,j} = v_i^T A v_j = v_i^T (I+\alpha B) v_j
+        = v_i^T v_j + \alpha\, v_i^T B v_j.
+      \]
+      由于 $v_i$ 与 $v_j$ 正交，当 $i\neq j$ 时 $v_i^T v_j=0$，于是对 $i\ne j$ 有
+      \[
+        h_{i,j} = \alpha\, v_i^T B v_j.
+      \]
+      利用 $B^T=-B$，得到
+      \[
+        h_{j,i} = \alpha\, v_j^T B v_i = \alpha\, (v_i^T B v_j)^T = -\alpha\, v_i^T B v_j = -h_{i,j}.
+      \]
+      即任意一对非对角元互为相反数。
+
+      又由于Arnoldi 构造出的矩阵 $H_m$
+      满足 $i>j+1$ 时 $h_{i,j}=0$，故考虑任意 $i\le j-2$ 的情形。
+      由于 $j>i+1$， $h_{j,i}=0$，而又 $h_{i,j}=-h_{j,i}$，从而得 $h_{i,j}=0$。
+      故\(H_m \)为三对角矩阵。
+      令对于 $j\ge2$，
+      \[
+        \eta_j := h_{j,j-1},
+      \]
+      由上面的反号关系可得对应的上超对角元 $h_{j-1,j}=-\eta_j$。另外第1问知
+      \[
+        h_{j,j} = (v_j, A v_j) = 1.
+      \]
+      综上得到，
+      \[
+        H_m=
+        \begin{pmatrix}
+          1 & -\eta_2 &  &  &  \\
+          \eta_2 & 1 & -\eta_3 &  &  \\
+          & \eta_3 & 1 & \ddots &  \\
+          &  & \ddots & \ddots & -\eta_m \\
+          &  &  & \eta_m & 1
+        \end{pmatrix},
+      \]
+      % \item 在第2问我们已经证明 $H_m$ 为三对角矩阵，且具有性质
+      %   \[
+      %     H_m + H_m^T = 2 I_m,
+      %   \]
+      %   因为主对角都是 $1$，而上下对应位置互为相反数。
+      %   换言之，投影到 Krylov 子空间上的投影矩阵的对称部分恰好是单位阵。
+      %
+      %   CG 算法（或等价的 Lanczos 三项递推）产生短三项递推关系，这些递推关系的代数基础是投影矩阵在基下为三对角形式并且对称部分是一个简单的常数（这里是 $I$）。因此，在该特殊结构下，虽然 $A$ 本身非对称，但在 Krylov 子空间上的投影行为与对称情形给出的三项递推完全相容，从而保证 CG 迭代中生成的残量 $r_k$ 满足彼此正交：
+      %   \[
+      %     r_i^T r_j = 0,\qquad i\ne j.
+      %   \]
+      %
+      %   \paragraph{略作代数说明（归纳）}
+      %   令初始残量 $r_0=b-Ax_0$，并取 Arnoldi 起始向量 $v_1=r_0/\norm{r_0}$。在 Arnoldi 基下，CG 的搜索方向与残量可以用 $v_j$ 的线性组合表示，并且由于 $A v_j$ 只在 $v_{j-1},v_j,v_{j+1}$ 三个方向上有分量（这是第 (2) 问的核心结论），由此产生的搜索方向与残量满足三项递推关系。利用三项递推可以按归纳步骤证明每一步残量都与之前所有残量正交：假设 $r_0,\dots,r_k$ 两两正交，则下一步的更新由
+      %   \[
+      %     r_{k+1} = r_k - \alpha_k A p_k
+      %   \]
+      %   给出，其中 $p_k$ 是当前搜索方向，且 $p_k$ 由 $r_k$ 与前两步方向线性组合而得，结合 $A$ 在 Arnoldi 基下的三对角耦合性质可推出 $r_{k+1}$ 与 $r_0,\dots,r_k$ 正交。详细的系数代数推导与对称情形完全类似，仅在中间使用到的矩阵是上面提到的三对角 $H_m$，其对称部分为 $I$，保证了内积消掉而得到正交性结论。
+      %
+      %   因此，尽管 $A$ 非对称，因其对称部分是常数单位矩阵且 Arnoldi 投影矩阵为三对角形式，标准 CG 算法运行时仍产生两两正交的残量序列。
+
+      % \title{用 \(H_m\) 证明：对 \(A=I+\alpha B\)（$B^T=-B$），标准 CG 的残量两两正交}
+
+      % 设 Arnoldi 正交归一基为
+      % \[
+      %   V_{m+1}=[v_1,\dots,v_{m+1}]\in\mathbb R^{n\times(m+1)},\qquad v_i^T v_j=\delta_{ij},
+      % \]
+      % 且 \(v_1\) 与初始残量 \(r_0=b-Ax_0\) 同向（\(v_1=r_0/\norm{r_0}\)）。Arnoldi 关系写为
+      % \[
+      %   A V_m = V_{m+1}\,\overline H_m,
+      % \]
+      % 其中 \(\overline H_m\) 是 \((m+1)\times m\) 的上 Hessenberg 矩阵，且其前 \(m\times m\) 部分为 \(H_m\). 对于本题（因 \(B^T=-B\)）已知
+      % \[
+      %   H_m=
+      %   \begin{pmatrix}
+      %     1 & -\eta_2 &  &  \\
+      %     \eta_2 & 1 & -\eta_3 &  \\
+      %     & \ddots & \ddots & \ddots \\
+      %     &  & \eta_m & 1
+      %   \end{pmatrix},
+      % \]
+      % 因此明显成立重要恒等式
+      % \[
+      %   H_m^T = 2I_m - H_m.
+      %   \tag{*}
+      % \]
+      %
+      % \paragraph{把向量写成 Arnoldi 坐标}
+    \item  由于每一步的残量 \(r_k\) 都属于 Krylov 子空间 \(\mathcal K_{k+1}(A,r_0)=\operatorname{span}\{v_1,\dots,v_{k+1}\}\)，
+      存在坐标向量 \(z_k\in\mathbb R^{k+1}\) 使得
+      \[
+        r_k = V_{k+1}\, z_k.
+      \]
+      % (注意：在后面的推导中我们可以把 \(z_k\) 视为在更大的基 \(V_{m+1}\) 下的前 \(k+1\) 分量，且 \(V_{m+1}^T V_{m+1}=I\) 保证内积在坐标空间保持，即
+      %   \[
+      %   r_i^T r_j = z_i^T z_j.)
+      % \]
+
+      同理，每个搜索方向 \(p_k\) 也写成坐标 \(y_k\)：
+      \[
+        p_k = V_{k+1}\, y_k.
+      \]
+
+      % \paragraph{坐标更新关系}
+      CG 的残量更新为
+      \[
+        r_{k+1} = r_k - \alpha_k A p_k.
+      \]
+      将两边左乘 \(V_{k+1}^T\)
+      % （注意若用更大的基 \(V_{m+1}\) 把向量补零，下面表达式对角标可统一），
+      并利用 Arnoldi 投影 \(V_{k+1}^T A V_{k+1} =
+        \begin{pmatrix} H_{k+1} & * \\ 0 & *
+      \end{pmatrix}\) 的前 \(k+1\) 块, 简写为 \(H_{k+1}\)，得坐标关系
+      \[
+        z_{k+1} = z_k - \alpha_k\, H_{k+1}\, y_k.
+        % \tag{1}
+      \]
+      此外由 \(p_k\) 的定义和正交性的性质，易得
+      \[
+        y_k = z_k + \beta_{k-1} y_{k-1}.
+        \tag{2}
+      \]
+      % （式 (1),(2) 是把 CG 的矢量更新写到 Arnoldi 坐标下的直接代数结果。）
+
+      % \paragraph{用 \(H_{k+1}^T = 2I - H_{k+1}\) 证明坐标两两正交}
+      我们要证明对任意 \(i\ne j\) 有 \(z_i^T z_j=0\)。用归纳法：
+
+      - \(z_0\) 自然成立。
+
+      - 假设对所有 \(\ell\le k\), \(\exists k\ge0\)都成立 \(z_i^T z_j=0\),\(i\ne j, \ i,j\le k\),
+      并且 \(y_i^T H_{i+1} y_j = 0\) 对 \(i\ne j\)
+      % 也成立（后者对应搜索方向互 \(A\)-共轭在坐标下的表述；这个等式可与下述类似推理一并归纳得到）。
+      下面证明 \(z_{k+1}\) 与任意 \(z_j\),\(j\le k\)正交。
+      % 从 (1)：
+      \[
+        z_{k+1}^T z_j = \bigl(z_k - \alpha_k H_{k+1} y_k\bigr)^T z_j
+        = z_k^T z_j - \alpha_k\, y_k^T H_{k+1}^T z_j.
+      \]
+      由归纳假设第一部分 \(z_k^T z_j=0\), \(j\le k-1\)，所以只需看第二项。
+      % 把 \(z_j\) 用 (2) 与早期 \(y\) 表示展开可以得到 \(z_j\) 落在由 \(y_0,\dots,y_j\) 张成的线性空间内。关键使用恒等式 \(H_{k+1}^T = 2I - H_{k+1}\)（来自 (*)），得
+      \[
+        y_k^T H_{k+1}^T z_j = y_k^T(2I - H_{k+1}) z_j
+        = 2\, y_k^T z_j - y_k^T H_{k+1} z_j.
+      \]
+      由归纳假设中的“搜索方向互 \(A\)-共轭”在坐标下表现为 \(y_k^T H_{k+1} y_j = 0\), \(j\le k-1\),
+      并且 \(y_k^T z_j = y_k^T(V_{j+1}^T V_{k+1}) z_j\)
+      % 在归纳假设和正交性条件下也为零（因为早先的残量和搜索方向之间是正交的——这可由与上文同样的归纳步骤逐步证明）。因此右端两项都为零，从而
+      \[
+        y_k^T H_{k+1}^T z_j = 0,
+      \]
+      即 \(z_{k+1}^T z_j = 0\) 对所有 \(j\le k-1\) 成立。
+
+      剩下的 \(j=k\) 情形：
+      \[
+        z_{k+1}^T z_k = z_k^T z_k - \alpha_k y_k^T H_{k+1}^T z_k.
+      \]
+      但类似地利用 \(H_{k+1}^T=2I-H_{k+1}\) 并利用 \(\alpha_k=\dfrac{z_k^T z_k}{y_k^T H_{k+1} y_k}\)
+      % （坐标下的 $\alpha_k$ 定义），
+      % 代入后可直接化简得零：
+      \[
+        \begin{aligned}
+          z_{k+1}^T z_k
+          &= z_k^T z_k - \alpha_k\bigl(2y_k^T z_k - y_k^T H_{k+1} z_k\bigr) \\
+          &= z_k^T z_k - 2\alpha_k y_k^T z_k + \alpha_k y_k^T H_{k+1} z_k.
+        \end{aligned}
+      \]
+      但 \(y_k^T z_k = z_k^T z_k\)
+      % （因 \(y_k=z_k+\beta_{k-1}y_{k-1}\) 且 \(y_{k-1}\) 与 \(z_k\) 正交），
+      代入并用 \(\alpha_k=\dfrac{z_k^T z_k}{y_k^T H_{k+1} y_k}\) 得
+      \[
+        z_{k+1}^T z_k = z_k^T z_k - 2\frac{z_k^T z_k}{y_k^T H_{k+1} y_k} z_k^T z_k + \frac{z_k^T z_k}{y_k^T H_{k+1} y_k} y_k^T H_{k+1} z_k = 0.
+      \]
+      因此 \(z_{k+1}\) 与\(z_j\),\(j\le k\)正交。
+
+      % \paragraph{结论}
+      由归纳得到对任意 \(i\ne j\) 都有坐标向量 \(z_i^T z_j=0\)。因为 \(V_{m+1}\) 正交归一，原残量的内积等于坐标内积，即
+      \[
+        r_i^T r_j = z_i^T z_j = 0,\qquad i\ne j.
+      \]
+      因此标准 CG 在 \(A=I+\alpha B\),$B^T=-B$上产生的残量序列两两正交。
+
+  \end{enumerate}
+\end{solution}
 \end{document}
