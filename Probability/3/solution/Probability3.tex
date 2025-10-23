@@ -1,0 +1,44 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:5}
+  分布函数是否是不降的？举出反例或者给出证明。
+\end{problem}
+
+\begin{problem}\label{pro:7}
+  证明若\(F(x)=\mathbb{P}(\xi < x) \)是连续的，则\(\eta = F(\xi) \)具有\((0,1) \)上的均匀分布。
+\end{problem}
+
+\begin{problem}\label{pro:9}
+  设\(\xi_n，n \in \mathbb{N}_{+} \)为\(\mathrm{i.i.d.}  \)随机变量，分布为\(\mu \)。
+  给定\(A \in \mathcal{B} \)，\(\mu(A) >0 \)，定义\(\tau = \inf\{k:\xi_k \in A\} \)。
+  证明\(\xi_{\tau} \)的分布为\(\frac{\mu(\cdot \cap A)}{\mu(A)} \)。
+\end{problem}
+\begin{problem}\label{pro:11}
+  若\(\mathcal{C}_1,\cdot,\mathcal{C}_n \)为独立的\(\pi \)系，那么\(\sigma(\mathcal{C}_1),\cdots,\sigma(\mathcal{C}_n)\)独立。
+\end{problem}
+\begin{problem}\label{pro:12}
+  \begin{enumerate}
+    \item 设\(\{A_n\}_{n \geq 1} \) 为独立事件序列，令\(\mathcal{J} = \bigcap_{n=1}^{\infty} \sigma\{A_n,A_{n + 1},\cdots\}. \)
+      证明\(\forall A \in \mathcal{J} \)，有\(\mathbb{P} (A) =0 \)或\(1 \).
+    \item 设 \(\{\xi_n\}_{n \geq 1} \)为独立随机变量，令\(\mathcal{J} = \bigcap_{n=1}^{\infty} \sigma\{\xi_n,\xi_{n + 1},\cdots\} \)。
+      证明\(\forall A \in \mathcal{J} \)，有\(\mathbb{P}(A)=0 \)或\(1 \).
+  \end{enumerate}
+\end{problem}
+
+\end{document}
