@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  17 OCT 2025 10:59
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  24 OCT 2025 10:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1157,21 +1157,27 @@ Package fontspec Info: Font family 'STXihei(0)' created for font 'STXihei'
 (../../.subject) (../.number) [1
 
 
-] [2] [3] [4] (./English1.aux)
- ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2022/08/05>
- ***********
-Package rerunfilecheck Info: File `English1.out' has not changed.
-(rerunfilecheck)             Checksum: 3AED1298BBD40974533EBF3472714BC7;136.
- ) 
+] [2] [3]
+! Undefined control sequence.
+<recently read> \eng 
+                     
+l.133       \item \eng
+                      {expect nothing in return} 不求回报
+? 
+! Emergency stop.
+<recently read> \eng 
+                     
+l.133       \item \eng
+                      {expect nothing in return} 不求回报
+End of file on the terminal!
+
+ 
 Here is how much of TeX's memory you used:
- 32942 strings out of 474773
- 691072 string characters out of 5757725
+ 32937 strings out of 474773
+ 690896 string characters out of 5757725
  1935839 words of memory out of 5000000
- 54560 multiletter control sequences out of 15000+600000
+ 54557 multiletter control sequences out of 15000+600000
  560319 words of font info for 70 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  112i,5n,113p,3321b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on English1.pdf (4 pages).
+Output written on English1.pdf (3 pages).
