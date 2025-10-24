@@ -23,17 +23,44 @@
 \begin{problem}\label{pro:7}
   证明若\(F(x)=\mathbb{P}(\xi < x) \)是连续的，则\(\eta = F(\xi) \)具有\((0,1) \)上的均匀分布。
 \end{problem}
+\begin{solution}
+ \begin{lemma}\label{lem:pro7}
+   \(F(x) \) 为随机变量\(\xi \)的分布函数，若\(F \)为左连续，右极限存在，那么\(\forall x \in \mathbb{R}, F^{-1}(\{x\}) \)或为\(\varnothing \)，或为\((a,b],a,b \in \mathbb{R} \)。
+ \end{lemma}
+\begin{proof}
+ \(\forall x \in \mathbb{R} \)，若\(F^{-1}\{x\} \neq \varnothing\)，需证明\(\exists a, b \in \mathbb{R} \)， 
+\end{proof}
+  
+\end{solution}
 
 \begin{problem}\label{pro:9}
   设\(\xi_n，n \in \mathbb{N}_{+} \)为\(\mathrm{i.i.d.}  \)随机变量，分布为\(\mu \)。
   给定\(A \in \mathcal{B} \)，\(\mu(A) >0 \)，定义\(\tau = \inf\{k:\xi_k \in A\} \)。
   证明\(\xi_{\tau} \)的分布为\(\frac{\mu(\cdot \cap A)}{\mu(A)} \)。
 \end{problem}
+\begin{solution}
+  \(\forall B \in \mathcal{C} \)，\(\mathbb{P}(\xi_{\tau} \in B)=\sum_{n=1}^{\infty} \mathbb{P}(\xi_{\tau} \in B | \tau =n)\mathbb{P}(\tau =n) \)。 
+  考虑到\(\{\tau = n\} = \{\xi_n \in A, \xi_k \notin A, 1 \leq k \leq n-1\} \)， \(\{\xi_{\tau} \in B | \tau =n\}=\{\xi_n \in B | \xi_n \in A, \xi_k \notin A, 1 \leq k \leq n-1\}\)，
+  及\(\xi_k, 1 \leq k \leq n-1 \)与\(\xi_n \)独立，从而\(\{\xi_{\tau} \in B| \tau =n\} = \{\xi_n \in B | \xi_n \in A\}=\{\xi_n \in A \cap B | \xi_n \in A\} \)。
+  从而，\[
+    \begin{aligned}
+      \mathbb{P}(\xi_{\tau} \in B) &= \sum_{n=1}^{\infty}\mathbb{P}(\xi_n \in A \cap B | \xi_n \in A)\mathbb{P}(\tau =n)\\
+      &=\sum_{n=1}^{\infty}\frac{\mathbb{P}(\xi_n \in A \cap B)}{\mathbb{P}(\xi_n \in A)}\mathbb{P}(\tau =n) \\ 
+      &=\frac{\mathbb{P}(\xi_n \in A \cap B)}{\mathbb{P}(\tau \in A)}\\ 
+      &=\frac{\mu(B \cap A)}{\mu(A)}
+    \end{aligned}
+  \]
+\end{solution}
+
 \begin{problem}\label{pro:11}
   若\(\mathcal{C}_1,\cdots,\mathcal{C}_n \)为独立的\(\pi \)系，那么\(\sigma(\mathcal{C}_1),\cdots,\sigma(\mathcal{C}_n)\)独立。
 \end{problem}
 \begin{solution}
   该题的证明需要\(\Omega \in \mathcal{C}_i，1 \leq i \leq n \)。
+
+  只需证明若\(\forall 1 \leq l \leq n,  1 \leq k \leq n, \mathcal{C}_k\)为独立的\(\pi \)系且\(\Omega \in \mathcal{C}_k \)，那么\(\mathcal{C}_k, 1 \leq k \leq n, k \neq l, \sigma(\mathcal{C}_l)  \)独立。
+  考虑\[\mathcal{A}:=\{A \in \sigma(\mathcal{C}_l): \forall J \subset 2^{\{1,\cdots,n\}}\setminus \{\varnothing\},\mathbb{P}(A \cap \bigcap_{i \in J \setminus \{l\}}A_i)=\mathbb{P}(A)\prod_{i \in J\setminus\{l\}}\mathbb{P}(A_i), A_i \in \mathcal{C}_i, i \in \{1,\cdots,n\}\setminus\{l\}\} \]。
+
 \end{solution}
 
 \begin{problem}\label{pro:12}
