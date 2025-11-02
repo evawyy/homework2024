@@ -9,7 +9,7 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+\input{../../../global/preface}
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
@@ -17,63 +17,308 @@
 \fi
 %from_here_to_type
 \begin{problem}\label{pro:1}
-Using the notation of Section~7.1.2, prove that 
-\[
-q_{j+k}(t) = t^{k} p_{j}(t)
-\]
-is orthogonal to the polynomials 
-\[
-p_1, p_2, \ldots, p_{j-k},
-\]
-assuming that \( k \leq j \). 
-Show that if \( q_{j+k} \) is orthogonalized against 
-\( p_1, p_2, \ldots, p_{j-k} \), 
-the result would be orthogonal to all polynomials of degree 
-\( < j + k \). 
-Derive a general \textbf{Look-Ahead non-Hermitian Lanczos procedure} based on this observation.
+  \begin{enumerate}
+    \item   Using the notation of Section~7.1.2, prove that
+      \[
+        q_{j+k}(t) = t^{k} p_{j}(t)
+      \]
+      is orthogonal to the polynomials
+      \[
+        p_1, p_2, \ldots, p_{j-k},
+      \]
+      assuming that \( k \leq j \).
+    \item  Show that if \( q_{j+k} \) is orthogonalized against
+      \( p_1, p_2, \ldots, p_{j-k} \),
+      the result would be orthogonal to all polynomials of degree
+      \( < j + k \).
+    \item   Derive a general \textbf{Look-Ahead non-Hermitian Lanczos procedure} based on this observation.
+  \end{enumerate}
 \end{problem}
 \begin{solution}
-  
+  \begin{enumerate}
+    \item 先证明\(q_{j + k} \) 与\(p_1,\cdots,p_{j-k},k \leq j \)正交。
+      对任意固定的 $m$，$1\le m\le j-k$，
+      \[
+        \langle q_{j+k},p_m\rangle=\langle t^{k}p_j,p_m\rangle.
+      \]
+      利用内积对称性，
+      \[
+        \langle t^{k}p_j,p_m\rangle=\langle p_j,t^{k}p_m\rangle.
+      \]
+      由于 $\deg p_m=m-1$，因此
+      \[
+        \deg\big(t^{k}p_m\big)=(m-1)+k \le (j-k-1)+k = j-1=\deg p_j.
+      \]
+      根据正交多项式的构造，$p_j$ 与所有次数 $\le j-2$ 的多项式正交；
+      若 $ \deg(t^{k}p_m)\le j-2$ 则内积为零，即\( \langle q_{j + k}, p_m\rangle =0\).
+      若 $\deg (t^k p_m)=j-1$，即\(m=j-k \)也可分解并用标准 Gram-Schmidt 的线性代数事实论证：
+      $p_j$ 在构造满足\(\forall f \) $\deg f <j-1$ \(\langle f,p_j\rangle =0 \)。由此得 $\langle p_j,t^{k}p_m\rangle=0$，从而
+      \[
+        \langle q_{j+k},p_m\rangle=0,
+      \]
+      对所有 $m=1,\dots,j-k$ 成立，证毕。
+    \item 把 $q_{j+k}=t^{k}p_j$ 对 $\{p_1,\dots,p_{j-k}\}$ 做 Gram-Schmidt 正交化，设正交化后的多项式为 $\widetilde q_{j+k}$。
+      % 则 $\widetilde q_{j+k}$ 被构造成与 $\operatorname{span}\{p_1,\dots,p_{j-k}\}$ 中的任意多项式正交；这一子空间包含所有次数 $\le j-k-1$ 的多项式。
+      任取任意多项式 $r(t)$，若 $\deg r<j+k$，则可以把 $r$ 分解为
+      \[
+        r = r_{\text{low}} + r_{\text{rem}},
+      \]
+      其中 $r_{\text{low}}\in\operatorname{span}\{p_1,\dots,p_{j-k}\}$（包含所有足够低次成分），
+      故\(\deg (r_{\text{low}}) \leq j-k\)，
+      令 $r_{\text{rem}}:=s(t)$，其中 $\deg s<k$。
+      \[
+        \langle \widetilde q_{j+k}, r\rangle
+        = \langle \widetilde q_{j+k}, r_{\text{low}}\rangle + \langle \widetilde q_{j+k}, t^{k}s\rangle.
+      \]
+      由正交化定义故\(\langle \widetilde q_{j+k}, r_{\text{low}}\rangle =0\)。
+      设\(g \) 为\(q_{j + k} \)在 \(span \{p_1,\dots,p_{j-k}\} \)的投影，故\(g + \widetilde q_{j + k} =q_{j + k} \)，
+      且\(\langle g, t^ks\rangle =0 \).
+
+      %%%todu:gap
+      而且 $\langle \widetilde q_{j+k}, s\rangle= \langle q_{j + k} , s \rangle - \langle g, s \rangle = \langle t^kp_j,s\rangle $。
+      而由于 $\deg s<j$，上式也为 $0$。因此 $\widetilde q_{j+k}$ 与任意 $\deg r<j+k$ 的多项式正交。
+
+    \item   设在第 $j$ 步我们按常规范处得到向量$u = A v_j - \sum_{i=1}^j \alpha_{i} v_i$。
+      若 $u\neq 0$，则可归一化为 $v_{j+1}$ 并类似地得到 $w_{j+1}$。若 $u\approx 0$（breakdown），设常规方法不能继续，此时执行 Look-Ahead：
+      \begin{enumerate}
+        \item 尝试 $u^{(1)}=A^1 v_j$，对其对 \(\{w_1,\dots,w_{j-1}\}\) 做双正交化；若得到非零向量则用之继续；
+        \item 否则尝试 $u^{(2)}=A^2 v_j$，逐步增加幂数 $k$，直至找到非零向量 $u^{(k)}$，然后把该 $u^{(k)}$ 对 $w_1,\dots,w_{j-k}$ 正交化，归一化并作为新的 $v_{j+k}$。
+      \end{enumerate}
+      对偶方向即$w$ 基，需对称地执行 look-ahead。
+
+      结果：生成的 $V$与 $W$基仍然是双正交的，但投影矩阵在 $V$ 基下变为宽带，而不是纯三对角。
+  \end{enumerate}
+  % 下面给出高层次的数学思想及可实施的伪代码。我们用向量／矩阵表述（Krylov 空间生成），对应多项式表述中的 $t$ 对应矩阵乘 $A$。
+  %
+  % 目标：为非厄米矩阵 $A\in\mathbb{C}^{n\times n}$ 构造双正交基 $V=[v_1,\dots,v_\ell]$ 与 $W=[w_1,\dots,w_\ell]$，满足 $W^T V = I_\ell$，并使 $A V$ 在 $V$ 基下对应一个窄带（带状）矩阵。标准非厄米 Lanczos（Bi-Lanczos）在某一步可能出现 breakdown（例如新产生的向量与已有的 $V$ 空间线性相关或投影系数为零），Look-Ahead 的思想是：当出现准分解／零投影时，不马上终止，而尝试通过构造 $A^k v_j$（对应多项式乘 $t^k p_j$）并对早期基作正交化来“跳过”该步，从而继续生成可用的基向量。
+  %
+  % \subsection{关键步骤与代数关系}
+  % \subsection{伪代码（高层次）}
+  % \caption{Look-Ahead 非厄米 Lanczos（高层次）}
+  % \begin{algorithmic}[1]
+  % \REQUIRE $A\in\mathbb{C}^{n\times n}$, 初始向量 $v_1$ 与对偶向量 $w_1$ 使 $w_1^T v_1=1$, 最大步数 $m$, 容差 $\varepsilon$.
+  % \STATE $V=[v_1],\; W=[w_1],\; j=1$.
+  % \WHILE{$j < m$}
+  %   \STATE $u \leftarrow A v_j$
+  %   \FOR{$i=1,\dots,j$} \COMMENT{对 $u$ 做 $W$-投影消去}
+  %     \STATE $\alpha_i \leftarrow w_i^T u$
+  %     \STATE $u \leftarrow u - \alpha_i v_i$
+  %   \ENDFOR
+  %   \IF{$\|u\|>\varepsilon$}
+  %     \STATE $v_{j+1}\leftarrow u/\|u\|$，在对偶方向用 $A^T$ 做对称更新以获得 $w_{j+1}$，并令 $j\leftarrow j+1$。
+  %   \ELSE
+  %     \STATE // 启动 Look-Ahead
+  %     \STATE $k\leftarrow 1$
+  %     \REPEAT
+  %       \STATE $u^{(k)} \leftarrow A^{k} v_j$  \COMMENT{数值上每乘一次 $A$ 之后立即对 $W$ 做投影消去以保持稳定}
+  %       \FOR{$i=1,\dots,j-k$}
+  %         \STATE $\alpha^{(k)}_i \leftarrow w_i^T u^{(k)}$
+  %         \STATE $u^{(k)} \leftarrow u^{(k)} - \alpha^{(k)}_i v_i$
+  %       \ENDFOR
+  %       \IF{$\|u^{(k)}\|>\varepsilon$}
+  %         \STATE 令 $v_{j+k}\leftarrow u^{(k)}/\|u^{(k)}\|$，并对偶方向做对称的 look-ahead 更新得到 $w_{j+k}$。
+  %         \STATE $j\leftarrow j+k$，跳出 repeat。
+  %       \ELSE
+  %         \STATE $k\leftarrow k+1$
+  %       \ENDIF
+  %     \UNTIL{$k$ 超过上限或找到非零向量}
+  %     \IF{未找到可用向量}
+  %       \STATE \textbf{终止：} 无法继续扩展基。
+  %     \ENDIF
+  %   \ENDIF
+  % \ENDWHILE
+  % \RETURN $V,W$ 及记录的投影系数（构成带状投影矩阵）。
+  % \end{algorithmic}
+  % \end{algorithm}
+  %
+  % \subsection{实施注意事项与数值稳定性}
+  % \begin{itemize}
+  %   \item \textbf{每次乘 $A$ 后就做正交化}：在计算 $A^k v_j$ 时，逐次乘法并在每次乘之后对已有 $W$ 做投影／正交化，能显著降低数值线性相关的累积误差。
+  %   \item \textbf{对偶方向同步 look-ahead}：当在 $V$ 方向做 $A^k v_j$ 的 look-ahead 时，需要在 $W$ 方向做对称操作（用 $A^T$ 生成相应的对偶向量并正交化），以保证 $W^T V=I$。否则双正交关系会被破坏。
+  %   \item \textbf{带宽和矩阵存储}：Look-Ahead 会使投影矩阵从三对角扩展为更宽的带状矩阵；应按最大 look-ahead 长度分配相应的存储并正确记录系数位置。
+  %   \item \textbf{终止条件}：若连续增大 $k$ 直到超过给定上限仍未找到可用向量，则可判断为真正的 breakdown（例如矩阵的 Krylov 子空间已被穷尽或数值问题阻止继续）。
+  % \end{itemize}
+  %
+  % \section{结论}
+  % 基于多项式层面的简单观察（$q_{j+k}=t^{k}p_j$ 与前 $p_1,\dots,p_{j-k}$ 正交），可以在出现标准 Bi-Lanczos breakdown 时，通过构造 $A^k v_j$ 并对早期基向量正交化来跳过中间步骤，从而继续构造双正交基。该方法在实际数值实现中要求在 $A$ 的乘法与正交化步骤上格外小心以保证数值稳定，并在对偶方向上同时执行对称的 look-ahead。
 \end{solution}
 
 \begin{problem}\label{pro:2}
-Consider the matrices 
-\[
-V_m = [v_1, v_2, \ldots, v_m], \qquad 
-W_m = [w_1, w_2, \ldots, w_m],
-\]
-obtained from the Lanczos biorthogonalization algorithm.
-\begin{enumerate}
-  \item What are the matrix representations of the (oblique) projector onto 
-  \(\mathcal{K}_m(A, v_1)\)
-  orthogonal to the subspace 
-  \(\mathcal{K}_m(A^{T}, w_1)\),
-  and the projector onto 
-  \(\mathcal{K}_m(A^{T}, w_1)\)
-  orthogonal to the subspace 
-  \(\mathcal{K}_m(A, v_1)\)?
-  
-  \item Express a general condition for the existence of an oblique projector onto a subspace 
-  \(K\),
-  orthogonal to another subspace 
-  \(L\).
-  
-  \item How can this condition be interpreted using the Lanczos vectors and the Lanczos algorithm?
-\end{enumerate}
+  Consider the matrices
+  \[
+    V_m = [v_1, v_2, \ldots, v_m], \qquad
+    W_m = [w_1, w_2, \ldots, w_m],
+  \]
+  obtained from the Lanczos biorthogonalization algorithm.
+  \begin{enumerate}
+    \item What are the matrix representations of the (oblique) projector onto
+      \(\mathcal{K}_m(A, v_1)\)
+      orthogonal to the subspace
+      \(\mathcal{K}_m(A^{T}, w_1)\),
+      and the projector onto
+      \(\mathcal{K}_m(A^{T}, w_1)\)
+      orthogonal to the subspace
+      \(\mathcal{K}_m(A, v_1)\)?
+
+    \item Express a general condition for the existence of an oblique projector onto a subspace
+      \(K\),
+      orthogonal to another subspace
+      \(L\).
+
+    \item How can this condition be interpreted using the Lanczos vectors and the Lanczos algorithm?
+  \end{enumerate}
 \end{problem}
 \begin{solution}
-  
+  设
+  \[
+    K = \mathcal{K}_m(A, v_1) ,\qquad
+    L = \mathcal{K}_m(A^T, w_1)。
+  \]
+  那么\[
+    K = \mathcal{K}_m(A, v_1) = \operatorname{range}(V_m), \qquad
+    L = \mathcal{K}_m(A^T, w_1) = \operatorname{range}(W_m)。
+  \]
+  \begin{enumerate}
+    \item 设\(y \)投影到\(K \)投影向量为 $x \in K$，写作 $x = V_m z$，则斜投影存在则
+      \[
+        W_m^T (y - V_m z) = 0.
+      \]
+      从而，
+      \[
+        W_m^T V_m \, z = W_m^T y.
+      \]
+      若矩阵 $W_m^T V_m$ 可逆，则唯一解为
+      \[
+        z = (W_m^T V_m)^{-1} W_m^T y,
+      \]
+      对应的斜投影矩阵为
+      \[
+        P_{K,L} = V_m (W_m^T V_m)^{-1} W_m^T。
+      \]
+      同理，将向量投影到 $L$ 且误差与 $K$ 正交的投影矩阵为
+      \[
+        P_{L, K} = W_m (V_m^T W_m)^{-1} V_m^T。
+      \]
+      Lanczos 双正交规范化，满足 $w_i^T v_j = \delta_{ij}$，则矩阵 $W_m^T V_m = I$，从而
+      \[
+        P_{K,L} = V_m W_m^T, \qquad P_{L,K} = W_m V_m^T。
+      \]
+    \item 给定两个列满秩矩阵 $V$ 和 $W$，分别生成子空间 $K$ 和 $L$，要求斜投影 $P$ 存在，
+      即对任意 $y$ 存在唯一 $x \in K$ 使得 $y-x \perp L$，充要条件是
+      \[
+        W^T V \text{ 可逆}。
+      \]
+      设要对任意给定的 \(y\in\mathbb{R}^n\) 寻找投影 \(x\in K\) 满足 \(y-x\perp L\)，即
+      \[
+        x = V z,\qquad z\in\mathbb{R}^m.
+      \]
+      正交条件 \(y - x \perp L\) 等价于
+      \[
+        W^T (y - V z) = 0.
+      \]
+      因此，
+      \[
+        W^T V\, z = W^T y
+      \]
+      若 \(W^T V\) 可逆，则方程有唯一解
+      \[
+        z = (W^T V)^{-1} W^T y,
+      \]
+      从而唯一确定 \(x=Vz\)。
+
+      反之，若对任意 \(y\) 方程\(\exists x = Vz\in K \)，使得\(y -x \perp L \)，即 \(W^TVz=W^Ty \)都有唯一解。
+      由于\(W \)列满秩，故\(W^T \)可逆。
+      考虑线性映射\(\phi: \mathbb{R}^m \to \mathbb{R}^m \)，\(z \to W^TVz \)为满射。
+      又由\(z \)的唯一性，可知\(\phi \)为单射。
+      则取 \(y\) 使得 \(W^T y\) 遍历整个 \(\mathbb{R}^m\)，
+      可得线性映射 \(\phi \) 是双射，因而 \(W^T V\) 可逆。
+    \item   在 Lanczos 双正交化过程中，生成的向量序列满足
+      \[
+        w_i^T v_j = 0 \ (i \neq j), \qquad w_i^T v_i = \gamma_i。
+      \]
+      因此
+      \[
+        W_m^T V_m = \operatorname{diag}(\gamma_1, \ldots, \gamma_m)。
+      \]
+      若所有 $\gamma_i \neq 0$，矩阵 $W_m^T V_m$ 可逆，斜投影存在。
+      若某个 $w_i^T v_i = 0$，则 $W_m^T V_m$ 奇异，无法定义斜投影。
+  \end{enumerate}
+
 \end{solution}
 
 \begin{problem}\label{pro:3}
-Show a three-term recurrence satisfied by the residual vectors \(r_j\) of the BCG algorithm. 
-Include the first two iterates to start the recurrence. 
-
-Similarly, establish a three-term recurrence for the conjugate direction vectors \(p_j\) in BCG.
+  \begin{enumerate}
+    \item Show a three-term recurrence satisfied by the residual vectors \(r_j\) of the BCG algorithm.
+      Include the first two iterates to start the recurrence.
+    \item Similarly, establish a three-term recurrence for the conjugate direction vectors \(p_j\) in BCG.
+  \end{enumerate}
 \end{problem}
 \begin{solution}
-  
+  残量向量 $r_j$ 和共轭方向向量 $p_j$ 的三项递推关系。算法的基本更新为：
+  \[
+    \begin{aligned}
+      x_{j+1} &= x_j + \alpha_j p_j, \\
+      r_{j+1} &= r_j - \alpha_j A p_j, \\
+      p_{j+1} &= r_{j+1} + \beta_j p_j,
+    \end{aligned}
+  \]
+  其中 $\alpha_j, \beta_j$ 为算法计算得到的标量系数，$p_0=r_0$。
+  \begin{enumerate}
+    \item
+      \begin{equation} \label{eq:r-update}
+        r_{j+1} = r_j - \alpha_j A p_j, \quad
+        p_j = r_j + \beta_{j-1} p_{j-1}.
+      \end{equation}
+
+      将 $p_j$ 代入 $r_{j+1}$：
+      \[
+        r_{j+1} = r_j - \alpha_j A (r_j + \beta_{j-1} p_{j-1})
+        = r_j - \alpha_j A r_j - \alpha_j \beta_{j-1} A p_{j-1}.
+      \]
+
+      又由上一轮残量更新：
+      \[
+        A p_{j-1} = \frac{r_{j-1} - r_j}{\alpha_{j-1}},
+      \]
+      代入上式得到
+      \[
+        r_{j+1} = r_j - \alpha_j A r_j - \alpha_j \beta_{j-1} \frac{r_{j-1}-r_j}{\alpha_{j-1}}
+        = \left(1 + \frac{\alpha_j \beta_{j-1}}{\alpha_{j-1}}\right) r_j - \alpha_j A r_j - \frac{\alpha_j \beta_{j-1}}{\alpha_{j-1}} r_{j-1}.
+      \]
+      于是残量向量的三项递推为：
+      \begin{equation} \label{eq:r3term}
+        r_{j+1} = -\alpha_j A r_j + \left(1 + \frac{\alpha_j \beta_{j-1}}{\alpha_{j-1}}\right) r_j - \frac{\alpha_j \beta_{j-1}}{\alpha_{j-1}} r_{j-1}.
+      \end{equation}
+      起始两步迭代：
+      \[
+        r_1 = r_0 - \alpha_0 A p_0, \qquad
+        r_2 = r_1 - \alpha_1 A p_1.
+      \]
+    \item 根据基本公式：
+      \[
+        p_{j+1} = r_{j+1} + \beta_j p_j.
+      \]
+
+      利用 $r_j = p_j - \beta_{j-1} p_{j-1}$ 代入：
+      \[
+        p_{j+1} = (r_j - \alpha_j A p_j) + \beta_j p_j = (p_j - \beta_{j-1} p_{j-1} - \alpha_j A p_j) + \beta_j p_j
+        = -\alpha_j A p_j + (1+\beta_j) p_j - \beta_{j-1} p_{j-1}.
+      \]
+      因此得到共轭方向向量的三项递推：
+      \begin{equation} \label{eq:p3term}
+        p_{j+1} = -\alpha_j A p_j + (1+\beta_j) p_j - \beta_{j-1} p_{j-1}.
+      \end{equation}
+      起始两步迭代：
+      \[
+        p_0 \text{ 已知}, \qquad
+        p_1 = r_1 + \beta_0 p_0 = r_0 - \alpha_0 A p_0 + \beta_0 p_0.
+      \]
+  \end{enumerate}
+  % \subsection*{说明}
+  %
+  % 1. 上述三项递推公式中，$r_{j+1}$ 和 $p_{j+1}$ 都由前两步及当前矩阵-向量乘积表示。
+  % 2. 由于 $A$ 一般非对称，递推中无法仅用过去两个向量的线性组合表示 $A r_j$ 或 $A p_j$，所以显式出现矩阵-向量乘积。
+  % 3. 系数 $\alpha_j, \beta_j$ 可通过 BiCG 算法中双向正交性条件计算得到。
+  % 4. 起始两步用于启动递推，之后可按公式 \eqref{eq:r3term} 和 \eqref{eq:p3term} 计算后续迭代。
 \end{solution}
-
-
 \end{document}

@@ -24,13 +24,22 @@
   证明若\(F(x)=\mathbb{P}(\xi < x) \)是连续的，则\(\eta = F(\xi) \)具有\((0,1) \)上的均匀分布。
 \end{problem}
 \begin{solution}
- \begin{lemma}\label{lem:pro7}
-   \(F(x) \) 为随机变量\(\xi \)的分布函数，若\(F \)为左连续，右极限存在，那么\(\forall x \in \mathbb{R}, F^{-1}(\{x\}) \)或为\(\varnothing \)，或为\((a,b],a,b \in \mathbb{R} \)。
- \end{lemma}
-\begin{proof}
- \(\forall x \in \mathbb{R} \)，若\(F^{-1}\{x\} \neq \varnothing\)，需证明\(\exists a, b \in \mathbb{R} \)， 
-\end{proof}
-  
+  令\(\eta = F(\xi ) \)，只需证明\(\forall x \in (0,1) \)，\(\mathbb{P}(\eta < x)=x \)。令\(G(x)=\inf\{y: F(y) \geq x\} \)。
+  下证\(\forall x \in (0,1)\),\( F^{-1}(\{x\}) =\varnothing\)或者\(\exists a,b \in \mathbb{R},a \leq b ,F^{-1}(\{x\})=[a,b] \)。
+  若\(F^{-1}(\{x\})=\varnothing \)，满足要求，故只需考虑\(F^{-1}(\{x\} ) \neq \varnothing\)。不妨\(z \in F^{-1}(\{x\}) \)，\(a =\inf F^{-1}(\{x\}),b = \sup F^{-1}(\{x\}) \)。
+  \(\forall n \in \mathbb{N}_{+} \)，\(\exists a_n < a + \frac{1}{n}, b_n > b - \frac{1}{n} \)，\(a_n,b_n \in F^{-1}(\{x\}) \)。故\(F(a_n) \leq F(a + \frac{1}{n}), F(b_n) \geq F(b- \frac{1}{n}) \)。
+  从而\(x=\lim_{n}F(a_n) \leq \lim_{n}F(a + \frac{1}{n}), x= \lim_{n}F(b_n) \geq \lim_{n}F(b -\frac{1}{n}) \)。由于\(F \)连续，从而\(\lim_{n}F(a + \frac{1}{n})=F(a),\lim_{n}F(b-\frac{1}{n})=F(b) \)。
+  故\(F(a) \geq x, F(b ) \leq x \)。
+  若\(F(a) > x \)，由于\(F \)连续且不降，\(z \in F^{-1}(\{x\}) \)，\(z \geq a \)，那么\(F(z) \geq F(a) >x \)。与\(z \in F^{-1}(\{x\}) \)矛盾。
+  故\(F(a)=x \)。
+  若\(F(b) < x \)，由于\(F \)连续且不降，\(z \in F^{-1}(\{x\}) \)，\(z \leq b \)，那么\(F(z) \leq F(b) <x \)。与\(z \in F^{-1}(\{x\}) \)矛盾。
+  故\(F(b)=x \)。
+  \(\forall z \in (a,b) \)，由于\(F \)不降，那么\( x=F(a) \leq F(z)\leq F(b)=x \)。从而\(F(z)=x \)。故\([a,b] \subset F^{-1}(\{x\})\)。
+  \(\forall z <a \)，那么\(F(z) \leq F(a)=x \)。若\(F(z) =x \)，那么\(z \in F^{-1}(\{x\}) \)。从而\(a \leq z \)，与\(a \)为下确界矛盾。
+  故\(F(z) < x \)。
+  \(\forbll z <b \)，那么\(F(z) \leq F(b)=x \)。若\(F(z) =x \)，那么\(z \in F^{-1}(\{x\}) \)。从而\(b \leq z \)，与\(b \)为下确界矛盾。
+  故\(F(z) < x \)。
+  下证\(\eta < x \iff  \)
 \end{solution}
 
 \begin{problem}\label{pro:9}
@@ -39,14 +48,14 @@
   证明\(\xi_{\tau} \)的分布为\(\frac{\mu(\cdot \cap A)}{\mu(A)} \)。
 \end{problem}
 \begin{solution}
-  \(\forall B \in \mathcal{C} \)，\(\mathbb{P}(\xi_{\tau} \in B)=\sum_{n=1}^{\infty} \mathbb{P}(\xi_{\tau} \in B | \tau =n)\mathbb{P}(\tau =n) \)。 
+  \(\forall B \in \mathcal{C} \)，\(\mathbb{P}(\xi_{\tau} \in B)=\sum_{n=1}^{\infty} \mathbb{P}(\xi_{\tau} \in B | \tau =n)\mathbb{P}(\tau =n) \)。
   考虑到\(\{\tau = n\} = \{\xi_n \in A, \xi_k \notin A, 1 \leq k \leq n-1\} \)， \(\{\xi_{\tau} \in B | \tau =n\}=\{\xi_n \in B | \xi_n \in A, \xi_k \notin A, 1 \leq k \leq n-1\}\)，
   及\(\xi_k, 1 \leq k \leq n-1 \)与\(\xi_n \)独立，从而\(\{\xi_{\tau} \in B| \tau =n\} = \{\xi_n \in B | \xi_n \in A\}=\{\xi_n \in A \cap B | \xi_n \in A\} \)。
   从而，\[
     \begin{aligned}
       \mathbb{P}(\xi_{\tau} \in B) &= \sum_{n=1}^{\infty}\mathbb{P}(\xi_n \in A \cap B | \xi_n \in A)\mathbb{P}(\tau =n)\\
-      &=\sum_{n=1}^{\infty}\frac{\mathbb{P}(\xi_n \in A \cap B)}{\mathbb{P}(\xi_n \in A)}\mathbb{P}(\tau =n) \\ 
-      &=\frac{\mathbb{P}(\xi_n \in A \cap B)}{\mathbb{P}(\tau \in A)}\\ 
+      &=\sum_{n=1}^{\infty}\frac{\mathbb{P}(\xi_n \in A \cap B)}{\mathbb{P}(\xi_n \in A)}\mathbb{P}(\tau =n) \\
+      &=\frac{\mathbb{P}(\xi_n \in A \cap B)}{\mathbb{P}(\tau \in A)}\\
       &=\frac{\mu(B \cap A)}{\mu(A)}
     \end{aligned}
   \]
