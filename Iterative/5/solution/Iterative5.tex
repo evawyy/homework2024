@@ -1,0 +1,110 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Let $\varphi_j(t)$ and $\pi_j(t)$ be the residual polynomial and the conjugate direction polynomial, respectively, for the BCG algorithm, as defined in Section~7.4.1. Let $\psi_j(t)$ be any other polynomial sequence which is defined from the recurrence
+  \[
+    \psi_0(t) = 1, \qquad
+    \psi_1(t) = (1 - \xi_0 t)\psi_0(t),
+  \]
+  \[
+    \psi_{j+1}(t) = (1 + \eta_j - \xi_j t)\psi_j(t) - \eta_j \psi_{j-1}(t).
+  \]
+
+  \begin{enumerate}
+    \item Show that the polynomials $\psi_j$ are consistent, i.e.,
+      \[
+        \psi_j(0) = 1 \quad \text{for all } j \ge 0.
+      \]
+
+    \item Show the following relations:
+      \begin{align*}
+        \psi_{j+1}\varphi_{j+1}
+        &= \psi_j\varphi_{j+1} - \eta_j(\psi_{j-1} - \psi_j)\varphi_{j+1} - \xi_j t \psi_j \varphi_{j+1}, \\[6pt]
+        \psi_j\varphi_{j+1}
+        &= \psi_j\varphi_j - \alpha_j t \psi_j \pi_j, \\[6pt]
+        (\psi_{j-1} - \psi_j)\varphi_{j+1}
+        &= \psi_{j-1}\varphi_j - \psi_j\varphi_{j+1} - \alpha_j t \psi_{j-1}\pi_j, \\[6pt]
+        \psi_{j+1}\pi_{j+1}
+        &= \psi_{j+1}\varphi_{j+1} - \beta_j\eta_j \psi_{j-1}\pi_j + \beta_j(1+\eta_j)\psi_j\pi_j - \beta_j\xi_j t \psi_j \pi_j, \\[6pt]
+        \psi_j\pi_{j+1}
+        &= \psi_j\varphi_{j+1} + \beta_j\psi_j\pi_j.
+      \end{align*}
+
+    \item Defining
+      \[
+        t_j = \psi_j(A)\varphi_{j+1}(A)r_0, \quad
+        y_j = \bigl(\psi_{j-1}(A) - \psi_j(A)\bigr)\varphi_{j+1}(A)r_0,
+      \]
+      \[
+        p_j = \psi_j(A)\pi_j(A)r_0, \quad
+        s_j = \psi_{j-1}(A)\pi_j(A)r_0,
+      \]
+      show how the recurrence relations of the previous question translate for these vectors.
+
+    \item Find a formula that allows one to update the approximation $x_{j+1}$ from the vectors
+      $x_{j-1}$, $x_j$ and $t_j$, $p_j$, $y_j$, $s_j$ defined above.
+
+    \item Proceeding as in BICGSTAB, find formulas for generating the BCG coefficients
+      $\alpha_j$ and $\beta_j$ from the vectors defined in the previous question.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:2}
+  Prove that the vectors \( r_j \) and \( r_i^* \) produced by the BCG algorithm are orthogonal to each other when \( i \neq j \), while the vectors \( p_i \) and \( p_j^* \) are \( A \)-orthogonal, i.e.,
+  \[
+    (Ap_j,\, p_i^*) = 0 \quad \text{for } i \neq j.
+  \]
+\end{problem}
+\begin{problem}\label{pro:3}
+  Consider the linear system
+  \begin{equation}
+    \begin{bmatrix}
+      A & B \\
+      B^{T} & O
+    \end{bmatrix}
+    \begin{bmatrix}
+      x \\ y
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      b \\ c
+    \end{bmatrix},
+    \tag{8.30}
+  \end{equation}
+  in which \( c = 0 \) and \( B \) is of full rank. Define the matrix
+  \[
+    P = I - B (B^{T}B)^{-1} B^{T}.
+  \]
+
+  \begin{enumerate}
+    \item Show that \( P \) is a projector. Is it an orthogonal projector? What are the range and null spaces of \( P \)?
+
+    \item Show that the unknown \( x \) can be found by solving the linear system
+      \begin{equation}
+        P A P x = P b,
+        \tag{8.35}
+      \end{equation}
+      in which the coefficient matrix is singular but the system is consistent, i.e., there is a nontrivial solution because the right-hand side is in the range of the matrix (see Chapter 1).
+
+    \item What must be done to adapt the Conjugate Gradient Algorithm for solving the above linear system (which is symmetric, but not positive definite)? In which subspace are the iterates generated from the CG algorithm applied to (8.35)?
+
+    \item Assume that the QR factorization of the matrix \( B \) is computed. Write an algorithm based on the approach of the previous questions for solving the linear system (8.30).
+  \end{enumerate}
+\end{problem}
+
+\end{document}

@@ -8,7 +8,6 @@
 \setlength{\parindent}{0pt}
 \thispagestyle{empty}
     \begin{tikzpicture}%
-        \node[xscale=2,yscale=4] at (0cm,0cm) {\sffamily\bfseries \color{word} under};%
         \node[xscale=4.5,yscale=10] at (10cm,1cm) {\sffamily\bfseries \color{word} Graduate Homework};%
         \node[xscale=4.5,yscale=10] at (8cm,-2.5cm) {\sffamily\bfseries \color{word} In Mathematics};%
     \end{tikzpicture}

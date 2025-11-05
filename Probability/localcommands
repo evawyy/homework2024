@@ -1,1 +1,5 @@
 \newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\var}{\mathrm{Var}}
+

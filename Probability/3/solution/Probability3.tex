@@ -1,5 +1,6 @@
 %!Mode:: "TeX:UTF-8"
 %!TEX encoding = UTF-8 Unicode
+%!TEX language = zh
 %arara: xelatex
 \documentclass{ctexart}
 \newif\ifpreface
@@ -19,27 +20,48 @@
 \begin{problem}\label{pro:5}
   分布函数是否是不降的？举出反例或者给出证明。
 \end{problem}
+\begin{solution}
+  以下是反例。
+
+  令\(F(x,y)=\mathrm{e}^{x+y}-x-y \)，则有\(\Delta_{a,b} F = F(b_1,b_2)-F(a_1,b_2)-F(b_1,a_2)+F(a_1,a_2)
+    = \mathrm{e}^{b_1+b_2}-\mathrm{e}^{a_1+b_2}-\mathrm{e}^{b_1+a_2}+\mathrm{e}^{a_1+a_2}-b_1-b_2+a_1+b_2+b_1+a_2-a_1-a_2
+    = (\mathrm{e}^{b_1}-\mathrm{e}^{a_1})(\mathrm{e}^{b_2}-\mathrm{e}^{a_2}) \geq 0
+  \)，但\(F(-1,-1)\geq 2 > 0 = F(0,0) \)。
+\end{solution}
 
 \begin{problem}\label{pro:7}
   证明若\(F(x)=\mathbb{P}(\xi < x) \)是连续的，则\(\eta = F(\xi) \)具有\((0,1) \)上的均匀分布。
 \end{problem}
 \begin{solution}
-  令\(\eta = F(\xi ) \)，只需证明\(\forall x \in (0,1) \)，\(\mathbb{P}(\eta < x)=x \)。令\(G(x)=\inf\{y: F(y) \geq x\} \)。
-  下证\(\forall x \in (0,1)\),\( F^{-1}(\{x\}) =\varnothing\)或者\(\exists a,b \in \mathbb{R},a \leq b ,F^{-1}(\{x\})=[a,b] \)。
-  若\(F^{-1}(\{x\})=\varnothing \)，满足要求，故只需考虑\(F^{-1}(\{x\} ) \neq \varnothing\)。不妨\(z \in F^{-1}(\{x\}) \)，\(a =\inf F^{-1}(\{x\}),b = \sup F^{-1}(\{x\}) \)。
-  \(\forall n \in \mathbb{N}_{+} \)，\(\exists a_n < a + \frac{1}{n}, b_n > b - \frac{1}{n} \)，\(a_n,b_n \in F^{-1}(\{x\}) \)。故\(F(a_n) \leq F(a + \frac{1}{n}), F(b_n) \geq F(b- \frac{1}{n}) \)。
-  从而\(x=\lim_{n}F(a_n) \leq \lim_{n}F(a + \frac{1}{n}), x= \lim_{n}F(b_n) \geq \lim_{n}F(b -\frac{1}{n}) \)。由于\(F \)连续，从而\(\lim_{n}F(a + \frac{1}{n})=F(a),\lim_{n}F(b-\frac{1}{n})=F(b) \)。
-  故\(F(a) \geq x, F(b ) \leq x \)。
-  若\(F(a) > x \)，由于\(F \)连续且不降，\(z \in F^{-1}(\{x\}) \)，\(z \geq a \)，那么\(F(z) \geq F(a) >x \)。与\(z \in F^{-1}(\{x\}) \)矛盾。
-  故\(F(a)=x \)。
-  若\(F(b) < x \)，由于\(F \)连续且不降，\(z \in F^{-1}(\{x\}) \)，\(z \leq b \)，那么\(F(z) \leq F(b) <x \)。与\(z \in F^{-1}(\{x\}) \)矛盾。
-  故\(F(b)=x \)。
-  \(\forall z \in (a,b) \)，由于\(F \)不降，那么\( x=F(a) \leq F(z)\leq F(b)=x \)。从而\(F(z)=x \)。故\([a,b] \subset F^{-1}(\{x\})\)。
-  \(\forall z <a \)，那么\(F(z) \leq F(a)=x \)。若\(F(z) =x \)，那么\(z \in F^{-1}(\{x\}) \)。从而\(a \leq z \)，与\(a \)为下确界矛盾。
-  故\(F(z) < x \)。
-  \(\forbll z <b \)，那么\(F(z) \leq F(b)=x \)。若\(F(z) =x \)，那么\(z \in F^{-1}(\{x\}) \)。从而\(b \leq z \)，与\(b \)为下确界矛盾。
-  故\(F(z) < x \)。
-  下证\(\eta < x \iff  \)
+  令\(\eta = F(\xi ) \)，只需证明\(\forall x \in (0,1) \)，\(\mathbb{P}(\eta < x)=x \)。
+  由于\(\lim_{x \to +\infty}F(x)=1 \)，那么\(\forall x \in (0,1) \)，\(\exists N >0 \)，满足\(\forall z > N \)，\(F(z)>1-\frac{1-x}{2}>x \)。
+  故\(\{y:F(y) \geq x\} \neq \varnothing \)。
+  令\(G(x)=\inf\{y: F(y) \geq x\} \)。
+  % 下证\(\forall x \in (0,1)\),\( F^{-1}(\{x\}) =\varnothing\)或者\(\exists a,b \in \mathbb{R},a \leq b ,F^{-1}(\{x\})=[a,b] \)。
+  % 若\(F^{-1}(\{x\})=\varnothing \)，满足要求，故只需考虑\(F^{-1}(\{x\} ) \neq \varnothing\)。不妨\(z \in F^{-1}(\{x\}) \)，\(a =\inf F^{-1}(\{x\}),b = \sup F^{-1}(\{x\}) \)。
+  % \(\forall n \in \mathbb{N}_{+} \)，\(\exists a_n < a + \frac{1}{n}, b_n > b - \frac{1}{n} \)，\(a_n,b_n \in F^{-1}(\{x\}) \)。故\(F(a_n) \leq F(a + \frac{1}{n}), F(b_n) \geq F(b- \frac{1}{n}) \)。
+  % 从而\(x=\lim_{n}F(a_n) \leq \lim_{n}F(a + \frac{1}{n}), x= \lim_{n}F(b_n) \geq \lim_{n}F(b -\frac{1}{n}) \)。由于\(F \)连续，从而\(\lim_{n}F(a + \frac{1}{n})=F(a),\lim_{n}F(b-\frac{1}{n})=F(b) \)。
+  % 故\(F(a) \geq x, F(b ) \leq x \)。
+  % 若\(F(a) > x \)，由于\(F \)连续且不降，\(z \in F^{-1}(\{x\}) \)，\(z \geq a \)，那么\(F(z) \geq F(a) >x \)。与\(z \in F^{-1}(\{x\}) \)矛盾。
+  % 故\(F(a)=x \)。
+  % 若\(F(b) < x \)，由于\(F \)连续且不降，\(z \in F^{-1}(\{x\}) \)，\(z \leq b \)，那么\(F(z) \leq F(b) <x \)。与\(z \in F^{-1}(\{x\}) \)矛盾。
+  % 故\(F(b)=x \)。
+  % \(\forall z \in (a,b) \)，由于\(F \)不降，那么\( x=F(a) \leq F(z)\leq F(b)=x \)。从而\(F(z)=x \)。故\([a,b] \subset F^{-1}(\{x\})\)。
+  % \(\forall z <a \)，那么\(F(z) \leq F(a)=x \)。若\(F(z) =x \)，那么\(z \in F^{-1}(\{x\}) \)。从而\(a \leq z \)，与\(a \)为下确界矛盾。
+  % 故\(F(z) < x \)。
+  % \(\forbll z >b \)，那么\(F(z) \geq F(b)=x \)。若\(F(z) =x \)，那么\(z \in F^{-1}(\{x\}) \)。从而\(b \geq z \)，与\(b \)为上确界矛盾。
+  % 故\(F(z) > x \)。
+
+  下证\(\eta <  x \iff  \xi < G(x)\)。``\(\impliedby\)'':由于\(\xi < G(x) \)，那么\(F(\xi) \leq  x \)。
+  若\(F(\xi) =x \)，那么\(G(x)>\xi \in \{y : F(y) \geq x\} \)，与\(G(x) \)为\(\{y:F(y) \geq x\} \)下确界矛盾。故\(F(\xi)<x \)。
+
+  ``\(\implies\)'':由于\(\eta = F(\xi) < x \)，若\(\xi > G(x) \)，那么\(\exists y: G(x)<y < \xi\)使得\(F(y) \geq x \)，那么\(F(\xi) \geq F(y) \geq x \)。
+  与\(F(\xi)<x \)矛盾。若\(\xi =G(x) \)，那么由于\(G(x) \)为下确界，\(\exists y_n \in \{y:F(y) \geq x\} \)满足，\(y_n \to G(x) \)，那么由于\(F \)连续可知，
+  \(x \leq \lim_{n}F(y_n)=F(G(x))=F(\xi)\)。与\( F(\xi) <x\)矛盾。
+
+  事实上，\(F(G(x))=x \)。若\(F(G(x))>x \)，那么由于\(F \)连续不降，可知\(\exists y <G(x) \)，使得\(F(y)>F(G(x)) - \frac{F(G(x))-x}{2} >x\)。
+  与\(G(x) \)为下确界矛盾。从而\(\mathbb{P}(\eta <x)=\mathbb{P}(\xi < G(x))=F(G(x))=x \)。
+  % 而\(\{\xi \in F^{-1}(x)\}=\{\omega: F(\xi(\omega))=x\} \)。
 \end{solution}
 
 \begin{problem}\label{pro:9}
@@ -49,13 +71,13 @@
 \end{problem}
 \begin{solution}
   \(\forall B \in \mathcal{C} \)，\(\mathbb{P}(\xi_{\tau} \in B)=\sum_{n=1}^{\infty} \mathbb{P}(\xi_{\tau} \in B | \tau =n)\mathbb{P}(\tau =n) \)。
-  考虑到\(\{\tau = n\} = \{\xi_n \in A, \xi_k \notin A, 1 \leq k \leq n-1\} \)， \(\{\xi_{\tau} \in B | \tau =n\}=\{\xi_n \in B | \xi_n \in A, \xi_k \notin A, 1 \leq k \leq n-1\}\)，
-  及\(\xi_k, 1 \leq k \leq n-1 \)与\(\xi_n \)独立，从而\(\{\xi_{\tau} \in B| \tau =n\} = \{\xi_n \in B | \xi_n \in A\}=\{\xi_n \in A \cap B | \xi_n \in A\} \)。
+  考虑到\(\{\tau = n\} = \{\xi_n \in A, \xi_k \notin A, 1 \leq k \leq n-1\} \)，故\(\{\xi_{\tau} \in B | \tau =n\}=\{\xi_n \in B | \xi_n \in A, \xi_k \notin A, 1 \leq k \leq n-1\}\)。
+  又由于\(\xi_k, 1 \leq k \leq n-1 \)与\(\xi_n \)独立，从而\(\{\xi_{\tau} \in B| \tau =n\} = \{\xi_n \in B | \xi_n \in A\}=\{\xi_n \in A \cap B | \xi_n \in A\} \)。
   从而，\[
     \begin{aligned}
       \mathbb{P}(\xi_{\tau} \in B) &= \sum_{n=1}^{\infty}\mathbb{P}(\xi_n \in A \cap B | \xi_n \in A)\mathbb{P}(\tau =n)\\
       &=\sum_{n=1}^{\infty}\frac{\mathbb{P}(\xi_n \in A \cap B)}{\mathbb{P}(\xi_n \in A)}\mathbb{P}(\tau =n) \\
-      &=\frac{\mathbb{P}(\xi_n \in A \cap B)}{\mathbb{P}(\tau \in A)}\\
+      &=\sum_{n=1}^{\infty}\frac{\mu(A \cap B)}{\mu(A)}\mathbb{P}(\tau=n)\\
       &=\frac{\mu(B \cap A)}{\mu(A)}
     \end{aligned}
   \]
@@ -67,18 +89,229 @@
 \begin{solution}
   该题的证明需要\(\Omega \in \mathcal{C}_i，1 \leq i \leq n \)。
 
-  只需证明若\(\forall 1 \leq l \leq n,  1 \leq k \leq n, \mathcal{C}_k\)为独立的\(\pi \)系且\(\Omega \in \mathcal{C}_k \)，那么\(\mathcal{C}_k, 1 \leq k \leq n, k \neq l, \sigma(\mathcal{C}_l)  \)独立。
-  考虑\[\mathcal{A}:=\{A \in \sigma(\mathcal{C}_l): \forall J \subset 2^{\{1,\cdots,n\}}\setminus \{\varnothing\},\mathbb{P}(A \cap \bigcap_{i \in J \setminus \{l\}}A_i)=\mathbb{P}(A)\prod_{i \in J\setminus\{l\}}\mathbb{P}(A_i), A_i \in \mathcal{C}_i, i \in \{1,\cdots,n\}\setminus\{l\}\} \]。
+  先证明若\(\forall 1 \leq l \leq n,  1 \leq k \leq n, \mathcal{C}_k\)为独立的\(\pi \)系且\(\Omega \in \mathcal{C}_k \)，那么\(\mathcal{C}_k, 1 \leq k \leq n, k \neq l, \sigma(\mathcal{C}_l)  \)独立。
+  \(\forall J \in  2^{\{1,\cdots,n\}} \setminus \{\varnothing\} \)，令\(A_i \in \mathcal{C}_i,i \in J\setminus\{l\} \)，若\(l \in J \)，令\(A_l \in \sigma(\mathcal{C}_l) \)，
+  即证明\(\mathbb{P}(\prod_{i \in J}A_i)=\prod_{i \in J}\mathbb{P}(A_i) \)。故只需证明\(l \in J \)的情形正确即可。
+  考虑\[\mathcal{A}:=\{A \in \sigma(\mathcal{C}_l): \forall J \in  2^{\{1,\cdots,n\}\setminus \{l\}}\setminus \{\varnothing\},\mathbb{P}(A \cap \bigcap_{i \in J }A_i)=\mathbb{P}(A)\prod_{i \in J}\mathbb{P}(A_i), A_i \in \mathcal{C}_i, i \in J\} \]。
+  下证\(\mathcal{A} = \sigma(\mathcal{C}_l) \)。即证明\(\mathcal{A} \)为包含\(\mathcal{C}_l \)的\(\sigma \)-代数。
+  \begin{enumerate}
+    \item \(\forall A \in \mathcal{C}_l \)，由于\(\mathcal{C}_i, 1 \leq i \leq n \)独立，故\(A \in \mathcal{A} \)。
+    \item 由于\(\Omega \in \mathcal{C}_l \)，那么\(\Omega \in \mathcal{A} \)。
+    \item \(A,B\in \mathcal{A} \)，\(B \supsetneq A \)，那么\(\forall J \in 2^{\{1,\cdots,n\}\setminus \{l\}}\)，
+      \[
+        \begin{aligned}
+          \mathbb{P}((B\setminus A) \cap \bigcap_{i \in J}A_i)=&\mathbb{P}(B \cap \bigcap_{i \in J}A_i)-\mathbb{P}(A \cap \bigcap_{i \in J}A_i)\\
+          =&\mathbb{P}(B)\prod_{i \in J}\mathbb{P}(A_i)-\mathbb{P}(A)\prod_{i \in J}\mathbb{P}(A_i)\\
+          =&(\mathbb{P}(B)-\mathbb{P}(A))\prod_{i \in J}\mathbb{P}(A_i)\\
+          =&\mathbb{P}(B\setminus A)\prod_{i \in J}\mathbb{P}(A_i)
+        \end{aligned}
+      \]
+      故\(B \setminus A \in \mathcal{A}\)。
+    \item \(\forall B_j \in \mathcal{A},j \in \mathbb{N}_+ ,B_j \subset B_{j + 1}, B = \bigcup B_j\)，那么\(\forall J \in 2^{\{1,\cdots,n\}\setminus\{l\}} \)，
+      \[
+        \begin{aligned}
+          \mathbb{P}(B \cap \bigcap_{i \in J}A_i)=&\lim_{j}\mathbb{P}(B_j \cap \bigcap_{i \in J}A_i)\\
+          =&\lim_{j}\mathbb{P}(B_j)\prod_{i \in J}\mathbb{P}(A_i)\\
+          =&\mathbb{P}(B)\prod_{i \in J}\mathbb{P}(A_i)
+        \end{aligned}
+      \]
+      故\(B \in \mathcal{A} \)。
+  \end{enumerate}
+  从而\(\mathcal{A} \)为包含\(\mathcal{C}_l \)的\(\lambda \)-系，由于\(\mathcal{C}_l \)为\(\pi \)-系，从而\(\mathcal{A} \supset \sigma(\mathcal{C}_l) \)。
+  又由于\(\mathcal{A} \subset \sigma(\mathcal{C}_l) \)显然，那么\(\mathcal{A} = \sigma(\mathcal{C}_l) \)。从而\(\sigma(\mathcal{C}_l),\mathcal{C}_k,1 \leq k \leq n, k \neq l \)独立。
 
+  下用\(MI \)证明\(\forall 1 \leq k \leq n, \mathcal{C}_k\)为独立的\(\pi \)系且\(\Omega \in \mathcal{C}_k \)，那么\(1 \leq k \leq n, \sigma(\mathcal{C}_k)  \)独立。
+  \begin{enumerate}
+    \item 由上述证明的结论可知，\(\sigma(\mathcal{C}_1),\mathcal{C}_k, 2 \leq k \leq n \)独立。且\(\sigma(\mathcal{C}_1) \)为\(\pi \)-系。
+    \item 若\( 1 \leq l < n \)，满足\(\sigma(\mathcal{C}_i),\mathcal{C}_j, 1 \leq i \leq l, l + 1 \leq j \leq n \)独立。
+      下证\(\sigma(\mathcal{C}_i),\mathcal{C}_j, 1 \leq i \leq l + 1, l + 1 \leq j \leq n \)独立。
+      由于\( \sigma(\mathcal{C}_i), 1 \leq i \leq l\)为包含\(\Omega \)的\(\pi \)-系，由上述证明的结论可知，
+      \(\sigma(\mathcal{C}_i),\mathcal{C}_j, 1 \leq i \leq l + 1, l + 2 \leq j \leq n \)独立。
+  \end{enumerate}
+  故\(\forall 1 \leq k \leq n, \mathcal{C}_k\)为独立的\(\pi \)系且\(\Omega \in \mathcal{C}_k \)，那么\(1 \leq k \leq n, \sigma(\mathcal{C}_k)  \)独立。
 \end{solution}
 
 \begin{problem}\label{pro:12}
   \begin{enumerate}
     \item 设\(\{A_n\}_{n \geq 1} \) 为独立事件序列，令\(\mathcal{J} = \bigcap_{n=1}^{\infty} \sigma\{A_n,A_{n + 1},\cdots\}. \)
       证明\(\forall A \in \mathcal{J} \)，有\(\mathbb{P} (A) =0 \)或\(1 \).
-    \item 设 \(\{\xi_n\}_{n \geq 1} \)为独立随机变量，令\(\mathcal{J} = \bigcap_{n=1}^{\infty} \sigma\{\xi_n,\xi_{n + 1},\cdots\} \)。
+    \item \label{ite:12.2} 设 \(\{\xi_n\}_{n \geq 1} \)为独立随机变量，令\(\mathcal{J} = \bigcap_{n=1}^{\infty} \sigma\{\xi_n,\xi_{n + 1},\cdots\} \)。
       证明\(\forall A \in \mathcal{J} \)，有\(\mathbb{P}(A)=0 \)或\(1 \).
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 只需将题目\ref{pro:12}中的\ref{ite:12.2}中的\(\xi_n \)定义为\(\mathbbm{1}(A_n),n \in \mathbb{N}_{+} \)。故只需证明\ref{ite:12.2}.
+    \item 由于\(\forall n \in \mathbb{N}_{+} \)，\(\sigma\{\xi_k,1 \leq k \leq n-1\}, \sigma\{\xi_n,\cdots\} \)独立，\(\mathcal{J} \subset \sigma\{\xi_n,\cdots\} \)，故\(\mathcal{J} \)与\(\sigma\{\xi_k,1 \leq k \leq n-1\} \)独立。
+      又由于\(\sigma\{\xi_n,n \in \mathbb{N}_{+}\} = \sigma\{\bigcup_{n \in \mathbb{N}_{+}}\sigma\{\xi_k,1 \leq k \leq n\}\} \)。由于\(\bigcup_{n \in \mathbb{N}_{+} } \sigma\{\xi_k, 1 \leq k \leq n\} \)为\(\pi \)-系，那么由题目\ref{pro:12}知，
+      \(\mathcal{J} \)与\(\sigma\{\xi_k, k \in \mathbb{N}_{+} \}\)独立。而\(\mathcal{J} \subset \sigma\{\xi_k, k \in \mathbb{N}_{+}\} \)，那么\(\mathcal{J}  \)与\(\mathcal{J} \)独立。
+      故\(\forall A \in \mathcal{J} \)，\(\mathbb{P}(A \cap A) =\mathbb{P}(A)=\mathbb{P}(A)^2 \)，故\(\mathbb{P}(A)=0 \)或\(\mathbb{P}(A)=1 \).
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:15}
+  设\(\{\xi_1,\cdots\} \)是\(\mathrm{i.i.d.} \)的取值于\(\{1,\cdots,r\} \)的随机变量，且\(\mathbb{P}(\xi_i=k)=p(k)>0,\forall 1 \leq k \leq r \)。
+  令\(\pi_n(\omega)=\prod_{k=1}^{n}p(\xi_k(\omega)) \)，证明
+  \(-n^{-1} \log \pi_n \overset{\mathbb{P}}{\to} H \overset{\Delta}{=}-\sum_{k=1}^{r}p(k)\log p(k) \)。
+  这里\(H \)称为Shannon信息熵。
+\end{problem}
+\begin{lemma}\label{lem:BC}
+  \((\Omega,\mathcal{A},\mathbb{P}) \)为概率空间，\(B_n \in \mathcal{A}, n \in \mathbb{N}_{+}\)，若\(\sum_{n}\mathbb{P}(B_n) <\infty \)，
+  那么\(\mathbb{P}(\bigcap_{m=1}^{\infty}\bigcup_{n=m}^{\infty}B_n)=0 \).
+\end{lemma}
+% \begin{proof}
+%
+% \end{proof}
+
+\begin{lemma}\label{lem:SLLN}
+  若\(X_n,n \in \mathbb{N}_{+} \)为独立随机变量，满足\(\sum_{n}\frac{\var (X_n)}{n^2} < \infty\), 那么\[
+    \frac{\sum_{k=1}^{n}X_k-\mathbb{E}(X_k)}{n} \overset{\mathrm{a.s.}}{\to} 0
+  \]
+\end{lemma}
+\begin{proof}
+  \(\forall \varepsilon >0 \),令\(S_n:=\sum_{k=1}^{n}X_k-\mathbb{E}(X_k) \)，\(A_n:=\{|S_n| \geq n \varepsilon\} \).
+  那么\(A_n \subset \{\max_{1 \leq m \leq n}|S_m| \geq n \varepsilon\} \)。
+  由于\(\var |S_m|=\mathbb{E} |\sum_{k=1}^{m}X_k - \mathbb{E} X_k|^2=\sum_{k=1}^{m}\mathbb{E} X_k^2 - 2\sum_{1 \leq i < j \leq m}\mathbb{E} X_iXj\)，
+  \(X_i,i \in \mathbb{N}_{+} \)独立，那么\(\var |S_m|=\sum_{k=1}^{m}\mathbb{E} X_k^2 \). 故\(\max_{1 \leq m \leq n} \var |S_m|=\var |S_n| = \sum_{k=1}^{n}\var X_k \)。
+  从而\(\mathbb{P}(\{\max_{1 \leq m \leq n}|S_m| \geq n \varepsilon\}) \leq \frac{ \var (\max_{1 \leq m \leq n}|S_m|) }{n^2\varepsilon^2} \leq \frac{\sum_{k=1}^{n} \var X_k}{n^2 \varepsilon^2} \).
+
+  先证\(\forall m \in \mathbb{N}_{+}, \forall n:2^{m-1}<n \leq 2^m \)，\(|S_n-S_{2^{m-1}}| < 2^{m}\varepsilon \)几乎处处成立。
+  令\(B_m=\{\max_{2^{m-1} <n \leq 2^m} |S_{n} -S_{2^{m-1}}| \geq 2^m \varepsilon\} \)，同理可知\(\mathbb{P}(B_m) \leq \frac{\sum_{k=2^{m-1}+ 1}^{2^{m}} \var X_k}{2^{2m}\varepsilon^2} \).
+  故 \[
+    \begin{aligned}
+      \sum_{m=1}^{\infty }\mathbb{P}(B_m) \leq & \sum_{m=1}^{\infty }\frac{\sum_{k=2^{m-1}+ 1}^{2^{m}}\var X_k}{2^{2m}\varepsilon^2}\\
+      =&\sum_{k=1}^{\infty}\frac{\var X_{k}}{2^{2m(k)}\varepsilon^2}\\
+    \end{aligned}
+  \] 其中，\(m(k)= \ceil{\log_{2}k} \)，故\(2^{m(k)} \geq k \)，从而\(2^{2m(k)} \geq k^2 \).
+  从而，\[
+    \sum_{m=1}^{\infty}\mathbb{P}(B_m)\leq \sum_{k=1}^{\infty } \frac{\var X_{k}}{k^2 \varepsilon^2} <\infty
+  \]
+  因此，由引理 \ref{lem:BC} 可知，\(\mathbb{P}(\bigcap_{m=1}^{\infty} \bigcup_{n=m}^{\infty}B_n)=0 \).
+  即\(\forall n:2^{m-1}<n \leq 2^m \)，\(|S_n-S_{2^{m-1}}| < 2^{m}\varepsilon \)几乎处处成立。
+
+  下证\(\forall m \in \mathbb{N}_{+ }\),\(|S_{2^m}| \geq 2^{m}\varepsilon \) 几乎处处成立。考虑到\(\mathbb{P}(|S_{2^m} |\geq 2^m \varepsilon) \leq \frac{\var |S_{2^m}|}{2^{2m}\varepsilon^2}=\frac{\sum_{k=1}^{2^m}{X_k}}{2^{2m}\varepsilon^2}  \) .
+  从而，
+  \[
+    \begin{aligned}
+      \sum_{n=1}^{\infty}\mathbb{P}(A_{2^m}) & = \sum_{m=1}^{\infty}\frac{\sum_{k=1}^{2^m} \var X_k}{2^{2m} \varepsilon^2}\\
+      &=\sum_{k=1}^{\infty}\sum_{m=m(k)}^{\infty }\frac{\var X_k}{2^{m} \varepsilon^2}\\
+      &=\sum_{k=1}^{\infty} 4/3 \frac{\var X_k}{2^{m(k)}\varepsilon^2}\\
+      &=\frac{4}{3}\sum_{m=1}^{\infty} \mathbb{P}(B_m)< \infty
+    \end{aligned}
+  \]
+  其中，\(m(k)= \ceil{\log_{2}k}\). 由引理 \ref{lem:BC}可知，\(\mathbb{P}(\bigcap_{m=1}^{\infty} \bigcup_{n=m}^{\infty}A_{2^m})=0 \).
+  即\(|S_{2^m}| < 2^m \varepsilon, \forall m \in \mathbb{N}_{+}\)几乎处处成立。
+
+  那么\(\forall n \in \mathbb{N}_{+}\),\( m(n)=\ceil{\log_{2}n}\),那么\( 2^{2^{m(n)-1}} < n \leq 2^{m(n)} \)，从而 \[
+    |S_n| \leq |S_n-S_{2^{m(n)-1}}| + |S_{2^{m(n)-1}}| < 2^{m(n)}\varepsilon + 2^{2^{m(n)}-1}\varepsilon =3\times2^{2^{m(n)-1}}\varepsilon < 3n \varepsilon
+  \]
+  几乎处处成立。
+  从而\(\frac{S_n}{n} \overset{\mathrm{a.e.}}{\to} 0 \).
+\end{proof}
+
+\begin{solution}
+  令\(Y_k=-\log(p(\xi_k))\)，那么\(-\log \pi_n =\sum_{k=1}^{n}Y_k\)。
+  由于\(\xi_k,k \in \mathbb{N}_{+} \)独立同分布，那么\(Y_k,k \in \mathbb{N}_{+} \)独立同分布。
+  故\(\mathbb{E} Y_k = \sum_{n=1}^{r} -\log(p(n))\mathbb{P}(\xi_k =n)=-\sum_{n=1}^{r}\log(p(n))p(n) \)，
+  \(\var Y_k =\mathbb{E} Y_k^2 -(\mathbb{E} Y_k)^2 = \sum_{n=1}^{r}(\log(p(n)))^2p(n)-(\mathbb{E} Y_k)^2 <\infty \)。
+  从而，\(\sum_{n=1}^{\infty} \frac{\var Y_n}{n^2} =\var Y_1 \sum_{n=1}^{\infty} \frac{1}{n^2} <\infty \)。
+  那么由引理 \ref{lem:SLLN} 知，\(Y_k,k \in \mathbb{N}_{+} \)满足强大数定律。
+  故\(\frac{\sum_{k=1}^{n}Y_k -\mathbb{E} Y_1}{n} \overset{\mathrm{a.s.}}{\to} 0\)。
+  从而\(\frac{\sum_{k=1}^{n}Y_k}{n} \overset{\mathrm{a.s.}}{\to} \mathbb{E} Y_1 = - \sum_{n=1}^{r} \log(p(n))p(n) \)。
+\end{solution}
+
+\begin{problem}\label{pro:18}
+  设\(\xi_n \)关于\(n \)单调上升，且\(\xi_n \overset{\mathbb{P}}{\to}  \xi \)，求证\(\xi_n \overset{\mathrm{a.e.}}{\to} \xi \)。
+\end{problem}
+\begin{solution}
+  由于\(\xi_n \)关于\(n \)单调上升，不妨设\(\xi_n \to \eta \)
+  由于\(\xi_n \overset{\mathbb{P}}{\to} \xi \)，那么\(\exists \{\xi_{n_k}\}_{k=1}^{\infty} \subset \{\xi_n\}_{k=1}^{\infty}\)，满足
+  \(\xi_{n_k}\overset{\mathrm{a.s.}}{\to} \xi \)。
+  由于\(\xi_n \)关于\(n \)单调上升，那么\(\xi=\lim_{k}\xi_{n_k}=\sup_{k}\xi_{n_k},\eta =\lim_n \xi_n =\sup_n \xi_n\)。
+  由于\(\forall \omega \in \Omega,\sup_{k}\xi_{n_k}(\omega) \leq \sup_{n}\xi_n(\omega) \)，那么\( \xi \leq \eta\)。
+
+  另一方面，\(\forall n \) \(\exists n_k \geq n \)，故\(\forall \omega \in \Omega, \xi_n(\omega) \leq \xi_{n_k}(\omega) \)。
+  故\(\lim_{n}\xi_n(\omega) \leq \lim_{k}\xi_{n_k}(\omega),\forall \omega \in \Omega \)。
+  从而\(\eta \leq \xi\)。
+  从而，\(\lim_{n} \xi_n \to \xi \)几乎处处成立。
+\end{solution}
+
+\begin{problem}\label{pro:19}
+  \begin{enumerate}
+    \item 设\(\xi_n \overset{\mathrm{a.e.}}{\to} \xi\)，则
+      \(S_n \overset{\Delta}{=} \frac{1}{n}\sum_{k = 1}^{n}\xi_k \overset{\mathrm{a.e.}}{\to} \xi \)。
+    \item 若\(\xi_n \overset{\mathbb{P}}{\to} \xi \)，则\(S_n \overset{\mathbb{P}}{\to} \xi \)是否成立？
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 由于\(\xi_n \overset{\mathrm{a.e.}}{\to} \xi \)，那么\(\exists N\)，满足\(\mathbb{P}(N)=0 \)，\(\forall \omega \in N^c \)，\(\xi_n(\omega) \to \xi(\omega) \)。
+      故\(\forall \omega \in N^c \)，\(\frac{1}{n}\sum_{k=1}^{n}\xi_k(\omega) \to \xi(\omega) \)。
+      从而\(\frac{1}{n}\sum_{k=1}^{n}\xi_k \overset{\mathrm{a.e.}}{\to} \xi \)。
+    \item 不一定，以下是反例。
+
+      令\(\xi_k,k \in \mathbb{N}_{+}\)相互独立，且\(\mathbb{P}(\xi_k =k)=\frac{1}{k},\mathbb{P}(\xi_k=0)=1-\frac{1}{k} \)。
+
+      \(\xi_k \overset{\mathbb{P}}{\to} 0 \): \(\forall \varepsilon >0 \)，\(N=\ceil{\frac{1}{\varepsilon}},\forall k > N \)，那么
+      \[
+        \mathbb{P}(|\xi_k-0|>\varepsilon)=\mathbb{P}(\xi_k \neq 0)=\frac{1}{k}<\frac{1}{N}<\varepsilon
+      \]
+      从而\(\xi_k \overset{\mathbb{P}}{\to} 0 \).
+
+      \(S_n \overset{\mathbb{P}}{\not\to}  0\): 令\(I_n=\{m_n,\cdots,n\} \)，其中\(m_n= \floor{\frac{n}{2}}\),
+      那么\(\mathbb{P}(\xi_k \neq k, \forall k \in I_n)=\prod_{k=m_n}^{n}(1-\frac{1}{k})=\frac{m_n-1}{n} \to \frac{1}{2}\)。
+      故\(\mathbb{P}(\exists k \in I_n, \xi_k=k)=1-\frac{m_n-1}{n}\to \frac{1}{2} \).
+      若\(\exists k \in I_n \)，满足\(\xi_k=k \)，那么\(S_n \geq \frac{k}{n} \geq \frac{m_n}{n} \to \frac{1}{2} \).
+      那么\(\exists N \)，\(\forall n > N\)， \(S_n \geq \frac{1}{4} ,\mathbb{P}(\exists k \in I_n,\xi_k=k) > \frac{1}{4}\).
+      故\(\mathbb{P}(S_n \geq \frac{1}{4}) \geq \mathbb{P}(\exists k \in I_n, \xi_k=k) >\frac{1}{4}  \).
+      从而\(\liminf_{n}  \mathbb{P}(S_n \geq \frac{1}{4}) \geq \frac{1}{4} \). 故\(S_n \overset{\mathbb{P}}{\not \to}  0\).
+
+  \end{enumerate}
+
+\end{solution}
+
+\begin{problem}\label{pro:20}
+  若\(\Omega \)存在划分\(\{A_n\}_{n \geq 1} \)使\(\mathcal{A} = \sigma(\{A_n : 1 \leq n <\infty\}) \)，
+  则称\((\Omega,\mathcal{A},\mathbb{P}) \)为纯原子概率空间，每个非空的\(A_n \)称为一个原子。
+  证明在纯原子概率空间上，随机变量序列依概率收敛等价于几乎处处收敛。
+\end{problem}
+\begin{lemma}\label{lem:atom}
+  设\((\Omega,\mathcal{A},\mathbb{P} ) \)为纯原子概率空间，\(X \)为随机变量。设\(\{A_n:n \in \mathbb{N}_{+}\} \)为原子集，那么\(\forall k \in \mathbb{N}_{+},\exists c \in \mathbb{R} \)，\(X(\omega)=c,\forall \omega \in A_k\)。
+\end{lemma}
+\begin{proof}
+  若\(\exists \omega_1,\omega_2 \in A_k \)满足\(x_1:=X(\omega_1) \neq X(\omega_2) =:x_2\)。不妨设\(x_1 < x_2 \)。
+  那么\(A:=\{x_1 \leq X< x_2 \} \in \mathcal{A} \)，且\(A_k \supsetneq A \cap A_k \supset \{\omega_1\} \).与\(A_k \)为原子集矛盾。
+\end{proof}
+\begin{solution}
+  由于\(\mathbb{P}(\Omega)=\mathbb{P}(\bigcup_{k \in \mathbb{N}_{+}}A_k)=\sum_{k \in \mathbb{N}_{+}}\mathbb{P}(A_k)=1>0 \)，那么\(\exists k \)使得\(\mathbb{P}(A_k)>0 \).
+  令\(I:=\{k \in \mathbb{N}_{+}:\mathbb{P}(A_i)=0\} \subsetneq \mathbb{N}_{+}\).
+  设\(X_n,n \in \mathbb{N}_{+} \)，\(X \)为\((\Omega,\mathcal{A},\mathbb{P}) \)上的随机变量。
+  只需证明若\(X_n \overset{\mathbb{P}}{\to} X \)，那么\(X_n \overset{\mathrm{a.s.}}{\to} X \)。
+
+  由于引理 \ref{lem:atom}知，\(\exists c_{n,k},c_k \in \mathbb{R} \) 满足 \(X_n=c_{n,k},X=c_k,\forall \omega \in A_k \)。由于\(X_n \overset{\mathbb{P}}{\to} X \)，那么\(\forall \varepsilon >0 \)，
+  \(\forall k \notin I \)，\(\mathbb{P}(|X_n-X| \geq \varepsilon \mid A_k)=\mathbbm{1}_{|c_{n,k}-c_k|\geq \varepsilon}\to 0,n \to \infty \)。那么\(\exists N_n \)满足\(\forall n > N_n \)，\(\mathbbm{1}_{|c_{n,k}-c_k| \geq \varepsilon}=0 \)，
+  即\(\forall n \geq N_n \)，\(|c_{n,k}-c_k| < \varepsilon \)。从而\(X_n \to X, \forall \omega \in A_k \)。从而\(\forall \omega \in \bigcup_{i \notin I}A_i \)，\(X_n \to X \)。
+  而\(\mathbb{P}(\bigcup_{i \in I}A_i)=\sum_{i \in I}\mathbb{P}(A_i)=0 \)。从而\(X_n \overset{\mathrm{a.s.}}{\to} X \)。
+\end{solution}
+
+\begin{problem}\label{pro:25}
+  设随机变量\(\xi_n,\xi \)的分布函数分别为\(F_n,F \)。
+  若\(\xi_n \overset{d}{\to} \xi \)，则对\(F \)的任意连续点\(x \)有\(\mathbb{P}(\xi_n \leq x)\to \mathbb{P}(\xi \leq x),\mathbb{P}(\xi_n >x) \to \mathbb{P}(\xi >x) \)。
+\end{problem}
+\begin{solution}
+
+  由于\(F(x)=\mathbb{P}(\xi <x) \)，\(\xi_n \overset{d}{\to} \xi \)，那么对于任意\(F \)的连续点\(x \)，\(\mathbb{P}(\xi_n < x) \to \mathbb{P}(\xi <x) \)。
+  又由于\( F\)不降，那么\(F \)的不连续点至多可数。
+  考虑\(F \)的连续点\(x \)，令\(A:=\{s:F \text{在}s \text{连续}, s>x\}\)。
+  由于\(\mathbb{P}(\xi_n \leq x) \geq \mathbb{P}(\xi_n <x),\forall n \)，那么\( \liminf_{n}\mathbb{P}(\xi_n \leq x) \geq \liminf_{n}\mathbb{P}(\xi_n<x)=\mathbb{P}(\xi <x) =F(x)\).
+  又由于\(\mathbb{P}(\xi_n \leq x) \leq \mathbb{P}(\xi_n <s),s \in A \)，那么\(\limsup_n \mathbb{P}(\xi_n \leq x) \leq  \limsup_{n}\mathbb{P}(\xi_n <s)=\mathbb{P}(\xi < s),s \in A\)。
+  那么\(\limsup_{n}\mathbb{P}(\xi_n \leq x) \leq \inf_{s \in A}\mathbb{P}(\xi <s) =\mathbb{P}(\xi \leq x)=F(x^{+}) \)。
+  从而\(F(x)\leq \liminf_{n}\mathbb{P}(\xi_n \leq x)\leq \limsup_{n}\mathbb{P}(\xi_n \leq x) \leq F(x^{+}) \)。
+  而\(x \)为\(F \)的连续点，那么\(F(x)=F(x^{+}) \)。故\(\liminf_{n}\mathbb{P}(\xi_n \leq x)=\limsup_{n}\mathbb{P}(\xi_n \leq x)=F(x)=\lim_{n}\mathbb{P}(\xi_n \leq x) = \mathbb{P}(\xi \leq x)\)。
+
+  又由于\(\mathbb{P}(\xi_n > x)=1-\mathbb{P}(\xi_n \leq x),\mathbb{P}(\xi >x)=1-\mathbb{P}(\xi \leq x) \)。设\(x \)为\(F \)的连续点，由上述结论可知，
+  \(\mathbb{P}(\xi_n > x) \to 1-F(x)=\mathbb{P}(\xi > x) \)
+
+\end{solution}
 
 \end{document}
