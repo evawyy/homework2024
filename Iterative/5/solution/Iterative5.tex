@@ -5,6 +5,7 @@
 \newif\ifpreface
 %\prefacetrue
 \input{../../../global/all}
+\renewcommand{\varphi}{\phi}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
@@ -33,18 +34,21 @@
       \]
 
     \item Show the following relations:
-      \begin{align*}
-        \psi_{j+1}\varphi_{j+1}
-        &= \psi_j\varphi_{j+1} - \eta_j(\psi_{j-1} - \psi_j)\varphi_{j+1} - \xi_j t \psi_j \varphi_{j+1}, \\[6pt]
-        \psi_j\varphi_{j+1}
-        &= \psi_j\varphi_j - \alpha_j t \psi_j \pi_j, \\[6pt]
-        (\psi_{j-1} - \psi_j)\varphi_{j+1}
-        &= \psi_{j-1}\varphi_j - \psi_j\varphi_{j+1} - \alpha_j t \psi_{j-1}\pi_j, \\[6pt]
-        \psi_{j+1}\pi_{j+1}
-        &= \psi_{j+1}\varphi_{j+1} - \beta_j\eta_j \psi_{j-1}\pi_j + \beta_j(1+\eta_j)\psi_j\pi_j - \beta_j\xi_j t \psi_j \pi_j, \\[6pt]
-        \psi_j\pi_{j+1}
-        &= \psi_j\varphi_{j+1} + \beta_j\psi_j\pi_j.
-      \end{align*}
+      \begin{equation}\label{equ:1}
+        \psi_{j+1}\varphi_{j+1},= \psi_j\varphi_{j+1} - \eta_j(\psi_{j-1} - \psi_j)\varphi_{j+1} - \xi_j t \psi_j \varphi_{j+1},
+      \end{equation}
+      \begin{equation}\label{equ:2}
+        \psi_j\varphi_{j+1}= \psi_j\varphi_j - \alpha_j t \psi_j \pi_j,
+      \end{equation}
+      \begin{equation}\label{equ:3}
+        (\psi_{j-1} - \psi_j)\varphi_{j+1} = \psi_{j-1}\varphi_j - \psi_j\varphi_{j+1} - \alpha_j t \psi_{j-1}\pi_j,
+      \end{equation}
+      \begin{equation}\label{equ:4}
+        \psi_{j+1}\pi_{j+1} = \psi_{j+1}\varphi_{j+1} - \beta_j\eta_j \psi_{j-1}\pi_j + \beta_j(1+\eta_j)\psi_j\pi_j - \beta_j\xi_j t \psi_j \pi_j,
+      \end{equation}
+      \begin{equation}\label{equ:5}
+        \psi_j\pi_{j+1} = \psi_j\varphi_{j+1} + \beta_j\psi_j\pi_j.
+      \end{equation}
 
     \item Defining
       \[
@@ -64,12 +68,312 @@
       $\alpha_j$ and $\beta_j$ from the vectors defined in the previous question.
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 将递推式在 $t=0$ 处代入：
+      \[
+        \psi_{j+1}(0)=(1+\eta_j-0)\psi_j(0)-\eta_j\psi_{j-1}(0)=(1+\eta_j)\psi_j(0)-\eta_j\psi_{j-1}(0).
+      \]
+      初始值 $\psi_0(0)=1,\ \psi_1(0)=(1-\xi_0\cdot0)\psi_0(0)=1$。假设 $\psi_{j-1}(0)=\psi_j(0)=1$，则
+      $\psi_{j+1}(0)=(1+\eta_j)-\eta_j=1$。由归纳法，$\psi_j(0)=1,\ \forall j\ge0$。
+    \item 由于\(\phi_j,\pi_j \)满足以下关系：
+      \begin{align}
+        \phi_{j+1}(t)&=\phi_j(t)-\alpha_j t\,\pi_j(t),\tag{1}\\[4pt]
+        \pi_{j+1}(t)&=\pi_j(t)+ \beta_j\,\pi_j(t).\tag{2}
+      \end{align}
+      以及题中给的 $\psi$ 递推
+      \[
+        \psi_{j+1}=(1+\eta_j-\xi_j t)\psi_j-\eta_j\psi_{j-1}.
+      \]
+      可以得出以上关系式：
+      \begin{itemize}
+        \item \(\psi_{j+1}\phi_{j+1}=(1+\eta_j-\xi_j t)\psi_j\phi_{j+1}-\eta_j\psi_{j-1}\phi_{j+1} =\psi_{j+1}\phi_{j+1}=\psi_j\phi_{j+1}-\eta_j(\psi_{j-1}-\psi_j)\phi_{j+1}-\xi_j t\psi_j\phi_{j+1}\)
+        \item \(        \psi_j\phi_{j+1}=\psi(\phi_j-\alpha_j t \pi_j)=\psi_j\phi_j-\alpha_j t\psi_j\pi_j \)
+        \item \((\psi_{j-1}-\psi_j) \phi_{j + 1}=\psi_{j-1}\phi_{j + 1}-\psi_j\phi_{j + 1}=-\psi_{j}\phi_{j + 1} + \psi_{j-1}(\alpha_jt\pi_{j}  + \phi_j)=\psi_{j-1}\phi_{j}-\phi_{j + 1} \psi_j -\alpha_jt\psi_{j-1} \pi_j\)
+        \item \(\psi_{j + 1} \pi_{j + 1}=\psi_{j + 1}(\phi_{j + 1} + \beta_{j } \pi_j)=\psi_{j + 1} \phi_{j + 1} + \psi_{j + 1} \beta_j \pi_j =\psi_{j + 1} \phi_{j + 1} + \beta_j\pi_j ( (1 + \eta_j - \xi_j t)\psi_j(t) - \eta_j \psi_{j-1}(t)) =\psi_{j+1}\varphi_{j+1} - \beta_j\eta_j \psi_{j-1}\pi_j + \beta_j(1+\eta_j)\psi_j\pi_j - \beta_j\xi_j t \psi_j \pi_j\)
+        \item \(\phi_j \pi_{j + 1}=\phi_j(\phi_{j + 1} + \beta_j \pi_j)=\phi_j\psi_{j + 1} + \beta_j \phi_j \pi_j \)
+      \end{itemize}
+    \item 把题中给出的多项式等式把 \(t\mapsto A\) 并作用在 \(r_0\) 上。
+      \begin{enumerate}[leftmargin=1.2cm]
+        \item[(1)]
+          由
+          \(\psi_{j+1}\varphi_{j+1}=\psi_j\varphi_{j+1}-\eta_j(\psi_{j-1}-\psi_j)\varphi_{j+1}-\xi_j t\psi_j\varphi_{j+1}\)
+          得到
+          \[
+            \,t_{j+1}=t_j-\eta_j y_j-\xi_j A t_j. \,
+          \]
+
+        \item[(2)]
+          由
+          \(\psi_j\varphi_{j+1}=\psi_j\varphi_j-\alpha_j t\psi_j\pi_j\)
+          得到
+          \[
+            \,t_j=\psi_j(A)\varphi_j(A)r_0 - \alpha_j A p_j\,.
+          \]
+          将 \(\hat r_j:=\psi_j(A)\varphi_j(A)r_0\) 作为方便的中间量，则上式可写成
+          \[
+            t_j=\hat r_j - \alpha_j A p_j.
+          \]
+
+        \item[(3)]
+          由
+          \((\psi_{j-1}-\psi_j)\varphi_{j+1}=\psi_{j-1}\varphi_j-\psi_j\varphi_{j+1}-\alpha_j t\psi_{j-1}\pi_j\)
+          得到
+          \[
+            \,y_j=\psi_{j-1}(A)\varphi_j(A)r_0 - t_j - \alpha_j A s_j\,.
+          \]
+
+        \item[(4)]
+          由
+          \(\psi_{j+1}\pi_{j+1}=\psi_{j+1}\varphi_{j+1} - \beta_j\eta_j\psi_{j-1}\pi_j + \beta_j(1+\eta_j)\psi_j\pi_j - \beta_j\xi_j t\psi_j\pi_j\)
+          作用到 \(r_0\) 并代入 (1) 中 \(\psi_{j+1}\varphi_{j+1}r_0=t_j-\eta_j y_j -\xi_j A t_j\)，得到
+          \[
+            p_{j+1} = (t_j-\eta_j y_j-\xi_j A t_j) - \beta_j\eta_j s_j + \beta_j(1+\eta_j)p_j - \beta_j\xi_j A p_j.
+          \]
+        \item[(5)]
+          由
+          \(\psi_j\pi_{j+1}=\psi_j\varphi_{j+1}+\beta_j\psi_j\pi_j\)
+          作用到 \(r_0\)：
+          \[
+            \,s_{j+1}=t_j+\beta_j p_j\,.
+          \]
+      \end{enumerate}
+    \item 我们已知标准的解更新公式
+      \[
+        x_{j+1}=x_j+\alpha_j p_j.
+        \tag{4.0}
+      \]
+      若希望只保留最近两个解向量 \(x_{j-1},x_j\) 并直接用它们构造 \(x_{j+1}\)，需要把 \(p_j\) 用 \(x_{j-1},x_j\) 以及其它已保存向量表示。
+
+      首先回忆第 3 问中得到的 \(p_j\) 的递推：
+      \[
+        \begin{aligned}
+          p_j
+          &= \big(t_{j-1}-\eta_{j-1} y_{j-1}-\xi_{j-1} A t_{j-1}\big)
+          - \beta_{j-1}\eta_{j-1} s_{j-1}
+          + \beta_{j-1}(1+\eta_{j-1}) p_{j-1}
+          - \beta_{j-1}\xi_{j-1} A p_{j-1}.
+        \end{aligned}
+        \tag{4.1}
+      \]
+      该式中出现了先前的搜索方向 \(p_{j-1}\)，以及 \(A p_{j-1}\)。但由迭代定义
+      \[
+        x_j = x_{j-1} + \alpha_{j-1} p_{j-1},
+      \]
+      可得
+      \[
+        p_{j-1}=\frac{x_j-x_{j-1}}{\alpha_{j-1}}.
+        \tag{4.2}
+      \]
+      将 (4.2) 代入 (4.1) 中含 \(p_{j-1}\) 的那一项，得到 \(p_j\) 表示为仅含 \((x_j-x_{j-1})\) 和其它已知向量的式子：
+      \[
+        \begin{aligned}
+          p_j
+          &= \big(t_{j-1}-\eta_{j-1} y_{j-1}-\xi_{j-1} A t_{j-1}\big)
+          - \beta_{j-1}\eta_{j-1} s_{j-1}
+          + \beta_{j-1}(1+\eta_{j-1})\frac{x_j-x_{j-1}}{\alpha_{j-1}}
+          - \beta_{j-1}\xi_{j-1} A p_{j-1}.
+        \end{aligned}
+        \tag{4.3}
+      \]
+
+      现在将 (4.3) 代入解更新 (4.0)：
+      \[
+        \begin{aligned}
+          x_{j+1}
+          &= x_j + \alpha_j p_j \\
+          &= x_j + \alpha_j\Big[\;t_{j-1}-\eta_{j-1} y_{j-1}-\xi_{j-1} A t_{j-1}
+            - \beta_{j-1}\eta_{j-1} s_{j-1} \\
+            &\qquad\qquad\qquad\qquad\qquad
+            + \beta_{j-1}(1+\eta_{j-1})\frac{x_j-x_{j-1}}{\alpha_{j-1}}
+          - \beta_{j-1}\xi_{j-1} A p_{j-1}\;\Big].
+        \end{aligned}
+      \]
+      将含 \(x_j-x_{j-1}\) 的项展开并把关于 \(x_j,x_{j-1}\) 的系数集中，得到：
+      \[
+        \begin{aligned}
+          x_{j+1}
+          &= \Big(1 + \frac{\alpha_j\beta_{j-1}(1+\eta_{j-1})}{\alpha_{j-1}}\Big)\,x_j
+          - \frac{\alpha_j\beta_{j-1}(1+\eta_{j-1})}{\alpha_{j-1}}\,x_{j-1} \\
+          &\quad\; +\; \alpha_j\big(t_{j-1}-\eta_{j-1} y_{j-1}-\xi_{j-1} A t_{j-1}\big)
+          - \alpha_j\beta_{j-1}\eta_{j-1}\,s_{j-1}
+          - \alpha_j\beta_{j-1}\xi_{j-1}\,A p_{j-1}.
+        \end{aligned}
+        \tag{4.4}
+      \]
+      上式即为把 \(x_{j+1}\) 用 \(x_j,x_{j-1}\) 与一组已保存向量（\(t_{j-1},y_{j-1},s_{j-1},A t_{j-1},A p_{j-1}\)）表示的显式公式。
+
+    \item 下面给出 \(\alpha_j\) 与 \(\beta_j\) 的可计算表达式.
+
+      取固定影子向量 \(\tilde r\)（任意非零向量，常取 \(\tilde r=r_0\) 或 \( \tilde r=\) 初始残差的复制）。
+      \[
+        \hat r_j := \psi_j(A)\varphi_j(A)r_0.
+      \]
+      将要构造的中间向量 \(t_j=\psi_j\varphi_{j+1}r_0\) 满足
+      \[
+        t_j = \hat r_j - \alpha_j A p_j.
+      \]
+      仿照 BiCG 的做法，为了确定 \(\alpha_j\) 我们对上式取与影子向量 \(\tilde r\) 的内积并要求
+      \[
+        \langle \tilde r,\, t_j\rangle = 0.
+      \]
+
+      由此得
+      \[
+        0=\langle \tilde r,\, t_j\rangle
+        = \langle \tilde r,\, \hat r_j\rangle - \alpha_j \langle \tilde r,\, A p_j\rangle.
+      \]
+      因此我们得到显式可计算的公式：
+      \[
+        \,\alpha_j = \dfrac{\langle \tilde r,\, \hat r_j\rangle}{\langle \tilde r,\, A p_j\rangle}\,.
+        \tag{A}
+      \]
+
+      上式的分子要求 \(\hat r_j=\psi_j(A)\varphi_j(A)r_0\) 的内积。为避免每步都从多项式直接构造 \(\hat r_j\)，我们利用关系
+      \[
+        t_j=\hat r_j - \alpha_j A p_j,
+      \]
+      对两端取与 \(\tilde r\) 的内积并用 \(\langle\tilde r,t_j\rangle=0\) 得到与 (A) 一致的解。
+      % 在实际实现中常直接维护并更新 \(\langle\tilde r,\hat r_j\rangle\)（或维护 \(\hat r_j\) 本身）—— 两者皆可行。
+      % 下面的伪代码给出了一种在每步显式维护 \(\hat r_j\) 的实现方式（只需一次矩阵-向量乘 \(A p_j\)）。
+
+      经典 BiCG 的 \(\beta_j\) 可由下一步左残差对上一残差的比值得到。
+      \[
+        \,\beta_j = \dfrac{\langle \tilde r,\, \hat r_{j+1}\rangle}{\langle \tilde r,\, \hat r_j\rangle}\cdot \dfrac{\alpha_j}{\alpha_{j-1}}\,
+        \tag{B}
+      \]
+  \end{enumerate}
+\end{solution}
+
 \begin{problem}\label{pro:2}
   Prove that the vectors \( r_j \) and \( r_i^* \) produced by the BCG algorithm are orthogonal to each other when \( i \neq j \), while the vectors \( p_i \) and \( p_j^* \) are \( A \)-orthogonal, i.e.,
   \[
     (Ap_j,\, p_i^*) = 0 \quad \text{for } i \neq j.
   \]
 \end{problem}
+\begin{solution}
+  令 \(A\in\mathbb{R}^{n\times n}\)。BCG产生两组向量序列
+  \[
+    \{r_j\}_{j\ge0},\quad \{p_j\}_{j\ge0}\qquad\text{和}\qquad
+    \{r_j^*\}_{j\ge0},\quad \{p_j^*\}_{j\ge0},
+  \]
+  它们满足常见的递推关系：
+  \begin{align}
+    p_j &= r_j + \beta_{j-1} p_{j-1}, \label{eq:p_rec}\\
+    p_j^* &= r_j^* + \beta_{j-1} p_{j-1}^*, \label{eq:ps_rec}\\
+    r_{j+1} &= r_j - \alpha_j A p_j, \label{eq:r_rec}\\
+    r_{j+1}^* &= r_j^* - \alpha_j A^T p_j^*, \label{eq:rs_rec}
+  \end{align}
+  其中系数定义为：
+  \begin{equation}\label{eq:coeff}
+    \alpha_j=\frac{(r_j,r_j^*)}{(A p_j,p_j^*)},\qquad
+    \beta_j=\frac{(r_{j+1},r_{j+1}^*)}{(r_j,r_j^*)}.
+  \end{equation}
+
+  要证明对于任意 \(i\neq j\) 有
+  \[
+    (r_j,r_i^*)=0,
+    \qquad\text{且}\qquad
+    (A p_j,p_i^*)=0.
+  \]
+  由于\(r_j,r_i^*,p_j，p_i^* \)是对称的过程，故
+  只需证明\(\forall i < j  \)，\((r_j,r_i^*)=0,(Ap_j,p_i^*)=0 \)
+
+  设每个非负整数 \(k \in \mathbb{N} \)，令\(P(k)\)：\emph{对任意 \(i,j\le k\) 且 \(i\neq j\)，有 \((r_j,r_i^*)=0\) 且 \((A p_j,p_i^*)=0\)。}
+  \begin{enumerate}
+    \item 当 \(k=0\) 时命题平凡成立，由于不存在不等的索引对。
+    \item 假设对于某 \(n\ge0\)，命题 \(P(n)\) 成立；即对任意 \(i,j\le n\) 且 \(i\neq j\)，有
+      \[
+        (r_j,r_i^*)=0,\qquad (A p_j,p_i^*)=0.
+      \]
+      我们要证明 \(P(n+1)\)：即只需对任意 \(m\le n\) 有
+      \[
+        (r_{n+1},r_m^*)=0,\qquad (A p_{n+1},p_m^*)=0.
+      \]
+
+      先证明 \((r_{n+1},r_m^*)=0\) 对任意 \(m\le n\)
+      由 \eqref{eq:r_rec}，
+      \[
+        r_{n+1}=r_n-\alpha_n A p_n.
+      \]
+      对任意固定 \(m\le n\) 取内积得
+      \begin{equation}\label{eq:step1}
+        (r_{n+1},r_m^*)=(r_n,r_m^*)-\alpha_n\,(A p_n,r_m^*).
+      \end{equation}
+      若 \(m\le n-1\)，根据归纳假设 \((r_n,r_m^*)=0\)。同时
+      \[
+        (A p_n,r_m^*)=(p_n,A^T r_m^*).
+      \]
+      注意由 \eqref{eq:rs_rec} 对 \(j=m\) 有
+      \[
+        A^T p_m^*=\frac{r_m^*-r_{m+1}^*}{\alpha_m},
+      \]
+      因此 \(A^T r_m^*\) 落在由 \(\{p_0^*,\dots,p_m^*\}\) 张成的子空间中，而归纳假设给出对这些较小索引的 \(p_n\) 与 \(Ap_t^*\)（\(t\le n-1\)）正交，推出
+      \((p_n,A^T r_m^*)=0\)，从而 \((A p_n,r_m^*)=0\)。所以右端为 0，从而 \((r_{n+1},r_m^*)=0\)。
+
+      若 \(m=n\)，直接在 \eqref{eq:step1} 中代入 \(m=n\) 得
+      \[
+        (r_{n+1},r_n^*)=(r_n,r_n^*)-\alpha_n\,(A p_n,r_n^*).
+      \]
+      由 \eqref{eq:coeff}，有 \((A p_n,p_n^*)=(r_n,r_n^*)/\alpha_n\)。
+      注意根据归纳假设 \(r_n^*\) 与 \(A p_n\) 的唯一非零内积就是 \((A p_n,p_n^*)\) ，因此在 \(m=n\) 情形也成立。
+      综上，对任意 \(m\le n\) 都有 \((r_{n+1},r_m^*)=0\)。
+
+      再证明 \((A p_{n+1},p_m^*)=0\) 对任意 \(m\le n\)
+      由 \eqref{eq:p_rec} 和线性性
+      \[
+        A p_{n+1}=A r_{n+1} + \beta_n A p_n.
+      \]
+      于是
+      \begin{equation}\label{eq:step2}
+        (A p_{n+1},p_m^*)=(A r_{n+1},p_m^*)+\beta_n (A p_n,p_m^*).
+      \end{equation}
+      先看第一项：
+      \[
+        (A r_{n+1},p_m^*)=(r_{n+1},A^T p_m^*).
+      \]
+      利用 \eqref{eq:rs_rec}可得
+      \[
+        A^T p_m^*=\frac{r_m^*-r_{m+1}^*}{\alpha_m}.
+      \]
+      因此
+      \[
+        (r_{n+1},A^T p_m^*)=\frac{1}{\alpha_m}\big( (r_{n+1},r_m^*)-(r_{n+1},r_{m+1}^*)\big).
+      \]
+      但我们已证明对任意 \(t\le n\)有 \((r_{n+1},r_t^*)=0\)，因此第一项为 \(0\)。
+      第二项在 \(m\le n-1\) 时由归纳假设 \((A p_n,p_m^*)=0\) 而为 \(0\)。
+      只剩下 \(m=n\) 的情形。将 \(m=n\) 代入 \eqref{eq:step2} 得
+      \[
+        (A p_{n+1},p_n^*)=(r_{n+1},A^T p_n^*) + \beta_n (A p_n,p_n^*).
+      \]
+      那么，
+      \[
+        (r_{n+1},A^T p_n^*)=\frac{1}{\alpha_n}\big( (r_{n+1},r_n^*)-(r_{n+1},r_{n+1}^*)\big).
+      \]
+      而我们已证明 \((r_{n+1},r_n^*)=0\)，所以
+      \[
+        (r_{n+1},A^T p_n^*) = -\frac{1}{\alpha_n}(r_{n+1},r_{n+1}^*).
+      \]
+      另一方面由 \eqref{eq:coeff}，
+      \[
+        (A p_n,p_n^*)=\frac{(r_n,r_n^*)}{\alpha_n}.
+      \]
+      于是
+      \[
+        \begin{aligned}
+          (A p_{n+1},p_n^*)
+          &= -\frac{1}{\alpha_n}(r_{n+1},r_{n+1}^*) + \beta_n\frac{(r_n,r_n^*)}{\alpha_n} \\
+          &=\frac{1}{\alpha_n}\Big( - (r_{n+1},r_{n+1}^*) + \beta_n (r_n,r_n^*) \Big).
+        \end{aligned}
+      \]
+      代入 \(\beta_n\) 的定义 \(\beta_n=\dfrac{(r_{n+1},r_{n+1}^*)}{(r_n,r_n^*)}\)，括号内为零，从而
+      \[
+        (A p_{n+1},p_n^*) = 0.
+      \]
+      因此对任意 \(m\le n\) 都有 \((A p_{n+1},p_m^*)=0\)。
+  \end{enumerate}
+\end{solution}
+
 \begin{problem}\label{pro:3}
   Consider the linear system
   \begin{equation}
@@ -106,5 +410,110 @@
     \item Assume that the QR factorization of the matrix \( B \) is computed. Write an algorithm based on the approach of the previous questions for solving the linear system (8.30).
   \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 记 $P_B:=B(B^TB)^{-1}B^T$，则 $P=I-P_B$。先证幂等性：
+      \[
+        P^2=(I-P_B)^2=I-2P_B+P_B^2.
+      \]
+      但
+      \[P_B^2=B(B^TB)^{-1}B^T B(B^TB)^{-1}B^T=B(B^TB)^{-1}(B^TB)(B^TB)^{-1}B^T=P_B,
+      \]
+      于是 $P^2=P$，即 $P$ 为投影矩阵。
+
+      再证对称性：
+      \[P^T=(I-P_B)^T=I-P_B^T=I-P_B=P,\]
+      因为 $P_B^T=P_B$。幂等且对称的投影矩阵等价于正交投影矩阵，故 $P$ 为把向量正交投影到某子空间上的正交投影。
+
+      接下来给出其像与核：
+      \begin{itemize}
+        \item 若 $v\in\mathrm{range}(P)$，则存在 $w$ 使 $v=Pw$。由
+          \[B^Tv=B^TPw=B^T(I-B(B^TB)^{-1}B^T)w=B^Tw-B^T w=0,\]
+          得 $v\in\mathrm{Null}(B^T)$。反过来若 $v\in\mathrm{Null}(B^T)$，则
+          \[Pv=(I-P_B)v=v-P_Bv=v-B(B^TB)^{-1}B^Tv=v,\]
+          故 $v\in\mathrm{range}(P)$。因此
+          \[\mathrm{range}(P)=\mathrm{Null}(B^T).\]
+        \item 若 $z\in\mathrm{range}(B)$，则 $z=B\xi$ 对某向量 $\xi$，于是
+          \[Pz=(I-P_B)B\xi=B\xi-B(B^TB)^{-1}B^TB\xi=0,\]
+          即 $\mathrm{range}(B)\subseteq\mathrm{null}(P)$. 反过来若 $Pz=0$，则 $z=P_B z=B(B^TB)^{-1}B^T z\in\mathrm{range}(B)$，因此
+          \[\mathrm{null}(P)=\mathrm{range}(B).\]
+      \end{itemize}
+      综上，$P$ 为将向量正交投影到 $\mathrm{Null}(B^T)$ 的正交投影矩阵，且
+      \[\mathrm{range}(P)=\mathrm{Null}(B^T),\qquad\mathrm{null}(P)=\mathrm{range}(B).\]
+    \item 原系统等价写为：
+      \begin{equation}\label{eq:original}
+        Ax+By=b,\qquad B^T x=0.
+      \end{equation}
+      由约束 $B^T x=0$ 可知 $x\in\mathrm{Null}(B^T)=\mathrm{range}(P)$，即 $x=Px$。对第一式左右同时左乘 $P$：
+      \[P(Ax+By)=Pb.\]
+      因 $B$ 的列在 $\mathrm{null}(P)$ 上，故$PB=0$，得
+      \[PAx=Pb.\]
+      代入 $x=Px$ 得
+      \[PAPx=Pb,\]
+      即约化系统。
+
+      奇异性： 因为 $\mathrm{null}(P)=\mathrm{range}(B)$ 非平凡，故存在非零向量 $v\in\mathrm{range}(B)$ 使得 $Pv=0$，于是
+      \[PAPv=0,\]
+      说明 $PAP$ 在整个 $\mathbb R^n$ 上一般是奇异的。
+
+      一致性： 若原系统 \eqref{eq:original} 有解 $(x_*,y_*)$，则同样按上面步骤有
+      \[PAPx_*=Pb.\]
+      因此该约化系统至少有一个解，故一致。
+      也就是说，约化方程的右端 $Pb$ 必位于 $PAP$ 的列空间内，所以不会出现无解的情况。
+      而如果单独给定任意 $P,A,b$，的确不能保证一致，但这里的 $Pb$ 是从原有解导出的，因此保证落在列空间内。
+    \item 共轭梯度法要求系数矩阵为对称正定。
+      在本题中 $PAP$ 在整个空间上可能仅为半正定或奇异，故不能直接在全空间上对 $PAP$ 施行标准 CG。可以考虑以下策略：
+      若\(A \)为正定的，
+      \begin{enumerate}[label=\alph*）]
+        \item 投影 CG（在约束子空间上）：将迭代限制在 $\mathcal S=\mathrm{Null}(B^T)=\mathrm{range}(P)$ 上。
+          若 $A$ 在 $\mathcal S$ 上是正定的，则算子 $PAP$ 在该子空间上是 SPD。
+          首先，$PAP$ 是对称的，因为
+          \[
+            (PAP)^T = P^T A^T P^T = P A P.
+          \]
+          其次，对任意 $x \in \mathcal{S}$，由 $Px = x$ 得
+          \[
+            x^T (PAP) x = x^T P A P x = x^T A x.
+          \]
+          根据假设，$A$ 在 $\mathcal{S}$ 上正定，因此
+          \[
+            x^T (PAP) x = x^T A x > 0, \quad \forall x \in \mathcal{S} \setminus \{0\}.
+          \]
+          故算子 $PAP$ 在 $\mathcal{S}$ 上对称且正定，即 $PAP$ 在 $\mathcal{S}$ 上为 SPD。
+          于是可以在此子空间上使用 CG。实现时需要在每次生成残量与搜索方向后应用投影 $P$，以保持向量落在 $\mathcal S$ 中。
+        \item 坐标约化（基底表示）：取 $Z\in\mathbb R^{n\times(n-p)}$ 为 $\mathrm{Null}(B^T)$ 的正交基（例如 QR 里的 $Q_2$），写 $x=Zz$，代入得到尺寸较小的线性系统
+          \[Z^TAZ\,z=Z^T b.\]
+          若 $Z^TAZ$ 为 SPD，则可对该小系统直接用标准 CG。迭代点实质上属于 $\mathrm{span}(Z)=\mathrm{Null}(B^T)$，即 CG 迭代生成的向量都在约束子空间内。
+      \end{enumerate}
+
+      当 $A$ 在该子空间上不为正定时，应改用能够处理半正定或不定对称矩阵的方法，如 MINRES，或在子空间上做适当正则化。
+    \item 令对 $B$ 做完整QR 分解：
+      \[B=[Q_1\; Q_2]
+        \begin{bmatrix}R\\0
+      \end{bmatrix}=Q_1R,\]
+      其中 $[Q_1\;Q_2]\in\mathbb R^{n\times n}$ 为正交矩阵，$Q_1\in\mathbb R^{n\times p}$，$Q_2\in\mathbb R^{n\times (n-p)}$，且
+      \[\mathrm{range}(B)=\mathrm{span}(Q_1),\qquad\mathrm{Null}(B^T)=\mathrm{span}(Q_2).\]
+      取 $Z=Q_2$ 为 $\mathrm{Null}(B^T)$ 的正交基，代入 $x=Zz$ 得约化系统
+      \[\tilde A z:=Z^TAZ\,z=Z^T b=:\tilde b.\]
+      若 $\tilde A$ 为 SPD，则用 CG 求解 $\tilde A z=\tilde b$，恢复
+      \[x=Zz=Q_2 z.\]
+      再由原方程第一行回代求 $y$：
+      \[B y=b-Ax.\]
+      因为 $B=Q_1R$ 且 $R$ 可逆，取最小二乘/精确解：
+      \[y=R^{-1}Q_1^T(b-Ax).\]
+
+      下面给出伪代码，假设能计算 $Q_1,Q_2,R$：
+      \begin{enumerate}[label=步骤 \arabic*：]
+        \item 计算 thin QR： $B=Q_1R$，并补出 $Q_2$ 使 $[Q_1\;Q_2]$ 正交。
+        \item 设 $Z=Q_2$，构造 $\tilde A=Z^T A Z$, $\tilde b=Z^T b$。
+        \item 用 CG（或合适的对称解法）求解 $\tilde A z=\tilde b$。
+        \item 恢复 $x=Z z$。
+        \item 计算 $y=R^{-1}Q_1^T(b-Ax)$。
+      \end{enumerate}
+
+      为避免在大矩阵上显式构造 $\tilde A$，可在迭代中用矩阵向量乘法实现隐式操作 $w\mapsto Z^T(A (Z w))$，这在 $n$ 很大而 $n-p$ 较小时尤为重要。
+  \end{enumerate}
+
+\end{solution}
 
 \end{document}
