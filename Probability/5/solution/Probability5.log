@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  18 NOV 2025 16:40
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  18 NOV 2025 21:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Probability4.tex
-(./Probability4.tex
+**Probability5.tex
+(./Probability5.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -967,110 +967,97 @@ Package: xeCJK-listings 2022/08/05 v3.9.1 xeCJK patch file for listings
 \c@problem=\count386
 )
 (../../../global/me) (../../../global/commands) (../../localcommands))
-(./Probability4.aux
+(./Probability5.aux)
+\openout1 = `Probability5.aux'.
 
-LaTeX Warning: Label `equ:1' multiply defined.
-
-
-LaTeX Warning: Label `equ:1@cref' multiply defined.
-
-
-LaTeX Warning: Label `equ:2' multiply defined.
-
-
-LaTeX Warning: Label `equ:2@cref' multiply defined.
-
-)
-\openout1 = `Probability4.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 10.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 10.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 10.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 10.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 10.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 10.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 10.
-LaTeX Font Info:    Redeclaring math accent \check on input line 10.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 10.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 10.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 10.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 10.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 10.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 9.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 9.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 9.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 9.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 9.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 9.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 9.
+LaTeX Font Info:    Redeclaring math accent \check on input line 9.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 9.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 9.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 9.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 9.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 9.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 10.
+(Font)              `operators' in the math version `normal' on input line 9.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 10.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 9.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 10.
+(Font)              `operators' in the math version `bold' on input line 9.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 10.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 9.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 10.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 9.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 10.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 9.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 10.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 9.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 10.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 9.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 10.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 9.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 10.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 9.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 10.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 9.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 10.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 9.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 10.
-Package hyperref Info: Link coloring OFF on input line 10.
- (./Probability4.out) (./Probability4.out)
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 9.
+Package hyperref Info: Link coloring OFF on input line 9.
+ (./Probability5.out) (./Probability5.out)
 \@outlinefile=\write4
-\openout4 = `Probability4.out'.
+\openout4 = `Probability5.out'.
 
 
 
 Package fixdif Warning: Requires `no-math' option of fontspec!
-(fixdif)                 on input line 10.
+(fixdif)                 on input line 9.
 
-LaTeX Info: Redefining \d on input line 10.
-LaTeX Info: Redefining \partial on input line 10.
+LaTeX Info: Redefining \d on input line 9.
+LaTeX Info: Redefining \partial on input line 9.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1168,19 +1155,19 @@ Package fontspec Info: Font family 'STXihei(0)' created for font 'STXihei'
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 (../../.subject) (../.number)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 22
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 21
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
@@ -1213,33 +1200,95 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 (fontspec)             <->"STFangsong/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 37.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 26.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [1
+)
+Overfull \hbox (12.97064pt too wide) in paragraph at lines 34--44
+[][] \OML/cmm/m/it/12.045 g[] []  []^^V \OT1/cmr/m/n/12.045 = [][] [][] \OML/cm
+m/m/it/12.045 h[] []  []^^V$\TU/STSong(0)/m/n/12.045 。|  由 于 $\OML/cmm/m/it/12.
+045 A[] \OMS/cmsy/m/n/12.045 \ \OML/cmm/m/it/12.045 A[] \OT1/cmr/m/n/12.045 = \
+U/msb/m/n/12.045 ?\OML/cmm/m/it/12.045 ; \OMS/cmsy/m/n/12.045 8\OML/cmm/m/it/12
+.045 ij < \OT1/cmr/m/n/12.045 0$\TU/STSong(0)/m/n/12.045 ，|  那 么 $\OMS/cmsy/m/n
+/12.045 ^^@\OML/cmm/m/it/12.045 h[] \OT1/cmr/m/n/12.045 = [][] []\U/bbm/m/n/12 
+1[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr/m/n/12.045 )\OML/cmm/m/i
+t/12.045 ; h[] \OT1/cmr/m/n/12.045 =
+ []
 
 
-] [2]
-[3] [4] (./Probability4.aux)
+Overfull \hbox (23.68239pt too wide) in paragraph at lines 34--44
+[][] []\U/bbm/m/n/12 1[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr/m/n
+/12.045 )\OML/cmm/m/it/12.045 ; g[] \OT1/cmr/m/n/12.045 = \OMS/cmsy/m/n/12.045 
+^^@ [][] []\U/bbm/m/n/12 1[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr
+/m/n/12.045 )\OML/cmm/m/it/12.045 ; g[] \OT1/cmr/m/n/12.045 = [][] []\U/bbm/m/n
+/12 1[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr/m/n/12.045 )$\TU/STS
+ong(0)/m/n/12.045 。|  又 由 于 $\OML/cmm/m/it/12.045 h[] \OT1/cmr/m/n/12.045 = [][
+] []\U/bbm/m/n/12 1[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr/m/n/12
+.045 ) =
+ []
+
+
+Overfull \hbox (4.88599pt too wide) in paragraph at lines 34--44
+[][] \OML/cmm/m/it/12.045 g[] []  []^^V \OMS/cmsy/m/n/12.045 ^^@ [][] \OML/cmm/
+m/it/12.045 g[] []  []^^V \OT1/cmr/m/n/12.045 = [][] [][] \OML/cmm/m/it/12.045 
+h[] []  []^^V \OMS/cmsy/m/n/12.045 ^^@ [][] [][] \OML/cmm/m/it/12.045 h[] []  [
+]^^V \OT1/cmr/m/n/12.045 = [][]([][] \OML/cmm/m/it/12.045 h[] []  []^^V \OMS/cm
+sy/m/n/12.045 ^^@ [][] \OML/cmm/m/it/12.045 h[] []  []^^V\OT1/cmr/m/n/12.045 ) 
+=
+ []
+
+[1
+
+
+]
+Missing character: There is no 。 (U+3002) in font [lmroman12-regular]:mapping=t
+ex-text;!
+Missing character: There is no 。 (U+3002) in font [lmroman12-regular]:mapping=t
+ex-text;!
+[2] [3]
+Overfull \hbox (15.28427pt too wide) in paragraph at lines 192--195
+[]\TU/lmr/m/n/12.045 “$ \OT1/cmr/m/n/12.045 =[]\OMS/cmsy/m/n/12.045 ) $\TU/lmr/
+m/n/12.045 ”: \TU/STSong(0)/m/n/12.045 由 于 []\TU/lmr/m/n/12.045 1[]\TU/STSong(0
+)/m/n/12.045 可 知，|  只 需 证 明 积 分 一 致 可 积 能 推 导 出 一 致 有 界。| $\OML/cmm/m/it/12.045
+ N$ \TU/STSong(0)/m/n/12.045 满 足 $[][] \OML/cmm/m/it/12.045 ^^V\OT1/cmr/m/n/12.
+045 (\OMS/cmsy/m/n/12.045 j\OML/cmm/m/it/12.045 f[]\OMS/cmsy/m/n/12.045 j\U/bbm
+/m/n/12 1[]\OT1/cmr/m/n/12.045 ) \OML/cmm/m/it/12.045 <
+ []
+
+[4]
+Overfull \hbox (17.82605pt too wide) in paragraph at lines 218--220
+[]\TU/STSong(0)/m/n/12.045 令 $\OML/cmm/m/it/12.045 A$ \TU/STSong(0)/m/n/12.045 
+如 上 定 义，|  那 么 $\OMS/cmsy/m/n/12.045 k\OML/cmm/m/it/12.045 f\OMS/cmsy/m/n/12.04
+5 k[] \OT1/cmr/m/n/12.045 = [][] \OMS/cmsy/m/n/12.045 j\OML/cmm/m/it/12.045 f\O
+T1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr/m/n/12.045 )\OMS/cmsy/m/n/12.
+045 j[] []  []\OML/cmm/m/it/12.045 ^^V\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045
+ x\OT1/cmr/m/n/12.045 ) = [][] \OMS/cmsy/m/n/12.045 j\OML/cmm/m/it/12.045 f\OT1
+/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr/m/n/12.045 )\OMS/cmsy/m/n/12.04
+5 j[] []  []\OML/cmm/m/it/12.045 ^^V\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x
+\OT1/cmr/m/n/12.045 ) + [][] \OMS/cmsy/m/n/12.045 j\OML/cmm/m/it/12.045 f\OT1/c
+mr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr/m/n/12.045 )\OMS/cmsy/m/n/12.045 
+j[] []  []\OML/cmm/m/it/12.045 ^^V \OT1/cmr/m/n/12.045 = [][] \OMS/cmsy/m/n/12.
+045 j\OML/cmm/m/it/12.045 f\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 x\OT1/cmr/
+m/n/12.045 )\OMS/cmsy/m/n/12.045 j[] []  []\OML/cmm/m/it/12.045 ^^V \OMS/cmsy/m
+/n/12.045 ^^T
+ []
+
+[5] [6] (./Probability5.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package rerunfilecheck Info: File `Probability4.out' has not changed.
+Package rerunfilecheck Info: File `Probability5.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33122 strings out of 474773
- 693729 string characters out of 5757725
- 1974839 words of memory out of 5000000
- 54691 multiletter control sequences out of 15000+600000
+ 33123 strings out of 474773
+ 693803 string characters out of 5757725
+ 1975839 words of memory out of 5000000
+ 54692 multiletter control sequences out of 15000+600000
  565941 words of font info for 105 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  112i,11n,113p,3325b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Probability4.pdf (4 pages).
+Output written on Probability5.pdf (6 pages).

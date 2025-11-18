@@ -1,0 +1,47 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX language = zh
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{solution}
+  令\(A:=\{\xi >0\} \)，若\(\mathbb{P}(A)=0 \)，由\(\xi \geq 0 \)，那么\(\xi \overset{\mathrm{a.s.}}{=} 0 \)。从而\(\mathbb{E}(\xi^2)=\mathbb{E}(\xi)^2=0 \).
+
+\end{solution}
+\begin{solution}
+  \begin{enumerate}
+    \item 令\(A:=\{\xi-m \geq t\} \)，\(\mu:=\mathbb{P}(A)\)。若\(\mu=0 \)，那么\(0=\mathbb{P}(\xi-m \geq t)\leq \frac{\sigma^2}{\sigma^2 + t^2}\)。
+      若\(\mu >0 \)，那么
+      \(x_1=\mathbb{E}(\xi-m \mid A), x_2=\mathbb{E}(\xi-m \mid A^c)\).又由于\(\mathbb{E}(\xi-m)=0 \)，那么\(\mathbb{E}(\xi-m)=\mathbb{E}(\xi-m \mid A)\mathbb{P}(A) + \mathbb{E}(\xi-m \mid A^c) \mathbb{P}(A)=x_1 \mu + x_2 (1-\mu)=0\).
+      又由于\(x_1=\mathbb{E}(\xi-m \mid A) \geq \mathbb{E} (t \mid A)=t \)，故\(x_1 \geq t \)。
+      \[
+        \begin{aligned}
+          \sigma^2 =\mathbb{E}(|\xi-m|^2)&=\mathbb{E}(|\xi-m|^2 \mid A)\mathbb{P}(A) + \mathbb{E}(|\xi-m|^2 \mid A^c)\mathbb{P}(A)\\
+          &\overset{引理 \ref{lem:3}}{\geq} (\mathbb{E}(\xi-m \mid A))^2 \mathbb{P}(A) + (\mathbb{E}(\xi-m \mid A^c))^2 \mathbb{P}(A^c)\\
+          &=x_1^2 \mu  + x_2^2(1-\mu)
+        \end{aligned}
+      \]
+      \begin{itemize}
+        \item 若\(\mu=1 \)，那么\(x_1 \mu + x_2 (1-\mu)=0 \)，知\(x_1=0 \)，那么\(t \leq 0 \). 又由于\(t \geq 0 \)，那么\(t =0 \)，此时\(\mathbb{P}(\xi-m \geq t)=\mu=1= \frac{\sigma^2}{\sigma^2} \).
+        \item 若\(0 < \mu < 1 \)，那么\(\sigma^2 \geq \frac{\mu}{1-\mu}x_1^2 \)。又由于\(x_1=\mathbb{E}(\xi-m \mid A) \geq \mathbb{E} (t \mid A)=t \)， 故\(\sigma^2 \geq \frac{\mu}{1-\mu}t^2 \).
+          从而\(\mu \leq \frac{\sigma^2}{t^2 + \sigma^2} \)，即\(\mathbb{P}(\xi-m \geq t) \leq \frac{\sigma^2}{t^2 + \sigma^2} \).
+      \end{itemize}
+    \item 令\(\eta=-\xi \)，那么\(\mathbb{E}(\eta)=-m,\var(\eta)=\sigma^2 \)，那么\(\mathbb{P}(\eta + m \geq t) \leq \frac{\sigma^2}{t^2 + \sigma^2} \)，故\(\mathbb{P}(-\xi + m \geq t)=\mathbb{P}(\xi-m \leq -t) \leq \frac{\sigma^2}{\sigma^2 + t^2} \).
+      故\(\mathbb{P}(|\xi-m| \geq t) \leq \mathbb{P}(\xi-m \geq t) + \mathbb{P}(\xi-m \leq -t) \leq \frac{2 \sigma^2}{\sigma^2 + t^2} \).
+  \end{enumerate}
+\end{solution}
+
+\end{document}
