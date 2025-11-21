@@ -9,12 +9,318 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+\input{../../../global/preface}
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \maketitle
 \fi
 %from_here_to_type
+\begin{problem}\label{pro:1}
+  Assume that $A$ is the matrix arising from the 5-point finite difference discretization
+  of an elliptic operator on a given mesh. We reorder the original linear system using the
+  red-black ordering and obtain the reordered linear system
+  \[
+    \begin{pmatrix}
+      D_1 & E \\
+      F & D_2
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_1 \\ x_2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      b_1 \\ b_2
+    \end{pmatrix}.
+  \]
+
+  \begin{enumerate}
+    \item Show how to obtain a system (called the \emph{reduced system}) which involves the variable $x_2$ only.
+    \item Show that this reduced system is also a sparse matrix.
+    \item Show the stencil associated with the reduced system matrix on the original finite difference mesh and give a graph–theory interpretation of the reduction process.
+    \item What is the maximum number of nonzero elements in each row of the reduced system?
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item \[
+        \begin{pmatrix}
+          D_1 & E \\
+          F & D_2
+        \end{pmatrix}
+        \begin{pmatrix}
+          x_1 \\ x_2
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          b_1 \\ b_2
+        \end{pmatrix},
+      \]
+      其中 $D_1$、$D_2$ 分别对应红点、黑点未知量之间的连接,即均为对角占优稀疏矩阵，
+      $E$ 与 $F$ 为红黑之间的邻接耦合项。
+
+      从第一行可解出 $x_1$：
+      \[
+        D_1 x_1 + E x_2 = b_1
+        \quad \Longrightarrow \quad
+        x_1 = D_1^{-1}(b_1 - E x_2).
+      \]
+
+      将其代入第二行：
+      \[
+        F x_1 + D_2 x_2 = b_2,
+      \]
+      得到仅关于 $x_2$ 的方程：
+      \[
+        F D_1^{-1}(b_1 - Ex_2) + D_2 x_2 = b_2.
+      \]
+      整理可得:
+      \[
+        \left( D_2 - F D_1^{-1} E \right) x_2 = b_2 - F D_1^{-1} b_1.
+      \]
+      为 Schur complement 系统，其中
+      \[
+        S = D_2 - F D_1^{-1} E
+      \]
+      即为 Schur 补。
+    \item 由于原系统来自五点差分离散，每个网格点最多连接四个邻居，
+      故红黑网格具有如下性质：
+      \begin{itemize}
+        \item 红点只与黑点相邻，
+        \item 黑点也只与红点相邻，
+      \end{itemize}
+
+      Reduced matrix 为
+      \[
+        S = D_2 - F D_1^{-1} E.
+      \]
+      其中 $D_1^{-1}$ 为对角矩阵，因此 $F D_1^{-1} E$ 仅在存在 “黑 → 红 → 黑” 路径时产生非零元。
+      即黑点之间原本没有直接连接，但通过一个公共红点，会产生 fill-in。
+
+      在标准二维网格上，黑点通过中间红点可与最多 8 个黑点连接，因此 reduced system 对应九点差分格式 (9-point stencil)：
+      \[
+        \begin{matrix}
+          \circ & \circ & \circ \\
+          \circ & \bullet & \circ \\
+          \circ & \circ & \circ
+        \end{matrix}
+      \]
+      其中中心为黑点，其余八个为通过红点产生的间接连接。
+      因此,Reduced System 每行最多含 9 个非零元素。
+    \item 由于最多与 8 个黑点连接，再加上自身 1 个对角元，
+      故Reduced system 每行最多 9 个非零项。
+      这证明了 Schur 补在此情形下仍保持稀疏结构。
+  \end{enumerate}
+
+  % 将五点差分视为一个图 $G$：
+  %
+  % - 网格点是图的节点；
+  % - 五点 stencil 给出图中节点之间的边；
+  % - 红黑染色保证每条边都连接一红一黑。
+  %
+  % 消去红点（即计算 Schur 补）对应图论中的：
+  %
+  % \[
+  % \boxed{
+  % \text{对图做节点消去（elimination），在所有“黑–红–黑”路径之间添加新边。}
+  % }
+  % \]
+  %
+  % 因此：
+  %
+  % - 原图中黑点之间没有边；
+  % - 消去红点后，所有共享一个红邻居的黑点之间会新增边；
+  % - 生成最多八个新的邻接点，即形成 9 点 stencil。
+  %
+  % 这正是 sparse matrix 在 Schur 补中产生 fill-in 的图论解释。
+\end{solution}
+
+\begin{problem}\label{pro:2}
+  It was stated in Section~10.3.2 that for some specific matrices the ILU(0) factorization
+  of $A$ can be put in the form
+  \[
+    M = (D - E) D^{-1} (D - F),
+  \]
+  in which $-E$ and $-F$ are the strict lower and upper parts of $A$, respectively.
+
+  \begin{enumerate}
+    \item Characterize these matrices carefully and give an interpretation with respect to their adjacency graphs.
+
+    \item Verify that this is true for standard 5-point matrices associated with any domain $\Omega$.
+
+    \item Is it true for 9-point matrices?
+
+    \item Is it true for the higher level ILU factorizations?
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item
+      \begin{lemma}
+        令 \(A\in\mathbb{R}^{n\times n}\) 且按索引 \(1,2,\dots,n\) 消去。
+        记 \(A=D_A-E_A-F_A\)（其中 \(D_A\) 为原始对角，\(-E_A\) 与 \(-F_A\) 分别为原矩阵的严格下、上三角）。下面三条陈述等价：
+        \begin{enumerate}
+          \item ILU(0) 分解可以写成 $M=(D-E)D^{-1}(D-F)$，其中 $E,E$ 的非零位置与 $E_A,F_A$ 的非零位置一致（即不产生新的 off-diagonal fill）；
+          \item 对所有 \(k\) 及所有 \(i>k,j>k\)，若 \(a_{ik}\neq0\) 且 \(a_{kj}\neq0\) 则 \(a_{ij}\neq0\);
+          \item 把 \(A\) 看作无向带权图 \(G(A)\)，则对每个顶点 \(k\)，其在后序索引集合 \(\{k+1,\dots,n\}\) 中的邻居集合是一个 clique（完全子图）。
+        \end{enumerate}
+      \end{lemma}
+      \begin{proof}
+        (1) \(\Rightarrow\) (2): 若 (2) 不成立，则存在 \(k,i>k,j>k\) 使 \(a_{ik}\neq0,a_{kj}\neq0\) 但 \(a_{ij}=0\)。消去第 \(k\) 步会在位置 \((i,j)\) 引入新的非零 (即fill-in)，这与 ILU(0) 要求保持 \(A\) 的原始稀疏模式矛盾，因此 (1) 不可能成立。
+
+        (2) \(\Rightarrow\) (1): 若对所有此类三元组都满足蕴含，则消去任一 \(k\) 时在后续指标内不会引入新的 off-diagonal 非零。于是 ILU(0) 在整个消去过程中不会产生 off-diagonal fill，所有的消去对角修正可以吸收到对角 \(D\) 中。此时可以取 \(L=D-E\)、\(U=D-F\)，并插入 \(D^{-1}\) 得到所述形式。
+
+        (2) \(\Leftrightarrow\) (3): 直接把非零关系转成图的邻接关系即可：条件 (2) 恰是要求任一被消去顶点的后继邻居两两相连，正是 clique 的定义。
+      \end{proof}
+    \item 考虑二维二维网格上的标准 5-point Laplacian 离散，每个内点与上、下、左、右 4 个邻点相连。
+      其邻接图是规则的二维格点网格，每个内部顶点度为 4（边界处度较少）。
+      % \subsection{自然编号下的分析}
+      采用行主序编号，按行从上到下、行内从左到右编号。考虑一个内点 \(k\) 及其四邻：上（U）、下（D）、左（L）、右（R）。
+      在常见的 5-point 模板中，U 与 L 之间并不直接相连（它们之间是一个对角关系），
+      因此在消去 \(k\) 的时候，U 和 L 之间将产生一个新的非零（fill）。
+      因此在自然编号下，5-point 矩阵会产生 off-diagonal fill，ILU(0) 不等于精确 LU，于是不能写成上式。
+
+      % \subsection{需要注意的特殊情形}
+      尽管自然编号下会产生 fill，但在某些特殊的重排序下（若存在完美消去序列，使得每次消去的后继邻居为 clique），
+      理论上可以避免产生 fill。这需要把二维格点图重排成 chordal 图 —— 对常规矩形网格而言，这通常不可行或代价较高。
+      因此对于“标准 5-point 矩阵”，一般结论为：
+      \begin{itemize}
+        \item 在 1D（tridiagonal）情况下，消去不会产生 fill，ILU(0) 精确等于 LU，形式成立；
+        \item 在常见 2D 自然编号下，5-point 会产生 fill，形式不成立。
+      \end{itemize}
+    \item   9-point stencil 在每个内点还连接四个对角邻点，使得邻接更为密集。在某些情形下，这些额外的边使得消去时原本可能产生的 fill 已经存在于矩阵中，从而 \emph{减少} 额外产生的 fill。但这并不能保证对所有编号、所有区域都成立。
+
+      \begin{itemize}
+        \item 若对每个被消去点，其后继邻居之间的所有必要边都已包含在 9-point 模板中，则可避免新产生的 off-diagonal fill，此时上式成立；
+        \item 若仍有某些后继邻居对在原矩阵中不存在边，消去会产生新的 off-diagonal fill，上式不成立。
+      \end{itemize}
+      因此结论：9-point \emph{有时}可以满足该形式（比 5-point 更有机会），但并不能保证在一般情况下成立；需具体检查稀疏模式与消去序列。
+    \item ILU(k) 允许按 level-of-fill 引入额外非零项以提高近似质量。对于 ILU(k)：
+      \begin{itemize}
+        \item 若仍要求 \(E,F\) 仅为原始 \(A\) 的严格下/上三角（即不扩展模式），则 ILU(k) 通常不能写成 \((D-E)D^{-1}(D-F)\)，因为 ILU(k) 中的 \(L,U\) 会在原模式之外出现非零；
+        \item 若允许把 \(E,F\) 扩展为 ILU(k) 使用的下/上三角模式（即把 \(E,F\) 重定义为包含新增非零的位置），则理论上可以把 ILU(k) 写成类似形式 \(M=(D'-E')D'^{-1}(D'-F')\)，但此时并没有“只增加一条对角”这一存储优势；
+        \item 当 \(k\) 足够大以致 ILU(k) 等价于完全 LU 时，显然存在 LU 的 \(L\) 与 \(U\)，但需要保存完整的 fill-in。
+      \end{itemize}
+
+      综上：原题所强调的“只需额外一条对角线存储”的优点仅在 ILU(0) 且不产生 off-diagonal fill 的特殊情形下存在。
+  \end{enumerate}
+
+  % \section{对更高阶 ILU(k) 的讨论}
+  %
+  % \section{示例：一个 3x3 小矩阵说明 fill-in}
+  % 为直观说明 fill-in 的产生，给出一个 3x3 网格（中心点与四邻的极简例子）或用简单矩阵展示。这里用一个小的代数示例（行主序编号）：
+  %
+  % 设矩阵（按某个局部编号）：
+  % \[
+  %   A=
+  %   \begin{pmatrix}
+  %     4 & -1 & 0\\
+  %     -1 & 4 & -1\\
+  %     0 & -1 & 4
+  %   \end{pmatrix},
+  % \]
+  % 这是一个 1D 三对角矩阵，消去不会产生 off-diagonal fill，ILU(0) 精确等于 LU，可以写成题中形式。
+  %
+  % 再举一个 2D 局部结构示例（中心+上下左右编号）：
+  % 令编号顺序为中心 $k$, 上 $u$, 左 $l$, 右 $r$（只是示意，不完整写出整体矩阵），中心与 u,l,r相连但 u 与 l 不连，则在消去中心时会在 (u,l) 位置产生新的非零 —— 这是 2D 5-point 自然编号常见的 fill-in。
+  %
+  % （读者可自行将上述示意扩展为具体的 5x5 或 9x9 矩阵以做数值实验。）
+  %
+  % \section{结论（答题要点汇总）}
+  % \begin{enumerate}
+  %   \item 满足 $M=(D-E)D^{-1}(D-F)$ 的矩阵，在代数上等价于按消去顺序消元不产生 off-diagonal fill 的矩阵；在图论上等价于对每个被消去顶点，其后继邻居集合构成 clique（与 chordal 图与完美消去序列有关）。
+  %   \item 标准 5-point 矩阵在 2D 自然编号下一般会产生 fill-in，因此通常不能写成该形式（1D tridiagonal 是例外，成立）。
+  %   \item 9-point 模板更密，有时可以包含需要的边而避免新增 fill，但不能保证在所有情况下成立；需具体检查。
+  %   \item 对 ILU(k)（$k>0$），若仍把 $E,F$ 强制为原始矩阵的严格上下三角，则该形式一般不成立；若允许扩展 $E,F$ 到 ILU(k) 模式，则可以写出类似形式，但不再仅仅额外占用一个对角存储。
+  % \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:3}
+  Let $A$ be a pentadiagonal matrix having diagonals in offset positions $-m, -1, 0, 1, m$.
+  The coefficients in these diagonals are all constants: $a$ for the main diagonal and $-1$ for all others.
+  It is assumed that $a \ge \sqrt{8}$. Consider the ILU(0) factorization of $A$ as given in the form (10.20).
+  The elements $d_i$ of the diagonal $D$ are determined by a recurrence of the form (10.19).
+
+  \begin{enumerate}
+    \item Show that
+      \[
+        a^2 < d_i \le a, \qquad i = 1, \ldots, n.
+      \]
+
+    \item Show that $d_i$ is a decreasing sequence. \textit{(Hint: Use induction.)}
+
+    \item Prove that the formal (infinite) sequence defined by the recurrence converges.
+      What is its limit?
+  \end{enumerate}
+
+\end{problem}
+\begin{solution}
+  设 $A$ 为一个五对角矩阵，非零对角线位于偏移 $-m,-1,0,1,m$。主对角元素为常数 $a$，其余四条对角线的元素均为 $-1$。
+  对 $A$ 作 ILU(0) 分解，设分解中对角阵为 $D$，其对角元素记为 $d_i$，它们满足递推关系如下：
+  \begin{align*}
+    &d_1= a,\\
+    &\text{当 }2\le i\le m:\quad d_i= a-\frac{1}{d_{i-1}},\\
+    &\text{当 }i>m:\quad d_i= a-\frac{1}{d_{i-1}}-\frac{1}{d_{i-m}}.
+  \end{align*}
+  \begin{enumerate}
+    \item
+      由递推式可见每步都是从 $a$ 减去正数，因此
+      \[
+        d_i \le a.
+      \]
+      设 $r_1$ 和 $r_2$ 为方程 $L^2-aL+2=0$ 的两个正根，即
+      \[
+        r_1=\frac{a-\sqrt{a^2-8}}{2},\qquad
+        r_2=\frac{a+\sqrt{a^2-8}}{2},
+      \]
+      注意 $0<r_1<r_2$，且 $r_1r_2=2$。我们要证明对任意 $i$ 都有 $d_i>r_1$。
+      先验证基底：$d_1=a>r_2>r_1$，故成立。
+      归纳步：假设对所有 $j<i$ 有 $d_j>r_1$，用此证明 $d_i>r_1$。
+      \begin{itemize}
+        \item 若 $2\le i\le m$，则
+          \[
+            d_i=a-\frac{1}{d_{i-1}}.
+          \]
+          由归纳假设 $d_{i-1}>r_1$，于是 $\dfrac{1}{d_{i-1}}<\dfrac{1}{r_1}$，因此
+          \[
+            d_i>a-\frac{1}{r_1}.
+          \]
+          利用 $r_1$ 满足 $r_1=a-\dfrac{2}{r_1}$，我们有
+          \[
+            a-\frac{1}{r_1}= \bigg(a-\frac{2}{r_1}\bigg)+\frac{1}{r_1}=r_1+\frac{1}{r_1}>r_1,
+          \]
+          因而 $d_i>r_1$。
+
+        \item 若 $i>m$，则
+          \[
+            d_i=a-\frac{1}{d_{i-1}}-\frac{1}{d_{i-m}}.
+          \]
+          由归纳假设 $d_{i-1}>r_1$ 且 $d_{i-m}>r_1$，所以
+          \[
+            \frac{1}{d_{i-1}}+\frac{1}{d_{i-m}}<\frac{1}{r_1}+\frac{1}{r_1}=\frac{2}{r_1}.
+          \]
+          因此
+          \[
+            d_i>a-\frac{2}{r_1}.
+          \]
+          由 $r_1=a-\dfrac{2}{r_1}$ 可直接得出 $a-\dfrac{2}{r_1}=r_1$，于是 $d_i>r_1$。
+      \end{itemize}
+      由此通过归纳可得对任意 $i$ 有 $d_i>r_1$。综上得到严格的不等式
+      \[
+        \;\frac{a-\sqrt{a^2-8}}{2}<d_i\le a\; .
+      \]
+    \item    基底：$d_1=a$, $d_2 = a - \frac{1}{d_1} < a$.\\
+      归纳步：假设 $d_j$ 单调递减，则对 $i+1$ 有
+      \[
+        d_{i+1} = a - \frac{1}{d_i} - \frac{1}{d_{i+1-m}} \le a - \frac{1}{d_{i-1}} - \frac{1}{d_{i-m}} = d_i.
+      \]
+      因此 $d_i$ 是单调递减序列。
+
+    \item 序列有下界且单调递减，故收敛。设极限为 $L>0$，则
+      \[
+        L = a - \frac{2}{L} \quad \Rightarrow \quad L^2 - a L + 2 = 0 \quad \Rightarrow \quad L = \frac{a+\sqrt{a^2-8}}{2}.
+      \]
+  \end{enumerate}
+\end{solution}
 
 \end{document}
