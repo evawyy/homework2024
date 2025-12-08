@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  18 NOV 2025 19:42
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  2 DEC 2025 23:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1155,23 +1155,29 @@ Package fontspec Info: Font family 'STXihei(0)' created for font 'STXihei'
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 (../../.subject) (../.number)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 20.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 20.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 20
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 21
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 32.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
 
 Package fontspec Warning: Font "STFangsong" does not contain requested Script
@@ -1201,34 +1207,93 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 
-LaTeX Warning: Reference `lem:3' on page 1 undefined on input line 33.
+Overfull \hbox (0.52513pt too wide) in paragraph at lines 47--49
+[]\TU/STSong(0)/m/n/12.045 若 $\OML/cmm/m/it/12.045 y[] \OT1/cmr/m/n/12.045 = 0\
+OML/cmm/m/it/12.045 ; x[] \OT1/cmr/m/n/12.045 = 1$\TU/STSong(0)/m/n/12.045 ，|  
+则 两 种 表 示 得 到 的 值 分 别 为 $[][] []$ 和 $[][] []$，|  差 为 $[][] [] \OMS/cmsy/m/n/12.
+045 ^^@
+ []
 
-Missing character: There is no 引 (U+5F15) in font [lmroman8-regular]:mapping=te
-x-text;!
-Missing character: There is no 理 (U+7406) in font [lmroman8-regular]:mapping=te
-x-text;!
 [1
 
 
-] (./Probability6.aux)
+]
+Overfull \hbox (9.96487pt too wide) in paragraph at lines 93--98
+[]\TU/STSong(0)/m/n/12.045 同 理 $\OML/cmm/m/it/12.045 ^^V[] \OMS/cmsy/m/n/12.045
+ ^ \OML/cmm/m/it/12.045 ^^V[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A\OT1/cm
+r/m/n/12.045 ) = \OML/cmm/m/it/12.045 ^^V[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/1
+2.045 A\OT1/cmr/m/n/12.045 ) \OMS/cmsy/m/n/12.045 ^^@ \OT1/cmr/m/n/12.045 (\OML
+/cmm/m/it/12.045 ^^V[] \OMS/cmsy/m/n/12.045 ^^@ \OML/cmm/m/it/12.045 ^^V[]\OT1/
+cmr/m/n/12.045 )[](\OML/cmm/m/it/12.045 A\OT1/cmr/m/n/12.045 ) \OMS/cmsy/m/n/12
+.045 ^^T \OML/cmm/m/it/12.045 ^^V[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A\
+OT1/cmr/m/n/12.045 ) \OMS/cmsy/m/n/12.045 ^^@ []f\OT1/cmr/m/n/12.045 0\OML/cmm/
+m/it/12.045 ; ^^V[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A\OT1/cmr/m/n/12.0
+45 ) \OMS/cmsy/m/n/12.045 ^^@ \OML/cmm/m/it/12.045 ^^V[]\OT1/cmr/m/n/12.045 (\O
+ML/cmm/m/it/12.045 A\OT1/cmr/m/n/12.045 )\OMS/cmsy/m/n/12.045 g \OT1/cmr/m/n/12
+.045 = []\OMS/cmsy/m/n/12.045 f\OML/cmm/m/it/12.045 ^^V[]\OT1/cmr/m/n/12.045 (\
+OML/cmm/m/it/12.045 A\OT1/cmr/m/n/12.045 )\OML/cmm/m/it/12.045 ; ^^V[]\OT1/cmr/
+m/n/12.045 (\OML/cmm/m/it/12.045 A\OT1/cmr/m/n/12.045 )\OMS/cmsy/m/n/12.045 g$\
+TU/STSong(0)/m/n/12.045 。|
+ []
+
+[2]
+Overfull \hbox (50.67194pt too wide) in paragraph at lines 121--123
+[]\TU/STSong(0)/m/n/12.045 设 $\OML/cmm/m/it/12.045 f[]; f[] \OMS/cmsy/m/n/12.04
+5 2 \OML/cmm/m/it/12.045 L; a; b \OMS/cmsy/m/n/12.045 2 \U/msb/m/n/12.045 R\OML
+/cmm/m/it/12.045 ; af[] \OT1/cmr/m/n/12.045 + \OML/cmm/m/it/12.045 bf[]$ \TU/ST
+Song(0)/m/n/12.045 有 意 义。|  则 $[][]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 af
+[] \OT1/cmr/m/n/12.045 + \OML/cmm/m/it/12.045 bf[]\OT1/cmr/m/n/12.045 )(\OML/cm
+m/m/it/12.045 ![]; ![]\OT1/cmr/m/n/12.045 )\OML/cmm/m/it/12.045 ^^U\OT1/cmr/m/n
+/12.045 (\OML/cmm/m/it/12.045 ![]; []  []![]\OT1/cmr/m/n/12.045 ) = \OML/cmm/m/
+it/12.045 a [][] f[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 ![]; ![]\OT1/cmr/
+m/n/12.045 )\OML/cmm/m/it/12.045 ^^U\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 !
+[]; []  []![]\OT1/cmr/m/n/12.045 ) +
+ []
+
+
+Overfull \hbox (9.30197pt too wide) in paragraph at lines 125--129
+\TU/STSong(0)/m/n/12.045 于 是 $\OML/cmm/m/it/12.045 L$ \TU/STSong(0)/m/n/12.045 
+是 $\OMS/cmsy/m/n/12.045 L$\TU/lmr/m/n/12.045 -\TU/STSong(0)/m/n/12.045 系。|  对 于
+ $\OML/cmm/m/it/12.045 A[] \OMS/cmsy/m/n/12.045 ^^B \OML/cmm/m/it/12.045 A[] \O
+MS/cmsy/m/n/12.045 2 A[] ^^B A[]$\TU/STSong(0)/m/n/12.045 ，|  有 $[][] \U/bbm/m/
+n/12 1[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 ![]; ![]\OT1/cmr/m/n/12.045 )
+\OML/cmm/m/it/12.045 ^^U\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 ![]; []  []![
+]\OT1/cmr/m/n/12.045 ) = \U/bbm/m/n/12 1[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12
+.045 ![]\OT1/cmr/m/n/12.045 ) [][] 1\OML/cmm/m/it/12.045 ^^U\OT1/cmr/m/n/12.045
+ (\OML/cmm/m/it/12.045 ![]; []  []![]\OT1/cmr/m/n/12.045 ) =
+ []
+
+
+Overfull \hbox (11.57402pt too wide) in paragraph at lines 165--170
+\TU/STSong(0)/m/n/12.045 只 需 证 $\OML/cmm/m/it/12.045 ^^[ []$ \TU/STSong(0)/m/n/
+12.045 包 含 所 有 有 限 维 柱 集。| $\OML/cmm/m/it/12.045 T[] \OMS/cmsy/m/n/12.045 ^^Z \
+OML/cmm/m/it/12.045 T$ \TU/STSong(0)/m/n/12.045 为 有 限 集。|  对 于 有 限 维 柱 集 有 $[][
+] \OML/cmm/m/it/12.045 A[] \OMS/cmsy/m/n/12.045 ^^B
+ []
+
+
+Overfull \hbox (14.85828pt too wide) in paragraph at lines 170--174
+\TU/STSong(0)/m/n/12.045 只 需 证 $\OML/cmm/m/it/12.045 ^^[ []$ \TU/STSong(0)/m/n/
+12.045 包 含 所 有 可 数 维 柱 集。| $\OML/cmm/m/it/12.045 T[] \OMS/cmsy/m/n/12.045 ^^Z \
+OML/cmm/m/it/12.045 T$ \TU/STSong(0)/m/n/12.045 为 可 数 集。|  由 于 上 述 证 明 可 知，| $[
+][] \OML/cmm/m/it/12.045 A[] \OMS/cmsy/m/n/12.045 ^^B
+ []
+
+[3] [4] (./Probability6.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `Probability6.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33042 strings out of 474773
- 691050 string characters out of 5757725
- 1944839 words of memory out of 5000000
- 54617 multiletter control sequences out of 15000+600000
- 565538 words of font info for 101 fonts, out of 8000000 for 9000
+ 33119 strings out of 474773
+ 694275 string characters out of 5757725
+ 1968839 words of memory out of 5000000
+ 54689 multiletter control sequences out of 15000+600000
+ 565933 words of font info for 104 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 112i,11n,113p,3325b,798s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,9n,113p,3325b,800s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Probability6.pdf (1 page).
+Output written on Probability6.pdf (4 pages).

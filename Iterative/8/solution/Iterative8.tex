@@ -5,6 +5,9 @@
 \newif\ifpreface
 %\prefacetrue
 \input{../../../global/all}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{float}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
@@ -16,6 +19,463 @@
 \maketitle
 \fi
 %from_here_to_type
+\begin{problem}
+  Consider the global self–preconditioned MR iteration algorithm seen in Section~10.5.5.
+  Define the acute angle between two matrices as
+  \[
+    \cos\angle(X,Y) \equiv
+    \frac{\langle X , Y \rangle}{\norm{X}_F \, \norm{Y}_F } .
+  \]
+  \begin{enumerate}
+    \item Following what was done for the (standard) Minimal Residual algorithm seen in Chapter~5,
+      establish that the matrices
+      \[
+        B_k = A M_k,
+        \qquad
+        R_k = I - B_k
+      \]
+      produced by global MR without dropping are such that
+      \[
+        \norm{ R_{k+1} }_F
+        \;\le\;
+        \norm{ R_k }_F \, \sin\angle(R_k , B_k R_k).
+      \]
+    \item Let now \( M_0 = \alpha A^T \) so that \( B_k \) is symmetric for all \( k \)
+      (see Section~10.5.5).
+      Assume that, at a given step \( k \), the matrix \( B_k \) is positive definite.
+      Show that
+      \[
+        \cos\angle(R_k , B_k R_k)
+        \;\ge\;
+        \frac{\lambda_{\min}(B_k)}{\lambda_{\max}(B_k)},
+      \]
+      in which \( \lambda_{\min}(B_k) \) and \( \lambda_{\max}(B_k) \) are, respectively, the smallest and largest eigenvalues of \( B_k \).
+  \end{enumerate}
 
-\end{document}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 在 global MR 的第 $k$ 步中，沿方向 $B_k R_k$ 选取步长 $\alpha$ 更新残量：
+      \begin{equation}\label{eq:update}
+        R_{k+1}=R_k-\alpha B_k R_k.
+      \end{equation}
+      最优步长 $\alpha^\star$ 定义为使 $\norm{R_{k+1}}_F^2$ 最小的实数。写出范数平方并对 $\alpha$ 求导：
+      \begin{align}
+        \norm{R_{k+1}}_F^2 &= \norm{R_k-\alpha B_k R_k}_F^2 \nonumber\\
+        &= \norm{R_k}_F^2 -2\alpha\langle R_k,\,B_k R_k\rangle + \alpha^2\norm{B_k R_k}_F^2.\label{eq:normsq}
+      \end{align}
+      令 $\dfrac{d}{d\alpha}\norm{R_{k+1}}_F^2=0$，得到
+      \begin{equation}\label{eq:alphastar}
+        \alpha^\star=\frac{\langle R_k,\,B_k R_k\rangle}{\norm{B_k R_k}_F^2}.
+      \end{equation}
+      将 (\ref{eq:alphastar}) 代入 (\ref{eq:normsq})，得最小化以后的残量平方：
+      \begin{equation}\label{eq:minres}
+        \begin{aligned}
+          \norm{R_{k+1}}_F^2 &= \norm{R_k}_F^2 -\frac{\langle R_k,\,B_k R_k\rangle^2}{\norm{B_k R_k}_F^2} \\
+          &=\norm{R_k}_F^2\Big(1-\Big(\frac{\langle R_k,\,B_k R_k\rangle}{\norm{R_k}_F\,\norm{B_k R_k}_F}\Big)^2\Big)\\
+          &=\norm{R_k}_F^2\big(1-\cos^2\angle(R_k,\,B_k R_k)\big)\\
+          &=\norm{R_k}_F^2\sin^2\angle(R_k,\,B_k R_k).
+        \end{aligned}
+      \end{equation}
+      注意括号内的分式正是锐角余弦，因此
+      \[
+        \frac{\langle R_k,\,B_k R_k\rangle}{\norm{R_k}_F\,\norm{B_k R_k}_F}
+        = \cos\angle(R_k,\,B_k R_k).
+      \]
+      因此 (\ref{eq:minres}) 可写成
+      \begin{equation}\label{eq:sinrelation}
+        \norm{R_{k+1}}_F
+        = \norm{R_k}_F\,\sqrt{1-\cos^2\angle(R_k,B_k R_k)}
+        = \norm{R_k}_F\,\sin\angle(R_k,B_k R_k),
+      \end{equation}
+      从而得到所需结论：
+      \[
+        \norm{R_{k+1}}_F\le \norm{R_k}_F\,\sin\angle(R_k,B_k R_k).
+      \]
+
+    \item 接下来证明对称正定情形下的角度估计。固定步 $k$，记 $B\equiv B_k$，假设 $B$ 对称正定。对任意矩阵 $X$，有下列两条常用不等式：
+      \begin{equation}\label{eq:rayleigh}
+        \langle X, B X\rangle = \operatorname{tr}(X^T B X) \ge \lambda_{\min}(B)\,\norm{X}_F^2
+      \end{equation}
+      \begin{equation} \label{eq:normbound}
+        \norm{B X}_F \le \norm{B}_2\,\norm{X}_F = \lambda_{\max}(B)\,\norm{X}_F.
+      \end{equation}
+
+      式 (\ref{eq:rayleigh}) 来自于对称矩阵按正交矩阵对角化后对每一行向量分量分别乘以特征值求和的表示；(\ref{eq:normbound}) 则是矩阵谱范数的基本界。
+
+      令 $X=R_k$，把 (\ref{eq:rayleigh}) 与 (\ref{eq:normbound}) 代入余弦的定义：
+      \begin{equation}\label{eq:cosbound}
+        \begin{aligned}
+          \cos\angle(R_k,\,B R_k) &= \frac{\langle R_k,\,B R_k\rangle}{\norm{R_k}_F\,\norm{B R_k}_F} \\
+          &\ge \frac{\lambda_{\min}(B)\,\norm{R_k}_F^2}{\norm{R_k}_F\,(\lambda_{\max}(B)\,\norm{R_k}_F)} = \frac{\lambda_{\min}(B)}{\lambda_{\max}(B)}.
+        \end{aligned}
+      \end{equation}
+      由此得到所需不等式：
+      \begin{equation}\label{eq:final_b}
+        \cos\angle(R_k,\,B_k R_k) \ge \frac{\lambda_{\min}(B_k)}{\lambda_{\max}(B_k)}.
+      \end{equation}
+  \end{enumerate}
+
+\end{solution}
+\begin{problem}
+  In the two-sided version of approximate inverse preconditioners, the option of
+  minimizing
+  \[
+    f(L, U) = \norm{ I - LAU }_F^2
+  \]
+  was mentioned, where $L$ is unit lower triangular and $U$ is upper triangular.
+
+  \begin{enumerate}[label=\alph*.]
+    \item What is the gradient of $f(L, U)$?
+    \item Formulate an algorithm based on minimizing this function globally.
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  固定矩阵 \(A\in\mathbb{R}^{n\times n}\)。定义误差矩阵
+  \[
+    E := I - L A U.
+  \]
+  记 Frobenius 范数为 \(\norm{X}_F^2 = \operatorname{tr}(X^T X)\)。当写到矩阵微分时，使用迹运算的循环性与内积表示
+  \(\langle X, Y\rangle = \operatorname{tr}(X^T Y)\)。
+  \begin{enumerate}
+    \item 目标函数
+      \[
+        f(L,U) = \norm{E}_F^2 = \operatorname{tr}(E^T E).
+      \]
+
+      对 \(L\) 的变分:\\
+      令 \(L\mapsto L+\mathrm{d}L\)，有
+      \[
+        \mathrm{d}E = -\,\mathrm{d}L \,A U.
+      \]
+      因此
+      \[
+        \mathrm{d}f = 2\operatorname{tr}(E^T \mathrm{d}E)
+        = -2\operatorname{tr}\big(E^T (\mathrm{d}L \,A U)\big).
+      \]
+      利用迹的循环性
+      \[
+        \mathrm{d}f = -2\operatorname{tr}\big((A U E^T)\,\mathrm{d}L\big).
+      \]
+      由内积识别 \(\mathrm{d}f = \langle \nabla_L f,\,\mathrm{d}L\rangle\)，因此无结构约束下的梯度为
+      \[
+        \nabla_L f = -2\,(A U E^T)^T = -2\,E U^T A^T.
+      \]
+      等价写法代回 \(E=I-LAU\)：
+      \[
+        \quad \nabla_L f = 2\,(L A U - I)\,U^T A^T \quad
+      \]
+
+      对 \(U\) 的变分:\\
+      令 \(U\mapsto U+\mathrm{d}U\)保持 \(L\) 固定，有
+      \[
+        \mathrm{d}E = -\,L A \,\mathrm{d}U,
+      \]
+      从而
+      \[
+        \mathrm{d}f = 2\operatorname{tr}(E^T \mathrm{d}E)
+        = -2\operatorname{tr}\big(E^T (L A \,\mathrm{d}U)\big).
+      \]
+      再次利用迹的循环性：
+      \[
+        \mathrm{d}f = -2\operatorname{tr}\big((A^T L^T E)\,\mathrm{d}U\big).
+      \]
+      由此得到无结构约束下的梯度
+      \[
+        \nabla_U f = -2\,A^T L^T E.
+      \]
+      等价写法：
+      \[
+        \quad \nabla_U f = 2\,A^T L^T (L A U - I) \quad
+      \]
+    \item   在下面算法描述中，记投影算子为 \(\mathcal{P}_{\mathrm{L}}(\cdot)\) 与 \(\mathcal{P}_{\mathrm{U}}(\cdot)\)。
+      下面给出两类常用且实用的算法思路：\emph{交替最小化} 与 \emph{投影梯度法}。
+      二者均会保持 \(L\)、\(U\) 的结构约束，并可扩展到带稀疏模式限制的情形。
+
+      方法一：交替最小化:\\
+      思路：固定 \(U\) 求关于 \(L\) 的最佳解，固定 \(L\) 求关于 \(U\) 的最佳解，交替进行直到收敛。
+
+      无结构时，将梯度设为零得到正规方程：
+      \[
+        (L A U - I)\,U^T A^T = 0 \quad\Longrightarrow\quad
+        L \,(A U U^T A^T) = U^T A^T.
+      \]
+      同理对 \(U\)：
+      \[
+        A^T L^T L A \, U = A^T L^T.
+      \]
+
+      实际实现时，为保持三角结构，对上述“原始解”需要做结构投影并避免直接求逆以保证数值稳定——建议采用按列或按行逐列最小二乘
+      并在每列/每行上只更新允许的自由分量。
+
+      下面是伪代码：
+      \begin{algorithm}[H]
+        \caption{交替最小化构造 \(L,U\)}
+        \begin{algorithmic}[1]
+          \State 初始化 \(L^{(0)}=I,\; U^{(0)}=I\) 或其它符合结构的初值
+          \For{$k=0,1,2,\dots$}
+          \State 固定 \(U^{(k)}\)，解关于 \(L\) 的正规方程
+          \[
+            L\, M_{U^{(k)}} = B_{U^{(k)}}
+          \]
+          其中 \(M_U = A U U^T A^T,\; B_U = U^T A^T\)
+          \State 将解做结构投影： \(L^{(k+1)} = \mathcal{P}_{\mathrm{unit\_lower}}(L_{\rm raw})\)
+          \State 固定 \(L^{(k+1)}\)，解关于 \(U\) 的正规方程
+          \[
+            (A^T L^{(k+1)T} L^{(k+1)} A)\, U = A^T L^{(k+1)T}
+          \]
+          \State 将解做结构投影： \(U^{(k+1)} = \mathcal{P}_{\mathrm{upper}}(U_{\rm raw})\)
+          \State 若 \(\norm{I - L^{(k+1)} A U^{(k+1)}}_F\) 小于容忍度则停止
+          \EndFor
+        \end{algorithmic}
+      \end{algorithm}
+
+      实现要点:\\
+      \begin{itemize}
+        \item 不要直接求大矩阵的逆，优先用分解或逐列最小二乘以保证稳定性。
+        \item 若希望保持稀疏模板，则在求解子问题时仅解对应自由未知量，其他位置固定为零。
+        \item 交替最小化每一步通常能显著降低目标，但可能收敛到局部极小点。
+      \end{itemize}
+
+      方法二：投影梯度法:\\
+      思路：利用前面得到的梯度，按投影梯度方向更新 \(L\)、\(U\)，并在每步后投影回结构域。
+
+      伪代码如下：
+
+      \begin{algorithm}[H]
+        \caption{投影梯度构造 \(L, U\)}
+        \begin{algorithmic}[1]
+          \State 初始化 \(L^{(0)}\)，\(U^{(0)}\)
+
+          \For{$k=0,1,2,\dots$}
+
+          \State 计算无结构梯度
+          \[
+            G_L = \nabla_L f(L^{(k)},U^{(k)}) = -2\, E^{(k)} U^{(k)T} A^T,
+            \qquad
+            G_U = \nabla_U f(L^{(k)},U^{(k)}) = -2\, A^T L^{(k)T} E^{(k)},
+          \]
+          其中 \(E^{(k)} = I - L^{(k)} A U^{(k)}\)
+
+          \State 投影梯度到自由度：
+          \[
+            \tilde G_L = \mathcal{P}_{\mathrm{strict\_lower}}(G_L),
+            \qquad
+            \tilde G_U = \mathcal{P}_{\mathrm{upper}}(G_U)
+          \]
+
+          \State 步长选择得到 \(\alpha_k,\ \beta_k\)
+
+          \State 更新并投影结构：
+          \[
+            \tilde L = L^{(k)} - \alpha_k \tilde G_L,
+            \qquad
+            L^{(k+1)} = \mathcal{P}_{\mathrm{unit\_lower}}(\tilde L)
+          \]
+          \[
+            \tilde U = U^{(k)} - \beta_k \tilde G_U,
+            \qquad
+            U^{(k+1)} = \mathcal{P}_{\mathrm{upper}}(\tilde U)
+          \]
+
+          \State 若 \( \norm{ I - L^{(k+1)} A U^{(k+1)} }_F \) 小于阈值则停止
+
+          \EndFor
+        \end{algorithmic}
+      \end{algorithm}
+
+      \paragraph{实现要点}
+      \begin{itemize}
+        \item 步长可以采用简单的常数步长，也可以做单变量线搜索或最速下降以加速收敛。
+        \item 投影操作非常简单：对 \(L\) 将上三角清零并把主对角置为 1；对 \(U\) 将下三角清零。
+        \item 若需要稀疏模式限制，则在投影时同时把不在模式上的元素置零。
+      \end{itemize}
+
+      数值稳定性与实际注意事项:\\
+      \begin{itemize}
+        \item 在正规方程中出现对称正定矩阵时，优先使用 Cholesky 分解而非直接求逆。
+        \item 对于大型稀疏问题，应采用逐列/逐行局部最小二乘来保持稀疏性和数值稳定性。
+        \item 交替最小化通常收敛较快，但可能陷入局部最优；投影梯度法更简单、更灵活，便于加入正则化或稀疏约束。
+        \item 若对目标函数有额外权重或只在给定模式上最小化，在梯度与正规方程中只保留对应自由位置项。
+      \end{itemize}
+      %
+      % \section*{总结（要点）}
+      % \begin{itemize}
+      %   \item 梯度（无结构形式）：
+      %     \[
+      %       \nabla_L f = -2\,E U^T A^T = 2(L A U - I)\,U^T A^T,
+      %       \qquad
+      %       \nabla_U f = -2\,A^T L^T E = 2 A^T L^T (L A U - I).
+      %     \]
+      %   \item 常见全局最小化方法：交替最小化（每步解关于一个变量的最小二乘并投影结构）与投影梯度法；实际实现时需注意数值稳定性与稀疏模式约束。
+      % \end{itemize}
+  \end{enumerate}
+\end{solution}
+\begin{problem}
+  With the standard splitting \( A = D - E - F \), in which \( D \) is the diagonal of \( A \)
+  and \( -E, -F \) its lower- and upper-triangular parts, respectively, we associate the factored
+  approximate inverse factorization
+  \begin{equation}
+    (I + E D^{-1}) \, A \, (I + D^{-1} F) = D + R.
+    \tag{10.85}
+  \end{equation}
+  \begin{enumerate}
+    \item Determine \( R \) and show that it consists of second–order terms, i.e., terms involving
+      products of at least two matrices from the pair \( E, F \).
+    \item Now use the previous approximation for \( D + R \equiv D_1 - E_1 - F_1 \),
+      \[
+        (I + E_1 D^{-1}_1)(D + R)(I + D^{-1}_1 F_1) = D_1 + R_1.
+      \]
+      Show how the approximate inverse factorization (10.85) can be improved using this
+      new approximation. What is the order of the resulting approximation?
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  设方阵 $A$ 的标准分裂为
+  \[
+    A = D - E - F,
+  \]
+  其中 $D$ 为 $A$ 的对角矩阵，$-E$ 为 $A$ 的严格下三角部分，$-F$ 为 $A$ 的严格上三角部分。考察近似逆因式分解
+  \[
+    (I+E D^{-1})\,A\,(I+D^{-1}F)=D+R.
+  \]
+  % 要求：
+  % \begin{enumerate}
+  %   \item 明确写出 $R$ 并说明其每一项至少包含两个（或更多）来自 $\{E,F\}$ 的因子；
+  %   \item 令 $D+R \equiv D_1 - E_1 - F_1$ 为其标准分裂，并对 $D+R$ 再做同样的近似：
+  %     \[
+  %       (I+E_1 D_1^{-1})(D+R)(I+D_1^{-1}F_1) = D_1 + R_1,
+  %     \]
+  %     说明由此得到的近似在阶数上如何改进，并给出范数意义下的估计（即 $R_1$ 相对于 $E,F$ 的量级）。
+  % \end{enumerate}
+
+  \begin{enumerate}
+    \item 把左边逐步展开。首先用 $A=D-E-F$ 得
+      \[
+        (I+E D^{-1})(D-E-F).
+      \]
+      按项展开并利用 $E D^{-1}D = E$：
+      \begin{align*}
+        (I+E D^{-1})(D-E-F)
+        &= (D-E-F) + E D^{-1}(D-E-F) \\
+        &= D - E - F + E - E D^{-1}E - E D^{-1}F \\
+        &= D - F - E D^{-1}E - E D^{-1}F.
+      \end{align*}
+      于是
+      \[
+        (I+E D^{-1})A = D - F - E D^{-1}E - E D^{-1}F.
+      \]
+
+      再右乘 $(I + D^{-1}F)$：
+      \begin{align*}
+        &(D - F - E D^{-1}E - E D^{-1}F)(I + D^{-1}F) \\
+        ={}&(D - F - E D^{-1}E - E D^{-1}F) \\
+        &\quad + (D - F - E D^{-1}E - E D^{-1}F)D^{-1}F.
+      \end{align*}
+
+      计算第二个括号的四项，逐项乘以 $D^{-1}F$：
+      \[
+        D D^{-1}F = F,
+        \qquad
+        - F D^{-1}F,
+        \qquad
+        - (E D^{-1}E)D^{-1}F,
+        \qquad
+        - (E D^{-1}F)D^{-1}F.
+      \]
+
+      把这些项代回并合并同类项，因此可写成
+      \[
+        (I+E D^{-1})A(I+D^{-1}F) = D + R,
+      \]
+      其中
+      \begin{equation}\label{eq:R_full}
+        \begin{aligned}
+          R &= -\,E D^{-1}E \;-\; E D^{-1}F \;-\; F D^{-1}F \\
+          &\quad -\, (E D^{-1}E) D^{-1}F \;-\; (E D^{-1}F) D^{-1}F.
+        \end{aligned}
+      \end{equation}
+
+      在表达式 \eqref{eq:R_full} 中，每一项都至少包含两个来自 $\{E,F\}$ 的因子：
+      \begin{itemize}
+        \item $E D^{-1}E$ 包含两个 $E$；
+        \item $E D^{-1}F$ 包含一个 $E$ 和一个 $F$；
+        \item $F D^{-1}F$ 包含两个 $F$；
+        \item $(E D^{-1}E) D^{-1}F$ 包含至少三个，其中两个 $E$ 和一个 $F$；
+        \item $(E D^{-1}F) D^{-1}F$ 包含至少三个，其中一个 $E$ 和两个 $F$。
+      \end{itemize}
+      因此 $R$ 的项都是关于 $E,F$ 的 \emph{二阶或更高阶} 项。通常在近似中我们把主要二阶项取出，把后两项视为更高阶小量。
+    \item   令
+      \[
+        D + R \equiv D_1 - E_1 - F_1
+      \]
+      为 $D+R$ 的标准分裂，$D_1$ 为对角线，$-E_1$ 为严格下三角，$-F_1$ 为严格上三角。对其应用同样的构造：
+      \[
+        (I+E_1 D_1^{-1})(D+R)(I+D_1^{-1}F_1) = D_1 + R_1.
+      \]
+
+      按照第一部分推导的结构，$R_1$ 由 $E_1, F_1$ 的二阶及更高阶项构成；特别地
+      \[
+        R_1 = - E_1 D_1^{-1} E_1 - E_1 D_1^{-1} F_1 - F_1 D_1^{-1} F_1 + \text{更高阶项}.
+      \]
+
+      为给出更精确的“阶”概念，我们使用某个矩阵范数 $\norm{\cdot}$，例如算子范数或 Frobenius 范数；所有范数在有限维下等价，故结论与范数选择无关。
+      假设 $D$ 是可逆的且 $D_1$ 与 $D$ 等价，即对角元无病态变化，存在常数 $C_D$ 使得 $\norm{D^{-1}},\norm{D_1^{-1}}\le C_D$。
+
+      记 $S:= E+F$，则第一轮展开中主要二阶项满足形式上
+      \[
+        R = \mathcal{O}(S^2),
+      \]
+      即存在常数 $C$，依赖于 $\norm{D^{-1}}$，使得当 $\norm{S}$ 小时
+      \[
+        \norm{R} \le C \norm{S}^2.
+      \]
+      这是因为每一项例如 $\norm{E D^{-1}F}\le \norm{E}\,\norm{D^{-1}}\,\norm{F} \le \norm{D^{-1}}\norm{E}\,\norm{F}$，类似地对其它项。
+
+      由定义 $E_1, F_1$ 是 $D+R$ 的非对角部分，因此其量级与 $R$ 同阶：
+      \[
+        \norm{E_1} + \norm{F_1} = \mathcal{O}(\norm{R}) = \mathcal{O}(\norm{S}^2).
+      \]
+      于是第二轮残差 $R_1$，它至少是 $E_1,F_1$ 的二阶满足
+      \[
+        \norm{R_1} \le C' \big(\norm{E_1} + \norm{F_1}\big)^2
+        = \mathcal{O}\big(\norm{S}^4\big),
+      \]
+      其中常数 $C'$ 依赖于 $\norm{D_1^{-1}}$ 等但与 $S$ 无关。换言之，第二轮的残差在范数意义下为原始非对角量 $S$ 的 \emph{四阶}。
+
+      因此通过对 $D+R$ 再做一次近似因式化，残差从 $\mathcal{O}(S^2)$ 提升到 $\mathcal{O}(S^4)$。
+
+      % \subsection*{注：迭代改进的规律}
+      % 由上面的估计可见，如果继续对 $D_1 + R_1$ 再作类似分裂并近似，非对角量的量级会呈现指数收缩：每次迭代残差阶数大致翻倍（在范数很小时可以近似认为阶数平方）。因此这是一种类似 \emph{递归细化} 的过程，每次迭代将误差的量级大幅降低（在 $S$ 很小的情形尤其有效）。
+      一些说明：
+      \begin{itemize}
+        \item 在实际数值算法里常把 $(I+E D^{-1})$ 与 $(I+D^{-1}F)$ 视为稀疏的近似因子，例如只保持某些带宽或模式，这样得到的 $R$ 既小又稀疏结构可控，以用于构造预条件子。
+        \item 以上阶数估计是基于小量假设，如$\norm{E}+\norm{F}$ 足够小，或 $D$ 主导矩阵，若 $E,F$ 不小则不能用此阶次语言描述收敛性。
+        \item 如果想要更精细的展开，可以把式 \(\, (I+E D^{-1})A(I+D^{-1}F)\,\) 按幂级数或 Neumann 展开系统地截断，以得到更高阶的显式项。
+      \end{itemize}
+  \end{enumerate}
+
+  % \section{第一部分：展开并求出 $R$}
+  %
+  % \section{第二部分：对 $D+R$ 再做相同近似并估计阶数}
+  %
+  % \section{结论（简短版）}
+  % \begin{enumerate}
+  %   \item 明确写出
+  %     \[
+  %       R = - E D^{-1}E - E D^{-1}F - F D^{-1}F - (E D^{-1}E) D^{-1}F - (E D^{-1}F) D^{-1}F,
+  %     \]
+  %     并可见 $R$ 中每项至少含两个来自 $\{E,F\}$ 的因子，因此 $R=\mathcal{O}((E+F)^2)$。
+  %   \item 若对 $D+R$ 再做相同近似并记其非对角部分为 $E_1,F_1$，则 $E_1,F_1=\mathcal{O}((E+F)^2)$，从而新残差 $R_1=\mathcal{O}((E+F)^4)$。即残差阶数由二阶提升为四阶。
+  % \end{enumerate}
+  %
+  % \bigskip
+  % \noindent 若你希望我：
+  % \begin{itemize}
+  %     \item 把此文档进一步改成课堂作业格式（例如加入 \verb|\begin{proof}| 环境、习题编号、参考文献）；
+  %   \item 或把“阶数估计”写成更为严格的引理并给出常数界的具体值（需要对 $D$ 的对角元下界作出假设）；
+  %   \item 或把推导转换成英文版本；
+  % \end{itemize}
+\end{solution}
+
 \end{document}

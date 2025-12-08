@@ -1,0 +1,210 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\usepackage{tabularray}
+\usepackage{titlesec}
+\usepackage{setspace}
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+
+\title{学科英文大全及易混淆学科词汇}
+\author{}
+\date{}
+
+\section*{一、自然科学 Natural Sciences}
+\begin{itemize}
+  \item Mathematics 数学
+  \item Physics 物理
+  \item Chemistry 化学
+  \item Biology 生物
+  \item Geology 地质学
+  \item Astronomy 天文学
+  \item Ecology 生态学
+  \item Environmental Science 环境科学
+  \item Oceanography 海洋学
+  \item Meteorology 气象学
+\end{itemize}
+
+\section*{二、工程与技术 Engineering \& Technology}
+\begin{itemize}
+  \item Computer Science 计算机科学
+  \item Software Engineering 软件工程
+  \item Information Technology (IT) 信息技术
+  \item Electrical Engineering 电气工程
+  \item Mechanical Engineering 机械工程
+  \item Civil Engineering 土木工程
+  \item Chemical Engineering 化学工程
+  \item Biomedical Engineering 生物医学工程
+  \item Aerospace Engineering 航空航天工程
+  \item Materials Science 材料科学
+  \item Industrial Engineering 工业工程
+\end{itemize}
+
+\section*{三、医学与健康科学 Medical \& Health Sciences}
+\begin{itemize}
+  \item Medicine 医学
+  \item Nursing 护理学
+  \item Pharmacy 药学
+  \item Dentistry 牙医学
+  \item Public Health 公共卫生
+  \item Psychology 心理学
+  \item Neuroscience 神经科学
+  \item Rehabilitation Science 康复科学
+  \item Nutrition Science 营养学
+\end{itemize}
+
+\section*{四、社会科学 Social Sciences}
+\begin{itemize}
+  \item Economics 经济学
+  \item Sociology 社会学
+  \item Political Science 政治学
+  \item Anthropology 人类学
+  \item Education 教育学
+  \item Law / Legal Studies 法学
+  \item International Relations 国际关系
+  \item Public Administration 公共管理
+  \item Linguistics 语言学
+  \item Communication Studies 传播学
+\end{itemize}
+
+\section*{五、人文学科 Humanities}
+\begin{itemize}
+  \item History 历史
+  \item Philosophy 哲学
+  \item Literature 文学
+  \item Art History 艺术史
+  \item Religious Studies 宗教学
+  \item Cultural Studies 文化研究
+  \item Classics 古典学
+\end{itemize}
+
+\section*{六、艺术与创意 Arts \& Creative Studies}
+\begin{itemize}
+  \item Fine Arts 美术
+  \item Design 设计
+  \item Music 音乐
+  \item Dance 舞蹈
+  \item Film Studies 电影学
+  \item Theater / Drama 戏剧
+  \item Architecture 建筑学
+\end{itemize}
+
+\section*{七、商科 Business \& Management}
+\begin{itemize}
+  \item Business Administration 工商管理
+  \item Accounting 会计
+  \item Finance 金融
+  \item Marketing 市场营销
+  \item Management 管理学
+  \item Human Resource Management 人力资源管理
+  \item Logistics / Supply Chain Management 物流/供应链管理
+  \item International Business 国际商务
+\end{itemize}
+
+\section*{八、交叉领域 Interdisciplinary Fields}
+\begin{itemize}
+  \item Data Science 数据科学
+  \item Artificial Intelligence 人工智能
+  \item Cognitive Science 认知科学
+  \item Statistics 统计学
+  \item Biotechnology 生物技术
+  \item Environmental Engineering 环境工程
+  \item Urban Studies 城市研究
+  \item Gender Studies 性别研究
+\end{itemize}
+
+\newpage
+\section*{易混淆学科英文词汇整理}
+
+\subsection*{1. Psychology（心理学）}
+\begin{tblr}{vlines,hlines}
+  单词 & 中文 & 区别 \\
+  psychology & 心理学 & 研究正常人的心理活动 \\
+  psychiatry & 精神病学 & 医学领域，可开药和治疗精神疾病 \\
+  psychic & 通灵的 & 完全不属于科学领域 \\
+\end{tblr}
+%
+\subsection*{2. Linguistics（语言学）}
+\begin{tblr}{hlines,vlines}
+  linguistics & 语言学 & 学科本身 \\
+  linguist & 语言学家／多语者 & 指人 \\
+\end{tblr}
+
+\subsection*{3. Mathematics（数学）}
+\begin{tblr}{hlines,vlines}
+  mathematics & 数学 & 学科 \\
+  mathematician & 数学家 & 人 \\
+  matrix & 矩阵 & 常被听力混淆为数学家（mathematician） \\
+\end{tblr}
+
+\subsection*{4. Statistics（统计学）}
+\begin{tblr}{hlines,vlines}
+  statistics & 统计学 & 学科，复数形式 \\
+  statistic & 一条统计数据 & 单数名词 \\
+\end{tblr}
+
+\subsection*{5. Geology vs Geography}
+\begin{tblr}{hlines,vlines}
+  geology & 地质学 & 研究岩石与地球结构 \\
+  geography & 地理学 & 研究地形、人口、位置 \\
+\end{tblr}
+
+\subsection*{6. Astronomy vs Astrology}
+\begin{tblr}{hlines,vlines}
+  astronomy & 天文学 & 科学领域 \\
+  astrology & 占星术 & 伪科学／文化活动 \\
+\end{tblr}
+
+\subsection*{7. Pharmacy（药学）}
+\begin{tblr}{hlines,vlines}
+  pharmacy & 药学／药店 & 学科或地点 \\
+  pharmacist & 药剂师 & 职业 \\
+  farm & 农场 & 听力易混 \\
+\end{tblr}
+
+\subsection*{8. Sociology（社会学）}
+\begin{tblr}{hlines,vlines}
+  sociology & 社会学 & 学科 \\
+  social & 社会的 & 形容词 \\
+  socialize & 社交 & 动词 \\
+\end{tblr}
+
+\subsection*{9. Philosophy（哲学）}
+\begin{tblr}{hlines,vlines}
+  philosophy & 哲学 & 学科 \\
+  philistine & 庸俗的人 & 意义完全不同，但拼写相似 \\
+\end{tblr}
+
+\subsection*{10. Architecture vs Archaeology}
+\begin{tblr}{hlines,vlines}
+  architecture & 建筑学 & 设计建筑物 \\
+  archaeology & 考古学 & 研究古代遗迹 \\
+\end{tblr}
+\section*{科研/学术常用“缺乏”英文表达（含例句）}
+
+\begin{tblr}{
+    colspec = {Q[2.5cm] Q[2cm] Q[3.5cm] Q[6cm]},
+    hlines, vlines
+  }
+  英文 & 词性 & 中文及使用场景 & 例句 \\
+  lack & 名词 / 动词 & 缺乏，通用，可用于证据、经验、资源等 & There is a lack of data to support the hypothesis. （缺乏数据来支持假设） \\
+  shortage & 名词 & 缺乏，多用于资源、物资、能源等 & The region suffers from a shortage of clean water. （该地区缺乏清洁水源） \\
+  deficiency & 名词 & 不足或缺陷，多用于营养、健康或性能方面 & Vitamin D deficiency can lead to bone problems. （缺乏维生素D可能导致骨骼问题） \\
+  insufficient & 形容词 & 不足、不够，常用于数量、能力或条件不足 & The evidence is insufficient to draw conclusions. （证据不足以得出结论） \\
+  absence & 名词 & 缺少、没有，强调某物完全不存在 & The study notes the absence of previous research on this topic. （研究指出此前没有相关研究） \\
+  dearth & 名词 & 缺乏、稀缺，书面或正式语气，多用于文学或学术写作 & There is a dearth of literature on this rare disease. （关于这种罕见疾病的文献非常少） \\
+\end{tblr}
+\end{document}

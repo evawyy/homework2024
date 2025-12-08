@@ -2,8 +2,8 @@ This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded forma
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**quiz3.tex
-(./quiz3.tex
+**ans3.tex
+(./ans3.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -198,8 +198,8 @@ Package fontspec Info: Font family 'FandolSong-Regular(0)' created for font
 (fontspec)             <->"[FandolKai-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
 
-No file quiz3.aux.
-\openout1 = `quiz3.aux'.
+No file ans3.aux.
+\openout1 = `ans3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
@@ -320,19 +320,22 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 15.
 [1
 
-] [2] [3] [4] (./quiz3.aux)
+]
+Missing character: There is no ≠ (U+2260) in font [lmroman12-regular]:mapping=t
+ex-text;!
+[2] [3] (./ans3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5379 strings out of 474773
- 164683 string characters out of 5757725
- 1925839 words of memory out of 5000000
- 27529 multiletter control sequences out of 15000+600000
- 559684 words of font info for 59 fonts, out of 8000000 for 9000
+ 5538 strings out of 474773
+ 176156 string characters out of 5757725
+ 1936839 words of memory out of 5000000
+ 27687 multiletter control sequences out of 15000+600000
+ 559692 words of font info for 60 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 74i,6n,81p,292b,259s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,6n,81p,291b,259s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on quiz3.pdf (4 pages).
+Output written on ans3.pdf (3 pages).

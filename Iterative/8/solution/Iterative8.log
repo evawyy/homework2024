@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  28 NOV 2025 19:23
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.4)  4 DEC 2025 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**English1.tex
-(./English1.tex
+**Iterative8.tex
+(./Iterative8.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -966,98 +966,388 @@ Package: xeCJK-listings 2022/08/05 v3.9.1 xeCJK patch file for listings
 )
 \c@problem=\count386
 )
-(../../../global/me) (../../../global/commands) (../../localcommands))
-(./English1.aux)
-\openout1 = `English1.aux'.
+(../../../global/me) (../../../global/commands) (../../localcommands
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-euclide.sty
+2024/02/04 5.06c tkz-euclide.sty
+Package: tkz-euclide  2024/02/04 5.06c for pure Euclidean Geometry 
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryangles.code.tex
+File: tikzlibraryangles.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+code.tex
+File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\arrowsize=\dimen309
+))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen310
+\pgfarrowlength=\dimen311
+\pgfarrowwidth=\dimen312
+\pgfarrowlinewidth=\dimen313
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarybackgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@layerbox@background=\box72
+\pgf@layerboxsaved@background=\box73
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
+s.code.tex
+\pgfdecoratedcompleteddistance=\dimen314
+\pgfdecoratedremainingdistance=\dimen315
+\pgfdecoratedinputsegmentcompleteddistance=\dimen316
+\pgfdecoratedinputsegmentremainingdistance=\dimen317
+\pgf@decorate@distancetomove=\dimen318
+\pgf@decorate@repeatstate=\count387
+\pgfdecorationsegmentamplitude=\dimen319
+\pgfdecorationsegmentlength=\dimen320
+)
+\tikz@lib@dec@box=\box74
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.markings.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.markings.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathreplacing.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathreplacing.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.shapes.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.shapes.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.text.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.text.code.tex
+\pgf@lib@dec@text@box=\box75
+)
+\tikz@lib@dec@te@box=\box76
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathmorphing.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathmorphing.code.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryintersections.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryinterse
+ctions.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
+e.tex)
+\pgf@intersect@solutions=\count388
+))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymath.code.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryfpu.code.tex)
+\tikz@math@for@depth=\count389
+\tikz@math@dimen=\dimen321
+\tikz@math@toks=\toks44
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmar
+ks.code.tex
+File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryquotes.code.tex
+File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarythrough.code.tex
+File: tikzlibrarythrough.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xfp/xfp.sty
+Package: xfp 2024-02-18 L3 Floating point unit
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xpatch/xpatch.sty
+Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
+)
+\tkzRadius=\dimen322
+\tkzLength=\dimen323
+\tkz@radi=\dimen324
+\tkz@ax=\dimen325
+\tkz@ay=\dimen326
+\tkz@bx=\dimen327
+\tkz@by=\dimen328
+\tkz@cx=\dimen329
+\tkz@cy=\dimen330
+\tkz@dx=\dimen331
+\tkz@dy=\dimen332
+\tkz@cntmk=\count390
+
+Local configuration file tkz-euclide.cfg found and used
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-euclide.cfg
+2024/02/04 5.06c tkz-euclide.cfg
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-tools-eu-base.tex
+2024/02/04 5.06c tkz-tools-eu-base.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-tools-eu-utilitie
+s.tex
+2024/02/04 5.06c tkz-tools-eu-utilities.tex
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-tools-eu-BB.tex
+2024/02/04 5.06c tkz-obj-eu-BB.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-grids.tex
+2024/02/04 5.06c tkz-obj-eu-grids.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-lib-eu-marks.tex
+2024/02/04 5.06c tkz-lib-eu-marks.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-tools-eu-text.tex
+2024/02/04 5.06c tkz-tools-eu-text.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-lib-eu-shape.tex
+2024/02/04 5.06c tkz-lib-eu-shape.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-axesmin.te
+x
+2024/02/04 5.06c tkz-obj-eu-axesmin
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-tools-eu-colors.t
+ex
+2024/02/04 5.06c tkz-tools-eu-colors
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-points.tex
+2024/02/04 5.06c tkz-obj-eu-points.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-points.te
+x
+2024/02/04 5.06c tkz-draw-eu-points.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-points.tex
+2024/02/04 5.06c tkz-obj-eu-points.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-points-by.
+tex
+2024/02/04 5.06c tkz-tools-eu-points-by.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-tools-eu-math.tex
+2024/02/04 5.06c tkz-tools-eu-math.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-tools-eu-intersec
+tions.tex
+2024/02/04 5.06c tkz-tools-eu-intersections.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-points-wit
+h.tex
+2024/02/04 5.06c tkz-obj-eu-points-with.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-points-spc
+.tex
+2024/02/04 5.06c tkz-obj-el-points.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-tools-eu-angles.t
+ex
+2024/02/04 5.06c tkz-tools-eu-angles.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-circles.te
+x
+2024/02/04 5.06c tkz-obj-eu-circles.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-circles-by
+.tex
+2024/02/04 5.06c tkz-obj-eu-circles.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-points-rnd
+.tex
+2024/02/04 5.06c tkz-obj-eu-points-rnd.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-lines.tex
+2024/02/04 5.06c tkz-obj-eu-lines.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-polygons.t
+ex
+2024/02/04 5.06c tkz-obj-eu-polygons.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-obj-eu-triangles.
+tex
+2024/02/04 5.06c tkz-obj-eu-triangles.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-lines.tex
+2024/02/04 5.06c tkz-obj-eu-draw-lines.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-circles.t
+ex
+2024/02/04 5.06c tkz-obj-eu-draw-circles.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-ellipses.
+tex
+2024/02/04 5.06c tkz-obj-eu-draw-ellipses.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-polygons.
+tex
+2024/02/04 5.06c tkz-obj-eu-polygons.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-angles.te
+x
+2024/02/04 5.06c tkz-tool-eu-angles.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-sectors.t
+ex
+2024/02/04 5.06c tkz-obj-eu-sectors.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-compass.t
+ex
+2024/02/04 5.06c tkz-obj-eu-compass.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-show.tex
+2024/02/04 5.06c tkz-obj-eu-show.tex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-protracto
+r.tex
+2024/02/04 5.06c tkz-obj-eu-protractor.tex
+)))) (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count391
+\float@exts=\toks45
+\float@box=\box77
+\@float@everytoks=\toks46
+\@floatcapt=\box78
+)
+\@float@every@algorithm=\toks47
+\c@algorithm=\count392
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count393
+\c@ALG@rem=\count394
+\c@ALG@nested=\count395
+\ALG@tlm=\skip68
+\ALG@thistlm=\skip69
+\c@ALG@Lnr=\count396
+\c@ALG@blocknr=\count397
+\c@ALG@storecount=\count398
+\c@ALG@tmpcounter=\count399
+\ALG@tmplength=\skip70
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (./Iterative8.aux)
+\openout1 = `Iterative8.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 9.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 9.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 9.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 9.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 9.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 9.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 9.
-LaTeX Font Info:    Redeclaring math accent \check on input line 9.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 9.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 9.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 9.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 9.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 11.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 11.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 11.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 11.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 11.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 11.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 11.
+LaTeX Font Info:    Redeclaring math accent \check on input line 11.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 11.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 11.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 11.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 11.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 11.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 9.
+(Font)              `operators' in the math version `normal' on input line 11.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 9.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 11.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 9.
+(Font)              `operators' in the math version `bold' on input line 11.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 9.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 11.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 9.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 9.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 9.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 9.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 9.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 11.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 9.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 9.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 9.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 11.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 9.
-Package hyperref Info: Link coloring OFF on input line 9.
- (./English1.out) (./English1.out)
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 11.
+Package hyperref Info: Link coloring OFF on input line 11.
+ (./Iterative8.out) (./Iterative8.out)
 \@outlinefile=\write4
-\openout4 = `English1.out'.
+\openout4 = `Iterative8.out'.
 
 
 
 Package fixdif Warning: Requires `no-math' option of fontspec!
-(fixdif)                 on input line 9.
+(fixdif)                 on input line 11.
 
-LaTeX Info: Redefining \d on input line 9.
-LaTeX Info: Redefining \partial on input line 9.
+LaTeX Info: Redefining \d on input line 11.
+LaTeX Info: Redefining \partial on input line 11.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1092,7 +1382,7 @@ LaTeX Info: Redefining \partial on input line 9.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count387
+\c@lstlisting=\count400
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
 * paper: <default>
@@ -1154,30 +1444,93 @@ Package fontspec Info: Font family 'STXihei(0)' created for font 'STXihei'
 (fontspec)             <->"STXihei/BI/OT:script=latn;language=dflt;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
-(../../.subject) (../.number) [1
+(../../.subject) (../.number)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 22
+.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+
+Package fontspec Warning: Font "STFangsong" does not contain requested Script
+(fontspec)                "CJK".
+
+
+Package fontspec Info: Could not resolve font "STFangsong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Font family 'STFangsong(0)' created for font
+(fontspec)             'STFangsong' with options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"STFangsong/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+[1
 
 
 ] [2] [3]
-! Undefined control sequence.
-<recently read> \eng 
-                     
-l.138       \item \eng
-                      {expect nothing in return} 不求回报
-? 
-! Emergency stop.
-<recently read> \eng 
-                     
-l.138       \item \eng
-                      {expect nothing in return} 不求回报
-End of file on the terminal!
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 213.
 
- 
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
+(Font)              size <10.95> substituted on input line 213.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--235
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 294--296
+
+ []
+
+[5] [6] [7] [8] (./Iterative8.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2020/03/25>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.41063pt have occurred.
+
+Package rerunfilecheck Info: File `Iterative8.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
 Here is how much of TeX's memory you used:
- 32949 strings out of 474773
- 691672 string characters out of 5757725
- 1933839 words of memory out of 5000000
- 54569 multiletter control sequences out of 15000+600000
- 560319 words of font info for 70 fonts, out of 8000000 for 9000
+ 39058 strings out of 474773
+ 852048 string characters out of 5757725
+ 1943839 words of memory out of 5000000
+ 60406 multiletter control sequences out of 15000+600000
+ 568920 words of font info for 122 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 112i,5n,113p,3321b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on English1.pdf (3 pages).
+ 112i,11n,113p,3323b,846s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on Iterative8.pdf (8 pages).
