@@ -9,12 +9,36 @@
 \large
 \setlength{\baselineskip}{1.2em}
 \ifpreface
-    \input{../../../global/preface}
+\input{../../../global/preface}
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \else
 \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \maketitle
 \fi
 %from_here_to_type
+\begin{problem}
+  \(V = [v_{1},\cdots,v_k]\) 为\(k \)维空间，
+  那么\(V \)为不饱和Krylov子空间，（即\(\exists q,A \)，使得\(V=\kappa_k(A,q) \)）\(\iff \) \(\exists M \in \mathbb{R}^{k \times k} \)满足\(R:=AV-VM \)的秩为\(1 \)，
+  且\(\span\{v_{1},\cdots,v_k,\Ran(R)\} \) 空间维数为\(k + 1 \).
+\end{problem}
+\begin{solution}
+  ``\(\implies\)'':由于\(V \)为\(k \)维不饱和Krylov子空间，那么\(v_{1},\cdots,v_k \)线性无关，且\(Av_k \notin \span\{vk_{1},\cdots,v_k\}  \).
+  设\(M(:,j) \)表示\(M \)的第\(j \)列，\(1 \leq j \leq k \)。那么\(M(:,j)=e_{j + 1}, 1 \leq j \leq k-1 \)，\(M(:,k)=(V^T V)^{-1} V^T Av_k \)，令
+  \(r=Av_k-VM(:,k)=Av_k-V(V^TV)^{-1}V^TAv_k \)。则\(R=AV-VM=r e_k^T \)，其中\(e_j \)表示\(j \)分量为\(1 \)的单位向量，\(1 \leq j \leq k \)。
+  由于\(V \)不饱和，\(M(:,k) \)为\(Av_k \)在\(V \)上的投影系数，那么\(VM(:,k) \neq Av_k \)，故\(r \neq 0 \)，此时\(R\)的秩为\(1 \).
+
+  另一方面，由于\(r \notin \span{v_{1},\cdots,V_k}=V \)，且\(R(:,j)=0, 1 \leq j \leq k-1, R(:,k)=r \)，
+  从而\(\span\{v_1,\cdots,v_k,\Ran(R)\}=\span\{v_1,\cdots,v_k,r\} \)。故\(\span \{v_1,\cdots,v_k,\Ran(R)\} \)的维数为\(k + 1 \).
+
+  ``\(\impliedby\)'':由于\(R=AV- VM\)秩为\(1 \)，那么\(R=u \alpha^T \)，\(u,\alpha \) 为非零列向量。设\(T \in \mathbb{R}^{k \times k} \)可逆，满足\(\alpha^TT = e_k^T \)。
+  那么\(AVT-VMT=u \alpha^T T = u e_k^T \)。令\(V_1=VT,M_1=T^{-1} M T \)，那么\(AV_1-V_1 M_1 = u e_k^T \)。
+  故\(Av_j^1 =V_1M_1(:,j),1 \leq j \leq k-1 \)。
+
+  我们希望找到\(C \)，使\(\overline{V}=V_1C \)得\(A \overline{v}_{j}=\overline{v_{j + 1}}, 1 \leq j \leq k-1 \).
+
+  令\(c_1=e_1 \)，\((c_j)_k=0, 1 \leq j \leq k \)，\(\tilde{c_j} \)表示\(c_j \)前\(k-1 \)的分量，\(\tilde{c_{j + 1}}=M(:, \leq k-1) \tilde{c_j} \)，下证明\(C=(c_1,\cdots,c_k)\)为所求。
+  那么\( \forall 1 \leq j \leq k-1, \overline{v}_{j + 1}=V_1c_{j + 1}=V_1 M(:,\leq k-1) c_j = V_1 M(:,\leq k-1) \tilde{c}_j ++ 0 = A V_1(:,\leq k -1) \tilde{c}_j ++ 0= A \overline{v_j} \)，其中\(++ \)表示矩阵的拼接。
+  故\(V=\kappa_k(A,v_1)\)。由于\(R \)的秩为\(1 \)，那么\(A \overline{v_k} \notin \span\{v_1,\cdots,v_k\} \)，故\(V \)不饱和。
+\end{solution}
 
 \end{document}
