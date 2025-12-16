@@ -1,0 +1,34 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%!TEX language = zh
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:2}
+  设\(\mathcal{C} \)为\(\mathcal{A} \)的子\(\sigma \)代数，\(\phi(B)=\int_{B} \xi \d \mathbb{P} , B \in \mathcal{C}  \), 则\(\phi  \)是\( \mathcal{C} \) 上\(\sigma \)可加集函数，
+  \(\phi \ll \res{\mathbb{P}}{\mathcal{C}}\)。从而存在\(\mathbb{E}(\xi \mid \mathcal{C}) = \frac{\d \phi}{\d \mathbb{P}_{\mathcal{C}}}, \mathbb{P}_{\mathcal{C}}\)-a.e.
+\end{problem}
+\begin{problem}\label{pro:5}
+  证明赫尔德不等式\(\mathbb{E}(\xi \eta \mid \mathcal{C}) \leq \mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}} \mathbb{E}(|\eta|^q \mid \mathcal{C})^{\frac{1}{q}}, p >1, \frac{1}{p} + \frac{1}{q} =1 \)。
+\end{problem}
+\begin{problem}\label{pro:7}
+  叙述并证明关于条件期望 Jensen 不等式和 Minikowski 不等式。
+\end{problem}
+\begin{problem}\label{pro:9}
+  设\(\mathcal{C}_1,\mathcal{C}_2 \)为\(\mathcal{A} \)的子\(\sigma \)代数。举例说明\(\mathbb{E}(\xi \mid \mathcal{C}_1 \cap \mathcal{C}_2) \neq \mathbb{E}(\mathbb{E}(\xi \mid \mathcal{C}_1) \mid \mathcal{C}_2) \)。
+\end{problem}
+
+\end{document}
