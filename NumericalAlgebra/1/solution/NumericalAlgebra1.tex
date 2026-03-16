@@ -1,0 +1,154 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%language = en
+%arara: xelatex
+\documentclass{ctexart}
+\newcommand{\Kappa}{\mathrm{K}}
+\newcommand{\argmin}{\mathrm{argmin}}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+
+\begin{problem}\label{pro:1}
+  \(H_{n + 1,n} \) is the Hessenberg matrix of Arnoldi process, which is executed for \(A \) and \(b \) at step \(n \).
+  If \(h_{N + 1,N} =0\), then
+  \begin{enumerate}
+    \item \(\Kappa_N(A,b) \) is \(A- \) invariant subspace.
+    \item \(\Kappa_n(A,b)=\Kappa_{n + 1}(A,b), n \geq N \).
+    \item \(\sigma(H_N) \subset \sigma(A) \), where \(\sigma(M) \) is the eigenvalue set of matrix \(M \).
+    \item If \(A \) is nonsigular, the solution of the equation \(Ax=b \) lies in \(\Kappa_N(A,b) \).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  Assume \(Q_n =(q_1,\cdots,q_n)\) at step \(n \) in Arnoldi process.
+  \begin{enumerate}
+    \item Since \(K_{N + 1}(A,b)=span\{b,\cdots,A^Nb\}=span\{b,AK_N(A,b)\} \), we only need to prove \(AK_N(A,b) \subset K_N(A,b) \).
+      Since \(AQ_n=Q_{n + 1} H_{n + 1,n} \) exists for all step \(n \) and \(H_{N + 1,N}=0 \), we can get \(AQ_N=Q_N H_{N} + h_{N + 1,N}q_{N + 1} e_N^T \), where \(e_N \)
+      is unit vector with only one none zero element at position \(N \). Thus,
+      \begin{equation}\label{equ:*}
+        AQ_N=Q_N H_N .
+      \end{equation}
+      Besides, \(\{q_1,\cdots,q_N\} \) is the base of space \(K_N(A,q) \), so \(span\{Aq_1,\cdots,A_{N}\} = A K_N(A,b) =span(Q_N H_N)\subset K_N(A,q) \).
+    \item First, we can prove \(K_{n}(A,b) \subset K_{N}(A,b), n \geq N \). We will use MI to prove. \(n=N \), this property holds, obviously.
+      Assume \(K_t(A,b) \subset K_N (A,b) \) for some \(t \geq N \), then \(K_{t + 1}(A,b)=span\{b,AK_t(A,b)\} \).
+      Besides, \(K_N(A,b) \) is \(A \)- invariant subspace, then \(A K_t(A,b) \subset A K_N(A,b) \subset K_N(A,b) \).
+      Thus, \(K_{t + 1}(A,b) \subset K_N(A,b) \).
+
+      Since \(K_n(A,b) =span\{b,\cdots,A^{n-1}b\} \supset span\{b,\cdots,A^{N-1}b\}=K_N(A,b) \), we can get \(K_n(A,b)=K_N(A,b) ,\forall n \geq N\).
+    \item Assume \(\lambda \) is the eigenvalue of \(H_N \) with eigenvector \(u \), then \(H_N u=\lambda u \).
+      By \eqref{equ:*}, \(AQ_N u=Q_N H_N u= \lambda  Q_N u \), therefore, \(\lambda \) is an eigenvalue of \(A \) with eigenvector \(Q_N u \).
+    \item We only need to prove \(\res{A}{K_N(A,b)}: K_N(A,b) \to K_N(A,b)\) is bijective. Since \(K_N(A,b) \) is \(A \)-invariant, we can get \(\res{A}{K_N(A,b)} \) well-defined.
+      \(\forall y \in K_N(A,b), Ay =0 \), then \(y=0 \) due to the reversibility of A.
+      Thus, \(Ker(\res{A}{K_N(A,b)})=0 \), then \(\res{A}{K_N(A,b)}\) is injective.
+      Since \(\{q_1,\cdots,q_N\} \) are base of \(K_N(A,b) \), we can get \(\sum_{i=1}^{N}c_iq_i=0 \iff c_i=0, 1 \leq i \leq N \). Then \(\sum_{i=1}^{N}d_i Aq_i=A(\sum_{i=1}^{N}d_i q_i)=0 \iff \sum_{i=1}^{N} d_i q_i =0 \iff d_i=0, 1 \leq i \leq N \).
+      Then, \(\{Aq_1,\cdots,Aq_N\} \) are base of \(K_N(A,b) \).
+      We can get that \(\forall y \in K_N(A,b) \), \(y=\sum_{i=1}^{N} a_i Aq_i=A \sum_{i=1}^{N}a_iq_i=Ax \), where \(x= \sum_{i=1}^{N}a_iq_i \). So \(\res{A}{K_N(A,b)} \) is surjective.
+      Just let \(y=b \), the equation has solution in \(K_N(A,b) \).
+  \end{enumerate}
+\end{solution}
+\begin{problem}
+  \(H \in \mathbb{C}^{m xm}  \) is a Hessenberg matrix, \(f \) is a polynomial with degree \(n<m \), \(H_n \in \mathbb{C}^{n x n}\) is the first matrix block of \(H \).
+  Then \(f(H) \) and \(f(H_n) \) has same \(n \) entries in the first column.
+\end{problem}
+\begin{solution}
+  Since \(A=QHQ^*\), we have
+  \[
+    p_n(A)b = Qp_n(H)Q^*b.
+  \]
+  Because \(q_1=b/\norm{b}\), it follows that
+  \[
+    Q^*b=\norm{b}e_1.
+  \]
+  Hence
+  \[
+    Q_n^*p_n(A)b
+    = \norm{b}\,Q_n^*Q\,p_n(H)e_1
+    = \norm{b}\,[I_n\ 0]\,p_n(H)e_1.
+  \]
+  Therefore \(Q_n^*p_n(A)b=0\) if and only if the first \(n\) entries of the first column of \(p_n(H)\) are zero.
+
+  Now write
+  \[
+    p_n(z)=\sum_{k=0}^n a_k z^k.
+  \]
+  Since \(H\) is upper Hessenberg, for each \(k\le n\), the first \(n\) entries of \(H^k e_1\) depend only on the leading principal block \(H_n\), and equal \(H_n^k e_1\). Therefore
+  \[
+    [I_n\ 0]\,p_n(H)e_1
+    =
+    \sum_{k=0}^n a_k [I_n\ 0]\,H^k e_1
+    =
+    \sum_{k=0}^n a_k H_n^k e_1
+    =
+    p_n(H_n)e_1.
+  \]
+  Thus the first \(n\) entries of the first column of \(p_n(H)\) are exactly the first \(n\) entries of the first column of \(p_n(H_n)\).
+\end{solution}
+\begin{problem}
+  Assume \(H_n \) at step \(n \) in Arnoldi process, the Ritz values of \(H_n \) are eigenvalues of \(H_n \).
+  \begin{enumerate}
+    \item If \(A \) is changed to \(A + \sigma I \),\(\sigma \in \mathbb{C} \),\(b \) is unchanged, then the Ritz values \(\{\theta_j\} \) are changed to \(\{\theta_j + \sigma\} \).
+    \item If \(A \) is changed to \(\sigma A \),\(\sigma \in \mathbb{C}\setminus\{0\} \),\(b \) is unchanged, then the Ritz values \(\{\theta_j\} \) are changed to \(\{\sigma \theta_j\} \).
+    \item \(U^* U =I \), if \(A \) is changed to \(U A U^*\),\(b \) is changed to \(Ub \), then the Ritz values \(\{\theta_j\} \) don't change.
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Since \((A + \sigma I)^k =\sum_{t=0}^{k} a_t A^t \subset K_n(A,b), 1 \leq k \leq n\), we can get that \(K_n(A + \sigma I,b)=span\{b,(A + \sigma I)b,\cdots,(A + \sigma I)^{n-1} b\}\subset span\{b,Ab,\cdots,A^{n -1} b\}=K_n(A,b) \).
+      Besides, \((A + \sigma I - \sigma I)=A \), then \(K_n((A + \sigma I)-\sigma I, b) \subset K_n(A + \sigma I, b) \) holds for the same reason.
+      Thus, \(K_n(A + \sigma I,b)=K_n(A,b) \). Assume \( Q_n, H_n\) be the responding matrix in Arnoldi process executed by \(A  \) and \(b \) at step \(n \).
+      So \(Q_n \) is the orthonormal basis of \(K_n(A + \sigma I,b) \).
+      Then \( AQ_n=Q_{n + 1} H_{n + 1}=Q_n H_n + h_{n + 1,n} q_{n + 1} e_n^T\), then \(Q_n^* A Q_n =Q_n^* Q_n H_n +  h_{n + 1,n}Q_n^*q_{n + 1} e_n^T=H_n\). Then \(\tilde{H_n}=Q_n^*(A + \sigma I)Q_n=Q_n^*AQ_n + \sigma I=H_n + \sigma I \), where
+      \(\tilde{H_n} \) is the representation matrix of \(K_n(A + \sigma I,b) \) in base \(Q_n \).
+
+      Assume \(f \) be the characteristic polynomial of \(H_n \), \(\tilde{f} \) be the characteristic polynoimal of \(\tilde{H_n} \).
+      So \(f(\lambda)= |H_n-\lambda I|= |\tilde{H_n} -\sigma I -\lambda I|=\tilde{f}(\lambda + \sigma) \). Thus, \(\theta \) be the Ritz of \(H_n \),
+      then \(f(\theta )=0=\tilde{f}(\theta + \sigma) \).
+      Then \(\theta + \sigma \) is the Ritz of \(\tilde{H_n} \).
+    \item Since \((\sigma A)^k =\sigma^k A^k \in K_n(A,b), 1 \leq k \leq n \), we can get that \(K_n(\sigma A,b)=span\{b,\sigma A b,\cdots,(\sigma A)^{n-1}b\} \subset K_n(A,b)\) .
+      Besides, \(\sigma^{-1}(\sigma A) =A \), then \(K_n(\sigma^{-1}(\sigma A),b) \subset K_n(\sigma A,b) \) holds for the same reason.
+      Thus, \(K_n(\sigma A,b)=K_n(A,b) \). In the same reason as above, we can get \(\tilde{H_n}=Q_n^*(\sigma A)Q_n=\sigma H_n \), where \(\tilde{H_n} \)
+      is the representation matrix of \(K_n(\sigma A,b) \) in orthonormal basis \(Q_n \).
+
+      Assume \(f \) be the characteristic polynomial of \(H_n \), \(\tilde{f} \) be the characteristic polynoial of \(\tilde{H_n} \).
+      So \(f(\lambda)=|H_n -\lambda I|=|(\sigma)^{-1} (\tilde{H_n} -\sigma \lambda I)|=\sigma^{-n}|\tilde{H_n} -\sigma \lambda I|=\sigma^{-n}  \tilde{f}(\sigma \lambda)\).
+      Thus, \(\theta \) be the Ritz of \(H_n \), then \(f(\theta)=0=\sigma^{-n}\tilde{f}(\sigma \theta)\). Then \(\tilde{\sigma \theta}=0 \).
+      Then \(\sigma \theta \) is the Ritz of \(\tilde{H_n} \).
+    \item Since \((UAU^*)^k(Ub)=UA^kU^*Ub=UA^kb \), then \( K_n(UAU^*,Ub)=UK_n(A,b)\). Besides, \(U \) is reversible, so \(U Q_n \) is orthonormal matrix.
+      Thus, \(UQ_n \) is the orthonormal basis of \(K_n(UAU^*,Ub) \). Then \(\tilde{H_n}=(UQ_n)^*(UAU^*)(UQ_n)=Q_n^*AQ_n =H_n \).
+      Then, Ritz values don't change.
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}
+  \(P_n:=\{1+\sum_{i=1}^{n} c_i z^i:c_i \in \mathbb{C}, 1 \leq i \leq n\} \), \(q=\argmin_{p \in P_n} \norm{p(A)b} \), \(r= q(A)b \).
+  \begin{enumerate}
+    \item If \(A  \) changed to \(\sigma A \),\(\sigma \in \mathbb{C} \setminus\{0\} \),\(b \) is changed to \(\sigma b \), then \(r \) is changed to \(r \).
+    \item \(U^* U =I \), if \(A \) is changed to \(U A U^*\),\(b \) is changed to \(Ub \), then \(r \) changed to \(Ur \).
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item Assume \(Q_n:=\{\sigma p(\sigma z): p \in P_n\} \), \(f: P_n \to Q_n, p(z) \mapsto \sigma p(\sigma z)\). We prove that \(f \) is bijective.
+      Obviously, \(f \) is well-defined and surjective. Only need to prove \(f \) is injective.
+      If \(\sigma p(\sigma z) =\sigma q(\sigma z) \), then \(p(\sigma z)=q(\sigma z) \). Thus, \(p(z)=q(z) \), which means \(f \) is injective.
+      Since \(q =\argmin_{p \in P_n} \norm{p(A)b}\) and \(q(A)b= \sigma^{-1}(q(\sigma^{-1} (\sigma A)) (\sigma b)) =\tilde{q}(\sigma A) (\sigma b) \), where \(\tilde{q}(z)=\sigma^{-1}q(\sigma^{-1} z)\).
+      Thus, \(\tilde{q} = \argmin_{p \in Q_n} \norm{p(\sigma A)(\sigma b)} \).
+      So \(\tilde{r}=\tilde{q}(\sigma A) (\sigma b) = \sigma^{-1}q(\sigma^{-1} (\sigma A))(\sigma b) =q(A)b=r \).
+    \item First, \(\forall x \in \mathbbm{C}^m \), then \(\norm{Ux}^2=(Ux)^* Ux=x^* U^* U x =x^* x =\norm{x}^2 \). Besides, \(\forall p \in P_n \), \(p(U AU^*)(Ub)=U p(A) U^* U b =U p(A) b \), then \(\norm{p(UAU^*)(Ub)} = \norm{Up(A)b}=\norm{p(A)b} \).
+      Therefore, \(q =\argmin \norm{p(A)b}= \argmin \norm{Up(A)b}\). Thus, \(q = \tilde{q} \). Therefore, \(\tilde{r}= \tilde{q}(UAU^*)(Ub)=U \tilde{q}(A)b =U q(A)b=U r\).
+  \end{enumerate}
+
+\end{solution}
+
+\end{document}

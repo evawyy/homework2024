@@ -3,6 +3,8 @@
 %!TEX language = zh
 %arara: xelatex
 \documentclass{ctexart}
+\usepackage{amssymb}
+\newcommand{\res}[2]{#1 |_{#2}}
 \newif\ifpreface
 %\prefacetrue
 \input{../../../global/all}
@@ -21,15 +23,265 @@
   设\(\mathcal{C} \)为\(\mathcal{A} \)的子\(\sigma \)代数，\(\phi(B)=\int_{B} \xi \d \mathbb{P} , B \in \mathcal{C}  \), 则\(\phi  \)是\( \mathcal{C} \) 上\(\sigma \)可加集函数，
   \(\phi \ll \res{\mathbb{P}}{\mathcal{C}}\)。从而存在\(\mathbb{E}(\xi \mid \mathcal{C}) = \frac{\d \phi}{\d \mathbb{P}_{\mathcal{C}}}, \mathbb{P}_{\mathcal{C}}\)-a.e.
 \end{problem}
+\begin{solution}
+  只需证\(\phi \)为\(\mathcal{C} \)上的\(\sigma \)可加集函数。
+  取\(B_n \in \mathcal{C},n \in \mathbb{N}_{+} \)两两不交。考查\(\xi_n:=\xi \mathbbm{1}_{\bigcup_{k=1}^{n}B_k} = \sum_{k=1}^{n} \xi \mathbbm{1}_{B_k} \)，有\(|\xi_n|<|\xi| \)，且\(\xi \)可积。
+  故由控制收敛定理可得\(\lim_{n \to \infty} \int \xi_n \d \mathbb{P} = \int \lim_{n} \xi_n \d \mathbb{P} \)，
+  即\(\sum_{k=1}^{\infty} \phi(B_n)=\lim_{n}\sum_{k=1}^{n} \phi(B_n) = \lim_{n} \sum_{k=1}^{n} \int_{B_k} \xi \d \mathbb{P} = \int \mathbbm{1}_{\bigcup_{k=1}^{\infty} B_k} \xi \d \mathbb{P} = \phi(\bigcup_{k=1}^{\infty} B_k) \)。
+
+  显然\(\mathbb{P}(B)=0 \implies \phi(B)=\int_{B} \xi \d \mathbb{P} =0\)。故\(\phi \ll \res{\mathbb{P}}{\mathcal{C}} \)。
+  由测度分解定理可知，
+  从而存在\(\mathbb{E}(\xi \mid \mathcal{C}) = \frac{\d \phi}{ \d \mathbb{P}_{\mathcal{C}}} \)。
+\end{solution}
+
 \begin{problem}\label{pro:5}
   证明赫尔德不等式\(\mathbb{E}(\xi \eta \mid \mathcal{C}) \leq \mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}} \mathbb{E}(|\eta|^q \mid \mathcal{C})^{\frac{1}{q}}, p >1, \frac{1}{p} + \frac{1}{q} =1 \)。
 \end{problem}
+\begin{solution}
+  注意到条件期望的单调性给出
+  \[
+    \mathbb{E}(\xi\eta\mid\mathcal C)
+    \le \mathbb{E}(|\xi||\eta|\mid\mathcal C),
+  \]
+  因此只需证明结论对 $|\xi|$ 与 $|\eta|$ 成立即可。
+  不失一般性，以下假设 $\xi,\eta\ge 0$。
+
+  令 $p,q>1$ 满足 $\frac1p+\frac1q=1$。
+  对任意 $n\in\mathbb N$，定义
+  \[
+    \xi_n
+    :=\frac{\xi}{\bigl(\mathbb E(\xi^p\mid\mathcal C)+\frac1n\bigr)^{1/p}},
+    \qquad
+    \eta_n
+    :=\frac{\eta}{\bigl(\mathbb E(\eta^q\mid\mathcal C)+\frac1n\bigr)^{1/q}}.
+  \]
+  由于
+  \(
+    (\mathbb E(\xi^p\mid\mathcal C)+\frac1n)^{1/p}
+  \)
+  和
+  \(
+    (\mathbb E(\eta^q\mid\mathcal C)+\frac1n)^{1/q}
+  \)
+  均为 $\mathcal C$-可测函数，故有
+  \[
+    \mathbb E(\xi_n\eta_n\mid\mathcal C)
+    =
+    \frac{\mathbb E(\xi\eta\mid\mathcal C)}
+    {(\mathbb E(\xi^p\mid\mathcal C)+\frac1n)^{1/p}
+    (\mathbb E(\eta^q\mid\mathcal C)+\frac1n)^{1/q}}.
+  \]
+
+  由 Young 不等式，
+  \[
+    \xi_n\eta_n
+    \le \frac1p\,\xi_n^p+\frac1q\,\eta_n^q,
+  \]
+  对两边取条件期望并利用其线性性，得到
+  \[
+    \mathbb E(\xi_n\eta_n\mid\mathcal C)
+    \le
+    \frac1p\,\mathbb E(\xi_n^p\mid\mathcal C)
+    +\frac1q\,\mathbb E(\eta_n^q\mid\mathcal C).
+  \]
+  注意到
+  \[
+    \mathbb E(\xi_n^p\mid\mathcal C)
+    =
+    \frac{\mathbb E(\xi^p\mid\mathcal C)}
+    {\mathbb E(\xi^p\mid\mathcal C)+\frac1n},
+    \qquad
+    \mathbb E(\eta_n^q\mid\mathcal C)
+    =
+    \frac{\mathbb E(\eta^q\mid\mathcal C)}
+    {\mathbb E(\eta^q\mid\mathcal C)+\frac1n},
+  \]
+  从而
+  \[
+    \mathbb E(\xi_n\eta_n\mid\mathcal C)
+    \le
+    \frac1p\,
+    \frac{\mathbb E(\xi^p\mid\mathcal C)}
+    {\mathbb E(\xi^p\mid\mathcal C)+\frac1n}
+    +
+    \frac1q\,
+    \frac{\mathbb E(\eta^q\mid\mathcal C)}
+    {\mathbb E(\eta^q\mid\mathcal C)+\frac1n}
+    \le
+    \frac1p+\frac1q
+    =1.
+  \]
+
+  于是得到
+  \[
+    \mathbb E(\xi\eta\mid\mathcal C)
+    \le
+    \bigl(\mathbb E(\xi^p\mid\mathcal C)+\tfrac1n\bigr)^{1/p}
+    \bigl(\mathbb E(\eta^q\mid\mathcal C)+\tfrac1n\bigr)^{1/q}.
+  \]
+  令 $n\to\infty$，由单调收敛性可得
+  \[
+    \mathbb E(\xi\eta\mid\mathcal C)
+    \le
+    \mathbb E(|\xi|^p\mid\mathcal C)^{1/p}
+    \mathbb E(|\eta|^q\mid\mathcal C)^{1/q},
+  \]
+  从而结论成立。
+
+\end{solution}
+
 \begin{problem}\label{pro:7}
   叙述并证明关于条件期望 Jensen 不等式和 Minikowski 不等式。
+  \begin{enumerate}
+    \item 设 $(\Omega,\mathcal F,\mathbb P)$ 为概率空间，
+      $\mathcal G\subset\mathcal F$ 为子 $\sigma$-代数，
+      $X\in L^{1}(\Omega)$。
+      设
+      \[
+        \varphi:\mathbb R\to(-\infty,+\infty]
+      \]
+      是一个适当的（proper）、凸且下半连续函数，并假设
+      \[
+        E[\varphi(X)^-]<\infty .
+      \]
+      则有
+      \[
+        \varphi\bigl(E[X\mid\mathcal G]\bigr)
+        \le
+        E\bigl[\varphi(X)\mid\mathcal G\bigr]
+        \quad \text{几乎处处成立。}
+      \]
+    \item 设\(\xi,\eta \)可积，\(p>1 \)。则\(\mathbb{E}(|\xi + \eta|^p \mid \mathcal{C})^{\frac{1}{p}} \leq \mathbb{E}(|\xi|^p \mid \mathcal{C})^{\frac{1}{p}} + \mathbb{E}(|\eta|^p \mid \mathcal{C})^{\frac{1}{p}}\)。
+  \end{enumerate}
 \end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item 定义 $\varphi$ 的全局仿射下界集合
+      \[
+        A
+        :=
+        \bigl\{(a,b)\in\mathbb R^2:
+          \; at+b\le \varphi(t),\ \forall t\in\mathbb R
+        \bigr\}.
+      \]
+
+      由于 $\varphi$ 是凸且下半连续函数，根据凸分析的基本结论，
+      $\varphi$ 可以表示为其所有全局仿射下界的上确界，即
+      对任意 $y\in\mathbb R$ 有
+      \begin{equation}\label{eq:suprep-cn}
+        \varphi(y)
+        =
+        \sup_{(a,b)\in A}(ay+b).
+      \end{equation}
+
+      任取 $(a,b)\in A$。由集合 $A$ 的定义可知
+      \[
+        aX+b\le \varphi(X)
+        \quad \text{几乎处处成立。}
+      \]
+
+      由于条件期望具有单调性，并结合可积性假设，
+      可对上述不等式取 $\mathcal G$-条件期望，得到
+      \[
+        E[aX+b\mid\mathcal G]
+        \le
+        E[\varphi(X)\mid\mathcal G].
+      \]
+
+      再利用条件期望的线性性，上式左端可写为
+      \[
+        a\,E[X\mid\mathcal G]+b,
+      \]
+      从而
+      \[
+        a\,E[X\mid\mathcal G]+b
+        \le
+        E[\varphi(X)\mid\mathcal G]
+        \quad \text{几乎处处成立。}
+      \]
+
+      由于上述不等式对所有 $(a,b)\in A$ 都成立，
+      对其取点态上确界，得到
+      \[
+        \sup_{(a,b)\in A}
+        \bigl(aE[X\mid\mathcal G]+b\bigr)
+        \le
+        E[\varphi(X)\mid\mathcal G].
+      \]
+
+      根据表示式 \eqref{eq:suprep-cn}，
+      左端恰好等于
+      $\varphi\bigl(E[X\mid\mathcal G]\bigr)$，
+      因此
+      \[
+        \varphi\bigl(E[X\mid\mathcal G]\bigr)
+        \le
+        E\bigl[\varphi(X)\mid\mathcal G\bigr]
+        \quad \text{几乎处处成立。}
+      \]
+    \item
+      设 $p>1$。由基本不等式
+      \[
+        |\xi+\eta|^p
+        =
+        |\xi+\eta|\cdot|\xi+\eta|^{p-1}
+        \le (|\xi|+|\eta|)\,|\xi+\eta|^{p-1},
+      \]
+      对两边取关于 $\mathcal C$ 的条件期望，得到
+      \[
+        \mathbb E(|\xi+\eta|^p\mid\mathcal C)
+        \le
+        \mathbb E\bigl(|\xi|\,|\xi+\eta|^{p-1}\mid\mathcal C\bigr)
+        +
+        \mathbb E\bigl(|\eta|\,|\xi+\eta|^{p-1}\mid\mathcal C\bigr).
+      \]
+
+      由命题 \ref{pro:5}（条件期望下的 Hölder 不等式），取共轭指数
+      $q>1$ 使得 $\frac1p+\frac1q=1$，有
+      \[
+        \mathbb E\bigl(|\xi|\,|\xi+\eta|^{p-1}\mid\mathcal C\bigr)
+        \le
+        \mathbb E(|\xi|^p\mid\mathcal C)^{1/p}
+        \,
+        \mathbb E(|\xi+\eta|^{(p-1)q}\mid\mathcal C)^{1/q},
+      \]
+      对第二项
+      $\mathbb E(|\eta|\,|\xi+\eta|^{p-1}\mid\mathcal C)$
+      同理成立。
+
+      注意到 $(p-1)q=p$，于是合并上述估计可得
+      \[
+        \mathbb E(|\xi+\eta|^p\mid\mathcal C)
+        \le
+        \bigl(
+          \mathbb E(|\xi|^p\mid\mathcal C)^{1/p}
+          +
+          \mathbb E(|\eta|^p\mid\mathcal C)^{1/p}
+        \bigr)
+        \,
+        \mathbb E(|\xi+\eta|^p\mid\mathcal C)^{1/q}.
+      \]
+
+      由于 $\mathbb E(|\xi+\eta|^p\mid\mathcal C)\ge 0$，
+      整理即得
+      \[
+        \mathbb E(|\xi+\eta|^p\mid\mathcal C)^{1/p}
+        \le
+        \mathbb E(|\xi|^p\mid\mathcal C)^{1/p}
+        +
+        \mathbb E(|\eta|^p\mid\mathcal C)^{1/p}.
+      \]
+  \end{enumerate}
+\end{solution}
+
 \begin{problem}\label{pro:9}
   设\(\mathcal{C}_1,\mathcal{C}_2 \)为\(\mathcal{A} \)的子\(\sigma \)代数。举例说明\(\mathbb{E}(\xi \mid \mathcal{C}_1 \cap \mathcal{C}_2) \neq \mathbb{E}(\mathbb{E}(\xi \mid \mathcal{C}_1) \mid \mathcal{C}_2) \)。
 \end{problem}
+\begin{solution}
+  令\(\Omega=\{1,2,3\},\mathcal{F}=2^\Omega,\mathbb{P}(\{i\}):=p_i,p_{1}=\frac{1}{2},p_{2}=\frac{1}{3},p_{3}=\frac{1}{6},\mathcal{C}_1=\sigma(\{1\}),\mathcal{C}_2=\sigma(\{2\}),\xi = \mathbbm{1}_{\{3\}} \)。
+  则\(\mathcal{C}_1 \cap \mathcal{C}_2 = \sigma(\varnothing) \)，即\(\mathbb{E}(\xi \mid \mathcal{C}_1 \cap \mathcal{C}_{2}) = \mathbb{E}(\xi) \)。\(\mathbb{E}(\xi \mid \mathcal{C}_{1}) = \mathbbm{1}_{\{1\}} \cdot 0 + \mathbbm{1}_{\{2,3\}} \cdot \frac{1}{3} = \frac{1}{3}\mathbbm{1}_{\{2,3\}} \)。
+  故\(\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{C}_{1})\mid \mathcal{C}_{2}) = \frac{1}{3} \mathbb{E}(\mathbbm{1}_{\{2,3\} \mid \mathcal{C}_{2}}) = \frac{1}{3} (\mathbbm{1}_{\{2\}} \cdot 1 + \mathbbm{1}_{\{1,3\}} \cdot \frac{1}{4}) \neq \mathbb{E}(\xi) \)。
+\end{solution}
 
 \begin{problem}\label{pro:11}
   设\(\mathcal{A}_n \)是一列单调上升的子\(\sigma \)代数，若随机变量\(\xi_n \)满足
@@ -37,8 +289,330 @@
     \mathbb{E}(\xi_{n + 1} \mid \mathcal{A}_n)=\xi_n,n \geq 1
   \]则称为鞅序列。证明\(\xi_n=\mathbb{E}(\xi \mid \mathcal{A}_n) \)是鞅。
 \end{problem}
+\begin{solution}
+  只需证明\(\xi_n=\mathbb{E}(\xi \mid \mathcal{A}_n)=\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{A}_{n + 1}) \mid \mathcal{A}_n) \)。
+  由于\(\mathcal{A}_n \)关于\(n \)递增，那么\(\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{A}_{n + 1}) \mid \mathcal{A}_n)=\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{A}_n) \mid \mathcal{A}_{n + 1})=\mathbb{E}(\xi \mid \mathcal{A}_n)=\xi_n \)。
+\end{solution}
+
 \begin{problem}\label{pro:12}
   设\(\xi_n \)为随机变量，令\(\mathcal{A}_n =\sigma(\{\xi_m:m \leq n\})\)。若
+  \[
+    \mathbb{E}(\xi_{n + 1}\mathbbm{1}_B \mid \mathcal{A}_n)=\mathbb{E}(\xi_{n + 1} \mathbbm{1}_B \mid \xi_n),n \geq 1, \forall B \text{可测}
+  \] 则称\(\xi_n \)为马氏过程。若\(X_n \)为独立随机变量，证明\(\sum_{m=1}^{n}X_m \) 为马氏过程。
 \end{problem}
+\begin{lemma}\label{lem:2}
+  设随机变量 $X$ 与 $\sigma$-代数 $\mathcal C$ 独立，
+  $\phi:\mathbb R^2\to[0,\infty)$ 为 Borel 可测函数，
+  $Y$ 为 $\mathcal C$-可测随机变量。
+  若存在函数
+  \[
+    h(a):=\mathbb E[\phi(a,X)],\qquad a\in\mathbb R,
+  \]
+  则有
+  \[
+    \mathbb E\bigl(\phi(Y,X)\mid\mathcal C\bigr)=h(Y)\quad\text{a.s.}
+  \]
+\end{lemma}
 
+\begin{proof}
+  \textbf{第一步：指标函数情形.}
+  设 $\phi(y,x)=\mathbbm 1_A(y)\mathbbm 1_B(x)$，
+  其中 $A,B\in\mathcal B(\mathbb R)$。
+  由于 $Y$ 为 $\mathcal C$-可测且 $X$ 与 $\mathcal C$ 独立，
+  有
+  \[
+    \mathbb E\bigl(\mathbbm 1_A(Y)\mathbbm 1_B(X)\mid\mathcal C\bigr)
+    =
+    \mathbbm 1_A(Y)\,\mathbb P(X\in B).
+  \]
+  另一方面，
+  \[
+    h(a)=\mathbb E\bigl(\mathbbm 1_A(a)\mathbbm 1_B(X)\bigr)
+    =
+    \mathbbm 1_A(a)\mathbb P(X\in B),
+  \]
+  从而结论成立。
+
+  \medskip
+  \textbf{第二步：简单函数情形.}
+  若
+  \[
+    \phi(y,x)=\sum_{k=1}^n c_k\,\mathbbm 1_{A_k}(y)\mathbbm 1_{B_k}(x),
+    \quad c_k\ge0,
+  \]
+  由条件期望的线性性，结论对 $\phi$ 成立。
+
+  \medskip
+  \textbf{第三步：一般非负可测函数.}
+  对任意非负 Borel 可测函数 $\phi$，
+  存在一列非负简单函数 $\phi_n$ 使
+  $\phi_n\uparrow\phi$。
+  由单调收敛定理与条件期望的单调性，
+  \[
+    \mathbb E(\phi_n(Y,X)\mid\mathcal C)\uparrow
+    \mathbb E(\phi(Y,X)\mid\mathcal C),
+  \]
+  同时
+  \[
+    h_n(Y)=\mathbb E(\phi_n(Y,X))\uparrow h(Y).
+  \]
+  因此
+  \[
+    \mathbb E(\phi(Y,X)\mid\mathcal C)=h(Y),
+  \]
+  证明完成。
+\end{proof}
+
+\begin{solution}
+  令
+  \[
+    S_n:=\sum_{m=1}^n X_m,\qquad
+    \mathcal A_n:=\sigma(X_1,\dots,X_n).
+  \]
+  显然 $\mathcal A_n=\sigma(S_1,\dots,S_n)$。
+
+  由于 $\{X_n\}$ 相互独立，
+  $X_{n+1}$ 与 $\mathcal A_n$ 独立。
+  于是对任意 Borel 集 $B$，
+  \[
+    \mathbb P(S_{n+1}\in B\mid\mathcal A_n)
+    =
+    \mathbb P(S_n+X_{n+1}\in B\mid\mathcal A_n).
+  \]
+
+  设
+  \[
+    \phi(y,x):=\mathbbm 1_B(y+x),
+  \]
+  则 $\phi$ 为非负 Borel 可测函数，
+  且 $S_n$ 为 $\mathcal A_n$-可测随机变量。
+  由引理 \ref{lem:2}，
+  存在函数
+  \[
+    h(a):=\mathbb E\bigl(\mathbbm 1_B(a+X_{n+1})\bigr),
+  \]
+  使得
+  \[
+    \mathbb E(\mathbbm 1_B(S_{n+1})\mid\mathcal A_n)
+    =
+    h(S_n).
+  \]
+
+  另一方面，
+  同理可得
+  \[
+    \mathbb E(\mathbbm 1_B(S_{n+1})\mid S_n)=h(S_n).
+  \]
+  因此
+  \[
+    \mathbb P(S_{n+1}\in B\mid\mathcal A_n)
+    =
+    \mathbb P(S_{n+1}\in B\mid S_n),
+  \]
+  对所有 Borel 集 $B$ 成立，
+  从而 $\{S_n\}$ 构成马尔可夫过程。
+\end{solution}
+
+\begin{problem}\label{pro:13}
+  设\(\mathcal{A}_n=\sigma(\{\xi_m:m \leq n\}),\mathcal{A}^n=\sigma(\{\xi_m:m \geq n\}) \)，则\(\xi_n \)为马氏过程当且仅当下列条件之一成立：
+  \begin{itemize}
+      % \item \(\mathbb{E}(\xi_m \mid \mathcal{A}_n)=\mathbb{E}(\xi_{n + 1} \mid \xi_n),m \geq n \geq 1 \)；
+    \item \(\mathbb{E}(\eta \mid \mathcal{A}_n)=\mathbb{E}(\eta \mid \xi_n),\eta \in \mathcal{A}^n, n \geq 1 \)，
+    \item \(\forall \eta \in \mathcal{A}_n,\xi \in \mathcal{A}^n \)使得\(\eta , \zeta ,\eta \zeta \)均可积，则\[
+        \mathbb{E}(\eta \zeta \mid \xi_n)=\mathbb{E}(\eta \mid \xi_n)\mathbb{E}(\zeta \mid \xi_n),n \geq 1
+      \]
+  \end{itemize}
+
+\end{problem}
+\begin{solution}
+  事实上，我们可以证明以下命题等价：
+  \begin{enumerate}
+    \item \(\mathbb{P}(\xi_{n + 1} \in B \mid \mathcal{A}_n)=\mathbb{P}(\xi_{n + 1} \in B \mid \xi_n) \) a.e. \(\forall n \in \mathbb{N}_{+}, B \in \mathcal{B} \);
+    \item \(\mathbb{E}(\eta \mid \mathcal{A}_n )= \mathbb{E}(\eta \mid \xi_n),\forall \eta \in \sigma(\xi_{n + 1}) \);
+    \item \(\mathbb{E}(Y_1,\cdots,Y_m \mid \mathcal{A}_n)=\mathbb{E}(Y_1,\cdots,Y_m \mid \xi_n),\forall Y_k \in \sigma(\xi_{n + k}),k =1,\cdots,m \);
+    \item \(\mathbb{E}(\eta \mid \mathcal{A}_n)=\mathbb{E}(\eta \mid \xi_n),\eta \in \mathcal{A}^n, n \geq 1 \)，
+    \item \(\forall \eta \in \mathcal{A}_n,\xi \in \mathcal{A}^n \)使得\(\eta , \zeta ,\eta \zeta \)均可积，则\[
+        \mathbb{E}(\eta \zeta \mid \xi_n)=\mathbb{E}(\eta \mid \xi_n)\mathbb{E}(\zeta \mid \xi_n),n \geq 1
+      \]
+  \end{enumerate}
+  \begin{enumerate}
+    \item 1``\(\implies\)''2: \(\forall B \in \sigma(\xi_{n + 1}) \)，那么\(\mathbb{E}(\mathbbm{1}_B \mid \mathcal{A}_n)=\mathbb{P}(\xi_{n + 1} \in B \mid \mathcal{A}_n)=\mathbb{P}(\xi_{n + 1} \in B \mid \xi_n)=\mathbb{E}(\mathbbm{1}_B \mid \xi_n) \)。
+      令\(\mathcal{L}:=\{f \in \sigma(\xi_{n + 1}): \mathbb{E}(f \mid \mathcal{A}_n)=\mathbb{E}(f \mid \xi_n)\} \)。
+      故\(\mathbbm{1}_{B} \in \mathcal{L} \)。显然\(\mathcal{L} \)对正系数线性运算封闭。
+      考虑\(0 \leq f_n \in \mathcal{L} \)单调增收敛到\(f \)。那么\(\mathbb{E}(f_n \mid \mathcal{A}_n) \to \mathbb{E}(f \mid \mathcal{A}_n) \)，\(\mathbb{E}(f_n \mid \xi_n) \to \mathbb{E}(f \mid \xi_n) \)。
+      从而\(\mathcal{L} \)为\(L \)系。那么，由函数类单调类定义可知，\(\forall f \in \sigma(\xi_{n + 1}) \)，\(\mathbb{E}(f \mid \mathcal{A}_n)=\mathbb{E}(f \mid \xi_n) \).
+    \item 2``\(\implies\)''3:用MI证明。\(k=1 \)，即第二条，故成立。若\( k=m\)时成立，下面证明\(k=m + 1 \)成立：\\
+      令\(Y=(Y_1,\cdots,Y_{m + 1}) \)，那么\(\mathbb{E}(Y \mid \mathcal{A}_n)=\mathbb{E}(\mathbb{E}(Y \mid \mathcal{A}_{n + m }) \mid \mathcal{A}_n)=\mathbb{E}(\mathbb{E}(Y \mid \mathcal{A}_{n + m})\mid \xi_n)=\mathbb{E}(Y  \mid \xi_n) \)。
+    \item 3``\(\implies\)''4: 令\(\mathcal{C}=\{B \times \Omega_{> k + n}: B \in \sigma(\xi_n,\cdots,\xi_{k + n}), k \in \mathbb{N}_{+}\} \)，那么可知\(\sigma(\mathcal{C})=\mathcal{A}^n \)。
+      同理上一问的证明，只需证明\(\forall A \in \mathcal{C} \)，\(\mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n)=\mathbb{E}(\mathbbm{1}_A \mid \xi_n) \)。设\(A=B \times \Omega_{> k + n}, B \in \sigma(\xi_n,\cdots,\xi_{n + k}) \)，
+      那么\(\mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n)=\mathbbm{E}(\mathbbm{1}_B \mid \mathcal{A}_n), \) \(\mathbb{E}(\mathbbm{1}_A \mid \xi_n)=\mathbb{E}(\mathbbm{1}_B  \mid \xi_n) \)。
+      故只需证明\(\forall k \in \mathbb{N}_{+},B \in \sigma(\xi_n,\cdots,\xi_{n + k}) \)有\(\mathbb{E}(\mathbbm{1}_B \mid \mathcal{A}_n)=\mathbb{E}(\mathbbm{1}_B \mid \xi_n) \)。
+      故由单调类定理知，只需证明\(\forall A \in \sigma(\xi_{n + k}),k \in \mathbb{N}_{+ } \)，\(\mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n)=\mathbb{E}(\mathbbm{1}_A \mid \xi_n) \)。
+      只需在第三条中取\(Y_i=\mathbbm{1}_\Omega,1 \leq i \leq k-1, Y_k=\mathbbm{1}_A \)即可，故成立。
+    \item 4``\(\implies\)''5:\(\mathbb{E}(\eta \zeta \mid \xi_n) = \mathbb{E}(\eta \xi \mid \mathcal{A}_n)=\mathbb{E}(\mathbb{E}(\eta \zeta \mid \mathcal{A}_n) \mid \xi_n)=\mathbb{E}(\eta \mathbb{E}(\zeta \mid \mathcal{A}_n) \mid \xi_n)=\mathbb{E}(\eta \mathbb{E}(\zeta \mid \xi_n) \mid \xi_n)=\mathbb{E}(\eta \mid \xi_n)=\mathbb{E}(\zeta \mid \xi_n) \).
+    \item 5``\(\implies\)''1:令\(A=\{\xi_{n + 1} \in B\} \)，\(\forall \eta  \in \mathcal{A}_n \)，
+      \(\mathbb{E}(\eta \mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n))=\mathbb{E}(\mathbb{E}(\eta \mathbbm{1}_A \mid \mathcal{A}_n))=\mathbb{E}(\eta \mathbbm{1}_A)=\mathbb{E}(\mathbb{E}(\eta \mathbbm{1}_A \mid \xi_n))=\mathbb{E}(\mathbb{E}(\eta \mid \xi_n) \mathbb{E}(\mathbbm{1}_A \mid \xi_n))=\mathbb{E}(\eta \mathbb{E}(\mathbbm{1}_A \mid \xi_n)) \)。
+      又由\(\eta \)任意性，可知\(\mathbb{E}(\mathbbm{1}_A \mid \mathcal{A}_n) =\mathbb{E}(\mathbbm{1}_A \mid \xi_n)\)。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{pro:15}
+  证明\(\mathbb{E}(\xi \mid \mathcal{C})=\eta, \) \(\mathbb{E}(\xi^2)=\mathbb{E}(\eta^2)<\infty \)，那么\(\eta=\xi,a.e. \)。
+\end{problem}
+\begin{solution}
+  由于\(\mathbb{E} (\mathbb{E}(\xi^2 \mid \mathcal{C}) )=\mathbb{E}(\xi^2)=\mathbb{E}(\eta^2)\)，而\(\eta^2 \in \mathcal{C} \)。从而\(\eta^2=\mathbb{E}(\xi^2 \mid \mathcal{C}) \)。
+  由于\(\mathbb{E}(|\xi-\eta|^2) = \mathbb{E}(\xi^2) + \mathbb{E}(\eta^2) + 2 \mathbb{E}(\xi)\mathbb{E}(\eta) \leq \mathbb{E}(\xi^2) + \mathbb{E}(\eta^2) + 2 \sqrt{\mathbb{E}(\xi^2) \mathbb{E}(\eta^2)} < \infty\),从而\(\mathbb{E}((\xi-\eta)^2 \mid \mathcal{C})=\mathbb{E}(\eta ^2 + \xi^2 -2 \xi \eta \mid \mathcal{C})=\eta^2 + \mathbb{E}(\xi^2 \mid \mathcal{C}) -2\eta \mathbb{E}(\xi \mid \mathcal{C}) =\eta^2 + \eta^2 -2\eta^2=0\)。
+  从而\(\forall A \in \mathcal{C} \),\(\mathbb{E}(((\eta-\xi)\mathbbm{1}_A )^2)=\mathbb{E}((\eta-\xi)^2 \mathbbm{1}_A)=\mathbb{E}(\mathbb{E}((\xi-\eta)^2 \mathbbm{1}_A \mid \mathcal{C}))=\mathbb{E}(\mathbbm{1}_A\mathbb{E}((\eta-\xi)^2 \mid \mathcal{C}))=0 \).
+  因此，\(\eta-\xi=0,\mathcal{C} \)-a.e..
+\end{solution}
+
+\begin{problem}\label{pro:20}
+  \begin{enumerate}
+    \item 若\(A \)满足\(\mathbb{P}(A)>0 \)，定义\(\mathbb{Q}(B)=\mathbb{P}(B \mid A) \)，证明对于\(B \in \mathcal{A} \)，以及子\(\sigma \)-代数\(\mathcal{C} \)，\[
+        \mathbb{Q}(B \mid \mathcal{C})=\frac{\mathbb{P}(A \cap B \mid \mathcal{C})}{\mathbb{P}(A \mid \mathcal{C})}, \mathbb{Q}-a.s.
+      \]
+    \item 设\(\mathcal{D} \)由\(A_1,\cdots \)生成的\(\sigma \)代数，\(\mathcal{C} \vee \mathcal{D} := \sigma(\mathcal{C} \cup \mathcal{D}) \)。证明\(B \in \mathcal{A} \) \[
+        \mathbb{P}(B \mid \mathcal{C} \vee \mathcal{D})=\sum_{n=1}^{\infty} \mathbbm{1}_{A_n} \frac{\mathbb{P}(B \cap A_n \mid \mathcal{C})}{\mathbb{P}(A_n \mid \mathcal{C})}
+      \]
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  \begin{enumerate}
+    \item
+      我们证明在概率测度
+      \[
+        \mathbb Q(B):=\frac{\mathbb P(B\cap A)}{\mathbb P(A)},\qquad B\in\mathcal A,
+      \]
+      下，有
+      \[
+        \mathbb E_{\mathbb Q}(\xi\mid\mathcal C)
+        =
+        \frac{\mathbb E(\xi\mathbbm 1_A\mid\mathcal C)}{\mathbb P(A\mid\mathcal C)},
+        \qquad \mathbb Q\text{-a.s.}
+      \]
+
+      首先定义
+      \[
+        N:=\{\omega:\mathbb P(A\mid\mathcal C)(\omega)=0\}\in\mathcal C.
+      \]
+      由条件期望的刻画，
+      \[
+        \int_N \mathbb P(A\mid\mathcal C)\,d\mathbb P
+        =
+        \int_N \mathbbm 1_A\,d\mathbb P
+        =
+        \mathbb P(N\cap A)=0.
+      \]
+      因此
+      \[
+        \mathbb Q(N)=\frac{\mathbb P(A\cap N)}{\mathbb P(A)}=0.
+      \]
+      又由于 $\mathbbm 1_A\ge 0$，从而
+      $\mathbb P(A\mid\mathcal C)\ge 0$ $\mathbb P$-a.s.，
+      结合 $\mathbb Q\ll\mathbb P$，可得
+      \[
+        \mathbb P(A\mid\mathcal C)>0,\qquad \mathbb Q\text{-a.s.}
+      \]
+
+      因此，只需证明
+      \[
+        \mathbb E_{\mathbb Q}(\xi\mid\mathcal C)\,
+        \mathbb P(A\mid\mathcal C)
+        =
+        \mathbb E(\xi\mathbbm 1_A\mid\mathcal C),
+        \qquad \mathbb Q\text{-a.s.}
+      \]
+      注意到 $\mathbb P(A\mid\mathcal C)$ 为 $\mathcal C$-可测函数，有
+      \[
+        \mathbb E_{\mathbb Q}(\xi\mid\mathcal C)\,
+        \mathbb P(A\mid\mathcal C)
+        =
+        \mathbb E_{\mathbb Q}\bigl(\xi\,\mathbb P(A\mid\mathcal C)\mid\mathcal C\bigr).
+      \]
+
+      根据条件期望的定义，只需验证对任意 $C\in\mathcal C$，
+      \[
+        \int_C \xi\,\mathbb P(A\mid\mathcal C)\,d\mathbb Q
+        =
+        \int_C \mathbb E(\xi\mathbbm 1_A\mid\mathcal C)\,d\mathbb Q.
+      \]
+      由 Radon--Nikodym 表达式
+      \[
+        d\mathbb Q=\frac{\mathbbm 1_A}{\mathbb P(A)}\,d\mathbb P,
+      \]
+      上述等式等价于
+      \[
+        \int_C \xi\,\mathbb P(A\mid\mathcal C)\,\mathbbm 1_A\,d\mathbb P
+        =
+        \int_C \mathbb E(\xi\mathbbm 1_A\mid\mathcal C)\,\mathbbm 1_A\,d\mathbb P.
+      \]
+
+      注意到
+      \[
+        \mathbb E\bigl(\xi\,\mathbb P(A\mid\mathcal C)\,\mathbbm 1_A\mid\mathcal C\bigr)
+        =
+        \mathbb P(A\mid\mathcal C)\,
+        \mathbb E(\xi\mathbbm 1_A\mid\mathcal C),
+      \]
+      以及
+      \[
+        \mathbb E\bigl(\mathbb E(\xi\mathbbm 1_A\mid\mathcal C)\,\mathbbm 1_A\mid\mathcal C\bigr)
+        =
+        \mathbb P(A\mid\mathcal C)\,
+        \mathbb E(\xi\mathbbm 1_A\mid\mathcal C),
+      \]
+      从而两边条件期望相同，故积分相等，结论成立。
+
+    \item
+      设 $\mathbb Q_n(B):=\mathbb P(B\mid A_n)$。
+      我们需要证明
+      \[
+        \mathbb P(B\mid\mathcal C\vee\mathcal D)
+        =
+        \sum_{n=1}^\infty \mathbbm 1_{A_n}\,
+        \mathbb Q_n(B\mid\mathcal C).
+      \]
+
+      由于 $\{A_n\}$ 构成一个划分，只需验证对每个 $n$，
+      \[
+        \mathbb E(\mathbbm 1_B\mathbbm 1_{A_n}\mid\mathcal C\vee\mathcal D)
+        =
+        \mathbbm 1_{A_n}\,\mathbb Q_n(B\mid\mathcal C).
+      \]
+
+      设 $E\in\mathcal C\vee\mathcal D$。
+      注意到集合族
+      \[
+        \bigl\{
+          E:\exists C\in\mathcal C,\ E\cap A_n=C\cap A_n
+        \bigr\}
+      \]
+      是一个包含 $\mathcal C\cup\mathcal D$ 的 $\sigma$-代数，
+      因此对任意 $E\in\mathcal C\vee\mathcal D$，
+      存在 $C\in\mathcal C$ 使得 $E\cap A_n=C\cap A_n$。
+
+      于是
+      \begin{align*}
+        \int_E \mathbbm 1_{A_n}\mathbb Q_n(B\mid\mathcal C)\,d\mathbb P
+        &=
+        \int_C \mathbbm 1_{A_n}\mathbb Q_n(B\mid\mathcal C)\,d\mathbb P \\
+        &=
+        \int_C \mathbb Q_n(B\mid\mathcal C)\,\mathbb P(A_n)\,d\mathbb Q_n \\
+        &=
+        \int_C \mathbbm 1_B\,\mathbb P(A_n)\,d\mathbb Q_n \\
+        &=
+        \mathbb P(B\cap C\cap A_n) \\
+        &=
+        \int_E \mathbbm 1_B\mathbbm 1_{A_n}\,d\mathbb P.
+      \end{align*}
+      由条件期望的唯一性，得到
+      \[
+        \mathbb E(\mathbbm 1_{A_n}\mathbbm 1_B\mid\mathcal C\vee\mathcal D)
+        =
+        \mathbbm 1_{A_n}\mathbb Q_n(B\mid\mathcal C),
+        \quad
+        \mathbb P\text{-a.s.}
+      \]
+  \end{enumerate}
+\end{solution}
 \end{document}
