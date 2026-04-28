@@ -1,0 +1,149 @@
+%arara: xelatex
+\documentclass{ctexart}
+\usepackage{amsmath,amssymb,amsthm,bbm,listings,hyperref,xcolor}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{problem}{Problem}
+\newtheorem{solution}{Solution}
+\usepackage{listings}
+\usepackage[a4paper,left=2cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+\lstset{
+  language=Matlab,
+  xleftmargin=2em,
+  frame=single,
+  basicstyle=\ttfamily\small,
+  keepspaces=true,
+  columns=fullflexible,
+  showstringspaces=false
+}
+\everymath{\displaystyle}
+\newlength\inlineHeight
+\newlength\inlineWidth
+\long\def\(#1\){%
+  \settoheight{\inlineHeight}{$#1$}%
+  \settowidth{\inlineWidth}{$#1$}%
+  \ifdim \inlineWidth > 0.5\textwidth%
+  $$#1$$%
+  \else%
+  \ifdim \inlineHeight > 1.5em%
+  $$#1$$%
+  \else%
+  $#1$%
+  \fi%
+  \fi%
+}
+
+\title{Iterative Linear Systems}
+\author{
+  Yinya Wang\\
+  25114020018\\
+  \href{mailto:yinyawang25@m.fudan.edu.cn}{yinyawang25@m.fudan.edu.cn}
+}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Problem 20.18}
+
+Let
+\[
+  A=
+  \begin{bmatrix}
+    0.1000 & 0.5000 & -0.1000\\
+    0.4000 & 0.2000 & 0.6000\\
+    0.2000 & -0.3000 & 0.4000
+  \end{bmatrix}.
+\]
+Since $A$ is not diagonally dominant, the convergence of the Jacobi and Gauss--Seidel methods is not guaranteed.
+
+\paragraph{(a) Norms of $B_J$ and $B_{GS}$}
+
+The computed norms of $B_J$ are
+\[
+  \|B_J\|_1 = 5.7500,\qquad
+  \|B_J\|_2 = 5.2180,\qquad
+  \|B_J\|_\infty = 6.0000.
+\]
+
+The computed norms of $B_{GS}$ are
+\[
+  \|B_{GS}\|_1 = 25.0000,\qquad
+  \|B_{GS}\|_2 = 16.3566,\qquad
+  \|B_{GS}\|_\infty = 15.0000.
+\]
+
+\paragraph{(b) Spectral radii}
+
+\[
+  \rho(B_J)=3.1756,\qquad
+  \rho(B_{GS})=3.7500.
+\]
+
+\paragraph{(c) Convergence analysis}
+
+A stationary iteration converges if and only if
+\[
+  \rho(B)<1.
+\]
+Since
+\[
+  \rho(B_J)>1,\qquad \rho(B_{GS})>1,
+\]
+neither the Jacobi method nor the Gauss--Seidel method converges.
+
+To verify this numerically, we choose a vector $b=1$ and set the initial guess
+\[
+  x^{(0)}=0.
+\]
+The tolerance is chosen as
+\[
+  \text{tol} = 10^{-14},
+\]
+and the maximum number of iterations is set to
+\[
+  \text{numiter} = 2{,}000{,}000.
+\]
+
+Despite allowing a large number of iterations and a reasonable tolerance, both methods fail to converge:
+\[
+  \text{GS does not converge},\qquad
+  \text{Jacobi does not converge}.
+\]
+
+This agrees with the theoretical prediction, since the spectral radii of both iteration matrices are greater than $1$.
+
+\paragraph{Conclusion}
+
+Both the Jacobi and Gauss--Seidel methods do not converge for this matrix. This is consistent with the fact that $A$ is not diagonally dominant and that $\rho(B_J)>1$ and $\rho(B_{GS})>1$.
+\paragraph{Codes}
+\subsection{Codes for problem 20.18}
+
+{\noindent\input{prob20_18.tex}}
+% \subsection{Codes for Jacobi}
+% {\noindent\input{Jacobi.tex}}
+% \subsection{Codes for GS}
+% {\noindent\input{GS.tex}}
+\newpage
+\section{Problem20.19: Comparison of the results}
+The numerical results are listed below (all logarithms are natural logarithms, i.e., base $e$):
+\begin{itemize}
+  \item \textbf{Jacobi:} converges in 30 iterations, with log-residual $-33.029204$.
+  \item \textbf{Gauss--Seidel:} converges in 21 iterations, with log-residual $-33.886495$.
+  \item \textbf{SOR$(\omega=1.1)$:} converges in 21 iterations, with log-residual $-33.365732$.
+  \item \textbf{SOR$(\omega=1.2)$:} converges in 28 iterations, with log-residual $-33.997858$.
+  \item \textbf{SOR$(\omega=1.3)$:} converges in 35 iterations, with log-residual $-33.057573$.
+  \item \textbf{SOR$(\omega=1.5)$:} converges in 60 iterations, with log-residual $-33.292912$.
+  \item \textbf{SOR$(\omega=1.9)$:} does not converge.
+  \item \textbf{$B\backslash c$:} log-residual $-37.450359$.
+\end{itemize}
+
+From these results, we see that the Gauss--Seidel method converges faster than the Jacobi method, since it requires only 21 iterations instead of 30. For the SOR method, the choice of $\omega$ has a strong effect on performance. Among the tested values, $\omega=1.1$ works best in terms of convergence speed, since it converges in 21 iterations, the same as Gauss--Seidel. As $\omega$ increases, the convergence becomes slower, and when $\omega=1.9$, the method does not converge.
+
+In terms of accuracy, the direct solver $B\backslash c$ gives the smallest residual, since its log-residual is $-37.450359$, which is smaller than those of all iterative methods. Therefore, $B\backslash c$ produces the most accurate solution overall.
+
+In conclusion, among the iterative methods, Gauss--Seidel and SOR with $\omega=1.1$ perform best, while the MATLAB command $B\backslash c$ gives the highest accuracy.
+\paragraph{Codes}
+\subsection{Codes for problem 20.19}
+% \lstinputlisting[language=Matlab]{home1_mat/problem20_19.m}
+{\noindent\input{prob20_19.tex}}
+\end{document}

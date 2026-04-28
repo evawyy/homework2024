@@ -1,0 +1,32 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%lan
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}
+  Assume \(A \in \mathbb{R}^{m \times m} \) is symmetric and the Rayleigh quotient \(R_A(X)=\frac{x^T A x}{x^T x} \), then
+  the eigenvalues of \(A \) are the stationary values of \(r_A(x) \).
+\end{problem}
+\begin{solution}
+
+\end{solution}
+\begin{problem}
+  Assume \(A \in \mathbb{R}^{m \times m} \) is symmetric. The Ritz values at step \(n \) od the lanczos iteration are the
+  stationary values of the Rayleigh quotient \(r_A(x) \), if \(x \) is restricted to the Krylov subspace \(K_n(A,r_0) \), where \(r_0=Ax_0-b \).
+\end{problem}
+
+\end{document}

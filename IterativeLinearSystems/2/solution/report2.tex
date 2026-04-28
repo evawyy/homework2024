@@ -1,0 +1,151 @@
+%arara: xelatex
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,bbm,tabularray}
+\usepackage{hyperref}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{problem}{Problem}
+\newtheorem{solution}{Solution}
+\everymath{\displaystyle}
+\newlength\inlineHeight
+\newlength\inlineWidth
+\long\def\(#1\){%
+  \settoheight{\inlineHeight}{$#1$}%
+  \settowidth{\inlineWidth}{$#1$}%
+  \ifdim \inlineWidth > 0.5\textwidth%
+  $$#1$$%
+  \else%
+  \ifdim \inlineHeight > 1.5em%
+  $$#1$$%
+  \else%
+  $#1$%
+  \fi%
+  \fi%
+}
+
+\title{Iterative Linear Systems2}
+\author{
+  Yinya Wang\\
+  25114020018\\
+  \href{mailto:yinyawang25@m.fudan.edu.cn}{yinyawang25@m.fudan.edu.cn}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Problem21.14}
+To ensure reproducibility, the random vector $b$ is generated using a fixed seed:
+\[
+  \texttt{rng(0); \quad b = rand(100,1)}.
+\]
+
+\subsection{Performance of CG and PCG}
+
+We solve the system $Ax = b$ using both CG and PCG with tolerance $10^{-14}$ and initial guess $x_0 = 0$. The vector $b$ is generated using \texttt{rng(0)} to ensure reproducibility.
+
+\begin{table}[h]
+  \centering
+  \begin{tblr}{
+      colspec = {c c c c},
+      row{1} = {font=\bfseries},
+      hlines
+    }
+    Method & Iterations & Residual & Time (seconds) \\
+    CG   & 800 & $9.33 \times 10^{-15}$ & $5.33 \times 10^{-2}$ \\
+    PCG  & 33  & $4.85 \times 10^{-15}$ & $2.41 \times 10^{-3}$ \\
+  \end{tblr}
+  \caption{Comparison of CG and PCG}
+  \label{tab:iter}
+\end{table}
+
+\subsection{Analysis}
+
+From Table~\ref{tab:iter}, we observe that the CG method requires 800 iterations to reach a residual of order $10^{-15}$, whereas the preconditioned CG method only requires 33 iterations to achieve a similar accuracy.
+
+This corresponds to an acceleration factor of approximately
+\[
+  \frac{800}{33} \approx 24.
+\]
+
+In terms of computational time, CG takes about $5.33 \times 10^{-2}$ seconds, while PCG requires only $2.41 \times 10^{-3}$ seconds, showing a significant improvement in efficiency.
+
+The improvement can be explained by the fact that preconditioning reduces the effective condition number of the system. As a result, the eigenvalues become more clustered, which leads to faster convergence of the Krylov subspace method.
+
+\subsection{Conclusion}
+
+The numerical results clearly demonstrate that preconditioning significantly accelerates the convergence of the conjugate gradient method. This highlights the importance of choosing an appropriate preconditioner when solving large sparse linear systems.
+\newpage
+\section{Problem21.17}
+
+In this experiment, we study the properties of the sparse matrix HB1138 arising from a power network problem. We first verify whether the matrix is symmetric positive definite (SPD), then approximate its condition number. Finally, we compare the performance of the Conjugate Gradient (CG) method and the Preconditioned Conjugate Gradient (PCG) method for solving the linear system
+\[
+  Ax = b,
+\]
+where $b$ is a randomly generated vector.
+
+\subsection{Verification of Positive Definiteness}
+
+To verify that HB1138 is positive definite, we perform the Cholesky factorization of $A$.
+In MATLAB, this is done using the command \texttt{chol(A)}.
+Since the factorization succeeds without breakdown (i.e., the returned flag $p = 0$),
+we conclude that the matrix is symmetric positive definite.
+
+\subsection{Approximation of the Condition Number}
+
+For a symmetric positive definite matrix, the 2-norm condition number is given by
+\[
+  \kappa(A) = \frac{\lambda_{\max}(A)}{\lambda_{\min}(A)},
+\]
+where $\lambda_{\max}$ and $\lambda_{\min}$ are the largest and smallest eigenvalues of $A$, respectively.
+
+We approximate these eigenvalues using the MATLAB function \texttt{eigs}. The results are:
+\[
+  \lambda_{\max} \approx 3.014879 \times 10^4,
+\]
+\[
+  \lambda_{\min} \approx 3.516860 \times 10^{-3}.
+\]
+
+Thus, the approximate condition number is
+\[
+  \kappa(A) \approx 8.572646 \times 10^6.
+\]
+
+This indicates that the matrix is ill-conditioned.
+
+\subsection{Performance of CG and PCG Methods}
+
+We solve the system $Ax = b$ using both the CG and PCG methods,
+with tolerance $10^{-14}$ and initial guess $x_0 = 0$.
+The vector $b$ is generated using a fixed random seed to ensure reproducibility.
+
+\subsubsection{CG Method}
+
+The CG method requires a large number of iterations to converge due to the high condition number
+of the matrix. In particular, CG needs approximately 4998 iterations to reduce the residual
+below $10^{-14}$.
+
+\subsection{Preconditioned CG Method}
+
+Using a preconditioner significantly improves convergence.
+In our experiment, the PCG method reaches a comparable residual of order $10^{-14}$ in only 234 iterations.
+
+\subsection{Discussion}
+
+The results clearly demonstrate that the convergence rate of the CG method depends
+strongly on the condition number of the matrix. Since HB1138 has a large condition number,
+CG converges slowly.
+
+In contrast, the preconditioned CG method greatly reduces the number of iterations required.
+This shows that preconditioning effectively improves the spectral properties of the
+system and accelerates convergence.
+
+\subsection{Conclusion}
+
+In this experiment, we verified that HB1138 is symmetric positive definite and found
+that it has a large condition number. Numerical experiments show that while the
+standard CG method converges slowly, the preconditioned CG method achieves much faster convergence.
+This highlights the importance of preconditioning in solving large sparse linear systems.
+
+\end{document}

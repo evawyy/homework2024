@@ -12,5 +12,6 @@
   "ite": "Iterative",
   "oth": "OtherItem",
   "eng": "English",
-  "nume": "NumericalAlgebra"
+  "nume": "NumericalAlgebra",
+  "numa": "IterativeLinearSystems"
 }
