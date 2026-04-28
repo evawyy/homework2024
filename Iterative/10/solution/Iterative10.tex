@@ -16,5 +16,80 @@
 \maketitle
 \fi
 %from_here_to_type
+\begin{problem} 
+从 $k$ 步 Krylov--Schur 分解到 $m$ 步 Arnoldi 过程.
+\end{problem}
+\begin{solution}
+设 $A\in\mathbb{R}^{n\times n}$。
+$k$ 步 Krylov--Schur 分解具有如下形式：
+\begin{equation}
+A U_k = U_k H_k + u_{k+1} h_{k+1,k} e_k^{\top},
+\label{eq:ks}
+\end{equation}
+其中
+$U_k=[u_1,\dots,u_k]\in\mathbb{R}^{n\times k}$ 为列正交矩阵，
+$H_k\in\mathbb{R}^{k\times k}$ 为上 Hessenberg 矩阵，
+$u_{k+1}\perp U_k$ 且 $\|u_{k+1}\|_2=1$，
+$e_k$ 为第 $k$ 个标准基向量。
+
+等价地，式 \eqref{eq:ks} 可写为块矩阵形式
+\begin{equation}
+A U_k
+=
+\begin{bmatrix}
+U_k & u_{k+1}
+\end{bmatrix}
+\begin{bmatrix}
+H_k \\[1mm]
+h_{k+1,k} e_k^{\top}
+\end{bmatrix}.
+\end{equation}
+
+在此基础上，对向量 $u_{k+1}$ 继续执行 Arnoldi 正交化过程，
+生成正交向量 $u_{k+2},\dots,u_{m+1}$，
+从而得到 $m$ 步 Arnoldi 分解。
+记
+\[
+U_m = [u_1,\dots,u_m]\in\mathbb{R}^{n\times m},
+\qquad
+U_{m+1}=[U_m,\;u_{m+1}],
+\]
+则有
+\begin{equation}
+A U_m = U_{m+1}\,\bar H_m,
+\label{eq:arnoldi}
+\end{equation}
+其中 $\bar H_m\in\mathbb{R}^{(m+1)\times m}$ 为上 Hessenberg 矩阵。
+
+由于前 $k$ 个基向量来源于 Krylov--Schur 分解，
+矩阵 $\bar H_m$ 具有如下块结构：
+\begin{equation}
+\bar H_m =
+\begin{bmatrix}
+H_k & * \\
+0   & H_{22} \\
+0   & h_{m+1,m} e_{m-k}^{\top}
+\end{bmatrix},
+\end{equation}
+其中 $H_{22}\in\mathbb{R}^{(m-k)\times(m-k)}$ 为后续 Arnoldi 过程产生的
+上 Hessenberg 矩阵，符号 $*$ 表示子空间之间的耦合项。
+
+因此，从 $k$ 步 Krylov--Schur 分解扩展到 $m$ 步 Arnoldi 过程后，
+得到的整体矩阵形式为
+\begin{equation}
+A U_m
+=
+\begin{bmatrix}
+U_k & U_{k+1:m} & u_{m+1}
+\end{bmatrix}
+\begin{bmatrix}
+H_k & * \\
+0   & H_{22} \\
+0   & h_{m+1,m} e_{m-k}^{\top}
+\end{bmatrix}.
+\end{equation}
+\end{solution}
+
+
 
 \end{document}
