@@ -1,0 +1,67 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%lan
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}\label{pro:1}
+  Use the Taylor series to show that the approximation
+  \[
+    \frac{\partial}{\partial x}
+    \left(
+      a\frac{\partial u}{\partial x}
+    \right)(x_i,y_j)
+    \approx
+    \frac{
+      a_{i+\frac12,j}(u_{i+1,j}-u_{i,j})
+      -
+      a_{i-\frac12,j}(u_{i,j}-u_{i-1,j})
+    }{
+      h_x^2
+    }
+  \]
+  is second-order accurate, provided that
+  \[
+    a\frac{\partial u}{\partial x}\in C^3,
+    \qquad
+    a\frac{\partial^3 u}{\partial x^3}\in C^1.
+  \]
+
+  That is, show that the absolute value of the difference between the
+  right-hand side and left-hand side is bounded by
+  \[
+    \frac{h_x^2}{24}
+    \left[
+      \max_{x\in[x_{i-1},x_{i+1}]}
+      \left|
+      \frac{\partial^3}{\partial x^3}
+      \left(
+        a\frac{\partial u}{\partial x}
+      \right)
+      \right|
+      +
+      \max_{x\in[x_{i-1},x_{i+1}]}
+      \left|
+      \frac{\partial}{\partial x}
+      \left(
+        a\frac{\partial^3 u}{\partial x^3}
+      \right)
+      \right|
+    \right].
+  \]
+\end{problem}
+
+\end{document}

@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Homebrew) (preloaded format=xelatex 2026.3.4)  10 MAY 2026 13:18
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Homebrew) (preloaded format=xelatex 2026.3.4)  19 MAY 2026 20:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**NumericalAlgebra1
-(./NumericalAlgebra1.tex
+**NumericalAlgebra3
+(./NumericalAlgebra3.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 
@@ -1373,29 +1373,29 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip70
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-))) (./NumericalAlgebra1.aux)
-\openout1 = `NumericalAlgebra1.aux'.
+))) (./NumericalAlgebra3.aux)
+\openout1 = `NumericalAlgebra3.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -1403,69 +1403,69 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 11.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 11.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 11.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 11.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 11.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 11.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 11.
-LaTeX Font Info:    Redeclaring math accent \check on input line 11.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 11.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 11.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 11.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 11.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 11.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 12.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 12.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 12.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 12.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 12.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 12.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 12.
+LaTeX Font Info:    Redeclaring math accent \check on input line 12.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 12.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 12.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 12.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 12.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 12.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 11.
+(Font)              `operators' in the math version `normal' on input line 12.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 11.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 12.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 11.
+(Font)              `operators' in the math version `bold' on input line 12.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 11.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 12.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 11.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 12.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 11.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 12.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 11.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 12.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 11.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 12.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 11.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 12.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 11.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 12.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 11.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 12.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 11.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 12.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 11.
-Package hyperref Info: Link coloring OFF on input line 11.
- (./NumericalAlgebra1.out)
-(./NumericalAlgebra1.out)
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 12.
+Package hyperref Info: Link coloring OFF on input line 12.
+ (./NumericalAlgebra3.out)
+(./NumericalAlgebra3.out)
 \@outlinefile=\write4
-\openout4 = `NumericalAlgebra1.out'.
+\openout4 = `NumericalAlgebra3.out'.
 
 
 
 Package fixdif Warning: Requires `no-math' option of fontspec!
-(fixdif)                 on input line 11.
+(fixdif)                 on input line 12.
 
-LaTeX Info: Redefining \d on input line 11.
-LaTeX Info: Redefining \partial on input line 11.
+LaTeX Info: Redefining \d on input line 12.
+LaTeX Info: Redefining \partial on input line 12.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1566,21 +1566,21 @@ Package fontspec Info:
 (fontspec)             <->"STXihei/BI/OT:script=hani;language=dflt;"
 
 (../../.subject) (../.number)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
 
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/umsa
 .fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/umsb
 .fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 23
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 25
 .
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/jknapltx/ursf
@@ -1620,109 +1620,37 @@ Package fontspec Info:
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"STFangsong/OT:script=hani;language=dflt;"
 
+ [1
 
-Overfull \hbox (22.28828pt too wide) in paragraph at lines 36--39
-[]\TU/lmr/m/n/12.045 Since $\OML/cmm/m/it/12.045 K[]\OT1/cmr/m/n/12.045 (\OML/c
-mm/m/it/12.045 A; b\OT1/cmr/m/n/12.045 ) = \OML/cmm/m/it/12.045 span\OMS/cmsy/m
-/n/12.045 f\OML/cmm/m/it/12.045 b; []  ; A[]b\OMS/cmsy/m/n/12.045 g \OT1/cmr/m/
-n/12.045 = \OML/cmm/m/it/12.045 span\OMS/cmsy/m/n/12.045 f\OML/cmm/m/it/12.045 
-b; AK[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A; b\OT1/cmr/m/n/12.045 )\OMS/
-cmsy/m/n/12.045 g$\TU/lmr/m/n/12.045 , we only need to prove $\OML/cmm/m/it/12.
-045 AK[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A; b\OT1/cmr/m/n/12.045 ) \OM
-S/cmsy/m/n/12.045 ^^Z
+
+] [2] [3] [4] [5] [6] [7]
+Overfull \hbox (0.27692pt too wide) in paragraph at lines 620--622
+\TU/lmr/m/n/12.045 where $\OML/cmm/m/it/12.045 t[]; p[]; y[]; s[]$ \TU/lmr/m/n/
+12.045 are the auxiliary vectors generated above. This is the analogue of the B
+CGSTAB
  []
 
-
-Overfull \hbox (9.54524pt too wide) in paragraph at lines 43--47
-\OML/cmm/m/it/12.045 span\OMS/cmsy/m/n/12.045 f\OML/cmm/m/it/12.045 b; AK[]\OT1
-/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A; b\OT1/cmr/m/n/12.045 )\OMS/cmsy/m/n/12
-.045 g$\TU/lmr/m/n/12.045 . Besides, $\OML/cmm/m/it/12.045 K[]\OT1/cmr/m/n/12.0
-45 (\OML/cmm/m/it/12.045 A; b\OT1/cmr/m/n/12.045 )$ \TU/lmr/m/n/12.045 is $\OML
-/cmm/m/it/12.045 A$\TU/lmr/m/n/12.045 - invariant subspace, then $\OML/cmm/m/it
-/12.045 AK[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A; b\OT1/cmr/m/n/12.045 )
- \OMS/cmsy/m/n/12.045 ^^Z \OML/cmm/m/it/12.045 AK[]\OT1/cmr/m/n/12.045 (\OML/cm
-m/m/it/12.045 A; b\OT1/cmr/m/n/12.045 ) \OMS/cmsy/m/n/12.045 ^^Z
- []
-
-
-Overfull \hbox (13.60933pt too wide) in paragraph at lines 48--49
-[]\TU/lmr/m/n/12.045 Since $\OML/cmm/m/it/12.045 K[]\OT1/cmr/m/n/12.045 (\OML/c
-mm/m/it/12.045 A; b\OT1/cmr/m/n/12.045 ) = \OML/cmm/m/it/12.045 span\OMS/cmsy/m
-/n/12.045 f\OML/cmm/m/it/12.045 b; []  ; A[]b\OMS/cmsy/m/n/12.045 g ^^[ \OML/cm
-m/m/it/12.045 span\OMS/cmsy/m/n/12.045 f\OML/cmm/m/it/12.045 b; []  ; A[]b\OMS/
-cmsy/m/n/12.045 g \OT1/cmr/m/n/12.045 = \OML/cmm/m/it/12.045 K[]\OT1/cmr/m/n/12
-.045 (\OML/cmm/m/it/12.045 A; b\OT1/cmr/m/n/12.045 )$\TU/lmr/m/n/12.045 , we ca
-n get $\OML/cmm/m/it/12.045 K[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A; b\O
-T1/cmr/m/n/12.045 ) =
- []
-
-[1
-
-
-]
+[8]
+File: part_a_bcg_cgs.png Graphic file (type bmp)
+<part_a_bcg_cgs.png>
+ [9]
+File: part_b_qmr.png Graphic file (type bmp)
+<part_b_qmr.png>
+ [10]
+File: part_c_matvecs.png Graphic file (type bmp)
+<part_c_matvecs.png>
+ [11]
+File: part_c_flops.png Graphic file (type bmp)
+<part_c_flops.png>
+ [12] [13] [14]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 99.
+put line 1003.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 99.
+(Font)              size <10.95> substituted on input line 1003.
 
-[2] [3] [4]
-Overfull \hbox (50.19778pt too wide) in paragraph at lines 268--272
-[]\TU/lmr/m/n/12.045 Since $\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 ^^[A\OT1/
-cmr/m/n/12.045 )[] = \OML/cmm/m/it/12.045 ^^[[]A[] \OMS/cmsy/m/n/12.045 2 \OML/
-cmm/m/it/12.045 K[]\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/12.045 A; b\OT1/cmr/m/n/1
-2.045 )\OML/cmm/m/it/12.045 ; \OT1/cmr/m/n/12.045 1 \OMS/cmsy/m/n/12.045 ^^T \O
-ML/cmm/m/it/12.045 k \OMS/cmsy/m/n/12.045 ^^T \OML/cmm/m/it/12.045 n$\TU/lmr/m/
-n/12.045 , we can get that $\OML/cmm/m/it/12.045 K[]\OT1/cmr/m/n/12.045 (\OML/c
-mm/m/it/12.045 ^^[A; b\OT1/cmr/m/n/12.045 ) = \OML/cmm/m/it/12.045 span\OMS/cms
-y/m/n/12.045 f\OML/cmm/m/it/12.045 b; ^^[Ab; []  ; \OT1/cmr/m/n/12.045 (\OML/cm
-m/m/it/12.045 ^^[A\OT1/cmr/m/n/12.045 )[]\OML/cmm/m/it/12.045 b\OMS/cmsy/m/n/12
-.045 g ^^Z
- []
-
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 298
-.
-
-(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/bbm-macros/ub
-bm.fd
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-Overfull \hbox (16.3946pt too wide) in paragraph at lines 298--300
-\TU/lmr/m/n/12.045 Therefore, $\OML/cmm/m/it/12.045 q \OT1/cmr/m/n/12.045 = []\
-OMS/cmsy/m/n/12.045 k\OML/cmm/m/it/12.045 p\OT1/cmr/m/n/12.045 (\OML/cmm/m/it/1
-2.045 A\OT1/cmr/m/n/12.045 )\OML/cmm/m/it/12.045 b\OMS/cmsy/m/n/12.045 k \OT1/c
-mr/m/n/12.045 = []\OMS/cmsy/m/n/12.045 k\OML/cmm/m/it/12.045 Up\OT1/cmr/m/n/12.
-045 (\OML/cmm/m/it/12.045 A\OT1/cmr/m/n/12.045 )\OML/cmm/m/it/12.045 b\OMS/cmsy
-/m/n/12.045 k$\TU/lmr/m/n/12.045 . Thus, $\OML/cmm/m/it/12.045 q \OT1/cmr/m/n/1
-2.045 = []$\TU/lmr/m/n/12.045 . Therefore, $[] \OT1/cmr/m/n/12.045 = [](\OML/cm
-m/m/it/12.045 UAU[]\OT1/cmr/m/n/12.045 )(\OML/cmm/m/it/12.045 Ub\OT1/cmr/m/n/12
-.045 ) =
- []
-
-[5]
-Overfull \hbox (25.42322pt too wide) detected at line 339
-[][][][][][]
- []
-
-[6] [7] [8]
-Overfull \hbox (11.12646pt too wide) in paragraph at lines 492--494
-[]\TU/lmr/m/n/12.045 Compare the asymptotic operation counts and storage requir
-ements of GMRES and GMRES($\OML/cmm/m/it/12.045 k$\TU/lmr/m/n/12.045 ),
- []
-
-[9] [10] [11] [12] [13] [14]
-File: convergence.pdf Graphic file (type pdf)
-<use convergence.pdf>
-
-
-LaTeX Font Warning: Font shape `U/bbm/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 948.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[15] [16] (./NumericalAlgebra1.aux)
+[15] [16] [17] [18] [19] (./NumericalAlgebra3.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/08/05>
@@ -1732,16 +1660,16 @@ L3 programming layer <2022/08/05>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
-Package rerunfilecheck Info: File `NumericalAlgebra1.out' has not changed.
+Package rerunfilecheck Info: File `NumericalAlgebra3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33295 strings out of 468168
- 698728 string characters out of 5423555
- 1193565 words of memory out of 5000000
- 61420 multiletter control sequences out of 15000+600000
- 639346 words of font info for 130 fonts, out of 8000000 for 9000
+ 33269 strings out of 468168
+ 697098 string characters out of 5423555
+ 1184596 words of memory out of 5000000
+ 61400 multiletter control sequences out of 15000+600000
+ 638556 words of font info for 124 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 112i,11n,114p,3326b,822s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,11n,114p,3326b,824s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on NumericalAlgebra1.pdf (16 pages).
+Output written on NumericalAlgebra3.pdf (19 pages).
