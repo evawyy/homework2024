@@ -1,0 +1,637 @@
+\documentclass[11pt]{ctexart}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tabularray}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+
+\lstset{
+  language=Matlab,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{teal},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  frame=single,
+  breaklines=true
+}
+
+\title{Assignment 2 解答}
+\author{}
+\date{April 2026}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\ip}[2]{\left\langle #1,#2 \right\rangle}
+\newcommand{\K}{\mathcal{K}}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1. CGNR, CGNE and BCG 的更新公式}
+
+设线性系统为
+\[
+Ax=b, \qquad r_k=b-Ax_k.
+\]
+若 $A$ 非 Hermitian 或非对称，常见做法是把问题转化为 normal equations，或者使用双共轭梯度类方法。
+
+\subsection*{1. CGNR}
+CGNR 的思想是先令
+\[
+ x=A^*y,
+\]
+于是原方程变成
+\[
+AA^*y=b.
+\]
+对 Hermitian positive definite 矩阵 $AA^*$ 应用 CG。令
+\[
+r_k=b-AA^*y_k=b-Ax_k, \qquad z_k=A^*r_k.
+\]
+则 $x_k=A^*y_k$。CGNR 的更新公式可以写为
+\[
+\alpha_k=\frac{(r_k,r_k)}{(A^*p_k,A^*p_k)},
+\]
+\[
+y_{k+1}=y_k+\alpha_k p_k,
+\]
+\[
+r_{k+1}=r_k-\alpha_k AA^*p_k,
+\]
+\[
+\beta_k=\frac{(r_{k+1},r_{k+1})}{(r_k,r_k)},
+\]
+\[
+p_{k+1}=r_{k+1}+\beta_k p_k.
+\]
+最后取
+\[
+x_k=A^*y_k.
+\]
+也可以直接维护 $x_k$：若 $q_k=A^*p_k$，则
+\[
+x_{k+1}=x_k+\alpha_k q_k.
+\]
+
+\subsection*{2. CGNE}
+CGNE 是对
+\[
+A^*Ax=A^*b
+\]
+应用 CG。令
+\[
+r_k=b-Ax_k, \qquad z_k=A^*r_k.
+\]
+其中 $z_k$ 是 normal equation 的 residual。取初值
+\[
+z_0=A^*r_0, \qquad p_0=z_0.
+\]
+更新公式为
+\[
+\alpha_k=\frac{(z_k,z_k)}{(Ap_k,Ap_k)},
+\]
+\[
+x_{k+1}=x_k+\alpha_k p_k,
+\]
+\[
+r_{k+1}=r_k-\alpha_k Ap_k,
+\]
+\[
+z_{k+1}=A^*r_{k+1},
+\]
+\[
+\beta_k=\frac{(z_{k+1},z_{k+1})}{(z_k,z_k)},
+\]
+\[
+p_{k+1}=z_{k+1}+\beta_kp_k.
+\]
+因此 CGNE 的 Krylov 子空间为
+\[
+x_k\in x_0+\K_k(A^*A,A^*r_0).
+\]
+
+\subsection*{3. BCG}
+BCG，即 Bi-Conjugate Gradient，同时构造两个 residual 序列 $r_k$ 和 $\hat r_k$，分别对应 $A$ 和 $A^*$。给定 $x_0$，令
+\[
+r_0=b-Ax_0,
+\]
+并选择 $\hat r_0$ 使得
+\[
+(\hat r_0,r_0)\ne 0.
+\]
+通常取 $\hat r_0=r_0$。设
+\[
+p_0=r_0, \qquad \hat p_0=\hat r_0.
+\]
+BCG 的更新为
+\[
+\alpha_k=\frac{(\hat r_k,r_k)}{(\hat p_k,Ap_k)},
+\]
+\[
+x_{k+1}=x_k+\alpha_kp_k,
+\]
+\[
+r_{k+1}=r_k-\alpha_kAp_k,
+\]
+\[
+\hat r_{k+1}=\hat r_k-\overline{\alpha_k}A^*\hat p_k,
+\]
+\[
+\beta_k=\frac{(\hat r_{k+1},r_{k+1})}{(\hat r_k,r_k)},
+\]
+\[
+p_{k+1}=r_{k+1}+\beta_kp_k,
+\]
+\[
+\hat p_{k+1}=\hat r_{k+1}+\overline{\beta_k}\hat p_k.
+\]
+BCG 的核心正交关系为
+\[
+(\hat r_i,r_j)=0, \qquad i\ne j,
+\]
+以及双共轭关系
+\[
+(\hat p_i,Ap_j)=0, \qquad i\ne j.
+\]
+
+\section*{Problem 2. 不同迭代方法的性能对比}
+
+\subsection*{(a) CGNE wins}
+设 $A$ 是 unitary shift matrix，$b=e_1$，$x_0=0$。因为 $A$ 是 unitary 矩阵，所以
+\[
+A^*A=I.
+\]
+CGNE 对 normal equation
+\[
+A^*Ax=A^*b
+\]
+应用 CG，因此该方程变成
+\[
+x=A^*b.
+\]
+所以 CGNE 一步收敛。
+
+对于 GMRES，若 $A$ 是 $n\times n$ cyclic shift matrix，则它的 minimal polynomial 为
+\[
+m_A(z)=z^n-1.
+\]
+从零初值出发，GMRES 的 residual 可以写成
+\[
+r_k=p_k(A)r_0, \qquad p_k(0)=1,\quad \deg(p_k)\le k.
+\]
+若 $k<n$，不存在次数小于 $n$ 且满足 $p(A)e_1=0$ 的 admissible polynomial。因此 GMRES 通常需要 $n$ 步才能精确解出。
+
+CGS 是基于 BiCG residual polynomial 的平方，其收敛同样受 minimal polynomial 控制。由于该问题中要消去 cyclic shift 结构至少需要 $n$ 阶信息，因此 CGS 至少需要与 $n$ 同阶的 matrix-vector multiplications。由于 CGS 每步通常需要两次 $A$ 的乘法，因此可给出下界：需要 $\Omega(n)$ 次 matrix-vector multiplications。
+
+结论：
+\[
+\text{CGNE: 1 step}, \qquad \text{GMRES: } n \text{ steps}, \qquad \text{CGS: at least order } n \text{ matvecs}.
+\]
+
+\subsection*{(b) CGNE loses}
+设
+\[
+A=\operatorname{diag}(M_1,M_2,\ldots,M_{n/2}),
+\]
+其中
+\[
+M_j=\begin{pmatrix}1&j-1\\0&1\end{pmatrix}.
+\]
+每个 $M_j$ 都可以写成
+\[
+M_j=I+N_j,
+\]
+其中
+\[
+N_j=\begin{pmatrix}0&j-1\\0&0\end{pmatrix}, \qquad N_j^2=0.
+\]
+因此
+\[
+(M_j-I)^2=0.
+\]
+若存在某个 $j>1$，则 $M_j\ne I$，所以 $M_j-I\ne 0$。因此整个矩阵 $A$ 的 minimal polynomial 为
+\[
+m_A(z)=(z-1)^2.
+\]
+所以 GMRES 最多 $2$ 步得到精确解。
+
+对于 CGS，如果 $\hat r_0=r_0$ 且不发生 breakdown，则它的 residual polynomial 是 BiCG residual polynomial 的平方。因为 minimal polynomial 的次数为 $2$，所以 CGS 也会在很少步内收敛，通常需要约 $2$ 步；考虑到 CGS 每步需要两次 matrix-vector multiplication，因此约需要 $4$ 次 matrix-vector multiplications。
+
+但是 CGNE 应用于
+\[
+A^*Ax=A^*b.
+\]
+题目给出该矩阵的 singular values 大约分布在
+\[
+[2/n,n/2].
+\]
+所以
+\[
+\kappa(A)\approx \frac{n/2}{2/n}=\frac{n^2}{4}.
+\]
+而 CGNE 实际面对的是 $A^*A$，其条件数为
+\[
+\kappa(A^*A)=\kappa(A)^2\approx \frac{n^4}{16}.
+\]
+当 $n$ 很大时，条件数极大，因此 CGNE 会需要很多迭代。
+
+\subsection*{(c) CGS wins}
+设 $A$ 是 Hermitian 矩阵，且有很多 eigenvalues 分布在正实轴区间 $[c,d]$ 上。若没有利用 $A$ 的 Hermitian 性质，而只能在 GMRES、CGS、CGNE 中选择，则预期 CGS 最省 floating point operations。
+
+原因如下：
+\begin{itemize}
+  \item GMRES 每一步需要 Arnoldi 正交化，随着迭代次数增加，存储和正交化成本都会增加。
+  \item CGNE 对 $A^*A=A^2$ 应用 CG，条件数变为 $\kappa(A)^2$，通常收敛更慢。
+  \item 当 $A$ 是 Hermitian positive definite 时，BiCG/CGS 的行为与 CG 类方法接近，避免了 GMRES 的长递推正交化成本。
+\end{itemize}
+因此若不直接使用 CG，三者中通常 CGS 最有效。
+
+\subsection*{(d) CGS loses}
+设
+\[
+A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}\otimes I_{n/2}.
+\]
+每个 $2\times2$ block 记为
+\[
+J=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+有
+\[
+J^T=-J, \qquad J^TJ=I.
+\]
+因此
+\[
+A^TA=I, \qquad AA^T=I.
+\]
+所以 $A$ 是 normal matrix。又因为
+\[
+J^2=-I,
+\]
+故 $J$ 的 eigenvalues 为
+\[
+\lambda=\pm i.
+\]
+因此 $A$ 的 eigenvalues 也为 $\pm i$，singular values 全部为 $1$。
+
+CGNE 对
+\[
+A^TAx=A^Tb
+\]
+应用 CG。由于 $A^TA=I$，所以 CGNE 一步收敛。
+
+GMRES 的 minimal polynomial 为
+\[
+m_A(z)=z^2+1.
+\]
+因此 GMRES 至多需要 $2$ 步。
+
+下面说明 CGS 会 breakdown。CGS 中若取 $\hat r_0=r_0$，第一步的分母含有
+\[
+(\hat r_0,Ar_0)=(r_0,Ar_0).
+\]
+由于 $A^T=-A$，对任意实向量 $r_0$，有
+\[
+(r_0,Ar_0)=r_0^TAr_0.
+\]
+而
+\[
+(r_0^TAr_0)^T=r_0^TA^Tr_0=-r_0^TAr_0.
+\]
+所以
+\[
+r_0^TAr_0=0.
+\]
+因此第一步更新中的分母为 $0$，CGS 在第一步发生 breakdown。
+
+\section*{Problem 3. CGNR 的 residual bound 与 MINRES 比较}
+
+设
+\[
+A=I-F, \qquad F=-F^*.
+\]
+因此 $F$ 是 skew-Hermitian，$A$ 的 eigenvalues 位于线段
+\[
+[1-i\gamma,1+i\gamma].
+\]
+题目给出的 MINRES residual bound 为
+\[
+\frac{\norm{r_n}}{\norm{r_0}}\le \frac{2}{R^n+R^{-n}},
+\qquad
+R=\frac{1+\sqrt{1+\gamma^2}}{\gamma}.
+\]
+
+CGNR 对
+\[
+AA^*y=b, \qquad x=A^*y
+\]
+应用 CG。若 $A$ 的 eigenvalues 为
+\[
+\lambda=1+i t, \qquad t\in[-\gamma,\gamma],
+\]
+则 $AA^*$ 的 eigenvalues 为
+\[
+|\lambda|^2=1+t^2.
+\]
+因此
+\[
+\lambda(AA^*)\subset [1,1+\gamma^2].
+\]
+所以
+\[
+\kappa(AA^*)=1+\gamma^2.
+\]
+CG 的经典误差界给出
+\[
+\frac{\norm{r_n^{\rm CGNR}}}{\norm{r_0}}
+\le
+2\left(\frac{\sqrt{1+\gamma^2}-1}{\sqrt{1+\gamma^2}+1}\right)^n.
+\]
+令
+\[
+\rho_{\rm CGNR}=\frac{\sqrt{1+\gamma^2}-1}{\sqrt{1+\gamma^2}+1}.
+\]
+另一方面，MINRES 的界中
+\[
+R=\frac{1+\sqrt{1+\gamma^2}}{\gamma}.
+\]
+可以验证
+\[
+R^{-2}=\frac{\sqrt{1+\gamma^2}-1}{\sqrt{1+\gamma^2}+1}=\rho_{\rm CGNR}.
+\]
+因此 CGNR 的收敛因子大约为 $R^{-2n}$，而 MINRES 的界大约为 $R^{-n}$。这说明从这个理论界看，CGNR 可能比 MINRES 更快一个平方因子。
+
+但是需要注意：CGNR 每一步涉及 $A$ 和 $A^*$ 的乘法，而且它作用在 normal equation 上，可能会放大条件数和舍入误差。因此就实际计算成本和稳定性而言，不能简单地说 CGNR 一定优于 MINRES。若只比较 residual bound 的指数衰减，CGNR 的界更快；若比较每步代价与数值稳定性，MINRES 通常更自然。
+
+\section*{Problem 4. Lanczos 正交多项式的零点}
+
+设 $\{q_n\}$ 是 Lanczos 过程产生的正交多项式序列。标准结论是：若 $q_n$ 是次数为 $n$ 的正交多项式，则 $q_n$ 有 $n$ 个互异零点，且全部位于正交区间的内部 $(-1,1)$。
+
+题目中写作 ``$q_{n+1}$ has $n$ distinct zeros'' 可能存在下标约定差异。下面证明标准形式：$q_n$ 有 $n$ 个互异零点，均在 $(-1,1)$。
+
+设权函数为 $w(x)>0$，正交性为
+\[
+\int_{-1}^1 q_n(x)p(x)w(x)\,dx=0,
+\qquad \forall p\in \mathbb{P}_{n-1}.
+\]
+首先证明 $q_n$ 必须在 $(-1,1)$ 内变号。若 $q_n$ 在 $(-1,1)$ 内没有足够多的零点，则可以构造一个次数小于 $n$ 的多项式 $p(x)$，使得
+\[
+q_n(x)p(x)\ge 0
+\]
+并且不恒等于零。于是
+\[
+\int_{-1}^1 q_n(x)p(x)w(x)\,dx>0,
+\]
+这与正交性矛盾。
+
+更具体地，设 $q_n$ 在 $(-1,1)$ 中只有 $m<n$ 个奇数重数零点，记为
+\[
+x_1,x_2,\ldots,x_m.
+\]
+取
+\[
+p(x)=\prod_{j=1}^m (x-x_j).
+\]
+则 $\deg p=m<n$，且 $q_n(x)p(x)$ 在 $(-1,1)$ 上不变号。因此由 $w(x)>0$ 得
+\[
+\int_{-1}^1 q_n(x)p(x)w(x)\,dx\ne0,
+\]
+矛盾。因此 $q_n$ 至少有 $n$ 个奇数重数零点在 $(-1,1)$ 内。由于 $q_n$ 的次数为 $n$，它恰好有 $n$ 个零点，并且这些零点都是单根。
+
+所以结论成立：
+\[
+q_n \text{ has } n \text{ distinct zeros in }(-1,1).
+\]
+若题目使用 $q_{n+1}$ 表示次数为 $n$ 的多项式，则对应结论即为 $q_{n+1}$ 有 $n$ 个互异零点。
+
+\section*{Problem 5. 插值型求积公式权重的唯一性}
+
+给定 $n$ 个互异节点
+\[
+x_1,x_2,\ldots,x_n\in[-1,1].
+\]
+要求求积公式
+\[
+I_n(f)=\sum_{j=1}^n w_j f(x_j)
+\]
+对所有次数不超过 $n-1$ 的多项式精确，即
+\[
+\int_{-1}^1 p(x)\,dx=\sum_{j=1}^n w_jp(x_j),
+\qquad \forall p\in\mathbb{P}_{n-1}.
+\]
+
+令 $\ell_j(x)$ 是 Lagrange 基函数：
+\[
+\ell_j(x)=\prod_{i\ne j}\frac{x-x_i}{x_j-x_i}.
+\]
+则
+\[
+\ell_j(x_i)=\delta_{ij}.
+\]
+对任意 $p\in\mathbb{P}_{n-1}$，有插值表示
+\[
+p(x)=\sum_{j=1}^n p(x_j)\ell_j(x).
+\]
+两边积分得
+\[
+\int_{-1}^1 p(x)\,dx
+=
+\sum_{j=1}^n p(x_j)\int_{-1}^1\ell_j(x)\,dx.
+\]
+因此只要取
+\[
+w_j=\int_{-1}^1\ell_j(x)\,dx,
+\]
+求积公式就对所有 $\deg p\le n-1$ 的多项式精确。
+
+下面证明唯一性。若还有另一组权重 $\{\tilde w_j\}$ 也满足精确性，则对 $p=\ell_k$，有
+\[
+\int_{-1}^1\ell_k(x)\,dx
+=
+\sum_{j=1}^n \tilde w_j\ell_k(x_j)
+=
+\tilde w_k.
+\]
+因此
+\[
+\tilde w_k=w_k,
+\qquad k=1,2,\ldots,n.
+\]
+所以权重唯一。
+
+\section*{Problem 6. Gauss--Legendre quadrature}
+
+\subsection*{(a) 六行 MATLAB 程序}
+
+Gauss--Legendre quadrature 的节点是 Legendre 多项式 $P_n$ 的零点，权重为
+\[
+w_j=\frac{2}{(1-x_j^2)[P_n'(x_j)]^2}.
+\]
+实际计算中可以使用 Golub--Welsch 方法：构造 Jacobi matrix，其 eigenvalues 为节点，weights 由 eigenvectors 的第一行给出。
+
+一个六行 MATLAB 程序如下：
+
+\begin{lstlisting}
+function I = glquad(f,n)
+beta = (1:n-1)./sqrt(4*(1:n-1).^2-1);
+J = diag(beta,1) + diag(beta,-1);
+[V,D] = eig(J);
+x = diag(D); [x,idx] = sort(x); V = V(:,idx);
+w = 2*(V(1,:).^2)';
+I = w.'*f(x);
+end
+\end{lstlisting}
+
+\subsection*{(b) $f(x)=e^x$}
+
+测试代码：
+
+\begin{lstlisting}
+exact = exp(1)-exp(-1);
+err = zeros(40,1);
+for n = 1:40
+    err(n) = abs(exact - glquad(@(x) exp(x), n));
+end
+semilogy(1:40, err, 'o-'); grid on;
+xlabel('n'); ylabel('|I(e^x)-I_n(e^x)|');
+title('Gauss-Legendre error for exp(x)');
+\end{lstlisting}
+
+由于 $e^x$ 在复平面上是 entire function，非常光滑且解析，因此 Gauss--Legendre quadrature 的误差会快速下降，通常呈现接近指数型收敛。随着 $n$ 增大，误差会下降到机器精度附近，然后由于舍入误差而停滞。
+
+\subsection*{(c) $f(x)=e^{|x|}$}
+
+测试代码：
+
+\begin{lstlisting}
+exact = 2*(exp(1)-1);
+err = zeros(40,1);
+for n = 1:40
+    err(n) = abs(exact - glquad(@(x) exp(abs(x)), n));
+end
+semilogy(1:40, err, 'o-'); grid on;
+xlabel('n'); ylabel('|I(e^{|x|})-I_n(e^{|x|})|');
+title('Gauss-Legendre error for exp(abs(x))');
+\end{lstlisting}
+
+函数 $e^{|x|}$ 在 $x=0$ 处不可微，因为 $|x|$ 在 $0$ 处不可微。因此它不像 $e^x$ 那样解析。Gauss--Legendre quadrature 对非光滑函数仍然收敛，但收敛速度明显变慢，误差图通常不再表现出持续的指数下降。
+
+\section*{Problem 7. Reproduce Figure 7.2}
+
+构造
+\[
+A=U\Sigma V,
+\]
+其中 $U,V$ 是随机正交矩阵，
+\[
+\Sigma=\operatorname{diag}(\sigma_1,\ldots,\sigma_m),
+\]
+并且
+\[
+\sigma_i=\kappa^{\frac{i-1}{m-1}},
+\qquad i=1,2,\ldots,m,
+\]
+其中
+\[
+\kappa=10^4,
+\qquad m=40.
+\]
+注意若希望 singular values 从大到小排列，也可以使用
+\[
+\sigma_i=\kappa^{-\frac{i-1}{m-1}}.
+\]
+这只改变尺度排序，不改变条件数。
+
+下面给出 MATLAB 程序。程序画出两条曲线：实际 residual norm
+\[
+\frac{\norm{b-Ax_n}}{\norm{A}\norm{x^*}}
+\]
+和递推更新 residual norm
+\[
+\frac{\norm{r_n}}{\norm{A}\norm{x^*}}.
+\]
+同时标记
+\[
+\max_n \frac{\norm{x_n}}{\norm{x^*}}.
+\]
+
+\begin{lstlisting}
+rng(0);
+m = 40; kappa = 1e4; maxit = 600;
+[U,~] = qr(randn(m));
+[V,~] = qr(randn(m));
+sigma = kappa.^(-(0:m-1)/(m-1));
+A = U*diag(sigma)*V';
+xstar = randn(m,1);
+b = A*xstar;
+
+x = zeros(m,1);
+r = b - A*x;
+z = A'*r;
+p = z;
+
+true_res = zeros(maxit,1);
+upd_res  = zeros(maxit,1);
+xnorm_ratio = zeros(maxit,1);
+scale = norm(A)*norm(xstar);
+
+for k = 1:maxit
+    Ap = A*p;
+    alpha = (z'*z)/(Ap'*Ap);
+    x = x + alpha*p;
+    r = r - alpha*Ap;          % updated residual
+    znew = A'*r;
+    beta = (znew'*znew)/(z'*z);
+    p = znew + beta*p;
+    z = znew;
+
+    true_res(k) = norm(b-A*x)/scale;
+    upd_res(k)  = norm(r)/scale;
+    xnorm_ratio(k) = norm(x)/norm(xstar);
+end
+
+[~,imax] = max(xnorm_ratio);
+semilogy(1:maxit,true_res,'-',1:maxit,upd_res,'--'); grid on;
+hold on;
+semilogy(imax,true_res(imax),'ro','MarkerSize',8,'LineWidth',2);
+legend('true residual','updated residual','max ||x_n||/||x^*||');
+xlabel('iteration n');
+ylabel('relative residual');
+title('CGNE residual behavior');
+\end{lstlisting}
+
+预期现象：由于 $\kappa(A)=10^4$，normal equation 的条件数为
+\[
+\kappa(A^*A)=10^8.
+\]
+因此 CGNE 对舍入误差非常敏感。实际 residual $\norm{b-Ax_n}$ 与递推 residual $\norm{r_n}$ 可能逐渐偏离，尤其在迭代次数较大时更明显。这说明在有限精度计算中，递推 residual 不一定可靠，必要时应显式 recompute residual。
+
+\section*{Problem 8. 方法选择}
+
+下面比较 CG、GMRES、CGN 和 BCG。这里 CGN 指 CGNE/CGNR 一类 normal equation 方法。
+
+\begin{tblr}{
+  colspec={Q[c,0.8cm] Q[l,5.2cm] Q[l,2.2cm] Q[l,7.2cm]},
+  hlines,
+  vlines,
+  row{1}={font=\bfseries}
+}
+Case & Matrix property & Best choice & Reason \\
+(a) & Dense nonhermitian, $m=10^4$, all but three eigenvalues near $-1$ & GMRES & Eigenvalues highly clustered, so a low-degree polynomial can damp most components. Dense matrix also makes matvec expensive, so fewer iterations are important. \\
+(b) & Dense nonhermitian, eigenvalues scattered in a large rectangle & GMRES or BCG & GMRES is more robust for nonhermitian problems, but may require many iterations and large storage. BCG may be cheaper per step but less stable. CGN may square the condition number. \\
+(c) & Sparse nonhermitian, $m=10^6$, $10^7$ nonzeros, eigenvalues as in (a) & BCG or restarted GMRES & Full GMRES storage is impossible for such large $m$. Since eigenvalues are clustered, Krylov methods should converge fast; BCG has short recurrences and low storage. Restarted GMRES is also reasonable. \\
+(d) & Sparse Hermitian, $m=10^5$, eigenvalues in $[1,100]$ & CG & Matrix is Hermitian positive definite, and condition number is moderate. CG is designed for this case and has cheap short recurrences. \\
+(e) & Same as (d), but outliers at $0.01$ and $10000$ & CG & Still Hermitian positive definite, so CG applies. Outliers increase condition number and may slow early convergence, but CG can often handle isolated outliers after their components are reduced. Preconditioning would help. \\
+(f) & Same as (d), plus outliers at $-1,-10,-100$ & GMRES or MINRES; among listed methods GMRES & Matrix is Hermitian but indefinite, so standard CG is not applicable. GMRES is robust. BCG may work but can break down. CGN loses sign information and squares the spectrum. \\
+(g) & Sparse normal matrix, complex eigenvalues in annulus $1\le |\lambda|\le 2$ & GMRES & For normal matrices, GMRES convergence is governed well by polynomial approximation on the spectrum. CG is not applicable, CGN may be slower due to normal equations, and BCG is less robust. \\
+\end{tblr}
+
+\end{document}

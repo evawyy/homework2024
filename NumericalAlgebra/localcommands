@@ -1,5 +1,5 @@
 \newcommand{\diag}{\mathrm{diag}}
 \renewcommand{\span}{\mathrm{span}}
 \newcommand{\Ran}{\mathrm{Range}}
-\newcommand{\norm}[1]{\lVert#1\rVert}
+%\newcommand{\norm}[1]{\lVert#1\rVert}
 \newcommand{\res}[2]{#1|_{#2}}
