@@ -1,0 +1,411 @@
+Creating shared memory block...
+Shared memory created: this is the primary application.
+Starting IPC server...
+IPC server started.
+2026-03-21 18:47:19.084 sioyek[34135:566830] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+Creating shared memory block...
+Shared memory created: this is the primary application.
+Starting IPC server...
+IPC server started.
+2026-03-21 18:49:05.310 sioyek[34264:567688] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+Creating shared memory block...
+Shared memory created: this is the primary application.
+Starting IPC server...
+IPC server started.
+2026-03-21 18:51:10.038 sioyek[34824:572322] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+Creating shared memory block...
+Shared memory created: this is the primary application.
+Starting IPC server...
+IPC server started.
+2026-03-21 18:58:44.793 sioyek[35735:581931] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+Creating shared memory block...
+Shared memory created: this is the primary application.
+Starting IPC server...
+IPC server started.
+2026-03-21 19:07:42.424 sioyek[36164:590293] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+warning: undefined link destination
+warning: unknown link uri '(null)'
+warning: undefined link destination
+warning: unknown link uri '(null)'
+Creating shared memory block...
+Shared memory already exists: this is a secondary application.
+Secondary application attaching to shared memory block...
+Secondary application successfully attached to shared memory block.
+Secondary application sent message to IPC server.
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+Creating shared memory block...
+Shared memory created: this is the primary application.
+Starting IPC server...
+IPC server started.
+2026-03-21 19:47:53.025 sioyek[41418:637317] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+Creating shared memory block...
+Shared memory already exists: this is a secondary application.
+Secondary application attaching to shared memory block...
+Secondary application successfully attached to shared memory block.
+Secondary application sent message to IPC server.
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Data set on unsupported clipboard mode. QMimeData object will be deleted.
+Warning: invalid command (key:c); resetting to root
+Creating shared memory block...
+Shared memory created: this is the primary application.
+Starting IPC server...
+IPC server started.
+2026-03-27 13:11:40.504 sioyek[94550:2415829] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+Creating shared memory block...
+Shared memory created: this is the primary application.
+Starting IPC server...
+IPC server started.
+2026-03-27 13:15:16.995 sioyek[94920:2419055] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config
+Error: default_config_path: /Applications/sioyek.app/Contents/MacOS/prefs.config doesn't exist!
+default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config
+Error: default_keys_path: /Applications/sioyek.app/Contents/MacOS/keys.config doesn't exist!
+user_config_path: [ 0 ] /Users/evawyy/.config/sioyek/prefs_user.config
+user_config_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/prefs_user.config
+user_keys_path: [ 0 ] /Users/evawyy/.config/sioyek/keys_user.config
+user_keys_path: [ 1 ] /Users/evawyy/Library/Application Support/sioyek/keys_user.config
+Error: required 3 values for color, but got 1
+Error in config file /Users/evawyy/.config/sioyek/prefs_user.config at line 286 : visual_mark_color          #7f849c
+database_file_path: /Users/evawyy/Library/Application Support/sioyek/test.db
+local_database_file_path: /Users/evawyy/Library/Application Support/sioyek/local.db
+global_database_file_path: /Users/evawyy/Library/Application Support/sioyek/shared.db
+tutorial_path: /Applications/sioyek.app/Contents/MacOS/tutorial.pdf
+last_opened_file_address_path: /Users/evawyy/Library/Application Support/sioyek/last_document_path.txt
+shader_path: /Applications/sioyek.app/Contents/MacOS/shaders
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'uvs' not read by fragment shader
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
+WARNING: Output of vertex shader 'screen_pos' not read by fragment shader
+
