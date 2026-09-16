@@ -13,5 +13,6 @@
   "oth": "OtherItem",
   "eng": "English",
   "nume": "NumericalAlgebra",
-  "numa": "IterativeLinearSystems"
+  "numa": "IterativeLinearSystems",
+  "con": "ConvexOptimization"
 }

@@ -1,0 +1,70 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%lan
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+%2.3 2.7 2.8 2.22 2.31 2.33
+\begin{problem}\label{pro:2.3}
+  A set \(C\) is midpoint convex if whenever \(2 \) points a,b are in
+  \(C \). the average or midpoint \(\frac{a + b}{2} \in C \). Obviously a
+  convex set is midpoint convex. It can be proved that under mild
+  conditions midpoint convexity implies convexity.
+  As a simple case, prove that if \(C \) is closed and midpoint convex, then \(C \) is convex.
+\end{problem}
+\begin{problem}\label{pro:2.7}
+  \(a , b \in \mathbb{R}^n \), \(a \neq b \). Show \(A:=\{x \mid \norm{x-a}_2 \leq \norm{x-b}_2\} \) is a halfspace.
+  Describe it explicity as an inequality of the form \(c^Tx \leq d \). Draw a picture.
+\end{problem}
+\begin{problem}\label{pro:2.8}
+  Which of the following sets \(S \) are polyhedra? If possible,
+  express \(S \) in the form \(S=\{x \mid Ax \preceq b, Fx=g \}. \)
+  \begin{enumerate}
+    \item \(S=\{y_1a_2 + y_2 a_2 \mid -1 \leq y_1 \leq 1, -1 \leq y_2 \leq 1\} \), where \(a_1,,a_2 \in \mathbb{R}^n \).
+    \item \(S=\{x \in \mathbb{R}^n \mid x \succeq 0, \mathrm{1}^T x =1, \sum_{i=1}^{n}x_ia_i =b_1,\sum_{i=1}^{n}x_i a_i^2 =b_2\}, \) where \(a_i , b_j\in \mathbb{R}, 1 \leq i \leq n, j=1,2\).
+    \item \(S=\{x \in \mathbb{R}^n \mid x \succeq, x^Ty \leq 1, \forall y:\norm{y}_2 =1\}. \)
+    \item \(S=\{x \in \mathbb{R}^n \mid x \succeq, x^Ty \leq 1 \forall y:\sum_{i=1}^{n} |y_1|=1\}. \)
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:2.22}
+  Finish the proof of the separating hyperlane theorem: Show that
+  a separating hyperlane exists for \(C,D \), where \(C, D \) are convex and
+  \(C \cap D = \varnothing \).
+\end{problem}
+\begin{problem}\label{pro:2.31}
+  Let \(K^*\) be tje dual cone of a convex cone \(K \). Prove the following.
+  \begin{enumerate}
+    \item \(K^* \) is a convex cone.
+    \item \(K_1 \subset K_2 \) implies \(K_2^* \subset K_1^* \).
+    \item \(K^* \) is closed.
+    \item \( i nt K^* =\{y \mid y^T x >0, \forall x \in K\} \).
+    \item If \( i nt K  \neq \varnothing\), then \(K^* \) is pointed.
+    \item \(K^{**} \) is the closure of \(K \), i.e. \(K^{**} =K\).
+    \item If the closure of \(K \) is pointed then \(K^* \) has nonempty interior.
+  \end{enumerate}
+\end{problem}
+\begin{problem}\label{pro:2.33}
+  Define monotone nonnegative cone as \[
+    K_{m + } = \{x \in \mathbb{R}^n \mid x_1 \geq x_2 \geq \cdots \geq x_n \geq 0\}.
+  \]
+  \begin{enumerate}
+    \item Show \(K_{m + } \) is a proper cone.
+    \item Find \(K_{m + }^* \).
+  \end{enumerate}
+
+\end{problem}
+
+\end{document}
