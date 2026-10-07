@@ -71,9 +71,29 @@
         f(b)-f(x)\geq \frac{b-x}{b-a}(f(b)-f(a)),
       \)
       显然题目不等式成立。
-      % TODO：Draw a sketch that illustrates this inequality.
       几何上，凸函数图像上割线斜率随区间向右移动而
       不减，因此 $[a,x]$、$[a,b]$、$[x,b]$ 三条割线的斜率依次不减。
+      可用下图表示：中间的长割线斜率介于左、右两条割线斜率之间。
+      \[
+        \begin{tikzpicture}[scale=0.9]
+          \draw[->] (-0.2,0) -- (5.2,0) node[right] {$t$};
+          \draw[->] (0,-0.2) -- (0,3.2) node[above] {$f(t)$};
+          \draw[thick,domain=0.55:4.6,smooth,variable=\t]
+            plot ({\t},{0.23*(\t-2.2)*(\t-2.2)+0.75});
+          \coordinate (A) at (0.8,1.201);
+          \coordinate (X) at (2.55,0.778);
+          \coordinate (B) at (4.35,1.793);
+          \draw[dashed] (0.8,0) node[below] {$a$} -- (A);
+          \draw[dashed] (2.55,0) node[below] {$x$} -- (X);
+          \draw[dashed] (4.35,0) node[below] {$b$} -- (B);
+          \draw[blue,thick] (A) -- (X);
+          \draw[blue!60!black,thick] (A) -- (B);
+          \draw[blue,thick] (X) -- (B);
+          \fill (A) circle (1.4pt) node[above left] {$(a,f(a))$};
+          \fill (X) circle (1.4pt) node[below right] {$(x,f(x))$};
+          \fill (B) circle (1.4pt) node[above right] {$(b,f(b))$};
+        \end{tikzpicture}
+      \]
 
     \item 由于\(\frac{f(x)-f(a)}{x-a} \leq \frac{f(b)-f(a)}{b-a} \leq \frac{f(b)-f(x)}{b-x} \)，
       那么\(\lim_{x \downarrow a} \frac{f(x)-f(a)}{x-a} = f'(a) \leq \lim_{x \downarrow a} \frac{f(b)-f(a)}{b-a} \).
@@ -193,8 +213,15 @@
 
 \begin{solution}
   \begin{enumerate}
-      %TODO: S_k 凸证明
     \item 令 $S_k(x)=\sum_{i=1}^k x_{[i]}$。则
+      \[
+        S_k(x)=\max\left\{\sum_{i\in I}x_i\mid I\subseteq\{1,\ldots,n\},\ |I|=k\right\}.
+      \]
+      事实上，固定 $x$ 后，右端显然通过取 $x$ 中最大的 $k$ 个分量达到，因而等于
+      $S_k(x)$。由于每个 $\sum_{i\in I}x_i$ 都是 $x$ 的线性函数，而有限个线性函数的
+      点态最大值是凸函数，所以 $S_k$ 凸。
+
+      现在由 Abel 变换，
       \[
         \sum_{i=1}^r\alpha_i x_{[i]}
         =\sum_{k=1}^{r-1}(\alpha_k-\alpha_{k+1})S_k(x)+\alpha_rS_r(x).
@@ -282,8 +309,8 @@
         =-\theta(1-\theta)(B-A)(D-C)\geq0.
       \)
       故 $fg$ 凹。
-      %TODO: 补充单调时的证明。
-      另一种单调性情形相同。
+      若 $f$ 非增、$g$ 非减，则 $B-A\leq0$、$D-C\geq0$，仍有
+      $(B-A)(D-C)\leq0$，上述同一计算完全适用，因此这种单调性情形下 $fg$ 也凹。
 
     \item 因 $g$ 正且凹，$q=1/g$ 是凸函数；又因 $g$ 非增，$q$ 非减。于是 $f$ 与
       $q$ 都是正的、凸的、非减函数，由第 (a) 问可知 $f/g=fq$ 凸。
@@ -562,20 +589,20 @@
 
 \begin{solution}
   对任意 $x,y\geq0$ 和 $\theta\in[0,1]$，由 Holder 不等式，
-  \(
+  \[
     \phi(\theta x+(1-\theta)y)
     =\int_0^\infty (u^x f(u))^\theta (u^y f(u))^{1-\theta}\,du
     \leq
     \phi(x)^\theta\phi(y)^{1-\theta}.
-  \)
+  \]
   因此 $\log\phi$ 凸，即 $\phi$ log-convex。
 
   取 $f(u)=e^{-u}/u$，则对 $x\geq1$，
-  \(
+  \[
     \phi(x)=\int_0^\infty u^x\frac{e^{-u}}{u}\,du
     =\int_0^\infty u^{x-1}e^{-u}\,du
     =\Gamma(x).
-  \)
+  \]
   由上面的结论，$\Gamma$ 在 $x\geq1$ 上 log-convex。
 \end{solution}
 \end{document}
