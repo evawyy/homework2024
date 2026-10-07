@@ -57,35 +57,31 @@
   \begin{enumerate}
     \item 令 $\theta=(x-a)/(b-a)$。当 $x\in[a,b]$ 时，$\theta\in[0,1]$，且
       $x=(1-\theta)a+\theta b$。由凸性，
-      \[
+      \(
         f(x)\leq (1-\theta)f(a)+\theta f(b)
         =\frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b).
-      \]
+      \)
 
     \item 由上一问，
-      \[
+      \(
         f(x)-f(a)\leq \frac{x-a}{b-a}(f(b)-f(a)),
-      \]
-      除以 $x-a>0$ 得第一个不等式。又上一问等价于
-      \[
+      \)
+      同理，
+      \(
         f(b)-f(x)\geq \frac{b-x}{b-a}(f(b)-f(a)),
-      \]
-      除以 $b-x>0$ 得第二个不等式。几何上，凸函数图像上割线斜率随区间向右移动而
+      \)
+      显然题目不等式成立。
+      % TODO：Draw a sketch that illustrates this inequality.
+      几何上，凸函数图像上割线斜率随区间向右移动而
       不减，因此 $[a,x]$、$[a,b]$、$[x,b]$ 三条割线的斜率依次不减。
 
-    \item 令 $x\downarrow a$ 于第一个不等式，得
-      \[
-        f'(a)\leq \frac{f(b)-f(a)}{b-a}.
-      \]
-      令 $x\uparrow b$ 于第二个不等式，得
-      \[
-        \frac{f(b)-f(a)}{b-a}\leq f'(b).
-      \]
-
+    \item 由于\(\frac{f(x)-f(a)}{x-a} \leq \frac{f(b)-f(a)}{b-a} \leq \frac{f(b)-f(x)}{b-x} \)，
+      那么\(\lim_{x \downarrow a} \frac{f(x)-f(a)}{x-a} = f'(a) \leq \lim_{x \downarrow a} \frac{f(b)-f(a)}{b-a} \).
+      同理有\(f'(b) \geq \frac{f(b)-f(a)}{b-a} \)。
     \item 对区间 $[a,a+h]$ 应用上一问，有
-      \[
+      \(
         f'(a)\leq \frac{f(a+h)-f(a)}{h}\leq f'(a+h).
-      \]
+      \)
       故 $0\leq (f'(a+h)-f'(a))/h$，令 $h\downarrow0$ 得 $f''(a)\geq0$。
       同理，对 $[b-h,b]$ 应用上一问并令 $h\downarrow0$，得 $f''(b)\geq0$。
   \end{enumerate}
@@ -109,35 +105,30 @@
       $v$ is zero mean.
   \end{enumerate}
 \end{problem}
-
 \begin{solution}
   \begin{enumerate}
-    \item 取 $x_0=0$，$f(x)=\max\{x,0\}$。令
-      \[
-        w=\begin{cases}1,&\text{概率 }1/2,\\ -1,&\text{概率 }1/2,\end{cases}
-        \qquad
-        v=\begin{cases}20,&\text{概率 }1/100,\\ -20/99,&\text{概率 }99/100.\end{cases}
-      \]
+    \item 取 $x_0=0$，$f(x)=\max\{x,0\}$。令\(w,v \) 两个随机变量，
+      \(\mathbb{P}(w=1)=\mathbb{P}(w=-1)=\frac{1}{2}, \mathbb{P}(v=20)=\frac{1}{100},\mathbb{P}(v= - \frac{20}{99})=\frac{99}{100} \)。
       则 $\E w=\E v=0$，$\var(w)=1$，且
-      \[
+      \(
         \var(v)=\E v^2=\frac{20^2}{100}+\frac{99}{100}\frac{20^2}{99^2}
         =\frac{400}{99}>1.
-      \]
+      \)
       但
-      \[
+      \(
         \E f(v)=\frac{20}{100}=\frac15<\frac12=\E f(w).
-      \]
+      \)
       因此该猜想不成立。
 
     \item 记 $F(t)=\E f(x_0+tv)$。若 $0\leq s\leq t$ 且 $t>0$，令
       $\lambda=s/t$，则
-      \[
+      \(
         x_0+sv=(1-\lambda)x_0+\lambda(x_0+tv).
-      \]
+      \)
       凸性与 Jensen 不等式给出
-      \[
+      \(
         F(s)\leq (1-\lambda)f(x_0)+\lambda F(t)\leq F(t),
-      \]
+      \)
       因为 $F(t)\geq f(x_0+\E tv)=f(x_0)$。故 $F$ 在 $t\geq0$ 上单调不减。
   \end{enumerate}
 \end{solution}
@@ -202,6 +193,7 @@
 
 \begin{solution}
   \begin{enumerate}
+      %TODO: S_k 凸证明
     \item 令 $S_k(x)=\sum_{i=1}^k x_{[i]}$。则
       \[
         \sum_{i=1}^r\alpha_i x_{[i]}
@@ -238,9 +230,9 @@
   又 $\conv\epi f$ 是凸且向上闭合的集合，故 $\epi g=\conv\epi f$，从而 $g$ 凸。
 
   设 $h$ 凸且 $h\leq f$。则 $\epi f\subseteq\epi h$。由于 $\epi h$ 是凸集，
-  \[
+  \(
     \conv\epi f\subseteq\epi h.
-  \]
+  \)
   因此若 $(x,t)\in\conv\epi f$，则 $t\geq h(x)$。对所有这样的 $t$ 取下确界，
   得 $g(x)\geq h(x)$。故 $g$ 是最大的凸下估计。
 \end{solution}
@@ -267,29 +259,31 @@
     \item 设 $x\leq y$，$z=\theta x+(1-\theta)y$，并记
       $A=f(x),B=f(y),C=g(x),D=g(y)$。若 $f,g$ 同为非减或同为非增，则
       $(B-A)(D-C)\geq0$。由凸性和正性，
-      \[
+      \(
         f(z)g(z)\leq [\theta A+(1-\theta)B][\theta C+(1-\theta)D].
-      \]
+      \)
       而
-      \[
+      \(
         \theta AC+(1-\theta)BD
         -[\theta A+(1-\theta)B][\theta C+(1-\theta)D]
         =\theta(1-\theta)(B-A)(D-C)\geq0.
-      \]
+      \)
       故 $fg$ 凸。
 
     \item 不妨设 $f$ 非减、$g$ 非增。沿用上面的记号，则
       $(B-A)(D-C)\leq0$。由凹性和正性，
-      \[
+      \(
         f(z)g(z)\geq [\theta A+(1-\theta)B][\theta C+(1-\theta)D].
-      \]
+      \)
       又
-      \[
+      \(
         [\theta A+(1-\theta)B][\theta C+(1-\theta)D]
         -\theta AC-(1-\theta)BD
         =-\theta(1-\theta)(B-A)(D-C)\geq0.
-      \]
-      故 $fg$ 凹。另一种单调性情形相同。
+      \)
+      故 $fg$ 凹。
+      %TODO: 补充单调时的证明。
+      另一种单调性情形相同。
 
     \item 因 $g$ 正且凹，$q=1/g$ 是凸函数；又因 $g$ 非增，$q$ 非减。于是 $f$ 与
       $q$ 都是正的、凸的、非减函数，由第 (a) 问可知 $f/g=fq$ 凸。
@@ -326,14 +320,14 @@
 \begin{solution}
   \begin{enumerate}
     \item
-      \[
+      \(
         g^*(y)=\sup_x\{y^Tx-f(x)-c^Tx-d\}=f^*(y-c)-d.
-      \]
+      \)
 
     \item 设 $g(x,t)=tf(x/t)$，$t>0$。令 $u=x/t$，则
-      \[
+      \(
         g^*(y,s)=\sup_{t>0,u}t(y^Tu+s-f(u)).
-      \]
+      \)
       因而
       \[
         g^*(y,s)=
@@ -344,19 +338,19 @@
       \]
 
     \item
-      \[
+      \(
         g^*(y)=\sup_x\sup_z\{y^Tx-f(x,z)\}=f^*(y,0).
-      \]
-      对应用中的函数，
-      \[
+      \)
+      那么，
+      \(
         g^*(y)=\sup_z\{y^T(Az+b)-h(z)\}=b^Ty+h^*(A^Ty).
-      \]
+      \)
 
     \item 对任意 $a$，仿射函数 $a^Tx+b$ 是 $f$ 的全局下估计当且仅当
       $b\leq -f^*(a)$。因此所有仿射全局下估计的点态上确界为
-      \[
+      \(
         \sup_a\{a^Tx-f^*(a)\}=f^{**}(x).
-      \]
+      \)
       一方面，由 $f^*(a)\geq a^Tx-f(x)$ 得 $f^{**}(x)\leq f(x)$。另一方面，若
       $f$ 闭且凸，则由闭凸集 $\epi f$ 的支撑超平面定理，任意 $t<f(x)$ 都存在
       仿射全局下估计在 $x$ 处严格大于 $t$。令 $t\uparrow f(x)$，得
@@ -450,10 +444,16 @@
   \begin{enumerate}
     \item 先说明：题中 (3.21) 与 (3.26) 的双向陈述按原样并不正确。例如
       \[
-        B=\begin{bmatrix}0&1\\1&0\end{bmatrix},\qquad a=\begin{bmatrix}1\\0\end{bmatrix}
+        B=
+        \begin{bmatrix}0&1\\1&0
+        \end{bmatrix},\qquad a=
+        \begin{bmatrix}1\\0
+        \end{bmatrix}
       \]
       满足 $y^TBy=0$ 对所有 $a^Ty=0$ 成立，但
-      $B+\sigma aa^T=\begin{bmatrix}\sigma&1\\1&0\end{bmatrix}$ 对任何 $\sigma$
+      $B+\sigma aa^T=
+      \begin{bmatrix}\sigma&1\\1&0
+      \end{bmatrix}$ 对任何 $\sigma$
       都不是半正定。正确且常用的半正定方向是：若存在 $\sigma$ 使
       $B+\sigma aa^T\succeq0$，则在 $a^Ty=0$ 时有 $y^TBy\geq0$。
 
@@ -461,23 +461,29 @@
       $a^Ty=0,y\neq0$ 时 $y^TBy>0$。反之，若严格条件成立，且 $a\neq0$，经正交变换可设
       $a=(\alpha,0,\ldots,0)$，$\alpha>0$，并分块
       \[
-        B=\begin{bmatrix}\beta&b^T\\b&C\end{bmatrix}.
+        B=
+        \begin{bmatrix}\beta&b^T\\b&C
+        \end{bmatrix}.
       \]
       严格条件等价于 $C\succ0$。此时
       \[
         B+\sigma aa^T=
-        \begin{bmatrix}\beta+\sigma\alpha^2&b^T\\b&C\end{bmatrix}
+        \begin{bmatrix}\beta+\sigma\alpha^2&b^T\\b&C
+        \end{bmatrix}
       \]
       在 $\beta+\sigma\alpha^2-b^TC^{-1}b>0$ 时正定；取足够大的 $\sigma$ 即可。
       若 $a=0$，严格条件就是 $B\succ0$，取任意 $\sigma$ 即可。
 
     \item 若 $a=0$，(3.21) 即 $B\succeq0$；(3.22) 即 $B\succ0$，矩阵
-      $H=\begin{bmatrix}B&0\\0&0\end{bmatrix}$ 的非正特征值个数也相应为一个。
+      $H=
+      \begin{bmatrix}B&0\\0&0
+      \end{bmatrix}$ 的非正特征值个数也相应为一个。
 
       下设 $a\neq0$。取正交坐标使 $a=(\alpha,0,\ldots,0)$，$\alpha>0$，并将
       $B$ 分块如上。令
       \[
-        P=\begin{bmatrix}
+        P=
+        \begin{bmatrix}
           1&0&0\\
           -b/\alpha& I&0\\
           \beta/\alpha& b^T/\alpha&1
@@ -485,7 +491,8 @@
       \]
       直接作合同变换可把
       \[
-        H=\begin{bmatrix}
+        H=
+        \begin{bmatrix}
           \beta&b^T&\alpha\\
           b&C&0\\
           \alpha&0&0
@@ -520,17 +527,17 @@
 
 \begin{solution}
   令 $g=\log f$。由于 $f>0$ 且可微，$g$ 可微且
-  \[
+  \(
     \nabla g(x)=\frac{\nabla f(x)}{f(x)}.
-  \]
+  \)
   $f$ log-concave 当且仅当 $g$ 凹。对可微函数，凹性等价于一阶上界
-  \[
+  \(
     g(y)\leq g(x)+\nabla g(x)^T(y-x),\qquad \forall x,y.
-  \]
+  \)
   代入 $g=\log f$ 得
-  \[
+  \(
     \log f(y)-\log f(x)\leq \frac{\nabla f(x)^T(y-x)}{f(x)}.
-  \]
+  \)
   两边取指数即为题中不等式，反向也由取对数得到。
 \end{solution}
 
@@ -555,20 +562,20 @@
 
 \begin{solution}
   对任意 $x,y\geq0$ 和 $\theta\in[0,1]$，由 Holder 不等式，
-  \[
+  \(
     \phi(\theta x+(1-\theta)y)
     =\int_0^\infty (u^x f(u))^\theta (u^y f(u))^{1-\theta}\,du
     \leq
     \phi(x)^\theta\phi(y)^{1-\theta}.
-  \]
+  \)
   因此 $\log\phi$ 凸，即 $\phi$ log-convex。
 
   取 $f(u)=e^{-u}/u$，则对 $x\geq1$，
-  \[
+  \(
     \phi(x)=\int_0^\infty u^x\frac{e^{-u}}{u}\,du
     =\int_0^\infty u^{x-1}e^{-u}\,du
     =\Gamma(x).
-  \]
+  \)
   由上面的结论，$\Gamma$ 在 $x\geq1$ 上 log-convex。
 \end{solution}
 \end{document}
