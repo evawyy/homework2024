@@ -1,0 +1,574 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%lan
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+\input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+
+\newcommand{\R}{\mathbb{R}}
+% \newcommand{\dom}{\operatorname{dom}}
+\newcommand{\epi}{\operatorname{epi}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\var}{\operatorname{var}}
+\newcommand{\E}{\mathbf{E}}
+%from_here_to_type
+\begin{problem}\label{3.1}
+  \textbf{Definition of convexity.}
+
+  Suppose $f:\mathbb{R}\to\mathbb{R}$ is convex, and $a,b\in\dom f$ with $a<b$.
+  \begin{enumerate}
+    \item Show that
+      \[
+        f(x)\leq \frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b)
+      \]
+      for all $x\in[a,b]$.
+
+    \item Show that
+      \[
+        \frac{f(x)-f(a)}{x-a}\leq
+        \frac{f(b)-f(a)}{b-a}\leq
+        \frac{f(b)-f(x)}{b-x}
+      \]
+      for all $x\in(a,b)$. Draw a sketch that illustrates this inequality.
+
+    \item Suppose $f$ is differentiable. Use the result in (b) to show that
+      \[
+        f'(a)\leq \frac{f(b)-f(a)}{b-a}\leq f'(b).
+      \]
+
+    \item Suppose $f$ is twice differentiable. Use the result in (c) to show that
+      $f''(a)\geq0$ and $f''(b)\geq0$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 令 $\theta=(x-a)/(b-a)$。当 $x\in[a,b]$ 时，$\theta\in[0,1]$，且
+      $x=(1-\theta)a+\theta b$。由凸性，
+      \[
+        f(x)\leq (1-\theta)f(a)+\theta f(b)
+        =\frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b).
+      \]
+
+    \item 由上一问，
+      \[
+        f(x)-f(a)\leq \frac{x-a}{b-a}(f(b)-f(a)),
+      \]
+      除以 $x-a>0$ 得第一个不等式。又上一问等价于
+      \[
+        f(b)-f(x)\geq \frac{b-x}{b-a}(f(b)-f(a)),
+      \]
+      除以 $b-x>0$ 得第二个不等式。几何上，凸函数图像上割线斜率随区间向右移动而
+      不减，因此 $[a,x]$、$[a,b]$、$[x,b]$ 三条割线的斜率依次不减。
+
+    \item 令 $x\downarrow a$ 于第一个不等式，得
+      \[
+        f'(a)\leq \frac{f(b)-f(a)}{b-a}.
+      \]
+      令 $x\uparrow b$ 于第二个不等式，得
+      \[
+        \frac{f(b)-f(a)}{b-a}\leq f'(b).
+      \]
+
+    \item 对区间 $[a,a+h]$ 应用上一问，有
+      \[
+        f'(a)\leq \frac{f(a+h)-f(a)}{h}\leq f'(a+h).
+      \]
+      故 $0\leq (f'(a+h)-f'(a))/h$，令 $h\downarrow0$ 得 $f''(a)\geq0$。
+      同理，对 $[b-h,b]$ 应用上一问并令 $h\downarrow0$，得 $f''(b)\geq0$。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{3.10}
+  \textbf{An extension of Jensen's inequality.}
+
+  One interpretation of Jensen's inequality is that randomization or dithering hurts,
+  i.e., raises the average value of a convex function: For $f$ convex and $v$ a zero
+  mean random variable, we have $\E f(x_0+v)\geq f(x_0)$. This leads to the following
+  conjecture. If $f_0$ is convex, then the larger the variance of $v$, the larger
+  $\E f(x_0+v)$.
+  \begin{enumerate}
+    \item Give a counterexample that shows that this conjecture is false. Find zero mean
+      random variables $v$ and $w$, with $\var(v)>\var(w)$, a convex function $f$, and a
+      point $x_0$, such that $\E f(x_0+v)<\E f(x_0+w)$.
+
+    \item The conjecture is true when $v$ and $w$ are scaled versions of each other.
+      Show that $\E f(x_0+tv)$ is monotone increasing in $t\geq0$, when $f$ is convex and
+      $v$ is zero mean.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 取 $x_0=0$，$f(x)=\max\{x,0\}$。令
+      \[
+        w=\begin{cases}1,&\text{概率 }1/2,\\ -1,&\text{概率 }1/2,\end{cases}
+        \qquad
+        v=\begin{cases}20,&\text{概率 }1/100,\\ -20/99,&\text{概率 }99/100.\end{cases}
+      \]
+      则 $\E w=\E v=0$，$\var(w)=1$，且
+      \[
+        \var(v)=\E v^2=\frac{20^2}{100}+\frac{99}{100}\frac{20^2}{99^2}
+        =\frac{400}{99}>1.
+      \]
+      但
+      \[
+        \E f(v)=\frac{20}{100}=\frac15<\frac12=\E f(w).
+      \]
+      因此该猜想不成立。
+
+    \item 记 $F(t)=\E f(x_0+tv)$。若 $0\leq s\leq t$ 且 $t>0$，令
+      $\lambda=s/t$，则
+      \[
+        x_0+sv=(1-\lambda)x_0+\lambda(x_0+tv).
+      \]
+      凸性与 Jensen 不等式给出
+      \[
+        F(s)\leq (1-\lambda)f(x_0)+\lambda F(t)\leq F(t),
+      \]
+      因为 $F(t)\geq f(x_0+\E tv)=f(x_0)$。故 $F$ 在 $t\geq0$ 上单调不减。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{3.17}
+  Suppose $p<1$, $p\neq0$. Show that the function
+  \[
+    f(x)=\left(\sum_{i=1}^{n}x_i^p\right)^{1/p}
+  \]
+  with $\dom f=\mathbb{R}_{++}^{n}$ is concave. This includes as special cases
+  $f(x)=\bigl(\sum_{i=1}^{n}x_i^{1/2}\bigr)^2$ and the harmonic mean
+  $f(x)=\bigl(\sum_{i=1}^{n}1/x_i\bigr)^{-1}$.
+
+  \textit{Hint.} Adapt the proofs for the log-sum-exp function and the geometric mean in
+  \S3.1.5.
+\end{problem}
+
+\begin{solution}
+  记 $S=\sum_i x_i^p$，则 $f(x)=S^{1/p}$。直接求二阶方向导数可得，对任意
+  $z\in\mathbb{R}^n$，
+  \[
+    z^T\nabla^2 f(x)z
+    =(1-p)S^{1/p-2}
+    \left[
+      \left(\sum_i z_i x_i^{p-1}\right)^2
+      -S\sum_i z_i^2x_i^{p-2}
+    \right].
+  \]
+  由 Cauchy--Schwarz 不等式，
+  \[
+    \left(\sum_i z_i x_i^{p-1}\right)^2
+    =
+    \left(\sum_i x_i^{p/2}z_i x_i^{p/2-1}\right)^2
+    \leq
+    \left(\sum_i x_i^p\right)
+    \left(\sum_i z_i^2x_i^{p-2}\right).
+  \]
+  因此方括号内非正。又 $p<1$，故 $1-p>0$，从而 $z^T\nabla^2 f(x)z\leq0$。
+  所以 $\nabla^2 f(x)\preceq0$，$f$ 为凹函数。
+\end{solution}
+
+\begin{problem}\label{3.19}
+  \textbf{Nonnegative weighted sums and integrals.}
+
+  \begin{enumerate}
+    \item Show that $f(x)=\sum_{i=1}^{r}\alpha_i x_{[i]}$ is a convex function of $x$,
+      where $\alpha_1\geq\alpha_2\geq\cdots\geq\alpha_r\geq0$, and $x_{[i]}$ denotes
+      the $i$th largest component of $x$. (You can use the fact that
+      $f(x)=\sum_{i=1}^{k}x_{[i]}$ is convex on $\mathbb{R}^n$.)
+
+    \item Let $T(x,\omega)$ denote the trigonometric polynomial
+      \[
+        T(x,\omega)=x_1+x_2\cos\omega+x_3\cos2\omega+\cdots+x_n\cos(n-1)\omega.
+      \]
+      Show that the function
+      \[
+        f(x)=-\int_0^{2\pi}\log T(x,\omega)\,d\omega
+      \]
+      is convex on $\{x\in\mathbb{R}^n\mid T(x,\omega)>0,\ 0\leq\omega\leq2\pi\}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 令 $S_k(x)=\sum_{i=1}^k x_{[i]}$。则
+      \[
+        \sum_{i=1}^r\alpha_i x_{[i]}
+        =\sum_{k=1}^{r-1}(\alpha_k-\alpha_{k+1})S_k(x)+\alpha_rS_r(x).
+      \]
+      由于 $\alpha_k-\alpha_{k+1}\geq0$，$\alpha_r\geq0$，且每个 $S_k$ 凸，所以该函数凸。
+
+    \item 对固定 $\omega$，$T(x,\omega)$ 是 $x$ 的仿射函数，且 $-\log u$ 在
+      $u>0$ 上凸，故 $x\mapsto-\log T(x,\omega)$ 凸。定义域也是凸的，因为
+      $T(\theta x+(1-\theta)y,\omega)=\theta T(x,\omega)+(1-\theta)T(y,\omega)>0$。
+      凸函数的非负积分仍凸，因此
+      \[
+        f(x)=-\int_0^{2\pi}\log T(x,\omega)\,d\omega
+      \]
+      是凸函数。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{3.30}
+  \textbf{Convex hull or envelope of a function.}
+
+  The convex hull or convex envelope of a function $f:\mathbb{R}^n\to\mathbb{R}$ is defined as
+  \[
+    g(x)=\inf\{t\mid(x,t)\in\conv\epi f\}.
+  \]
+  Geometrically, the epigraph of $g$ is the convex hull of the epigraph of $f$.
+  Show that $g$ is the largest convex underestimator of $f$. In other words, show
+  that if $h$ is convex and satisfies $h(x)\leq f(x)$ for all $x$, then
+  $h(x)\leq g(x)$ for all $x$.
+\end{problem}
+
+\begin{solution}
+  因为 $(x,f(x))\in\epi f\subseteq\conv\epi f$，所以 $g(x)\leq f(x)$。
+  又 $\conv\epi f$ 是凸且向上闭合的集合，故 $\epi g=\conv\epi f$，从而 $g$ 凸。
+
+  设 $h$ 凸且 $h\leq f$。则 $\epi f\subseteq\epi h$。由于 $\epi h$ 是凸集，
+  \[
+    \conv\epi f\subseteq\epi h.
+  \]
+  因此若 $(x,t)\in\conv\epi f$，则 $t\geq h(x)$。对所有这样的 $t$ 取下确界，
+  得 $g(x)\geq h(x)$。故 $g$ 是最大的凸下估计。
+\end{solution}
+
+\begin{problem}\label{3.32}
+  \textbf{Products and ratios of convex functions.}
+
+  In general the product or ratio of two convex functions is not convex.
+  However, there are some results that apply to functions on $\mathbb{R}$. Prove the following.
+  \begin{enumerate}
+    \item If $f$ and $g$ are convex, both nondecreasing (or nonincreasing), and positive
+      functions on an interval, then $fg$ is convex.
+
+    \item If $f,g$ are concave, positive, with one nondecreasing and the other
+      nonincreasing, then $fg$ is concave.
+
+    \item If $f$ is convex, nondecreasing, and positive, and $g$ is concave,
+      nonincreasing, and positive, then $f/g$ is convex.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 设 $x\leq y$，$z=\theta x+(1-\theta)y$，并记
+      $A=f(x),B=f(y),C=g(x),D=g(y)$。若 $f,g$ 同为非减或同为非增，则
+      $(B-A)(D-C)\geq0$。由凸性和正性，
+      \[
+        f(z)g(z)\leq [\theta A+(1-\theta)B][\theta C+(1-\theta)D].
+      \]
+      而
+      \[
+        \theta AC+(1-\theta)BD
+        -[\theta A+(1-\theta)B][\theta C+(1-\theta)D]
+        =\theta(1-\theta)(B-A)(D-C)\geq0.
+      \]
+      故 $fg$ 凸。
+
+    \item 不妨设 $f$ 非减、$g$ 非增。沿用上面的记号，则
+      $(B-A)(D-C)\leq0$。由凹性和正性，
+      \[
+        f(z)g(z)\geq [\theta A+(1-\theta)B][\theta C+(1-\theta)D].
+      \]
+      又
+      \[
+        [\theta A+(1-\theta)B][\theta C+(1-\theta)D]
+        -\theta AC-(1-\theta)BD
+        =-\theta(1-\theta)(B-A)(D-C)\geq0.
+      \]
+      故 $fg$ 凹。另一种单调性情形相同。
+
+    \item 因 $g$ 正且凹，$q=1/g$ 是凸函数；又因 $g$ 非增，$q$ 非减。于是 $f$ 与
+      $q$ 都是正的、凸的、非减函数，由第 (a) 问可知 $f/g=fq$ 凸。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{3.39}
+  \textbf{Properties of conjugate functions.}
+
+  \begin{enumerate}
+    \item \textit{Conjugate of convex plus affine function.} Define
+      $g(x)=f(x)+c^Tx+d$, where $f$ is convex. Express $g^*$ in terms of $f^*$
+      (and $c,d$).
+
+    \item \textit{Conjugate of perspective.} Express the conjugate of the perspective
+      of a convex function $f$ in terms of $f^*$.
+
+    \item \textit{Conjugate and minimization.} Let $f(x,z)$ be convex in $(x,z)$
+      and define $g(x)=\inf_z f(x,z)$. Express the conjugate $g^*$ in terms of $f^*$.
+
+      As an application, express the conjugate of
+      $g(x)=\inf_z\{h(z)\mid Az+b=x\}$, where $h$ is convex, in terms of $h^*$,
+      $A$, and $b$.
+
+    \item \textit{Conjugate of conjugate.} Show that the conjugate of the conjugate
+      of a closed convex function is itself: $f=f^{**}$ if $f$ is closed and convex.
+      (A function is closed if its epigraph is closed; see \S A.3.3.)
+
+      \textit{Hint.} Show that $f^{**}$ is the pointwise supremum of all affine global
+      underestimators of $f$. Then apply the result of exercise 3.28.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+      \[
+        g^*(y)=\sup_x\{y^Tx-f(x)-c^Tx-d\}=f^*(y-c)-d.
+      \]
+
+    \item 设 $g(x,t)=tf(x/t)$，$t>0$。令 $u=x/t$，则
+      \[
+        g^*(y,s)=\sup_{t>0,u}t(y^Tu+s-f(u)).
+      \]
+      因而
+      \[
+        g^*(y,s)=
+        \begin{cases}
+          0,& f^*(y)+s\leq0,\\
+          +\infty,& f^*(y)+s>0.
+        \end{cases}
+      \]
+
+    \item
+      \[
+        g^*(y)=\sup_x\sup_z\{y^Tx-f(x,z)\}=f^*(y,0).
+      \]
+      对应用中的函数，
+      \[
+        g^*(y)=\sup_z\{y^T(Az+b)-h(z)\}=b^Ty+h^*(A^Ty).
+      \]
+
+    \item 对任意 $a$，仿射函数 $a^Tx+b$ 是 $f$ 的全局下估计当且仅当
+      $b\leq -f^*(a)$。因此所有仿射全局下估计的点态上确界为
+      \[
+        \sup_a\{a^Tx-f^*(a)\}=f^{**}(x).
+      \]
+      一方面，由 $f^*(a)\geq a^Tx-f(x)$ 得 $f^{**}(x)\leq f(x)$。另一方面，若
+      $f$ 闭且凸，则由闭凸集 $\epi f$ 的支撑超平面定理，任意 $t<f(x)$ 都存在
+      仿射全局下估计在 $x$ 处严格大于 $t$。令 $t\uparrow f(x)$，得
+      $f^{**}(x)\geq f(x)$。故 $f^{**}=f$。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{3.43}
+  \textbf{First-order condition for quasiconvexity.}
+
+  Prove the first-order condition for quasiconvexity given in \S3.4.3:
+  A differentiable function $f:\mathbb{R}^n\to\mathbb{R}$, with $\dom f$ convex, is
+  quasiconvex if and only if for all $x,y\in\dom f$,
+  \[
+    f(y)\leq f(x)\implies\nabla f(x)^T(y-x)\leq0.
+  \]
+
+  \textit{Hint.} It suffices to prove the result for a function on $\mathbb{R}$; the
+  general result follows by restriction to an arbitrary line.
+\end{problem}
+
+\begin{solution}
+  先证一维情形。若 $\phi$ 拟凸且 $\phi(y)\leq\phi(x)$，则对 $t\in[0,1]$，
+  \[
+    \phi(x+t(y-x))\leq\max\{\phi(x),\phi(y)\}=\phi(x).
+  \]
+  令 $t\downarrow0$ 得 $\phi'(x)(y-x)\leq0$。
+
+  反过来，若该条件成立但 $\phi$ 非拟凸，则存在 $a<b<c$ 使
+  $\phi(b)>\max\{\phi(a),\phi(c)\}$。取
+  $\max\{\phi(a),\phi(c)\}<\alpha<\phi(b)$。由连续性和均值定理，可在某点
+  $s$ 找到 $\phi(s)>\alpha$ 且导数指向一个满足函数值不超过 $\alpha$ 的端点，
+  从而有 $\phi'(s)(y-s)>0$，与假设矛盾。因此 $\phi$ 拟凸。
+
+  多维情形限制到任意线段
+  \[
+    \phi(t)=f(x+t(y-x))
+  \]
+  即得结论，因为 $\phi'(0)=\nabla f(x)^T(y-x)$，而函数在凸定义域上拟凸等价于
+  在每条线段上的限制均拟凸。
+\end{solution}
+
+\begin{problem}\label{3.44}
+  \textbf{Second-order conditions for quasiconvexity.}
+
+  In this problem we derive alternate representations of the second-order
+  conditions for quasiconvexity given in \S3.4.3. Prove the following.
+  \begin{enumerate}
+    \item A point $x\in\dom f$ satisfies (3.21) if and only if there exists a $\sigma$
+      such that
+      \begin{equation}\tag{3.26}
+        \nabla^2f(x)+\sigma\nabla f(x)\nabla f(x)^T\succeq0.
+      \end{equation}
+      It satisfies (3.22) for all $y\neq0$ if and only if there exists a $\sigma$ such
+      \begin{equation}\tag{3.27}
+        \nabla^2f(x)+\sigma\nabla f(x)\nabla f(x)^T\succ0.
+      \end{equation}
+
+      \textit{Hint.} We can assume without loss of generality that $\nabla^2f(x)$ is diagonal.
+
+    \item A point $x\in\dom f$ satisfies (3.21) if and only if either
+      $\nabla f(x)=0$ and $\nabla^2f(x)\succeq0$, or $\nabla f(x)\neq0$ and the matrix
+      \[
+        H(x)=
+        \begin{bmatrix}
+          \nabla^2f(x)&\nabla f(x)\\
+          \nabla f(x)^T&0
+        \end{bmatrix}
+      \]
+      has exactly one negative eigenvalue. It satisfies (3.22) for all $y\neq0$
+      if and only if $H(x)$ has exactly one nonpositive eigenvalue.
+
+      \textit{Hint.} You can use the result of part (a). The following result, which
+      follows from the eigenvalue interlacing theorem in linear algebra, may also be
+      useful: If $B\in\mathbb{S}^n$ and $a\in\mathbb{R}^n$, then
+      \[
+        \lambda_n\!\left(
+          \begin{bmatrix}B&a\\a^T&0
+        \end{bmatrix}\right)
+        \geq\lambda_n(B).
+      \]
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  记 $B=\nabla^2 f(x)$，$a=\nabla f(x)$。二阶拟凸条件 (3.21)、(3.22) 分别为
+  \[
+    y^TBy\geq0\quad(a^Ty=0),\qquad
+    y^TBy>0\quad(y\neq0,\ a^Ty=0).
+  \]
+  \begin{enumerate}
+    \item 先说明：题中 (3.21) 与 (3.26) 的双向陈述按原样并不正确。例如
+      \[
+        B=\begin{bmatrix}0&1\\1&0\end{bmatrix},\qquad a=\begin{bmatrix}1\\0\end{bmatrix}
+      \]
+      满足 $y^TBy=0$ 对所有 $a^Ty=0$ 成立，但
+      $B+\sigma aa^T=\begin{bmatrix}\sigma&1\\1&0\end{bmatrix}$ 对任何 $\sigma$
+      都不是半正定。正确且常用的半正定方向是：若存在 $\sigma$ 使
+      $B+\sigma aa^T\succeq0$，则在 $a^Ty=0$ 时有 $y^TBy\geq0$。
+
+      严格情形成立。若存在 $\sigma$ 使 $B+\sigma aa^T\succ0$，则显然
+      $a^Ty=0,y\neq0$ 时 $y^TBy>0$。反之，若严格条件成立，且 $a\neq0$，经正交变换可设
+      $a=(\alpha,0,\ldots,0)$，$\alpha>0$，并分块
+      \[
+        B=\begin{bmatrix}\beta&b^T\\b&C\end{bmatrix}.
+      \]
+      严格条件等价于 $C\succ0$。此时
+      \[
+        B+\sigma aa^T=
+        \begin{bmatrix}\beta+\sigma\alpha^2&b^T\\b&C\end{bmatrix}
+      \]
+      在 $\beta+\sigma\alpha^2-b^TC^{-1}b>0$ 时正定；取足够大的 $\sigma$ 即可。
+      若 $a=0$，严格条件就是 $B\succ0$，取任意 $\sigma$ 即可。
+
+    \item 若 $a=0$，(3.21) 即 $B\succeq0$；(3.22) 即 $B\succ0$，矩阵
+      $H=\begin{bmatrix}B&0\\0&0\end{bmatrix}$ 的非正特征值个数也相应为一个。
+
+      下设 $a\neq0$。取正交坐标使 $a=(\alpha,0,\ldots,0)$，$\alpha>0$，并将
+      $B$ 分块如上。令
+      \[
+        P=\begin{bmatrix}
+          1&0&0\\
+          -b/\alpha& I&0\\
+          \beta/\alpha& b^T/\alpha&1
+        \end{bmatrix}.
+      \]
+      直接作合同变换可把
+      \[
+        H=\begin{bmatrix}
+          \beta&b^T&\alpha\\
+          b&C&0\\
+          \alpha&0&0
+        \end{bmatrix}
+      \]
+      化为
+      \[
+        P^THP=
+        \begin{bmatrix}
+          0&0&\alpha\\
+          0&C&0\\
+          \alpha&0&0
+        \end{bmatrix}.
+      \]
+      合同变换保持惯性，而右端由 $C$ 和一个特征值为 $\alpha,-\alpha$ 的
+      $2\times2$ 块组成。因此 $H$ 的负特征值个数等于 $C$ 的负特征值个数加一。
+      (3.21) 等价于 $C\succeq0$，故 $H$ 恰有一个负特征值；反之亦然。
+      (3.22) 等价于 $C\succ0$，故 $H$ 除一个负特征值外其余均为正，即恰有一个
+      非正特征值；反之亦然。
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}\label{3.47}
+  Suppose $f:\mathbb{R}^n\to\mathbb{R}$ is differentiable, $\dom f$ is convex, and
+  $f(x)>0$ for all $x\in\dom f$. Show that $f$ is log-concave if and only
+  if for all $x,y\in\dom f$,
+  \[
+    \frac{f(y)}{f(x)}\leq
+    \exp\!\left(\frac{\nabla f(x)^T(y-x)}{f(x)}\right).
+  \]
+\end{problem}
+
+\begin{solution}
+  令 $g=\log f$。由于 $f>0$ 且可微，$g$ 可微且
+  \[
+    \nabla g(x)=\frac{\nabla f(x)}{f(x)}.
+  \]
+  $f$ log-concave 当且仅当 $g$ 凹。对可微函数，凹性等价于一阶上界
+  \[
+    g(y)\leq g(x)+\nabla g(x)^T(y-x),\qquad \forall x,y.
+  \]
+  代入 $g=\log f$ 得
+  \[
+    \log f(y)-\log f(x)\leq \frac{\nabla f(x)^T(y-x)}{f(x)}.
+  \]
+  两边取指数即为题中不等式，反向也由取对数得到。
+\end{solution}
+
+\begin{problem}\label{3.52}
+  \textbf{[MO79, \S3.E.2] Log-convexity of moment functions.}
+
+  Suppose $f:\mathbb{R}\to\mathbb{R}$ is nonnegative with $\mathbb{R}_+\subseteq\dom f$.
+  For $x\geq0$ define
+  \[
+    \phi(x)=\int_0^\infty u^x f(u)\,du.
+  \]
+  Show that $\phi$ is a log-convex function. (If $x$ is a positive integer,
+    and $f$ is a probability density function, then $\phi(x)$ is the $x$th moment
+  of the distribution.)
+
+  Use this to show that the Gamma function,
+  \[
+    \Gamma(x)=\int_0^\infty u^{x-1}e^{-u}\,du,
+  \]
+  is log-convex for $x\geq1$.
+\end{problem}
+
+\begin{solution}
+  对任意 $x,y\geq0$ 和 $\theta\in[0,1]$，由 Holder 不等式，
+  \[
+    \phi(\theta x+(1-\theta)y)
+    =\int_0^\infty (u^x f(u))^\theta (u^y f(u))^{1-\theta}\,du
+    \leq
+    \phi(x)^\theta\phi(y)^{1-\theta}.
+  \]
+  因此 $\log\phi$ 凸，即 $\phi$ log-convex。
+
+  取 $f(u)=e^{-u}/u$，则对 $x\geq1$，
+  \[
+    \phi(x)=\int_0^\infty u^x\frac{e^{-u}}{u}\,du
+    =\int_0^\infty u^{x-1}e^{-u}\,du
+    =\Gamma(x).
+  \]
+  由上面的结论，$\Gamma$ 在 $x\geq1$ 上 log-convex。
+\end{solution}
+\end{document}

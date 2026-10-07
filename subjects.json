@@ -14,5 +14,6 @@
   "eng": "English",
   "nume": "NumericalAlgebra",
   "numa": "IterativeLinearSystems",
-  "con": "ConvexOptimization"
+  "con": "ConvexOptimization",
+  "opt": "NumericalOptimization"
 }

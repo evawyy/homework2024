@@ -1,0 +1,223 @@
+% Selected problems transcribed from the user-provided Chapter 3 exercise PDF.
+% Compile with: pdflatex -interaction=nonstopmode -halt-on-error con_opt_selected_exercises.tex
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{enumitem,needspace,microtype}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.32em}
+\setlist[enumerate,1]{label=(\alph*),leftmargin=2.1em,topsep=0.4em,itemsep=0.55em,parsep=0.25em}
+\allowdisplaybreaks[1]
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Convex Functions --- Selected Exercises}
+\fancyhead[R]{Chapter 3}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\epi}{\operatorname{epi}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\var}{\operatorname{var}}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\ex}[2]{%
+  \Needspace{5\baselineskip}%
+  \par\medskip\noindent\textbf{#1}\quad\textit{#2}\quad\ignorespaces
+}
+\begin{document}
+\begin{center}
+  {\LARGE\bfseries Convex Functions}\par
+  \vspace{0.4em}
+  {\large Selected Exercises --- Chapter 3}\par
+  \vspace{0.25em}
+  {\small Problems 3.1, 3.10, 3.17, 3.19, 3.30, 3.32, 3.39, 3.43, 3.44, 3.47, 3.52}
+\end{center}
+\vspace{0.35em}\hrule\vspace{0.8em}
+
+\ex{3.1}{Definition of convexity.}
+Suppose $f:\R\to\R$ is convex, and $a,b\in\dom f$ with $a<b$.
+\begin{enumerate}
+\item Show that
+\[
+  f(x)\leq \frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b)
+\]
+for all $x\in[a,b]$.
+\item Show that
+\[
+  \frac{f(x)-f(a)}{x-a}\leq
+  \frac{f(b)-f(a)}{b-a}\leq
+  \frac{f(b)-f(x)}{b-x}
+\]
+for all $x\in(a,b)$. Draw a sketch that illustrates this inequality.
+\item Suppose $f$ is differentiable. Use the result in (b) to show that
+\[
+  f'(a)\leq \frac{f(b)-f(a)}{b-a}\leq f'(b).
+\]
+Note that these inequalities also follow from (3.2):
+\[
+  f(b)\geq f(a)+f'(a)(b-a),\qquad
+  f(a)\geq f(b)+f'(b)(a-b).
+\]
+\item Suppose $f$ is twice differentiable. Use the result in (c) to show that
+$f''(a)\geq0$ and $f''(b)\geq0$.
+\end{enumerate}
+
+\ex{3.10}{An extension of Jensen's inequality.}
+One interpretation of Jensen's inequality is that randomization or dithering hurts,
+i.e., raises the average value of a convex function: For $f$ convex and $v$ a zero
+mean random variable, we have $\E f(x_0+v)\geq f(x_0)$. This leads to the following
+conjecture. If $f_0$ is convex, then the larger the variance of $v$, the larger
+$\E f(x_0+v)$.
+\begin{enumerate}
+\item Give a counterexample that shows that this conjecture is false. Find zero mean
+random variables $v$ and $w$, with $\var(v)>\var(w)$, a convex function $f$, and a
+point $x_0$, such that $\E f(x_0+v)<\E f(x_0+w)$.
+\item The conjecture is true when $v$ and $w$ are scaled versions of each other.
+Show that $\E f(x_0+tv)$ is monotone increasing in $t\geq0$, when $f$ is convex and
+$v$ is zero mean.
+\end{enumerate}
+
+\ex{3.17}{}
+Suppose $p<1$, $p\neq0$. Show that the function
+\[
+  f(x)=\left(\sum_{i=1}^{n}x_i^p\right)^{1/p}
+\]
+with $\dom f=\R_{++}^{n}$ is concave. This includes as special cases
+$f(x)=\bigl(\sum_{i=1}^{n}x_i^{1/2}\bigr)^2$ and the harmonic mean
+$f(x)=\bigl(\sum_{i=1}^{n}1/x_i\bigr)^{-1}$.
+\textit{Hint.} Adapt the proofs for the log-sum-exp function and the geometric mean in
+\S3.1.5.
+
+\ex{3.19}{Nonnegative weighted sums and integrals.}
+\begin{enumerate}
+\item Show that $f(x)=\sum_{i=1}^{r}\alpha_i x_{[i]}$ is a convex function of $x$,
+where $\alpha_1\geq\alpha_2\geq\cdots\geq\alpha_r\geq0$, and $x_{[i]}$ denotes
+the $i$th largest component of $x$. (You can use the fact that
+$f(x)=\sum_{i=1}^{k}x_{[i]}$ is convex on $\R^n$.)
+\item Let $T(x,\omega)$ denote the trigonometric polynomial
+\[
+ T(x,\omega)=x_1+x_2\cos\omega+x_3\cos2\omega+\cdots+x_n\cos(n-1)\omega.
+\]
+Show that the function
+\[
+ f(x)=-\int_0^{2\pi}\log T(x,\omega)\,d\omega
+\]
+is convex on $\{x\in\R^n\mid T(x,\omega)>0,\ 0\leq\omega\leq2\pi\}$.
+\end{enumerate}
+
+\ex{3.30}{Convex hull or envelope of a function.}
+The convex hull or convex envelope of a function $f:\R^n\to\R$ is defined as
+\[
+  g(x)=\inf\{t\mid(x,t)\in\conv\epi f\}.
+\]
+Geometrically, the epigraph of $g$ is the convex hull of the epigraph of $f$.
+Show that $g$ is the largest convex underestimator of $f$. In other words, show
+that if $h$ is convex and satisfies $h(x)\leq f(x)$ for all $x$, then
+$h(x)\leq g(x)$ for all $x$.
+
+\ex{3.32}{Products and ratios of convex functions.}
+In general the product or ratio of two convex functions is not convex.
+However, there are some results that apply to functions on $\R$. Prove the following.
+\begin{enumerate}
+\item If $f$ and $g$ are convex, both nondecreasing (or nonincreasing), and positive
+functions on an interval, then $fg$ is convex.
+\item If $f,g$ are concave, positive, with one nondecreasing and the other
+nonincreasing, then $fg$ is concave.
+\item If $f$ is convex, nondecreasing, and positive, and $g$ is concave,
+nonincreasing, and positive, then $f/g$ is convex.
+\end{enumerate}
+
+\ex{3.39}{Properties of conjugate functions.}
+\begin{enumerate}
+\item \textit{Conjugate of convex plus affine function.} Define
+$g(x)=f(x)+c^Tx+d$, where $f$ is convex. Express $g^*$ in terms of $f^*$
+(and $c,d$).
+\item \textit{Conjugate of perspective.} Express the conjugate of the perspective
+of a convex function $f$ in terms of $f^*$.
+\item \textit{Conjugate and minimization.} Let $f(x,z)$ be convex in $(x,z)$
+and define $g(x)=\inf_z f(x,z)$. Express the conjugate $g^*$ in terms of $f^*$.
+
+As an application, express the conjugate of
+$g(x)=\inf_z\{h(z)\mid Az+b=x\}$, where $h$ is convex, in terms of $h^*$,
+$A$, and $b$.
+\item \textit{Conjugate of conjugate.} Show that the conjugate of the conjugate
+of a closed convex function is itself: $f=f^{**}$ if $f$ is closed and convex.
+(A function is closed if its epigraph is closed; see \S A.3.3.)
+\textit{Hint.} Show that $f^{**}$ is the pointwise supremum of all affine global
+underestimators of $f$. Then apply the result of exercise 3.28.
+\end{enumerate}
+
+\ex{3.43}{First-order condition for quasiconvexity.}
+Prove the first-order condition for quasiconvexity given in \S3.4.3:
+A differentiable function $f:\R^n\to\R$, with $\dom f$ convex, is
+quasiconvex if and only if for all $x,y\in\dom f$,
+\[
+  f(y)\leq f(x)\implies\nabla f(x)^T(y-x)\leq0.
+\]
+\textit{Hint.} It suffices to prove the result for a function on $\R$; the
+general result follows by restriction to an arbitrary line.
+
+\ex{3.44}{Second-order conditions for quasiconvexity.}
+In this problem we derive alternate representations of the second-order
+conditions for quasiconvexity given in \S3.4.3. Prove the following.
+\begin{enumerate}
+\item A point $x\in\dom f$ satisfies (3.21) if and only if there exists a $\sigma$
+such that
+\begin{equation}\tag{3.26}
+  \nabla^2f(x)+\sigma\nabla f(x)\nabla f(x)^T\succeq0.
+\end{equation}
+It satisfies (3.22) for all $y\neq0$ if and only if there exists a $\sigma$ such
+\begin{equation}\tag{3.27}
+  \nabla^2f(x)+\sigma\nabla f(x)\nabla f(x)^T\succ0.
+\end{equation}
+\textit{Hint.} We can assume without loss of generality that $\nabla^2f(x)$ is diagonal.
+\item A point $x\in\dom f$ satisfies (3.21) if and only if either
+$\nabla f(x)=0$ and $\nabla^2f(x)\succeq0$, or $\nabla f(x)\neq0$ and the matrix
+\[
+  H(x)=\begin{bmatrix}
+    \nabla^2f(x)&\nabla f(x)\\
+    \nabla f(x)^T&0
+  \end{bmatrix}
+\]
+has exactly one negative eigenvalue. It satisfies (3.22) for all $y\neq0$
+if and only if $H(x)$ has exactly one nonpositive eigenvalue.
+
+\textit{Hint.} You can use the result of part (a). The following result, which
+follows from the eigenvalue interlacing theorem in linear algebra, may also be
+useful: If $B\in\mathbb{S}^n$ and $a\in\R^n$, then
+\[
+  \lambda_n\!\left(\begin{bmatrix}B&a\\a^T&0\end{bmatrix}\right)
+  \geq\lambda_n(B).
+\]
+\end{enumerate}
+
+\ex{3.47}{}
+Suppose $f:\R^n\to\R$ is differentiable, $\dom f$ is convex, and
+$f(x)>0$ for all $x\in\dom f$. Show that $f$ is log-concave if and only
+if for all $x,y\in\dom f$,
+\[
+  \frac{f(y)}{f(x)}\leq
+  \exp\!\left(\frac{\nabla f(x)^T(y-x)}{f(x)}\right).
+\]
+
+\ex{3.52}{[MO79, \S3.E.2] Log-convexity of moment functions.}
+Suppose $f:\R\to\R$ is nonnegative with $\R_+\subseteq\dom f$.
+For $x\geq0$ define
+\[
+  \phi(x)=\int_0^\infty u^x f(u)\,du.
+\]
+Show that $\phi$ is a log-convex function. (If $x$ is a positive integer,
+and $f$ is a probability density function, then $\phi(x)$ is the $x$th moment
+of the distribution.)
+
+Use this to show that the Gamma function,
+\[
+  \Gamma(x)=\int_0^\infty u^{x-1}e^{-u}\,du,
+\]
+is log-convex for $x\geq1$.
+
+\end{document}

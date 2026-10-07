@@ -1,0 +1,237 @@
+%!Mode:: "TeX:UTF-8"
+%!TEX encoding = UTF-8 Unicode
+%lan
+%arara: xelatex
+\documentclass{ctexart}
+\newif\ifpreface
+%\prefacetrue
+\input{../../../global/all}
+\begin{document}
+\large
+\setlength{\baselineskip}{1.2em}
+\ifpreface
+    \input{../../../global/preface}
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\else
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\maketitle
+\fi
+%from_here_to_type
+\begin{problem}[2.1]
+Compute the gradient $\nabla f(x)$ and Hessian $\nabla^2 f(x)$ of the Rosenbrock function
+\[
+    f(x) = 100(x_2-x_1^2)^2+(1-x_1)^2.
+\]
+Show that $x^*=(1,1)^T$ is the only local minimizer of this function, and that the Hessian matrix at that point is positive definite.
+\end{problem}
+
+\begin{problem}[2.5]
+Consider the function $f:\mathbb{R}^2\to\mathbb{R}$ defined by
+\[
+    f(x)=\|x\|_2.
+\]
+Show that the sequence of iterates $\{x_k\}$ defined by
+\[
+    x_k=
+    \left(1+\frac{1}{2^k}\right)
+    \begin{pmatrix}
+        \cos k\\
+        \sin k
+    \end{pmatrix}
+\]
+satisfies
+\[
+    f(x_{k+1})<f(x_k)
+\]
+for $k=0,1,2,\ldots$. Show that every point on the unit circle
+\[
+    \{x\mid \|x\|_2=1\}
+\]
+is a limit point for $\{x_k\}$.
+
+Hint: Every value $\theta\in[0,2\pi]$ is a limit point of the subsequence
+$\{\xi_k\}$ defined by
+\[
+    \xi_k
+    =k\pmod{2\pi}
+    =k-2\pi\left\lfloor\frac{k}{2\pi}\right\rfloor,
+\]
+where the operator $\lfloor\cdot\rfloor$ denotes rounding down to the next integer.
+\end{problem}
+
+\begin{problem}[2.6]
+Prove that all isolated local minimizers are strict.
+
+Hint: Take an isolated local minimizer $x^*$ and a neighborhood $\mathcal{N}$.
+Show that for any $x\in\mathcal{N}$, $x\neq x^*$, we must have
+\[
+    f(x)>f(x^*).
+\]
+\end{problem}
+
+\begin{problem}[2.7]
+Suppose that
+\[
+    f(x)=x^TQx,
+\]
+where $Q$ is an $n\times n$ symmetric positive semidefinite matrix.
+Show using the definition (1.4) that $f(x)$ is convex on the domain $\mathbb{R}^n$.
+
+Hint: It may be convenient to prove the following equivalent inequality:
+\[
+    f(y+\alpha(x-y))
+    -\alpha f(x)
+    -(1-\alpha)f(y)
+    \leq 0,
+\]
+for all $\alpha\in[0,1]$ and all $x,y\in\mathbb{R}^n$.
+\end{problem}
+
+\begin{problem}[2.9]
+Consider the function
+\[
+    f(x_1,x_2)=(x_1+x_2^2)^2.
+\]
+At the point $x^T=(1,0)$ we consider the search direction
+\[
+    p^T=(-1,1).
+\]
+Show that $p$ is a descent direction and find all minimizers of the problem (2.10).
+\end{problem}
+
+\begin{problem}[2.13]
+(For this and the following three questions, refer to the material on
+``Rates of Convergence'' in Section A.2 of the Appendix.)
+
+Show that the sequence
+\[
+    x_k=\frac{1}{k}
+\]
+is not Q-linearly convergent, though it does converge to zero.
+(This is called sublinear convergence.)
+\end{problem}
+
+\begin{problem}[2.14]
+Show that the sequence
+\[
+    x_k=1+(0.5)^{2^k}
+\]
+is Q-quadratically convergent to $1$.
+\end{problem}
+
+\begin{problem}[2.15]
+Does the sequence
+\[
+    x_k=\frac{1}{k!}
+\]
+converge Q-superlinearly? Q-quadratically?
+\end{problem}
+
+\begin{problem}[2.16]
+Consider the sequence $\{x_k\}$ defined by
+\[
+    x_k=
+    \begin{cases}
+        \left(\dfrac14\right)^{2^k}, & k \text{ even},\\[2mm]
+        x_{k-1}/k, & k \text{ odd}.
+    \end{cases}
+\]
+Is this sequence Q-superlinearly convergent? Q-quadratically convergent?
+R-quadratically convergent?
+\end{problem}
+
+
+\begin{problem}[3.1]
+Program the steepest descent and Newton algorithms using the backtracking line
+search, Algorithm 3.1. Use them to minimize the Rosenbrock function (2.22).
+Set the initial step length $\alpha_0=1$ and print the step length used by each
+method at each iteration. First try the initial point
+\[
+    x_0=(1.2,1.2)^T
+\]
+and then the more difficult starting point
+\[
+    x_0=(-1.2,1)^T.
+\]
+\end{problem}
+
+\begin{problem}[3.4]
+Show that the one-dimensional minimizer of a strongly convex quadratic function
+always satisfies the Goldstein conditions (3.11).
+\end{problem}
+
+\begin{problem}[3.5]
+Prove that
+\[
+    \|Bx\|\geq\frac{\|x\|}{\|B^{-1}\|}
+\]
+for any nonsingular matrix $B$. Use this fact to establish (3.19).
+\end{problem}
+
+\begin{problem}[3.7]
+Prove the result (3.28) by working through the following steps.
+
+First, use (3.26) to show that
+\[
+    \|x_k-x^*\|_Q^2-\|x_{k+1}-x^*\|_Q^2
+    =
+    2\alpha_k\nabla f_k^TQ(x_k-x^*)
+    -\alpha_k^2\nabla f_k^TQ\nabla f_k,
+\]
+where $\|\cdot\|_Q$ is defined by (3.27).
+
+Second, use the fact that
+\[
+    \nabla f_k=Q(x_k-x^*)
+\]
+to obtain
+\[
+    \|x_k-x^*\|_Q^2-\|x_{k+1}-x^*\|_Q^2
+    =
+    2\frac{(\nabla f_k^T\nabla f_k)^2}
+            {\nabla f_k^TQ\nabla f_k}
+    -
+    \frac{(\nabla f_k^T\nabla f_k)^2}
+         {\nabla f_k^TQ\nabla f_k}
+\]
+and
+\[
+    \|x_k-x^*\|_Q^2
+    =
+    \nabla f_k^TQ^{-1}\nabla f_k.
+\]
+\end{problem}
+
+\begin{problem}[3.8]
+Let $Q$ be a positive definite symmetric matrix. Prove that for any vector $x$,
+we have
+\[
+    \frac{(x^Tx)^2}
+         {(x^TQx)(x^TQ^{-1}x)}
+    \geq
+    \frac{4\lambda_n\lambda_1}
+         {(\lambda_n+\lambda_1)^2},
+\]
+where $\lambda_n$ and $\lambda_1$ are, respectively, the largest and smallest
+eigenvalues of $Q$.
+
+(This relation, which is known as the Kantorovich inequality, can be used to
+deduce (3.29) from (3.28).)
+\end{problem}
+
+\begin{problem}[3.9]
+Program the BFGS algorithm using the line search algorithm described in this
+chapter that implements the strong Wolfe conditions. Have the code verify that
+\[
+    y_k^Ts_k
+\]
+is always positive. Use it to minimize the Rosenbrock function using the
+starting points given in Exercise 3.1.
+\end{problem}
+
+\begin{problem}[3.12]
+Consider a block diagonal matrix $B$ with $1\times1$ and $2\times2$ blocks.
+Show that the eigenvalues and eigenvectors of $B$ can be obtained by computing
+the spectral decomposition of each diagonal block separately.
+\end{problem}
+\end{document}
