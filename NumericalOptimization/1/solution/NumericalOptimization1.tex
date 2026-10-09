@@ -6,6 +6,20 @@
 \newif\ifpreface
 %\prefacetrue
 \input{../../../global/all}
+\lstset{
+    language={},
+    backgroundcolor=\color{bgclr},
+    basicstyle=\ttfamily\scriptsize,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{magenta},
+    numbersep=5pt,
+    showstringspaces=false,
+    breaklines=true,
+    columns=fullflexible
+}
 \begin{document}
 \large
 \setlength{\baselineskip}{1.2em}
@@ -17,6 +31,7 @@
 \maketitle
 \fi
 %from_here_to_type
+
 \begin{problem}[2.1]
 Compute the gradient $\nabla f(x)$ and Hessian $\nabla^2 f(x)$ of the Rosenbrock function
 \[
@@ -24,6 +39,55 @@ Compute the gradient $\nabla f(x)$ and Hessian $\nabla^2 f(x)$ of the Rosenbrock
 \]
 Show that $x^*=(1,1)^T$ is the only local minimizer of this function, and that the Hessian matrix at that point is positive definite.
 \end{problem}
+
+\begin{solution}
+令
+\[
+    r(x)=x_2-x_1^2,
+\]
+则 $f(x)=100r(x)^2+(1-x_1)^2$。逐分量求导得
+\[
+    \nabla f(x)=
+    \begin{pmatrix}
+        -400x_1(x_2-x_1^2)+2(x_1-1)\\
+        200(x_2-x_1^2)
+    \end{pmatrix},
+\]
+并且
+\[
+    \nabla^2 f(x)=
+    \begin{pmatrix}
+        1200x_1^2-400x_2+2 & -400x_1\\
+        -400x_1 & 200
+    \end{pmatrix}.
+\]
+
+由于 $f$ 在 $\mathbb R^2$ 上连续可微，任一局部极小点都必须满足一阶必要条件
+$\nabla f(x)=0$。由梯度的第二个分量为零可知
+\[
+    x_2=x_1^2.
+\]
+代回第一个分量，得到 $2(x_1-1)=0$，因而 $x_1=1$，进而
+$x_2=1$。所以 $x^*=(1,1)^T$ 是唯一的驻点，也就是唯一可能的局部极小点。
+另一方面，
+\[
+    f(x)=100(x_2-x_1^2)^2+(1-x_1)^2\geq 0,
+\]
+且等号成立当且仅当 $x_1=1$ 且 $x_2=x_1^2=1$。故 $x^*$ 实际上是唯一的严格全局极小点。
+
+最后，
+\[
+    \nabla^2f(x^*)=
+    \begin{pmatrix}802&-400\\-400&200\end{pmatrix}.
+\]
+其顺序主子式满足
+\[
+    802>0,
+    \qquad
+    \det\nabla^2f(x^*)=802\cdot200-400^2=400>0.
+\]
+由 Sylvester 判别法，$\nabla^2f(x^*)$ 正定。
+\end{solution}
 
 \begin{problem}[2.5]
 Consider the function $f:\mathbb{R}^2\to\mathbb{R}$ defined by
@@ -59,6 +123,50 @@ $\{\xi_k\}$ defined by
 where the operator $\lfloor\cdot\rfloor$ denotes rounding down to the next integer.
 \end{problem}
 
+\begin{solution}
+由 $\cos^2k+\sin^2k=1$，有
+\[
+    f(x_k)=\|x_k\|_2=1+2^{-k}.
+\]
+因此对任意 $k\geq0$，
+\[
+    f(x_{k+1})=1+2^{-(k+1)}<1+2^{-k}=f(x_k).
+\]
+
+下面证明其极限点恰好覆盖单位圆。记
+\[
+    \xi_k=k\pmod{2\pi}\in[0,2\pi).
+\]
+由于 $1/(2\pi)$ 是无理数，无理旋转的稠密性定理说明
+$\{\xi_k:k\geq0\}$ 在 $[0,2\pi)$ 中稠密。为完整起见，该结论可由抽屉原理得到：
+对任意 $N$，把 $0,1,\ldots,N$ 在模 $2\pi$ 意义下的余数放入 $N$ 个等长小区间，
+必有两个余数之差的模长不超过 $2\pi/N$；又因 $2\pi$ 不是整数的有理倍数，
+该模长不为零。让这一小旋转反复作用即可在圆周上形成间距不超过 $2\pi/N$
+的网，从而逼近任意给定角度。令 $N\to\infty$ 即得稠密性。
+
+任取单位圆上的点
+\[
+    \bar x=(\cos\theta,\sin\theta)^T,
+    \qquad \theta\in[0,2\pi).
+\]
+稠密性不仅对原序列成立，而且对任意尾序列
+$\{\xi_k:k\geq K\}$ 也成立（尾序列只是原稠密轨道旋转了一个固定角度）。
+故可递归选取严格递增的指标 $k_j$，使得
+\[
+    |\xi_{k_j}-\theta|<\frac1j.
+\]
+于是 $\xi_{k_j}\to\theta$，同时 $1+2^{-k_j}\to1$。利用正弦、余弦的连续性，
+\[
+    x_{k_j}
+    =\left(1+2^{-k_j}\right)
+      \begin{pmatrix}\cos\xi_{k_j}\\\sin\xi_{k_j}\end{pmatrix}
+    \longrightarrow
+      \begin{pmatrix}\cos\theta\\\sin\theta\end{pmatrix}
+    =\bar x.
+\]
+因此单位圆上的每一点都是 $\{x_k\}$ 的极限点。
+\end{solution}
+
 \begin{problem}[2.6]
 Prove that all isolated local minimizers are strict.
 
@@ -68,6 +176,29 @@ Show that for any $x\in\mathcal{N}$, $x\neq x^*$, we must have
     f(x)>f(x^*).
 \]
 \end{problem}
+
+\begin{solution}
+设 $x^*$ 是孤立的局部极小点。由局部极小点的定义，存在开邻域
+$\mathcal N_0$，使得
+\[
+    f(x)\geq f(x^*),\qquad x\in\mathcal N_0.
+\]
+又因为 $x^*$ 是孤立的，所以可以缩小邻域，取
+$\mathcal N\subseteq\mathcal N_0$，使得 $\mathcal N$ 中除 $x^*$ 外不存在其他局部极小点。
+
+若 $x^*$ 不是严格局部极小点，则在任意这样的邻域中都存在
+$\bar x\neq x^*$ 使 $f(\bar x)=f(x^*)$。取充分小的开邻域
+$\mathcal U$ 使 $\bar x\in\mathcal U\subseteq\mathcal N_0$。对任意 $y\in\mathcal U$，
+\[
+    f(y)\geq f(x^*)=f(\bar x),
+\]
+所以 $\bar x$ 本身也是局部极小点。这与 $\mathcal N$ 中不含其他局部极小点矛盾。
+因此存在 $x^*$ 的一个邻域 $\mathcal N$，使得
+\[
+    f(x)>f(x^*),\qquad x\in\mathcal N,\quad x\neq x^*,
+\]
+即 $x^*$ 是严格局部极小点。
+\end{solution}
 
 \begin{problem}[2.7]
 Suppose that
@@ -87,6 +218,24 @@ Hint: It may be convenient to prove the following equivalent inequality:
 for all $\alpha\in[0,1]$ and all $x,y\in\mathbb{R}^n$.
 \end{problem}
 
+\begin{solution}
+任取 $x,y\in\mathbb R^n$ 及 $\alpha\in[0,1]$。直接展开得
+\begin{align*}
+&f\bigl(y+\alpha(x-y)\bigr)-\alpha f(x)-(1-\alpha)f(y)\\
+={}&\bigl(\alpha x+(1-\alpha)y\bigr)^TQ
+       \bigl(\alpha x+(1-\alpha)y\bigr)
+       -\alpha x^TQx-(1-\alpha)y^TQy\\
+={}&-\alpha(1-\alpha)(x-y)^TQ(x-y).
+\end{align*}
+由于 $Q\succeq0$，有 $(x-y)^TQ(x-y)\geq0$；又因为
+$\alpha(1-\alpha)\geq0$，故上式不大于零。因此
+\[
+    f\bigl(\alpha x+(1-\alpha)y\bigr)
+    \leq \alpha f(x)+(1-\alpha)f(y),
+\]
+这正是 $f$ 在 $\mathbb R^n$ 上为凸函数的定义。
+\end{solution}
+
 \begin{problem}[2.9]
 Consider the function
 \[
@@ -98,6 +247,45 @@ At the point $x^T=(1,0)$ we consider the search direction
 \]
 Show that $p$ is a descent direction and find all minimizers of the problem (2.10).
 \end{problem}
+
+\begin{solution}
+在 $x=(1,0)^T$ 处，
+\[
+    \nabla f(x)
+    =2(x_1+x_2^2)\begin{pmatrix}1\\2x_2\end{pmatrix}
+    =\begin{pmatrix}2\\0\end{pmatrix}.
+\]
+因而
+\[
+    \nabla f(x)^Tp=(2,0)\begin{pmatrix}-1\\1\end{pmatrix}=-2<0,
+\]
+所以 $p$ 是下降方向。
+
+沿该方向的一维搜索函数为
+\[
+    \phi(\alpha)=f(x+\alpha p)
+    =f(1-\alpha,\alpha)
+    =(1-\alpha+\alpha^2)^2.
+\]
+注意到
+\[
+    1-\alpha+\alpha^2
+    =\left(\alpha-\frac12\right)^2+\frac34>0,
+\]
+故
+\[
+    \phi'(\alpha)
+    =2(1-\alpha+\alpha^2)(2\alpha-1)
+\]
+仅在 $\alpha=1/2$ 处为零，并且在该点左侧为负、右侧为正。
+因此无论问题 (2.10) 的可行域取 $\alpha>0$ 还是 $\alpha\geq0$，其唯一极小化步长均为
+\[
+    \boxed{\alpha^*=\frac12},
+    \qquad
+    \phi(\alpha^*)=\left(\frac34\right)^2=\frac9{16}.
+\]
+相应的一维搜索极小点为 $x+\alpha^*p=(1/2,1/2)^T$。
+\end{solution}
 
 \begin{problem}[2.13]
 (For this and the following three questions, refer to the material on
@@ -111,6 +299,20 @@ is not Q-linearly convergent, though it does converge to zero.
 (This is called sublinear convergence.)
 \end{problem}
 
+\begin{solution}
+显然 $x_k=1/k\to0$。若该序列 Q-线性收敛，则存在常数
+$r\in(0,1)$ 以及 $K$，使得对所有 $k\geq K$，
+\[
+    \frac{|x_{k+1}-0|}{|x_k-0|}\leq r.
+\]
+但事实上
+\[
+    \frac{|x_{k+1}|}{|x_k|}=\frac{k}{k+1}\longrightarrow1.
+\]
+因此对任意 $r<1$，只要 $k$ 足够大便有 $k/(k+1)>r$，与 Q-线性收敛的定义矛盾。
+故该序列收敛到零，但不是 Q-线性收敛；这种收敛称为次线性收敛。
+\end{solution}
+
 \begin{problem}[2.14]
 Show that the sequence
 \[
@@ -119,6 +321,16 @@ Show that the sequence
 is Q-quadratically convergent to $1$.
 \end{problem}
 
+\begin{solution}
+令误差 $e_k=|x_k-1|=(0.5)^{2^k}$。则
+\[
+    e_{k+1}=(0.5)^{2^{k+1}}
+    =\left((0.5)^{2^k}\right)^2=e_k^2.
+\]
+所以对所有 $k$ 都有 $e_{k+1}\leq Ce_k^2$，其中可取 $C=1$。
+因此 $x_k$ Q-二次收敛到 $1$。
+\end{solution}
+
 \begin{problem}[2.15]
 Does the sequence
 \[
@@ -126,6 +338,23 @@ Does the sequence
 \]
 converge Q-superlinearly? Q-quadratically?
 \end{problem}
+
+\begin{solution}
+此时极限为零，误差就是 $e_k=x_k=1/k!$。首先，
+\[
+    \frac{e_{k+1}}{e_k}=\frac1{k+1}\longrightarrow0,
+\]
+故该序列 Q-超线性收敛。
+
+另一方面，若其 Q-二次收敛，则应存在常数 $C>0$，使充分大的 $k$ 满足
+$e_{k+1}\leq Ce_k^2$。然而
+\[
+    \frac{e_{k+1}}{e_k^2}
+    =\frac{1/(k+1)!}{1/(k!)^2}
+    =\frac{k!}{k+1}\longrightarrow+\infty.
+\]
+这个比值不可能被某个固定常数控制。因此该序列 Q-超线性收敛，但不 Q-二次收敛。
+\end{solution}
 
 \begin{problem}[2.16]
 Consider the sequence $\{x_k\}$ defined by
@@ -140,6 +369,48 @@ Is this sequence Q-superlinearly convergent? Q-quadratically convergent?
 R-quadratically convergent?
 \end{problem}
 
+\begin{solution}
+各项均为正且趋于零。分别考察奇偶两种转移。
+
+当 $k$ 为偶数时，$k+1$ 为奇数，故
+\[
+    \frac{x_{k+1}}{x_k}=\frac1{k+1}\longrightarrow0.
+\]
+当 $k$ 为奇数时，
+\[
+    x_k=\frac{4^{-2^{k-1}}}{k},
+    \qquad x_{k+1}=4^{-2^{k+1}},
+\]
+从而
+\[
+    \frac{x_{k+1}}{x_k}
+    =k,4^{-(2^{k+1}-2^{k-1})}longrightarrow0.
+\]
+两条子序列上的误差比均趋于零，所以 $\{x_k\}$ Q-超线性收敛到零。
+
+它并不 Q-二次收敛。事实上，当 $k$ 为偶数时，
+\[
+    \frac{x_{k+1}}{x_k^2}
+    =\frac{1}{(k+1)x_k}longrightarrow+\infty,
+\]
+故不存在统一的二次收敛常数。
+
+最后构造控制序列
+\[
+    v_k=2^{-2^k}.
+\]
+它满足 $v_{k+1}=v_k^2$，因而 Q-二次收敛到零。若 $k$ 为偶数，则
+\[
+    x_k=4^{-2^k}=2^{-2^{k+1}}\leq2^{-2^k}=v_k;
+\]
+若 $k$ 为奇数，则
+\[
+    x_k=\frac{4^{-2^{k-1}}}{k}
+       =\frac{2^{-2^k}}{k}\leq v_k.
+\]
+故 $0<x_k\leq v_k$ 对所有 $k\geq1$ 成立。按照 R-收敛的定义，
+$\{x_k\}$ R-二次收敛。综上，该序列 Q-超线性、非 Q-二次，但 R-二次收敛。
+\end{solution}
 
 \begin{problem}[3.1]
 Program the steepest descent and Newton algorithms using the backtracking line
@@ -155,10 +426,125 @@ and then the more difficult starting point
 \]
 \end{problem}
 
+\begin{solution}
+采用 Armijo 回溯条件
+\[
+    f(x_k+\alpha_kp_k)
+    \leq f(x_k)+c_1\alpha_k\nabla f(x_k)^Tp_k,
+\]
+其中初始步长 $\alpha_0=1$，并取 $c_1=10^{-4}$、回缩因子 $\rho=1/2$。
+最速下降法取 $p_k=-\nabla f(x_k)$；Newton 法取
+$p_k=-\nabla^2f(x_k)^{-1}\nabla f(x_k)$。终止条件设为
+$\|\nabla f(x_k)\|_2\leq10^{-8}$。完整程序如下；程序中的输出语句会打印每次迭代实际接受的步长。
+
+\begin{lstlisting}
+import numpy as np
+
+def fun(x):
+    return 100.0 * (x[1] - x[0]**2)**2 + (1.0 - x[0])**2
+
+def grad(x):
+    return np.array([
+        -400.0*x[0]*(x[1] - x[0]**2) + 2.0*(x[0] - 1.0),
+         200.0*(x[1] - x[0]**2)
+    ])
+
+def hess(x):
+    return np.array([
+        [1200.0*x[0]**2 - 400.0*x[1] + 2.0, -400.0*x[0]],
+        [-400.0*x[0], 200.0]
+    ])
+
+def backtracking(x, p, alpha0=1.0, rho=0.5, c1=1.0e-4):
+    alpha = alpha0
+    f0, slope0 = fun(x), grad(x) @ p
+    assert slope0 < 0.0
+    while fun(x + alpha*p) > f0 + c1*alpha*slope0:
+        alpha *= rho
+    return alpha
+
+def solve(x0, method, tol=1.0e-8, maxit=200000):
+    x = np.asarray(x0, dtype=float).copy()
+    steps = []
+    for k in range(maxit):
+        g = grad(x)
+        if np.linalg.norm(g) <= tol:
+            return x, steps
+        if method == 0:                # steepest descent
+            p = -g
+        elif method == 1:              # Newton
+            p = np.linalg.solve(hess(x), -g)
+        else:
+            raise ValueError
+        alpha = backtracking(x, p)
+        print(method, k, alpha)
+        steps.append(alpha)
+        x = x + alpha*p
+    raise RuntimeError
+
+for x0 in ([1.2, 1.2], [-1.2, 1.0]):
+    for method in (0, 1):
+        x, steps = solve(x0, method)
+        print(x0, method, len(steps), x, fun(x),
+              np.linalg.norm(grad(x)))
+\end{lstlisting}
+
+运行结果汇总如下（迭代次数等于接受步长的个数）：
+\[
+\begin{array}{c|c|r|c|c}
+x_0&\text{方法}&\text{迭代次数}&f(x_{\rm final})&
+\|\nabla f(x_{\rm final})\|_2\\ \hline
+(1.2,1.2)^T&\text{最速下降}&18691&6.1610\times10^{-17}&9.9537\times10^{-9}\\
+(1.2,1.2)^T&\text{Newton}&8&1.0883\times10^{-25}&1.4360\times10^{-11}\\
+(-1.2,1)^T&\text{最速下降}&19435&6.1066\times10^{-17}&9.9968\times10^{-9}\\
+(-1.2,1)^T&\text{Newton}&21&3.7440\times10^{-21}&4.4733\times10^{-10}
+\end{array}
+\]
+两次 Newton 实验所接受的完整步长序列分别为
+\[
+\begin{split}
+(1.2,1.2)^T:\quad&1,\tfrac12,1,1,1,1,1,1,\\
+(-1.2,1)^T:\quad&1,\tfrac18,1,1,1,\tfrac14,1,1,1,\tfrac12,
+1,1,1,\tfrac12,1,1,1,1,1,1,1.
+\end{split}
+\]
+最速下降法步数很大，故不在正文逐项抄录；程序会逐项打印。其步长主要为
+$2^{-9}=0.001953125$，这也解释了它在 Rosenbrock 狭长弯曲谷底中的缓慢收敛。
+\end{solution}
+
 \begin{problem}[3.4]
 Show that the one-dimensional minimizer of a strongly convex quadratic function
 always satisfies the Goldstein conditions (3.11).
 \end{problem}
+
+\begin{solution}
+设一维强凸二次函数为
+\[
+    \phi(\alpha)=\phi(0)+b\alpha+\frac12q\alpha^2,
+    \qquad q>0.
+\]
+在线搜索中 $p$ 是下降方向，所以 $b=\phi'(0)<0$。唯一极小化步长为
+\[
+    \alpha^*=-\frac bq>0.
+\]
+利用 $q\alpha^*=-b$，可得
+\[
+    \phi(\alpha^*)
+    =\phi(0)+b\alpha^*+\frac12q(\alpha^*)^2
+    =\phi(0)+\frac12b\alpha^*.
+\]
+Goldstein 条件为：对某个 $c\in(0,1/2)$，
+\[
+    \phi(0)+(1-c)\alpha\phi'(0)
+    \leq\phi(\alpha)
+    \leq\phi(0)+c\alpha\phi'(0).
+\]
+因为 $b\alpha^*<0$ 且 $c<1/2<1-c$，所以
+\[
+    (1-c)b\alpha^*\leq\frac12b\alpha^*\leq cb\alpha^*.
+\]
+两边同时加上 $\phi(0)$，恰好得到 $\alpha^*$ 满足上述两个 Goldstein 不等式。
+\end{solution}
 
 \begin{problem}[3.5]
 Prove that
@@ -167,6 +553,43 @@ Prove that
 \]
 for any nonsingular matrix $B$. Use this fact to establish (3.19).
 \end{problem}
+
+\begin{solution}
+由 $B$ 非奇异及算子范数的次乘性，
+\[
+    \|x\|=\|B^{-1}Bx\|
+    \leq\|B^{-1}\|\,\|Bx\|.
+\]
+整理即得
+\[
+    \boxed{\|Bx\|\geq\frac{\|x\|}{\|B^{-1}\|}}.
+\]
+
+下面用它证明 (3.19)。Newton 型方向满足
+$B_kp_k=-\nabla f_k$，其中 $B_k$ 对称正定，并假设
+\[
+    \|B_k\|\,\|B_k^{-1}\|\leq M.
+\]
+将刚证明的不等式用于 $B_k^{1/2}$，再平方，得到
+\[
+    p_k^TB_kp_k=\|B_k^{1/2}p_k\|^2
+    \geq\frac{\|p_k\|^2}{\|B_k^{-1/2}\|^2}
+    =\frac{\|p_k\|^2}{\|B_k^{-1}\|}.
+\]
+另一方面，$\|B_kp_k\|\leq\|B_k\|\|p_k\|$。因此方向 $p_k$ 与
+$-\nabla f_k$ 之间夹角 $\theta_k$ 满足
+\begin{align*}
+\cos\theta_k
+&=\frac{-\nabla f_k^Tp_k}{\|\nabla f_k\|\,\|p_k\|}
+=\frac{p_k^TB_kp_k}{\|B_kp_k\|\,\|p_k\|}\\
+&\geq
+\frac{\|p_k\|^2/\|B_k^{-1}\|}
+     {\|B_k\|\|p_k\|^2}
+=\frac1{\|B_k\|\|B_k^{-1}\|}
+\geq\frac1M.
+\end{align*}
+这就是 (3.19)。
+\end{solution}
 
 \begin{problem}[3.7]
 Prove the result (3.28) by working through the following steps.
@@ -202,6 +625,64 @@ and
 \]
 \end{problem}
 
+\begin{solution}
+对严格凸二次函数
+\[
+    f(x)=\frac12x^TQx-b^Tx,
+    \qquad Q\succ0,
+\]
+记 $x^*=Q^{-1}b$，则 $\nabla f_k=Q(x_k-x^*)$。最速下降法配合精确线搜索给出
+\[
+    x_{k+1}=x_k-\alpha_k\nabla f_k,
+    \qquad
+    \alpha_k=\frac{\nabla f_k^T\nabla f_k}
+                    {\nabla f_k^TQ\nabla f_k}.
+\]
+令 $e_k=x_k-x^*$。按照 $\|z\|_Q^2=z^TQz$ 的定义，
+\begin{align*}
+\|e_k\|_Q^2-\|e_{k+1}\|_Q^2
+&=e_k^TQe_k-(e_k-\alpha_k\nabla f_k)^T
+Q(e_k-\alpha_k\nabla f_k)\\
+&=2\alpha_k\nabla f_k^TQe_k
+  -\alpha_k^2\nabla f_k^TQ\nabla f_k.
+\end{align*}
+又因为 $Qe_k=\nabla f_k$，所以
+\[
+    \nabla f_k^TQe_k=\nabla f_k^T\nabla f_k.
+\]
+代入精确线搜索步长，得到
+\begin{align*}
+\|e_k\|_Q^2-\|e_{k+1}\|_Q^2
+&=2\frac{(\nabla f_k^T\nabla f_k)^2}
+        {\nabla f_k^TQ\nabla f_k}
+ -\frac{(\nabla f_k^T\nabla f_k)^2}
+        {\nabla f_k^TQ\nabla f_k}\\
+&=\frac{(\nabla f_k^T\nabla f_k)^2}
+        {\nabla f_k^TQ\nabla f_k}.
+\end{align*}
+同时 $e_k=Q^{-1}\nabla f_k$，故
+\[
+    \|e_k\|_Q^2=e_k^TQe_k
+    =\nabla f_k^TQ^{-1}\nabla f_k.
+\]
+将差值等式除以 $\|e_k\|_Q^2$，可得所要求的 (3.28)：
+\[
+    \boxed{
+    \|x_{k+1}-x^*\|_Q^2
+    =\left[1-
+    \frac{(\nabla f_k^T\nabla f_k)^2}
+    {(\nabla f_k^TQ\nabla f_k)
+     (\nabla f_k^TQ^{-1}\nabla f_k)}\right]
+    \|x_k-x^*\|_Q^2.}
+\]
+再结合题 3.8 的 Kantorovich 不等式，还可推出
+\[
+    \|x_{k+1}-x^*\|_Q
+    \leq\frac{\lambda_n-\lambda_1}{\lambda_n+\lambda_1}
+    \|x_k-x^*\|_Q.
+\]
+\end{solution}
+
 \begin{problem}[3.8]
 Let $Q$ be a positive definite symmetric matrix. Prove that for any vector $x$,
 we have
@@ -219,6 +700,61 @@ eigenvalues of $Q$.
 deduce (3.29) from (3.28).)
 \end{problem}
 
+\begin{solution}
+当 $x=0$ 时不等式显然成立。以下设 $x\neq0$。对 $Q$ 作正交谱分解
+$Q=U\Lambda U^T$，其中
+\[
+    0<\lambda_1\leq\lambda_i\leq\lambda_n.
+\]
+令 $z=U^Tx$ 及
+\[
+    w_i=\frac{z_i^2}{\sum_jz_j^2},
+\]
+则 $w_i\geq0$ 且 $\sum_iw_i=1$。记
+\[
+    A=\sum_iw_i\lambda_i,
+    \qquad B=\sum_i\frac{w_i}{\lambda_i}.
+\]
+由 $\lambda_i\in[\lambda_1,\lambda_n]$，有
+\[
+    (\lambda_i-\lambda_1)(\lambda_n-\lambda_i)\geq0,
+\]
+等价地，
+\[
+    \lambda_i+\frac{\lambda_1\lambda_n}{\lambda_i}
+    \leq\lambda_1+\lambda_n.
+\]
+以 $w_i$ 加权求和，得到
+\[
+    A+\lambda_1\lambda_nB\leq\lambda_1+\lambda_n.
+\]
+再由算术--几何平均不等式，
+\[
+    4\lambda_1\lambda_nAB
+    \leq(A+\lambda_1\lambda_nB)^2
+    \leq(\lambda_1+\lambda_n)^2.
+\]
+另一方面，正交变换保持内积，故
+\[
+    A=\frac{x^TQx}{x^Tx},
+    \qquad B=\frac{x^TQ^{-1}x}{x^Tx}.
+\]
+于是
+\[
+    \frac{(x^TQx)(x^TQ^{-1}x)}{(x^Tx)^2}
+    =AB
+    \leq\frac{(\lambda_n+\lambda_1)^2}
+                   {4\lambda_n\lambda_1}.
+\]
+所有量均为正，取倒数便得
+\[
+    \boxed{
+    \frac{(x^Tx)^2}{(x^TQx)(x^TQ^{-1}x)}
+    \geq\frac{4\lambda_n\lambda_1}
+                   {(\lambda_n+\lambda_1)^2}.}
+\]
+\end{solution}
+
 \begin{problem}[3.9]
 Program the BFGS algorithm using the line search algorithm described in this
 chapter that implements the strong Wolfe conditions. Have the code verify that
@@ -229,9 +765,163 @@ is always positive. Use it to minimize the Rosenbrock function using the
 starting points given in Exercise 3.1.
 \end{problem}
 
+\begin{solution}
+强 Wolfe 条件为
+\[
+\begin{split}
+f(x_k+\alpha_kp_k)&\leq f(x_k)+c_1\alpha_k\nabla f_k^Tp_k,\\
+|\nabla f(x_k+\alpha_kp_k)^Tp_k|&\leq c_2|\nabla f_k^Tp_k|,
+\end{split}
+\]
+这里取 $c_1=10^{-4}$、$c_2=0.9$。程序使用试探区间扩张和二分
+\texttt{zoom} 实现强 Wolfe 线搜索，并直接更新逆 Hessian 近似 $H_k$：
+\[
+    H_{k+1}=(I-\rho_ks_ky_k^T)H_k(I-\rho_ky_ks_k^T)
+              +\rho_ks_ks_k^T,
+    \qquad \rho_k=(y_k^Ts_k)^{-1}.
+\]
+以下代码接续题 3.1 中的 \texttt{fun} 和 \texttt{grad} 定义。
+
+\begin{lstlisting}
+def strongWolfe(x, p, c1=1.0e-4, c2=0.9):
+    phi0 = fun(x)
+    dphi0 = grad(x) @ p
+    assert dphi0 < 0.0
+
+    def phi(alpha):
+        return fun(x + alpha*p)
+
+    def dphi(alpha):
+        return grad(x + alpha*p) @ p
+
+    def zoom(alphaLo, alphaHi):
+        phiLo = phi(alphaLo)
+        for zoomIter in range(100):
+            alpha = 0.5*(alphaLo + alphaHi)
+            phiAlpha = phi(alpha)
+            if (phiAlpha > phi0 + c1*alpha*dphi0 or
+                    phiAlpha >= phiLo):
+                alphaHi = alpha
+            else:
+                dphiAlpha = dphi(alpha)
+                if abs(dphiAlpha) <= -c2*dphi0:
+                    return alpha
+                if dphiAlpha*(alphaHi - alphaLo) >= 0.0:
+                    alphaHi = alphaLo
+                alphaLo = alpha
+                phiLo = phiAlpha
+        raise RuntimeError
+
+    alphaPrev, phiPrev = 0.0, phi0
+    alpha = 1.0
+    for i in range(100):
+        phiAlpha = phi(alpha)
+        if (phiAlpha > phi0 + c1*alpha*dphi0 or
+                (i > 0 and phiAlpha >= phiPrev)):
+            return zoom(alphaPrev, alpha)
+        dphiAlpha = dphi(alpha)
+        if abs(dphiAlpha) <= -c2*dphi0:
+            return alpha
+        if dphiAlpha >= 0.0:
+            return zoom(alpha, alphaPrev)
+        alphaPrev, phiPrev = alpha, phiAlpha
+        alpha *= 2.0
+    raise RuntimeError
+
+def bfgs(x0, tol=1.0e-8, maxit=10000):
+    x = np.asarray(x0, dtype=float).copy()
+    H = np.eye(len(x))
+    history = []
+    for k in range(maxit):
+        g = grad(x)
+        if np.linalg.norm(g) <= tol:
+            return x, history
+        p = -H @ g
+        alpha = strongWolfe(x, p)
+        s = alpha*p
+        xNew = x + s
+        y = grad(xNew) - g
+        ys = y @ s
+        assert ys > 0.0
+        history.append((alpha, ys))
+        print(k, alpha, ys)
+
+        rho = 1.0/ys
+        I = np.eye(len(x))
+        H = ((I - rho*np.outer(s, y)) @ H @
+             (I - rho*np.outer(y, s)) + rho*np.outer(s, s))
+        x = xNew
+    raise RuntimeError
+
+for x0 in ([1.2, 1.2], [-1.2, 1.0]):
+    x, history = bfgs(x0)
+    print(x0, len(history), x, fun(x), np.linalg.norm(grad(x)),
+          min(ys for alpha, ys in history))
+\end{lstlisting}
+
+实验结果为
+\[
+\begin{array}{c|r|c|c|c}
+x_0&\text{迭代次数}&f(x_{\rm final})&
+\|\nabla f(x_{\rm final})\|_2&\min_k y_k^Ts_k\\ \hline
+(1.2,1.2)^T&17&2.1728\times10^{-20}&3.0773\times10^{-9}&6.0567\times10^{-17}\\
+(-1.2,1)^T&35&1.2287\times10^{-22}&4.7420\times10^{-10}&3.7294\times10^{-18}
+\end{array}
+\]
+两组实验中所有 $y_k^Ts_k$ 均严格为正。事实上，这不仅是数值现象：由
+$s_k=\alpha_kp_k$ 和强 Wolfe 曲率条件可得
+\begin{align*}
+y_k^Ts_k
+&=\alpha_k\bigl(\nabla f_{k+1}^Tp_k-\nabla f_k^Tp_k\bigr)\\
+&\geq\alpha_k(c_2-1)\nabla f_k^Tp_k>0,
+\end{align*}
+其中最后一个不等式使用了 $\nabla f_k^Tp_k<0$ 及 $c_2<1$。
+因此只要 $H_0\succ0$，BFGS 更新便会保持 $H_k\succ0$。
+\end{solution}
+
 \begin{problem}[3.12]
 Consider a block diagonal matrix $B$ with $1\times1$ and $2\times2$ blocks.
 Show that the eigenvalues and eigenvectors of $B$ can be obtained by computing
 the spectral decomposition of each diagonal block separately.
 \end{problem}
+
+\begin{solution}
+把各对角块记为 $B_1,\ldots,B_m$。其中 $1\times1$ 块本身就是一个特征值；
+对每个实对称的 $2\times2$ 块分别作谱分解
+\[
+    B_j=U_j\Lambda_jU_j^T,
+    \qquad U_j^TU_j=I.
+\]
+令
+\[
+    U=\operatorname{diag}(U_1,\ldots,U_m),
+    \qquad
+    \Lambda=\operatorname{diag}(\Lambda_1,\ldots,\Lambda_m),
+\]
+便有
+\[
+    U^TU=I,
+    \qquad B=U\Lambda U^T.
+\]
+因此各小块的特征值合在一起（按代数重数计数）就是 $B$ 的全部特征值。
+若 $u$ 是第 $j$ 个块的特征向量，把 $u$ 放在第 $j$ 个坐标块、其余坐标补零，
+所得向量 $\tilde u$ 满足
+\[
+    B\tilde u=\lambda\tilde u,
+\]
+因而就是整个矩阵的特征向量。即使同一特征值出现在不同块中，来自这些块的补零向量
+也彼此正交，并共同张成相应特征子空间。
+
+具体地，对称块
+\[
+    C=\begin{pmatrix}a&b\\b&d\end{pmatrix}
+\]
+的两个特征值可单独计算为
+\[
+    \lambda_{\pm}=\frac{a+d\pm\sqrt{(a-d)^2+4b^2}}2,
+\]
+再解 $(C-\lambda_{\pm}I)u_{\pm}=0$ 并单位化即可得到该块的正交特征向量。
+所以计算 $B$ 的谱分解完全可以分解为若干个互不耦合的 $1\times1$ 或 $2\times2$ 小问题。
+\end{solution}
+
 \end{document}
